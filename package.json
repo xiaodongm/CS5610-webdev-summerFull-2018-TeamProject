@@ -23,6 +23,7 @@
     "boot": "^0.8.2",
     "bootstrap": "^4.1.2",
     "core-js": "^2.5.4",
+    "ngx-bootstrap": "^3.0.1",
     "rxjs": "^6.0.0",
     "strap": "^0.1.0",
     "ts-loader": "^4.4.2",
