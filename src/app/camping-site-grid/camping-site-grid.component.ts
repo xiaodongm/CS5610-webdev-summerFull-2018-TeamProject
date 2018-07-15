@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {CampingSite} from '../models/camingSite.model.client';
 import {ActivatedRoute} from '@angular/router';
+import {CampingSiteServiceClient} from '../services/campingSite.service.client';
 
 @Component({
   selector: 'app-camping-site-grid',
@@ -9,12 +10,14 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class CampingSiteGridComponent implements OnInit {
 
-  constructor() {}
-
-  campingSites: CampingSite[] = [];
+  constructor(private service: CampingSiteServiceClient) {}
+  campingSites = [];
 
 
   ngOnInit() {
+    this.service
+      .findCampingSitesByStateOrName('CA', 'Abrams')
+      .then(response => this.campingSites = response.result);
   }
 
 }
