@@ -1,7 +1,5 @@
 import {Component, OnInit, Input, SimpleChanges, OnChanges, IterableDiffers, DoCheck} from '@angular/core';
 import {CampingSite} from '../models/camingSite.model.client';
-import {ActivatedRoute} from '@angular/router';
-import {CampingSiteServiceClient} from '../services/campingSite.service.client';
 
 
 @Component({
@@ -11,25 +9,20 @@ import {CampingSiteServiceClient} from '../services/campingSite.service.client';
 })
 export class CampingSiteGridComponent implements OnInit, DoCheck {
 
-  constructor(private service: CampingSiteServiceClient, private differs: IterableDiffers) {
+  constructor(private differs: IterableDiffers) {
     this.differ = differs.find([]).create(null);
   }
-  campingSites = [];
+  campingSitesArray = [];
   differ: any;
-  @Input() campgrounds;
+  @Input('campingSites') campingSites;
   ngOnInit() {
-    // this.service
-    //   .findCampingSitesByStateOrName('CA', 'Abrams')
-    //   .then(response => this.campingSites = response.result)
-    //   .then(() => {console.log(this.campingSites); });
-    this.campingSites = this.campgrounds;
-    setTimeout(() => console.log(this.campgrounds), 7000);
+    this.campingSitesArray = this.campingSites;
+    setTimeout(() => console.log(this.campingSites), 7000);
   }
 
   ngDoCheck() {
-    const change = this.differ.diff(this.campgrounds);
-    this.campingSites = this.campgrounds;
-    console.log(this.campgrounds);
+    const change = this.differ.diff(this.campingSites);
+    this.campingSitesArray = this.campingSites;
+    console.log(this.campingSites);
   }
-
 }

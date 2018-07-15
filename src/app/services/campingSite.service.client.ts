@@ -12,9 +12,14 @@ export class CampingSiteServiceClient {
       PSTATE = 'pstate=' + state + '&';
     }
     if (name !== '') {
+      if (name.length < 4) {
+        alert('Sorry, the name of facility must no less then 4 characters');
+        return;
+      }
       PNAME = 'pname=' + name + '&';
     }
     const URL = CORS_ANYWHERE_URL + API_HEADER_URL + '?' + PSTATE + PNAME + API_KEY;
+    console.log(URL);
     return fetch(URL, {
       method: 'GET',
       mode: 'cors',
@@ -23,9 +28,7 @@ export class CampingSiteServiceClient {
       }
     })
       .then(response => response.text())
-      .then((xml) => {
-        return JSON.parse(CONVERT.xml2json(xml, {compact: true, spaces: 4})); }
-      );
+      .then((xml) => JSON.parse(CONVERT.xml2json(xml, {compact: true, spaces: 4})));
 
   }
 
@@ -41,9 +44,7 @@ export class CampingSiteServiceClient {
       }
     })
       .then(response => response.text())
-      .then((xml) => {
-        JSON.parse(CONVERT.xml2json(xml, {compact: true, spaces: 4}));
-      });
+      .then((xml) => JSON.parse(CONVERT.xml2json(xml, {compact: true, spaces: 4})));
 
   }
 

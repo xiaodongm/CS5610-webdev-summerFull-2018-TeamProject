@@ -1,5 +1,5 @@
 import {Component, OnInit, SimpleChange, ViewChild, IterableDiffers, DoCheck, OnChanges} from '@angular/core';
-import {SearchBarCampgroundComponent} from '../search-bar-campground/search-bar-campground.component';
+import {SearchBarCampingSiteComponent} from '../search-bar-campground/search-bar-camping-site.component';
 import {CampingSiteGridComponent} from '../camping-site-grid/camping-site-grid.component';
 
 @Component({
@@ -10,12 +10,11 @@ import {CampingSiteGridComponent} from '../camping-site-grid/camping-site-grid.c
 export class HomePageComponent implements OnInit {
   constructor() {
   }
-  campgrounds = [];
+  campingSites = [];
   ngOnInit() {
   }
 
   updateCampgrounds(e) {
-    this.campgrounds = e.campgrounds;
-    console.log(e.campgrounds);
+    this.campingSites = e.campingSites;
   }
 }
