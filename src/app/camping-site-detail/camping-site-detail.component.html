@@ -1,14 +1,19 @@
 <div class="container-fluid">
 
   <div id="pageArea" class="jumbotron">
-    <h1 id="cground_name" class="display-4">Name of CampingSite<span id="tag" class="badge badge-secondary">tag</span></h1>
-    <p id="cground_address" class="lead">This is a simple CampingSite Address. CampingSite Address will appear here.</p>
+    <h1 id="cground_name" class="display-4">
+      {{campingSite.facilityName}}
+      <span id="tag" class="badge badge-secondary">tag</span>
+    </h1>
+    <p id="cground_address" class="lead">
+      {{campingSite.address.streetAddress+', '}}
+      {{campingSite.address.city+', '}}
+      {{campingSite.address.state+' '}}
+      {{campingSite.address.zip+', '}}
+      {{campingSite.address.country}}
+    </p>
     <hr class="my-4">
-    <p id="cground_description">This is an example of Site Descripion. A paragraph of Description data will appear here.
-      This is an example of Site Descripion. A paragraph of Description data will appear hereThis
-      is an example of Site Descripion. A paragraph of Description data will appear hereThis is an
-      example of Site Descripion. A paragraph of Description data will appear hereThis is an example
-      of Site Descripion. A paragraph of Description data will appear here</p>
+    <p id="cground_description">{{campingSite.detailDescription.description}}</p>
     <div id="carousel">
       <carousel>
         <slide>

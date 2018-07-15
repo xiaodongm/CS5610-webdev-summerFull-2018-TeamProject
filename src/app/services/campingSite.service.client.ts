@@ -1,5 +1,6 @@
 const CORS_ANYWHERE_URL = 'https://cors-anywhere.herokuapp.com/';
 const API_HEADER_URL = 'http://api.amp.active.com/camping/campgrounds/';
+const API_HEADER_DETAIL_URL = 'http://api.amp.active.com/camping/campground/';
 const API_KEY = 'api_key=rknxu5q3axb3qb6tdeyu78bw';
 declare var require: any;
 const CONVERT = require('xml-js');
@@ -31,7 +32,7 @@ export class CampingSiteServiceClient {
   findCampingSiteDetails(contractCode, parkId) {
     const CONTRACT_CODE = 'contractCode=' + contractCode;
     const PARK_ID = 'parkId=' + parkId;
-    const DETAILS_URL = CORS_ANYWHERE_URL + API_HEADER_URL + 'details?' + CONTRACT_CODE + '&' + PARK_ID + '&' + API_KEY;
+    const DETAILS_URL = CORS_ANYWHERE_URL + API_HEADER_DETAIL_URL + 'details?' + CONTRACT_CODE + '&' + PARK_ID + '&' + API_KEY;
     return fetch(DETAILS_URL, {
       method: 'GET',
       mode: 'cors',
