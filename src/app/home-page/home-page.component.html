@@ -21,7 +21,12 @@
     </div>
   </nav>
 
-  <app-search-bar-campground></app-search-bar-campground>
+  <app-search-bar-campground (searchPressed)="updateCampgrounds($event)"></app-search-bar-campground>
+  <!--<div *ngIf="campgrounds"> -->
+
+    <app-camping-site-grid [campgrounds]="campgrounds"></app-camping-site-grid>
+
+  <!--</div>-->
 
 
 </div>
