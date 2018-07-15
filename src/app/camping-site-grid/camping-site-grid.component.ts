@@ -16,7 +16,7 @@ export class CampingSiteGridComponent implements OnInit {
 
   ngOnInit() {
     this.service
-      .findCampingSitesByStateOrName('CA', 'Abrams')
+      .findCampingSitesByStateOrName('CA', 'Abramsbdsb')
       .then(response => {
         console.log(response.resultset.result);
         if (response.resultset.result.constructor !== Array ) {
