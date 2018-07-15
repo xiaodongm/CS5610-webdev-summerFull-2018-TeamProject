@@ -12,7 +12,7 @@ import { CampingSiteDetailComponent } from './camping-site-detail/camping-site-d
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 
-import { SearchBarCampgroundComponent } from './search-bar-campground/search-bar-campground.component';
+import { SearchBarCampingSiteComponent } from './search-bar-campground/search-bar-camping-site.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CampingSiteServiceClient} from './services/campingSite.service.client';
 
@@ -22,9 +22,8 @@ import {CampingSiteServiceClient} from './services/campingSite.service.client';
     AppComponent,
     HomePageComponent,
     CampingSiteGridComponent,
-    SearchBarCampgroundComponent,
+    SearchBarCampingSiteComponent,
     CampingSiteDetailComponent,
-
   ],
   imports: [
     BrowserModule,

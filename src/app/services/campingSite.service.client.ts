@@ -13,6 +13,10 @@ export class CampingSiteServiceClient {
       PSTATE = 'pstate=' + state + '&';
     }
     if (name !== '') {
+      if (name.length < 4) {
+        alert('Sorry, the name of facility must no less then 4 characters');
+        return;
+      }
       PNAME = 'pname=' + name + '&';
     }
     const URL = CORS_ANYWHERE_URL + API_HEADER_URL + '?' + PSTATE + PNAME + API_KEY;
