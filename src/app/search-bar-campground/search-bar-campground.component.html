@@ -1,0 +1,13 @@
+<div class="input-group mb-auto container-fluid">
+
+  <input type="search"
+         class="form-control"
+         aria-label="Search"
+         placeholder="Search"
+         [(ngModel)]="searchInput">
+  <div class="input-group-append">
+    <button class="btn btn-outline-success my-2 my-sm-0"
+            type="submit"
+            (click)="searchCampgrounds([searchInput])">Search</button>
+  </div>
+</div>
