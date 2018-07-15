@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {CampingSite} from '../models/camingSite.model.client';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-camping-site-grid',
@@ -7,8 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CampingSiteGridComponent implements OnInit {
 
-  constructor() { }
+  constructor() {}
 
+  campingSites: CampingSite[] = [];
 
 
   ngOnInit() {

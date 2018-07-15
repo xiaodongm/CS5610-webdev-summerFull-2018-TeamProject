@@ -1,3 +1,3 @@
-export class CamingSite {
+export class CampingSite {
   detailDescription: object;
 }
