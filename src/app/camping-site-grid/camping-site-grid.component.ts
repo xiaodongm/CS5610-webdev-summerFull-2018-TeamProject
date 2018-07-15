@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {CampingSite} from '../models/camingSite.model.client';
+// import {CampingSite} from '../models/camingSite.model.client';
 import {ActivatedRoute} from '@angular/router';
 import {CampingSiteServiceClient} from '../services/campingSite.service.client';
 
@@ -17,7 +17,16 @@ export class CampingSiteGridComponent implements OnInit {
   ngOnInit() {
     this.service
       .findCampingSitesByStateOrName('CA', 'Abrams')
-      .then(response => this.campingSites = response.result);
-  }
+      .then(response => {
+        console.log(response.resultset.result);
+        if (response.resultset.result.constructor !== Array ) {
+            const array = [];
+            array.push(response.resultset.result);
+            this.campingSites = array;
+        } else {
+          this.campingSites = response.resultset.result;
 
+        }
+      });
+  }
 }

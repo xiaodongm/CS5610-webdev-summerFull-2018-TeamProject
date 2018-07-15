@@ -7,20 +7,21 @@ import {routing} from './app.rounting';
 import {CampingSiteGridComponent} from './camping-site-grid/camping-site-grid.component';
 import { SearchBarCampgroundComponent } from './search-bar-campground/search-bar-campground.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {CampingSiteServiceClient} from './services/campingSite.service.client';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
     CampingSiteGridComponent,
-    SearchBarCampgroundComponent,
+    SearchBarCampgroundComponent
   ],
   imports: [
     BrowserModule,
     routing,
     FormsModule
   ],
-  providers: [],
+  providers: [CampingSiteServiceClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

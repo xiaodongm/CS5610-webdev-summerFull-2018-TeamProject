@@ -5,8 +5,10 @@
   <div *ngFor="let site of campingSites" class="col-sm-3">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">{{site.-facility}}</h5>
+        <h5 class="card-title">{{site._attributes.facilityName}}</h5>
         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a routerLink="/camping-site/{{site._attributes.contractID}}/{{site._attributes.facilityID}}">
+          See More</a>
       </div>
     </div>
   </div>
