@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SearchBarCampgroundComponent } from './search-bar-campground.component';
+import { SearchBarCampgroundComponent } from './search-bar-camping-site.component';
 
 describe('SearchBarCampgroundComponent', () => {
   let component: SearchBarCampgroundComponent;

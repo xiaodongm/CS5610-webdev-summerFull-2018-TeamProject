@@ -1,8 +1,8 @@
 <h2>Search Results</h2>
-<h4>Total {{campingSites.length}} results</h4>
+<h4>Total {{campingSitesArray.length}} results</h4>
 
 <div class="row">
-  <div *ngFor="let site of campingSites" class="col-sm-3">
+  <div *ngFor="let site of campingSitesArray" class="col-sm-3">
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">{{site._attributes.facilityName}}</h5>
