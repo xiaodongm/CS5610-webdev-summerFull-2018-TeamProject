@@ -1,0 +1,23 @@
+#pageArea {
+  margin-top: 10px;
+}
+
+#carousel {
+  /*width: 35%;*/
+  /*height: 35%;*/
+  padding-left: 150px;
+  padding-right: 150px;
+}
+
+#tag {
+  font-size: 15px;
+  margin-left: 5px;
+}
+
+#amenity_list {
+  margin-left: 35px;
+}
+
+.amenity_item {
+  margin-right: 8px;
+}
