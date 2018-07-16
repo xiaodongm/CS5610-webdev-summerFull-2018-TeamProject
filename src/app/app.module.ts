@@ -15,6 +15,7 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { SearchBarCampingSiteComponent } from './search-bar-campground/search-bar-camping-site.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CampingSiteServiceClient} from './services/campingSite.service.client';
+import {CampingSiteToDetailServiceClient} from './communication-services/camping-site-to-detail.service.client';
 
 
 @NgModule({
@@ -31,7 +32,9 @@ import {CampingSiteServiceClient} from './services/campingSite.service.client';
     CarouselModule.forRoot(),  // ngx-bootstrap
     FormsModule
   ],
-  providers: [CampingSiteServiceClient],
+  providers: [
+    CampingSiteServiceClient,
+    CampingSiteToDetailServiceClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
