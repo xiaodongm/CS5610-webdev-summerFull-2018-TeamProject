@@ -539,7 +539,7 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! E:\GitHubRepo\new\CS5610-webdev-summerFull-2018-TeamProject\src\styles.css */"./src/styles.css");
+module.exports = __webpack_require__(/*! E:\GitHubRepo\CS5610-webdev-summerFull-2018-TeamProject\src\styles.css */"./src/styles.css");
 
 
 /***/ })

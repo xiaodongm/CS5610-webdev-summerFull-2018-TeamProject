@@ -191,7 +191,7 @@ var routing = _angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"].forRo
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "#pageArea {\r\n  margin-top: 10px;\r\n}\r\n\r\n#carousel {\r\n  /*width: 35%;*/\r\n  /*height: 35%;*/\r\n  padding-left: 150px;\r\n  padding-right: 150px;\r\n}\r\n\r\n#tag {\r\n  font-size: 15px;\r\n  margin-left: 5px;\r\n}\r\n\r\n#amenity_list {\r\n  margin-left: 35px;\r\n}\r\n\r\n.amenity_item {\r\n  margin-right: 8px;\r\n}\r\n"
+module.exports = "#pageArea {\r\n  margin-top: 10px;\r\n}\r\n\r\n#carousel {\r\n  /*width: 35%;*/\r\n  /*height: 35%;*/\r\n  padding-left: 150px;\r\n  padding-right: 150px;\r\n}\r\n\r\n#tag {\r\n  font-size: 15px;\r\n  margin-left: 5px;\r\n}\r\n\r\n#amenity_list {\r\n  margin-left: 35px;\r\n}\r\n\r\n.amenity_item {\r\n  margin-right: 8px;\r\n}\r\n\r\n#learnMore {\r\n  margin-top: 20px;\r\n}\r\n"
 
 /***/ }),
 
@@ -202,7 +202,7 @@ module.exports = "#pageArea {\r\n  margin-top: 10px;\r\n}\r\n\r\n#carousel {\r\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"isDataAvailable\" class=\"container-fluid\">\r\n\r\n  <div id=\"pageArea\" class=\"jumbotron\">\r\n    <h1 id=\"cground_name\" class=\"display-4\">\r\n      {{campingSite.facilityName}}\r\n      <span id=\"tag\" class=\"badge badge-secondary\">tag</span>\r\n    </h1>\r\n    <p id=\"cground_address\" class=\"lead\">\r\n      {{campingSite.address.streetAddress+', '}}\r\n      {{campingSite.address.city+', '}}\r\n      {{campingSite.address.state+' '}}\r\n      {{campingSite.address.zip+', '}}\r\n      {{campingSite.address.country}}\r\n    </p>\r\n    <hr class=\"my-4\">\r\n    <p id=\"cground_description\">{{campingSite.detailDescription.description}}</p>\r\n    <div id=\"carousel\">\r\n      <carousel>\r\n        <slide>\r\n          <img src=\"../../assets/images/background-img.jpeg\" alt=\"first slide\" style=\"display: block; width: 100%;\">\r\n          <div class=\"carousel-caption d-none d-md-block\">\r\n            <h3>First slide label</h3>\r\n            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>\r\n          </div>\r\n        </slide>\r\n        <slide>\r\n          <img src=\"../../assets/images/backGround_image_2.jpg\" alt=\"second slide\" style=\"display: block; width: 100%;\">\r\n          <div class=\"carousel-caption d-none d-md-block\">\r\n            <h3>Second slide label</h3>\r\n            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>\r\n          </div>\r\n        </slide>\r\n        <slide>\r\n          <img src=\"../../assets/images/backGround_image_3.jpg\" alt=\"third slide\" style=\"display: block; width: 100%;\">\r\n          <div class=\"carousel-caption d-none d-md-block\">\r\n            <h3>Third slide label</h3>\r\n            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>\r\n          </div>\r\n        </slide>\r\n      </carousel>\r\n    </div>\r\n    <hr class=\"my-4\">\r\n    <div id=\"amenity_list\">\r\n      <h5>Amenities :</h5>\r\n      <span class=\"badge badge-secondary amenity_item\">Biking</span>\r\n      <span class=\"badge badge-secondary amenity_item\">Horseback Riding</span>\r\n      <span class=\"badge badge-secondary amenity_item\">Comfort Station</span>\r\n      <span class=\"badge badge-secondary amenity_item\">Group Campground</span>\r\n      <span class=\"badge badge-secondary amenity_item\">Interpretitive Programs</span>\r\n      <span class=\"badge badge-secondary amenity_item\">Nature Study Exhibits</span>\r\n      <span class=\"badge badge-secondary amenity_item\">Nature Study Exhibits</span>\r\n      <span class=\"badge badge-secondary amenity_item\">Nature Study Exhibits</span>\r\n      <span class=\"badge badge-secondary amenity_item\">Nature Study Exhibits</span>\r\n      <span class=\"badge badge-secondary amenity_item\">Nature Study Exhibits</span>\r\n      <span class=\"badge badge-secondary amenity_item\">Nature Study Exhibits</span>\r\n      <span class=\"badge badge-secondary amenity_item\">Nature Study Exhibits</span>\r\n      <span class=\"badge badge-secondary amenity_item\">Nature Study Exhibits</span>\r\n    </div>\r\n    <hr class=\"my-4\">\r\n    <div class=\"container-fluid\">\r\n      <h5>Weather Forecast</h5>\r\n      <p>Weather info will appear here.</p>\r\n    </div>\r\n    <hr class=\"my-4\">\r\n    <p id=\"cground_contact\" class=\"lead\">Contact info will appear here</p>\r\n    <a class=\"btn btn-primary btn-lg\" href=\"#\" role=\"button\">Learn more</a>\r\n  </div>\r\n\r\n\r\n</div>\r\n\r\n\r\n\r\n\r\n"
+module.exports = "<div *ngIf=\"isDataAvailable\" class=\"container-fluid\">\r\n\r\n  <div id=\"pageArea\" class=\"jumbotron\">\r\n    <h1 id=\"cground_name\" class=\"display-4\">\r\n      {{campingSite.facilityName}}\r\n      <span id=\"tag\" class=\"badge badge-secondary\">{{campingSiteFromCommunication._attributes.contractType}}</span>\r\n    </h1>\r\n    <p id=\"cground_address\" class=\"lead\">\r\n      {{finalAddress}}\r\n    </p>\r\n    <hr class=\"my-4\">\r\n    <p id=\"cground_description\">{{campingSite.detailDescription.description}}</p>\r\n    <div id=\"carousel\">\r\n      <carousel>\r\n        <slide *ngFor=\"let photo of campingSite.photo\">\r\n          <img src={{photo._attributes.realUrl}} alt=\"first slide\" style=\"display: block; width: 100%;\">\r\n          <div class=\"carousel-caption d-none d-md-block\">\r\n            <h3>First slide label</h3>\r\n            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>\r\n          </div>\r\n        </slide>\r\n        <!--<slide>-->\r\n          <!--<img src=\"../../assets/images/backGround_image_2.jpg\" alt=\"second slide\" style=\"display: block; width: 100%;\">-->\r\n          <!--<div class=\"carousel-caption d-none d-md-block\">-->\r\n            <!--<h3>Second slide label</h3>-->\r\n            <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>-->\r\n          <!--</div>-->\r\n        <!--</slide>-->\r\n        <!--<slide>-->\r\n          <!--<img src=\"../../assets/images/backGround_image_3.jpg\" alt=\"third slide\" style=\"display: block; width: 100%;\">-->\r\n          <!--<div class=\"carousel-caption d-none d-md-block\">-->\r\n            <!--<h3>Third slide label</h3>-->\r\n            <!--<p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>-->\r\n          <!--</div>-->\r\n        <!--</slide>-->\r\n      </carousel>\r\n    </div>\r\n    <hr class=\"my-4\">\r\n    <h5>Amenities :</h5>\r\n    <div id=\"amenity_list\">\r\n      <span *ngFor=\"let amenity of campingSite.amenity\" class=\"badge badge-secondary amenity_item\">{{amenity._attributes.name}}</span>\r\n    </div>\r\n    <hr class=\"my-4\">\r\n    <div class=\"container-fluid\">\r\n      <h5>Weather Forecast</h5>\r\n      <p>Weather info will appear here.</p>\r\n    </div>\r\n    <hr class=\"my-4\">\r\n    <p id=\"cground_contact\" class=\"lead\">Contact info : </p>\r\n      <li *ngFor=\"let contactItem of campingSite.contact\">\r\n        {{contactItem._attributes.name + ' : ' + contactItem._attributes.number}}\r\n      </li>\r\n    <a id=\"learnMore\" class=\"btn btn-primary btn-lg\" href=\"#\" role=\"button\">Learn more</a>\r\n  </div>\r\n\r\n\r\n</div>\r\n\r\n\r\n\r\n\r\n"
 
 /***/ }),
 
@@ -243,6 +243,7 @@ var CampingSiteDetailComponent = /** @class */ (function () {
         this.communicationService = communicationService;
         this.isDataAvailable = false;
         this.campingSite = new _models_camingSite_model_client__WEBPACK_IMPORTED_MODULE_3__["CampingSite"]();
+        this.finalAddress = '';
         this.route.params.subscribe(function (params) { return _this.setParams(params); });
     }
     CampingSiteDetailComponent.prototype.setParams = function (params) {
@@ -250,28 +251,60 @@ var CampingSiteDetailComponent = /** @class */ (function () {
         this.facilityId = params['facilityID'];
         this.loadDetails(this.contractId, this.facilityId);
     };
+    CampingSiteDetailComponent.prototype.setFinalAddress = function (address) {
+        console.log(address);
+        if (typeof (address.streetAddress) !== undefined && address.streetAddress.length !== 0) {
+            this.finalAddress += address.streetAddress + ', ';
+        }
+        if (typeof (address.city) !== undefined && address.city.length !== 0) {
+            console.log('city' + address.city);
+            this.finalAddress += address.city + ', ';
+        }
+        if (address.state !== undefined && address.state.length !== 0) {
+            console.log('state' + address.state);
+            this.finalAddress += address.state + ', ';
+        }
+        if (address.zip !== undefined && address.zip.length !== 0) {
+            console.log('state' + address.zip);
+            this.finalAddress += address.zip + ', ';
+        }
+        if (address.country !== undefined && address.country.length !== 0) {
+            console.log('country' + address.country);
+            this.finalAddress += address.country;
+        }
+        console.log(this.finalAddress);
+        return this.finalAddress;
+    };
+    CampingSiteDetailComponent.prototype.addUrlPrefix = function () {
+        for (var i = 0; i < this.campingSite.photo.length; i++) {
+            this.campingSite.photo[i]._attributes.realUrl = 'http://www.reserveamerica.com' + this.campingSite.photo[i]._attributes.realUrl;
+        }
+    };
     CampingSiteDetailComponent.prototype.loadDetails = function (contractId, facilityId) {
         var _this = this;
         this.contractId = contractId;
         this.facilityId = facilityId;
         this.service.findCampingSiteDetails(contractId, facilityId)
             .then(function (details) {
-            console.log(details);
+            // console.log(details);
             _this.details = details;
             _this.campingSite.address = details.detailDescription.address._attributes;
             _this.campingSite.detailDescription = details.detailDescription._attributes;
             _this.campingSite.facilityName = details.detailDescription._attributes.facility;
-            // this.campingSite.address.streetAddress = details.detailDescription.address._attributes.streetAddress;
-            // this.campingSite.address.city = details.detailDescription.address._attributes.city;
-            // this.campingSite.address.state = details.detailDescription.address._attributes.state;
-            // this.campingSite.address.zip = details.detailDescription.address._attributes.zip;
-            // this.campingSite.address.country = details.detailDescription.address._attributes.country;
-        }).then(function () { return (_this.isDataAvailable = true); });
+            _this.campingSite.amenity = details.detailDescription.amenity;
+            _this.campingSite.photo = details.detailDescription.photo;
+            _this.addUrlPrefix();
+            console.log(details);
+            console.log(details.detailDescription.photo);
+            _this.setFinalAddress(details.detailDescription.address._attributes);
+            _this.campingSite.contact = details.detailDescription.contact;
+        })
+            .then(function () { return (_this.isDataAvailable = true); });
     };
     CampingSiteDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.communicationService.currentCampingSite.subscribe(function (site) { return _this.campingSiteFromCommunication = site; });
-        console.log(this.campingSiteFromCommunication);
+        // console.log(this.campingSiteFromCommunication);
     };
     CampingSiteDetailComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -297,7 +330,7 @@ var CampingSiteDetailComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".card {\r\n  margin-bottom: 15px;\r\n}\r\n"
 
 /***/ }),
 
@@ -515,7 +548,7 @@ var CampingSite = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".search {\r\n  margin: 5px;\r\n}\r\n"
 
 /***/ }),
 
@@ -526,7 +559,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"input-group mb-auto container-fluid\">\r\n\r\n  <input type=\"search\"\r\n         class=\"form-control\"\r\n         aria-label=\"Search\"\r\n         placeholder=\"Search\"\r\n         [(ngModel)]=\"searchInput\">\r\n  <div class=\"input-group-append\">\r\n    <button class=\"btn btn-outline-success my-2 my-sm-0\"\r\n            type=\"submit\"\r\n            (click)=\"searchCampgrounds([searchInput], $event)\">Search</button>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"input-group mb-auto container-fluid search\">\r\n\r\n  <input type=\"search\"\r\n         class=\"form-control\"\r\n         aria-label=\"Search\"\r\n         placeholder=\"Please type the name of camping site. The length of name must no less than 4\"\r\n         [(ngModel)]=\"pNameInput\">\r\n  <input type=\"search\"\r\n         class=\"form-control\"\r\n         aria-label=\"Search\"\r\n         placeholder=\"Please enter the two character abbreviation for US state or Canadian province\"\r\n         [(ngModel)]=\"pStateInput\">\r\n  <div class=\"input-group-append\">\r\n    <button class=\"btn btn-outline-success my-2 my-sm-0\"\r\n            type=\"submit\"\r\n            (click)=\"searchCampgrounds(pNameInput, pStateInput, $event)\">Search</button>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -556,21 +589,33 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var SearchBarCampingSiteComponent = /** @class */ (function () {
     function SearchBarCampingSiteComponent(service) {
         this.service = service;
-        this.searchInput = [];
+        this.pNameInput = '';
+        this.pStateInput = '';
         this.campingSites = [];
         this.searchPressed = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
     }
-    SearchBarCampingSiteComponent.prototype.searchCampgrounds = function (searchInput, e) {
+    SearchBarCampingSiteComponent.prototype.searchCampgrounds = function (pNameInput, pStateInput, e) {
         var _this = this;
-        console.log(searchInput[0]);
+        if (pStateInput === '' && pNameInput === '') {
+            alert('Please at least enter the name or state');
+            return;
+        }
+        if (pStateInput === '' && pNameInput.length < 4) {
+            alert('Sorry, the name of facility must no less then 4 characters');
+            return;
+        }
+        if (pStateInput.length > 0) {
+            pStateInput = pStateInput.toUpperCase();
+        }
         this.service
-            .findCampingSitesByStateOrName('CA', searchInput[0])
+            .findCampingSitesByStateOrName(pStateInput, pNameInput)
             .then(function (response) {
             if (response.resultset._attributes.count === '0') {
                 _this.campingSites = [];
                 return;
             }
             _this.campingSites = response.resultset.result;
+            // console.log(response);
         })
             .then(function () { console.log(_this.campingSites); })
             .then(function () { _this.searchPressed.emit({ campingSites: _this.campingSites }); });
@@ -620,14 +665,11 @@ var CampingSiteServiceClient = /** @class */ (function () {
             PSTATE = 'pstate=' + state + '&';
         }
         if (name !== '') {
-            if (name.length < 4) {
-                alert('Sorry, the name of facility must no less then 4 characters');
-                return;
-            }
+            console.log(name);
             PNAME = 'pname=' + name + '&';
         }
         var URL = CORS_ANYWHERE_URL + API_HEADER_URL + '?' + PSTATE + PNAME + API_KEY;
-        console.log(URL);
+        // console.log(URL);
         return fetch(URL, {
             method: 'GET',
             mode: 'cors',
@@ -719,7 +761,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! E:\GitHubRepo\new\CS5610-webdev-summerFull-2018-TeamProject\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! E:\GitHubRepo\CS5610-webdev-summerFull-2018-TeamProject\src\main.ts */"./src/main.ts");
 
 
 /***/ })
