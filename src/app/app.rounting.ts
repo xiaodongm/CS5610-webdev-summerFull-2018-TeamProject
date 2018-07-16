@@ -5,7 +5,7 @@ import {CampingSiteDetailComponent} from './camping-site-detail/camping-site-det
 const appRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
   { path: 'home', component: HomePageComponent},
-  { path: 'camping-site/:contractID/:facilityID', component: HomePageComponent},
+  { path: 'camping-site/:contractID/:facilityID/detail', component: CampingSiteDetailComponent},
   { path: 'detail', component: CampingSiteDetailComponent},
   { path: '**', component: HomePageComponent},
 
