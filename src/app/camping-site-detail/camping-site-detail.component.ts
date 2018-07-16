@@ -79,6 +79,7 @@ export class CampingSiteDetailComponent implements OnInit {
         console.log(details);
         console.log(details.detailDescription.photo);
         this.setFinalAddress(details.detailDescription.address._attributes);
+        this.campingSite.contact = details.detailDescription.contact;
       } )
       .then(() => (this.isDataAvailable = true));
   }
