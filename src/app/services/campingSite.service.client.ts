@@ -8,22 +8,17 @@ const CONVERT = require('xml-js');
 
 export class CampingSiteServiceClient {
   findCampingSitesByStateOrName(state, name) {
-    if (state === '' && name === '') {
-      alert('Please at least enter the name or state');
-    } else {
+
       let PSTATE = '', PNAME = '';
       if (state !== '') {
         PSTATE = 'pstate=' + state + '&';
       }
       if (name !== '') {
-        if (name.length < 4) {
-          alert('Sorry, the name of facility must no less then 4 characters');
-          return;
-        }
+        console.log(name);
         PNAME = 'pname=' + name + '&';
       }
       const URL = CORS_ANYWHERE_URL + API_HEADER_URL + '?' + PSTATE + PNAME + API_KEY;
-      console.log(URL);
+      // console.log(URL);
       return fetch(URL, {
         method: 'GET',
         mode: 'cors',
@@ -33,8 +28,6 @@ export class CampingSiteServiceClient {
       })
         .then(response => response.text())
         .then((xml) => JSON.parse(CONVERT.xml2json(xml, {compact: true, spaces: 4})));
-
-    }
   }
 
   findCampingSiteDetails(contractCode, parkId) {

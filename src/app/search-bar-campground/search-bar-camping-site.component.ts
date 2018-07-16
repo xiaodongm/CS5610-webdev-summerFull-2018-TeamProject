@@ -9,14 +9,25 @@ import {CampingSiteServiceClient} from '../services/campingSite.service.client';
 export class SearchBarCampingSiteComponent implements OnInit {
   constructor(private service: CampingSiteServiceClient) { }
 
-  pNameInput = [];
-  pStateInput = [];
+  pNameInput: String = '';
+  pStateInput: String = '';
   campingSites = [];
   @Output() searchPressed = new EventEmitter();
   searchCampgrounds(pNameInput, pStateInput, e) {
-    // console.log(pNameInput[0]);
+    if (pStateInput === '' && pNameInput === '') {
+      alert('Please at least enter the name or state');
+      return;
+    }
+    if (pStateInput === '' && pNameInput.length < 4) {
+      alert('Sorry, the name of facility must no less then 4 characters');
+      return;
+    }
+    if (pStateInput.length > 0) {
+      pStateInput = pStateInput.toUpperCase();
+    }
+
     this.service
-      .findCampingSitesByStateOrName(pStateInput[0].toUpperCase(), pNameInput[0])
+      .findCampingSitesByStateOrName(pStateInput, pNameInput)
       .then(response => {
         if (response.resultset._attributes.count === '0') {
           this.campingSites = [];
