@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {CampingSiteServiceClient} from '../services/campingSite.service.client';
 import {CampingSite} from '../models/camingSite.model.client';
+import {CampingSiteToDetailServiceClient} from '../communication-services/camping-site-to-detail.service.client';
+
 
 @Component({
   selector: 'app-camping-site-detail',
@@ -11,10 +13,13 @@ import {CampingSite} from '../models/camingSite.model.client';
 
 export class CampingSiteDetailComponent implements OnInit {
   constructor(private service: CampingSiteServiceClient,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private communicationService: CampingSiteToDetailServiceClient) {
     this.route.params.subscribe(
       params => this.setParams(params));
   }
+  campingSiteFromCommunication;
+  isDataAvailable = false;
   contractId;
   facilityId;
   campingSite: CampingSite = new CampingSite();
@@ -41,9 +46,11 @@ export class CampingSiteDetailComponent implements OnInit {
         // this.campingSite.address.state = details.detailDescription.address._attributes.state;
         // this.campingSite.address.zip = details.detailDescription.address._attributes.zip;
         // this.campingSite.address.country = details.detailDescription.address._attributes.country;
-      } );
+      } ).then(() => (this.isDataAvailable = true));
   }
 
   ngOnInit() {
+    this.communicationService.currentCampingSite.subscribe(site => this.campingSiteFromCommunication = site);
+    console.log(this.campingSiteFromCommunication);
   }
 }
