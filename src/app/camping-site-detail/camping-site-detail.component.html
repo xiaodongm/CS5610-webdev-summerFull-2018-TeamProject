@@ -3,58 +3,42 @@
   <div id="pageArea" class="jumbotron">
     <h1 id="cground_name" class="display-4">
       {{campingSite.facilityName}}
-      <span id="tag" class="badge badge-secondary">{{campingSiteFromCommunication}}</span>
+      <span id="tag" class="badge badge-secondary">{{campingSiteFromCommunication._attributes.contractType}}</span>
     </h1>
     <p id="cground_address" class="lead">
-      {{campingSite.address.streetAddress+', '}}
-      {{campingSite.address.city+', '}}
-      {{campingSite.address.state+' '}}
-      {{campingSite.address.zip+', '}}
-      {{campingSite.address.country}}
+      {{finalAddress}}
     </p>
     <hr class="my-4">
     <p id="cground_description">{{campingSite.detailDescription.description}}</p>
     <div id="carousel">
       <carousel>
-        <slide>
-          <img src="../../assets/images/background-img.jpeg" alt="first slide" style="display: block; width: 100%;">
+        <slide *ngFor="let photo of campingSite.photo">
+          <img src={{photo._attributes.realUrl}} alt="first slide" style="display: block; width: 100%;">
           <div class="carousel-caption d-none d-md-block">
             <h3>First slide label</h3>
             <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
           </div>
         </slide>
-        <slide>
-          <img src="../../assets/images/backGround_image_2.jpg" alt="second slide" style="display: block; width: 100%;">
-          <div class="carousel-caption d-none d-md-block">
-            <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </div>
-        </slide>
-        <slide>
-          <img src="../../assets/images/backGround_image_3.jpg" alt="third slide" style="display: block; width: 100%;">
-          <div class="carousel-caption d-none d-md-block">
-            <h3>Third slide label</h3>
-            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-          </div>
-        </slide>
+        <!--<slide>-->
+          <!--<img src="../../assets/images/backGround_image_2.jpg" alt="second slide" style="display: block; width: 100%;">-->
+          <!--<div class="carousel-caption d-none d-md-block">-->
+            <!--<h3>Second slide label</h3>-->
+            <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>-->
+          <!--</div>-->
+        <!--</slide>-->
+        <!--<slide>-->
+          <!--<img src="../../assets/images/backGround_image_3.jpg" alt="third slide" style="display: block; width: 100%;">-->
+          <!--<div class="carousel-caption d-none d-md-block">-->
+            <!--<h3>Third slide label</h3>-->
+            <!--<p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>-->
+          <!--</div>-->
+        <!--</slide>-->
       </carousel>
     </div>
     <hr class="my-4">
+    <h5>Amenities :</h5>
     <div id="amenity_list">
-      <h5>Amenities :</h5>
-      <span class="badge badge-secondary amenity_item">Biking</span>
-      <span class="badge badge-secondary amenity_item">Horseback Riding</span>
-      <span class="badge badge-secondary amenity_item">Comfort Station</span>
-      <span class="badge badge-secondary amenity_item">Group Campground</span>
-      <span class="badge badge-secondary amenity_item">Interpretitive Programs</span>
-      <span class="badge badge-secondary amenity_item">Nature Study Exhibits</span>
-      <span class="badge badge-secondary amenity_item">Nature Study Exhibits</span>
-      <span class="badge badge-secondary amenity_item">Nature Study Exhibits</span>
-      <span class="badge badge-secondary amenity_item">Nature Study Exhibits</span>
-      <span class="badge badge-secondary amenity_item">Nature Study Exhibits</span>
-      <span class="badge badge-secondary amenity_item">Nature Study Exhibits</span>
-      <span class="badge badge-secondary amenity_item">Nature Study Exhibits</span>
-      <span class="badge badge-secondary amenity_item">Nature Study Exhibits</span>
+      <span *ngFor="let amenity of campingSite.amenity" class="badge badge-secondary amenity_item">{{amenity._attributes.name}}</span>
     </div>
     <hr class="my-4">
     <div class="container-fluid">

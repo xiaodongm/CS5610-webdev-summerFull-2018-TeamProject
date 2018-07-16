@@ -9,8 +9,8 @@ export class CampingSite {
     zip: String,
     country: String
   };
-  amenity: object;
-  photo: object;
+  amenity: object[];
+  photo: object[];
   contact: object;
   facilityName: String;
 }
