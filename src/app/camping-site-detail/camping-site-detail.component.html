@@ -62,8 +62,11 @@
       <p>Weather info will appear here.</p>
     </div>
     <hr class="my-4">
-    <p id="cground_contact" class="lead">Contact info will appear here</p>
-    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+    <p id="cground_contact" class="lead">Contact info : </p>
+      <li *ngFor="let contactItem of campingSite.contact">
+        {{contactItem._attributes.name + ' : ' + contactItem._attributes.number}}
+      </li>
+    <a id="learnMore" class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
   </div>
 
 

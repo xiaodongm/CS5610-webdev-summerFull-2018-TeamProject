@@ -41,11 +41,7 @@ export class CampingSiteDetailComponent implements OnInit {
         this.campingSite.address = details.detailDescription.address._attributes;
         this.campingSite.detailDescription = details.detailDescription._attributes;
         this.campingSite.facilityName = details.detailDescription._attributes.facility;
-        // this.campingSite.address.streetAddress = details.detailDescription.address._attributes.streetAddress;
-        // this.campingSite.address.city = details.detailDescription.address._attributes.city;
-        // this.campingSite.address.state = details.detailDescription.address._attributes.state;
-        // this.campingSite.address.zip = details.detailDescription.address._attributes.zip;
-        // this.campingSite.address.country = details.detailDescription.address._attributes.country;
+        this.campingSite.contact = details.detailDescription.contact;
       } ).then(() => (this.isDataAvailable = true));
   }
 
