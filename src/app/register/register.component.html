@@ -12,9 +12,10 @@
       <span id="regisMsg">Already a member?</span>
       <a id="loginLink" routerLink="/login" (click)="openLogin(login)">Login</a>
     </div>
-    <input id="usernameFld" class="form-control" placeholder="Username">
-    <input id="passwordFld" class="form-control" placeholder="Password">
-    <button id="continueBtn" class="btn btn-block btn btn-danger">Continue</button>
+    <input [(ngModel)]="username" id="usernameFld" class="form-control" placeholder="Username">
+    <input [(ngModel)]="password" id="passwordFld" class="form-control" placeholder="Password">
+    <input [(ngModel)]="password2" id="confirmPasswordFld" class="form-control" placeholder="Confirm Password">
+    <button (click)="registerUser(username, password, password2)" id="continueBtn" class="btn btn-block btn btn-danger">Continue</button>
   </div>
 </ng-template>
 

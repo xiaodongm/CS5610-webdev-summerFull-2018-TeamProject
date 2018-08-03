@@ -21,6 +21,7 @@ import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import {UserServiceClient} from './services/user.service.client';
 
 
 @NgModule({
@@ -44,7 +45,9 @@ import { LoginComponent } from './login/login.component';
   ],
   providers: [
     CampingSiteServiceClient,
-    CampingSiteToDetailServiceClient],
+    CampingSiteToDetailServiceClient,
+    UserServiceClient,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
