@@ -16,6 +16,8 @@ import { SearchBarCampingSiteComponent } from './search-bar-campground/search-ba
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CampingSiteServiceClient} from './services/campingSite.service.client';
 import {CampingSiteToDetailServiceClient} from './communication-services/camping-site-to-detail.service.client';
+import { HomeComponent } from './home/home.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 @NgModule({
@@ -25,6 +27,8 @@ import {CampingSiteToDetailServiceClient} from './communication-services/camping
     CampingSiteGridComponent,
     SearchBarCampingSiteComponent,
     CampingSiteDetailComponent,
+    HomeComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
