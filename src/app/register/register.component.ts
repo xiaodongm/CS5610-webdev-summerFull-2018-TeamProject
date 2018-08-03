@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {BsModalService} from 'ngx-bootstrap';
+import {AlertComponent, BsModalService} from 'ngx-bootstrap';
 import {UserServiceClient} from '../services/user.service.client';
 import {Router} from '@angular/router';
 
@@ -20,10 +20,21 @@ export class RegisterComponent implements OnInit {
   password;
   password2;
 
+  alerts = [];
+
+  onClosed(dismissedAlert: AlertComponent): void {
+    this.alerts = this.alerts.filter(alert => alert !== dismissedAlert);
+  }
+
   registerUser(username, password, password2) {
     if (username && password) {
       if (password !== password2) {
-        alert('Passwords not match.');
+        // alert('Passwords not match.');
+        this.alerts.push({
+          type: 'danger',
+          msg: `Passwords not match, please enter again.`,
+          timeout: 5000
+        });
       } else {
         this.userService
           .createUser(username, password)
@@ -34,12 +45,22 @@ export class RegisterComponent implements OnInit {
             if (!user.err) {
               this.router.navigate(['profile']);
             } else {
-              alert('Username already exist, please choose another one.');
+              // alert('Username already exist, please choose another one.');
+              this.alerts.push({
+                type: 'danger',
+                msg: `Username already exist, please choose another one.`,
+                timeout: 5000
+              });
             }
           });
       }
     } else {
-      alert('Please enter valid Username and Password.');
+      // alert('Please enter valid Username and Password.');
+      this.alerts.push({
+        type: 'danger',
+        msg: `Please enter valid Username and Password.`,
+        timeout: 5000
+      });
     }
   }
 

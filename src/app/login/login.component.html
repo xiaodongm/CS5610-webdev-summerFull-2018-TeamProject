@@ -8,14 +8,17 @@
     </button>
   </div>
   <div class="modal-body">
+    <div *ngFor="let alert of alerts">
+      <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onClosed(alert)">{{ alert.msg }}</alert>
+    </div>
     <div>
       <span id="regisMsg">Already a member?</span>
       <a id="loginLink" routerLink="/login" (click)="openLogin(login)">Login</a>
     </div>
-    <input id="usernameFld" class="form-control" placeholder="Username">
-    <input id="passwordFld" class="form-control" placeholder="Password">
-    <input id="confirmPasswordFld" class="form-control" placeholder="Confirm Password">
-    <button id="continueBtn" class="btn btn-block btn btn-danger">Continue</button>
+    <input [(ngModel)]="username" id="usernameFld" class="form-control" placeholder="Username">
+    <input [(ngModel)]="password" id="passwordFld" class="form-control" placeholder="Password">
+    <input [(ngModel)]="password2" id="confirmPasswordFld" class="form-control" placeholder="Confirm Password">
+    <button (click)="registerUser(username, password, password2)" id="continueBtn" class="btn btn-block btn btn-danger">Continue</button>
   </div>
 </ng-template>
 
