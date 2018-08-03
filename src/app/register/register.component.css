@@ -1,0 +1,43 @@
+/*register*/
+#regisMsg {
+  color: gray;
+  margin-right: 20px;
+}
+
+#usernameFld {
+   margin-top: 15px;
+}
+
+#passwordFld {
+  margin-top: 15px;
+}
+
+#continueBtn {
+  margin-top: 15px;
+}
+
+#loginLink {
+  color: cornflowerblue;
+}
+
+/*login*/
+#loginMsg {
+  color: gray;
+  margin-right: 20px;
+}
+
+#signUpLink {
+  color: cornflowerblue;
+}
+
+#loginUsernameFld {
+  margin-top: 15px;
+}
+
+#loginPasswordFld {
+  margin-top: 15px;
+}
+
+#loginContinueBtn {
+  margin-top: 15px;
+}

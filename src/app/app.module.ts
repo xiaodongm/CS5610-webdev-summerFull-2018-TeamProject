@@ -10,6 +10,7 @@ import { CampingSiteDetailComponent } from './camping-site-detail/camping-site-d
 
 // third part imports
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { ModalModule } from 'ngx-bootstrap';
 
 
 import { SearchBarCampingSiteComponent } from './search-bar-campground/search-bar-camping-site.component';
@@ -18,6 +19,8 @@ import {CampingSiteServiceClient} from './services/campingSite.service.client';
 import {CampingSiteToDetailServiceClient} from './communication-services/camping-site-to-detail.service.client';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -29,11 +32,14 @@ import { NavbarComponent } from './navbar/navbar.component';
     CampingSiteDetailComponent,
     HomeComponent,
     NavbarComponent,
+    RegisterComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     routing,
     CarouselModule.forRoot(),  // ngx-bootstrap
+    ModalModule.forRoot(),
     FormsModule
   ],
   providers: [
