@@ -93,6 +93,7 @@ export class LoginComponent implements OnInit {
           })
           .then((user) => {
             if (!user.err) {
+              this.closeRegister();
               this.router.navigate(['profile']);
             } else {
               // alert('Username already exist, please choose another one.');
