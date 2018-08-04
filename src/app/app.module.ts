@@ -18,6 +18,7 @@ import {CampingSiteServiceClient} from './services/campingSite.service.client';
 import {CampingSiteToDetailServiceClient} from './communication-services/camping-site-to-detail.service.client';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     CampingSiteDetailComponent,
     HomeComponent,
     NavbarComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
