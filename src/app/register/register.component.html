@@ -34,13 +34,16 @@
     </button>
   </div>
   <div class="modal-body">
+    <div *ngFor="let alert of alerts">
+      <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onClosed(alert)">{{ alert.msg }}</alert>
+    </div>
     <div>
       <span id="loginMsg">Don't have an account?</span>
       <a id="signUpLink" routerLink="/login" (click)="openRegister(register)">Sign Up</a>
     </div>
-    <input id="loginUsernameFld" class="form-control" placeholder="Username">
-    <input id="loginPasswordFld" class="form-control" placeholder="Password">
-    <button id="loginContinueBtn" class="btn btn-block btn btn-danger">Continue</button>
+    <input [(ngModel)]="username" id="loginUsernameFld" class="form-control" placeholder="Username">
+    <input [(ngModel)]="password" id="loginPasswordFld" class="form-control" placeholder="Password">
+    <button (click)="loginUser(username, password)" id="loginContinueBtn" class="btn btn-block btn btn-danger">Continue</button>
   </div>
 </ng-template>
 

@@ -26,6 +26,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import {UserServiceClient} from './services/user.service.client';
 import {MapServiceClient} from './services/map.service.client';
+import { BsDatepickerModule } from 'ngx-bootstrap';
 
 
 
@@ -51,6 +52,7 @@ import {MapServiceClient} from './services/map.service.client';
     CarouselModule.forRoot(),  // ngx-bootstrap
     ModalModule.forRoot(),
     AlertModule.forRoot(),
+    BsDatepickerModule.forRoot(),
     FormsModule
   ],
   providers: [
