@@ -18,6 +18,8 @@ import {CampingSiteServiceClient} from './services/campingSite.service.client';
 import {CampingSiteToDetailServiceClient} from './communication-services/camping-site-to-detail.service.client';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ProfileComponent } from './profile/profile.component';
+import { BasicInformationComponent } from './basic-information/basic-information.component';
 import { EventWaterfallComponent } from './event-waterfall/event-waterfall.component';
 import { EventCardComponent } from './event-card/event-card.component';
 import { RegisterComponent } from './register/register.component';
@@ -36,6 +38,8 @@ import {MapServiceClient} from './services/map.service.client';
     CampingSiteDetailComponent,
     HomeComponent,
     NavbarComponent,
+    ProfileComponent,
+    BasicInformationComponent,
     EventWaterfallComponent,
     EventCardComponent,
     RegisterComponent,
