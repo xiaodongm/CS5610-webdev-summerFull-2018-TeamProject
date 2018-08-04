@@ -23,6 +23,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import {UserServiceClient} from './services/user.service.client';
+import {MapServiceClient} from './services/map.service.client';
 
 
 @NgModule({
@@ -49,6 +50,7 @@ import {UserServiceClient} from './services/user.service.client';
     CampingSiteServiceClient,
     CampingSiteToDetailServiceClient,
     UserServiceClient,
+    MapServiceClient,
   ],
   bootstrap: [AppComponent]
 })

@@ -24,6 +24,14 @@
   color: cornflowerblue;
 }
 
+#mapPinIcon {
+  margin-right: 8px;
+}
+
+#locationBlock {
+  margin-top: 10px;
+}
+
 /*login*/
 #loginMsg {
   color: gray;

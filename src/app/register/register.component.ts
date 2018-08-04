@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AlertComponent, BsModalService} from 'ngx-bootstrap';
 import {UserServiceClient} from '../services/user.service.client';
 import {Router} from '@angular/router';
+import {MapServiceClient} from '../services/map.service.client';
 
 @Component({
   selector: 'app-register',
@@ -12,6 +13,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(private modalService: BsModalService,
               private userService: UserServiceClient,
+              private mapService: MapServiceClient,
               private router: Router) { }
 
   registerWindow;
@@ -19,14 +21,31 @@ export class RegisterComponent implements OnInit {
   username;
   password;
   password2;
+  location;
 
   alerts = [];
+
+  findLatLng() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        // this.showPosition(position);
+        console.log(position);
+        this.mapService.reverseGeocoding(position.coords.latitude, position.coords.longitude)
+          .then(response => {
+            console.log(response);
+            this.location = response.address.city + ', ' + response.address.state;
+          });
+      });
+    } else {
+      alert('Geolocation is not supported by this browser.');
+    }
+  }
 
   onClosed(dismissedAlert: AlertComponent): void {
     this.alerts = this.alerts.filter(alert => alert !== dismissedAlert);
   }
 
-  registerUser(username, password, password2) {
+  registerUser(username, password, password2, location) {
     if (username && password) {
       if (password !== password2) {
         // alert('Passwords not match.');
@@ -37,7 +56,7 @@ export class RegisterComponent implements OnInit {
         });
       } else {
         this.userService
-          .createUser(username, password)
+          .createUser(username, password, location)
           .then(response => {
             return response.json();
           })
@@ -66,6 +85,7 @@ export class RegisterComponent implements OnInit {
 
   openRegister(template) {
     this.registerWindow = this.modalService.show(template);
+    this.findLatLng();
     if (this.loginWindow) {
       this.closeLogin();
     }
