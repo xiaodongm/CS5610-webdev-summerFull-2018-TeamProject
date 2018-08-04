@@ -1,9 +1,13 @@
+
 <div class="container">
-  <div class="card-columns">
-    <app-event-card *ngFor="let card of cards" [data]="card"></app-event-card>
-  </div>
+  <ngx-masonry class="masonry">
+    <ngxMasonryItem class="masonry-item" *ngFor="let card of cards">
+      <app-event-card [data]="card"></app-event-card>
+    </ngxMasonryItem>
+  </ngx-masonry>
 </div>
 
+
 <div (window:scroll)="onScroll($event)">
-  <h1> Hello World!</h1>
+  <h1> Loading ...</h1>
 </div>

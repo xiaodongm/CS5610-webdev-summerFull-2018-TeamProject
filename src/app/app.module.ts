@@ -26,6 +26,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import {UserServiceClient} from './services/user.service.client';
 import {MapServiceClient} from './services/map.service.client';
+import {NgxMasonryModule} from 'ngx-masonry';
 
 
 
@@ -51,7 +52,8 @@ import {MapServiceClient} from './services/map.service.client';
     CarouselModule.forRoot(),  // ngx-bootstrap
     ModalModule.forRoot(),
     AlertModule.forRoot(),
-    FormsModule
+    FormsModule,
+    NgxMasonryModule
   ],
   providers: [
     CampingSiteServiceClient,
