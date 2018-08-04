@@ -83,6 +83,37 @@ export class RegisterComponent implements OnInit {
     }
   }
 
+  loginUser(username, password) {
+    console.log([username, password]);
+    if (username && password) {
+      this.userService
+        .login(username, password)
+        .then(response => {
+          return response.json();
+        })
+        .then((user) => {
+          if (!user.error) {
+            this.closeLogin();
+            this.router.navigate(['profile']);
+          } else {
+            // alert('User not exist or Password incorrect');
+            this.alerts.push({
+              type: 'danger',
+              msg: `User not exist or password incorrect.`,
+              timeout: 5000
+            });
+          }
+        });
+    } else {
+      // alert('Please enter valid Username and Password!');
+      this.alerts.push({
+        type: 'danger',
+        msg: `Please enter valid Username and Password.`,
+        timeout: 5000
+      });
+    }
+  }
+
   openRegister(template) {
     this.registerWindow = this.modalService.show(template);
     this.findLatLng();
