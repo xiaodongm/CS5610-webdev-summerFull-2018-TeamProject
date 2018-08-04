@@ -11,6 +11,7 @@ import { CampingSiteDetailComponent } from './camping-site-detail/camping-site-d
 // third part imports
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { ModalModule } from 'ngx-bootstrap';
+import { AlertModule } from 'ngx-bootstrap';
 
 
 import { SearchBarCampingSiteComponent } from './search-bar-campground/search-bar-camping-site.component';
@@ -41,6 +42,7 @@ import {UserServiceClient} from './services/user.service.client';
     routing,
     CarouselModule.forRoot(),  // ngx-bootstrap
     ModalModule.forRoot(),
+    AlertModule.forRoot(),
     FormsModule
   ],
   providers: [
