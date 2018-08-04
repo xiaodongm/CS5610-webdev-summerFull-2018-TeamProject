@@ -10,8 +10,8 @@ import { CampingSiteDetailComponent } from './camping-site-detail/camping-site-d
 
 // third part imports
 import { CarouselModule } from 'ngx-bootstrap/carousel';
-
-
+import { ModalModule } from 'ngx-bootstrap';
+import { AlertModule } from 'ngx-bootstrap';
 import { SearchBarCampingSiteComponent } from './search-bar-campground/search-bar-camping-site.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CampingSiteServiceClient} from './services/campingSite.service.client';
@@ -20,6 +20,13 @@ import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ProfileComponent } from './profile/profile.component';
 import { BasicInformationComponent } from './basic-information/basic-information.component';
+import { EventWaterfallComponent } from './event-waterfall/event-waterfall.component';
+import { EventCardComponent } from './event-card/event-card.component';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
+import {UserServiceClient} from './services/user.service.client';
+import {MapServiceClient} from './services/map.service.client';
+
 
 
 @NgModule({
@@ -33,16 +40,25 @@ import { BasicInformationComponent } from './basic-information/basic-information
     NavbarComponent,
     ProfileComponent,
     BasicInformationComponent,
+    EventWaterfallComponent,
+    EventCardComponent,
+    RegisterComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     routing,
     CarouselModule.forRoot(),  // ngx-bootstrap
+    ModalModule.forRoot(),
+    AlertModule.forRoot(),
     FormsModule
   ],
   providers: [
     CampingSiteServiceClient,
-    CampingSiteToDetailServiceClient],
+    CampingSiteToDetailServiceClient,
+    UserServiceClient,
+    MapServiceClient,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

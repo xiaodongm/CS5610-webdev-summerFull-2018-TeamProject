@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {UserServiceClient} from '../services/user.service.client';
+import {User} from '../models/user.model.client';
 
 @Component({
   selector: 'app-basic-information',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BasicInformationComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service: UserServiceClient) { }
+
+  user = new User();
 
   ngOnInit() {
+    this.service
+      .profile()
+      .then(user => this.user = user);
   }
 
 }

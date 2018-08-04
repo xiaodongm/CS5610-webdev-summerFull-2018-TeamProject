@@ -41,7 +41,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<router-outlet></router-outlet>\r\n\r\n"
+module.exports = "<app-navbar></app-navbar>\n<router-outlet></router-outlet>\n\n"
 
 /***/ }),
 
@@ -105,6 +105,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _services_campingSite_service_client__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./services/campingSite.service.client */ "./src/app/services/campingSite.service.client.ts");
 /* harmony import */ var _communication_services_camping_site_to_detail_service_client__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./communication-services/camping-site-to-detail.service.client */ "./src/app/communication-services/camping-site-to-detail.service.client.ts");
+/* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
+/* harmony import */ var _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./navbar/navbar.component */ "./src/app/navbar/navbar.component.ts");
+/* harmony import */ var _event_waterfall_event_waterfall_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./event-waterfall/event-waterfall.component */ "./src/app/event-waterfall/event-waterfall.component.ts");
+/* harmony import */ var _event_card_event_card_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./event-card/event-card.component */ "./src/app/event-card/event-card.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -124,6 +128,10 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
+
+
+
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -135,6 +143,10 @@ var AppModule = /** @class */ (function () {
                 _camping_site_grid_camping_site_grid_component__WEBPACK_IMPORTED_MODULE_5__["CampingSiteGridComponent"],
                 _search_bar_campground_search_bar_camping_site_component__WEBPACK_IMPORTED_MODULE_8__["SearchBarCampingSiteComponent"],
                 _camping_site_detail_camping_site_detail_component__WEBPACK_IMPORTED_MODULE_6__["CampingSiteDetailComponent"],
+                _home_home_component__WEBPACK_IMPORTED_MODULE_12__["HomeComponent"],
+                _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_13__["NavbarComponent"],
+                _event_waterfall_event_waterfall_component__WEBPACK_IMPORTED_MODULE_14__["EventWaterfallComponent"],
+                _event_card_event_card_component__WEBPACK_IMPORTED_MODULE_15__["EventCardComponent"],
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -169,15 +181,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _home_page_home_page_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./home-page/home-page.component */ "./src/app/home-page/home-page.component.ts");
 /* harmony import */ var _camping_site_detail_camping_site_detail_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./camping-site-detail/camping-site-detail.component */ "./src/app/camping-site-detail/camping-site-detail.component.ts");
+/* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
+
 
 
 
 var appRoutes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
-    { path: 'home', component: _home_page_home_page_component__WEBPACK_IMPORTED_MODULE_1__["HomePageComponent"] },
+    { path: 'home', component: _home_home_component__WEBPACK_IMPORTED_MODULE_3__["HomeComponent"] },
+    { path: 'homepage', component: _home_page_home_page_component__WEBPACK_IMPORTED_MODULE_1__["HomePageComponent"] },
     { path: 'camping-site/:contractID/:facilityID/detail', component: _camping_site_detail_camping_site_detail_component__WEBPACK_IMPORTED_MODULE_2__["CampingSiteDetailComponent"] },
     { path: 'detail', component: _camping_site_detail_camping_site_detail_component__WEBPACK_IMPORTED_MODULE_2__["CampingSiteDetailComponent"] },
-    { path: '**', component: _home_page_home_page_component__WEBPACK_IMPORTED_MODULE_1__["HomePageComponent"] },
+    { path: '**', component: _home_home_component__WEBPACK_IMPORTED_MODULE_3__["HomeComponent"] },
 ];
 var routing = _angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"].forRoot(appRoutes);
 
@@ -191,7 +206,7 @@ var routing = _angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"].forRo
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "#pageArea {\r\n  margin-top: 10px;\r\n}\r\n\r\n#carousel {\r\n  /*width: 35%;*/\r\n  /*height: 35%;*/\r\n  padding-left: 150px;\r\n  padding-right: 150px;\r\n}\r\n\r\n#tag {\r\n  font-size: 15px;\r\n  margin-left: 5px;\r\n}\r\n\r\n#amenity_list {\r\n  margin-left: 35px;\r\n}\r\n\r\n.amenity_item {\r\n  margin-right: 8px;\r\n}\r\n\r\n#learnMore {\r\n  margin-top: 20px;\r\n}\r\n"
+module.exports = "#pageArea {\n  margin-top: 10px;\n}\n\n#carousel {\n  /*width: 35%;*/\n  /*height: 35%;*/\n  padding-left: 150px;\n  padding-right: 150px;\n}\n\n#tag {\n  font-size: 15px;\n  margin-left: 5px;\n}\n\n#amenity_list {\n  margin-left: 35px;\n}\n\n.amenity_item {\n  margin-right: 8px;\n}\n\n#learnMore {\n  margin-top: 20px;\n}\n"
 
 /***/ }),
 
@@ -202,7 +217,7 @@ module.exports = "#pageArea {\r\n  margin-top: 10px;\r\n}\r\n\r\n#carousel {\r\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"isDataAvailable\" class=\"container-fluid\">\r\n\r\n  <div id=\"pageArea\" class=\"jumbotron\">\r\n    <h1 id=\"cground_name\" class=\"display-4\">\r\n      {{campingSite.facilityName}}\r\n      <span id=\"tag\" class=\"badge badge-secondary\">{{campingSiteFromCommunication._attributes.contractType}}</span>\r\n    </h1>\r\n    <p id=\"cground_address\" class=\"lead\">\r\n      {{finalAddress}}\r\n    </p>\r\n    <hr class=\"my-4\">\r\n    <p id=\"cground_description\">{{campingSite.detailDescription.description}}</p>\r\n    <div id=\"carousel\">\r\n      <carousel>\r\n        <slide *ngFor=\"let photo of campingSite.photo\">\r\n          <img src={{photo._attributes.realUrl}} alt=\"first slide\" style=\"display: block; width: 100%;\">\r\n          <div class=\"carousel-caption d-none d-md-block\">\r\n            <h3>First slide label</h3>\r\n            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>\r\n          </div>\r\n        </slide>\r\n        <!--<slide>-->\r\n          <!--<img src=\"../../assets/images/backGround_image_2.jpg\" alt=\"second slide\" style=\"display: block; width: 100%;\">-->\r\n          <!--<div class=\"carousel-caption d-none d-md-block\">-->\r\n            <!--<h3>Second slide label</h3>-->\r\n            <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>-->\r\n          <!--</div>-->\r\n        <!--</slide>-->\r\n        <!--<slide>-->\r\n          <!--<img src=\"../../assets/images/backGround_image_3.jpg\" alt=\"third slide\" style=\"display: block; width: 100%;\">-->\r\n          <!--<div class=\"carousel-caption d-none d-md-block\">-->\r\n            <!--<h3>Third slide label</h3>-->\r\n            <!--<p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>-->\r\n          <!--</div>-->\r\n        <!--</slide>-->\r\n      </carousel>\r\n    </div>\r\n    <hr class=\"my-4\">\r\n    <h5>Amenities :</h5>\r\n    <div id=\"amenity_list\">\r\n      <span *ngFor=\"let amenity of campingSite.amenity\" class=\"badge badge-secondary amenity_item\">{{amenity._attributes.name}}</span>\r\n    </div>\r\n    <hr class=\"my-4\">\r\n    <div class=\"container-fluid\">\r\n      <h5>Weather Forecast</h5>\r\n      <p>Weather info will appear here.</p>\r\n    </div>\r\n    <hr class=\"my-4\">\r\n    <p id=\"cground_contact\" class=\"lead\">Contact info : </p>\r\n      <li *ngFor=\"let contactItem of campingSite.contact\">\r\n        {{contactItem._attributes.name + ' : ' + contactItem._attributes.number}}\r\n      </li>\r\n    <a id=\"learnMore\" class=\"btn btn-primary btn-lg\" href=\"#\" role=\"button\">Learn more</a>\r\n  </div>\r\n\r\n\r\n</div>\r\n\r\n\r\n\r\n\r\n"
+module.exports = "<div *ngIf=\"isDataAvailable\" class=\"container-fluid\">\n\n  <div id=\"pageArea\" class=\"jumbotron\">\n    <h1 id=\"cground_name\" class=\"display-4\">\n      {{campingSite.facilityName}}\n      <span id=\"tag\" class=\"badge badge-secondary\">{{campingSiteFromCommunication._attributes.contractType}}</span>\n    </h1>\n    <p id=\"cground_address\" class=\"lead\">\n      {{finalAddress}}\n    </p>\n    <hr class=\"my-4\">\n    <p id=\"cground_description\">{{campingSite.detailDescription.description}}</p>\n    <div id=\"carousel\">\n      <carousel>\n        <slide *ngFor=\"let photo of campingSite.photo\">\n          <img src={{photo._attributes.realUrl}} alt=\"first slide\" style=\"display: block; width: 100%;\">\n          <div class=\"carousel-caption d-none d-md-block\">\n            <h3>First slide label</h3>\n            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>\n          </div>\n        </slide>\n        <!--<slide>-->\n          <!--<img src=\"../../assets/images/backGround_image_2.jpg\" alt=\"second slide\" style=\"display: block; width: 100%;\">-->\n          <!--<div class=\"carousel-caption d-none d-md-block\">-->\n            <!--<h3>Second slide label</h3>-->\n            <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>-->\n          <!--</div>-->\n        <!--</slide>-->\n        <!--<slide>-->\n          <!--<img src=\"../../assets/images/backGround_image_3.jpg\" alt=\"third slide\" style=\"display: block; width: 100%;\">-->\n          <!--<div class=\"carousel-caption d-none d-md-block\">-->\n            <!--<h3>Third slide label</h3>-->\n            <!--<p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>-->\n          <!--</div>-->\n        <!--</slide>-->\n      </carousel>\n    </div>\n    <hr class=\"my-4\">\n    <h5>Amenities :</h5>\n    <div id=\"amenity_list\">\n      <span *ngFor=\"let amenity of campingSite.amenity\" class=\"badge badge-secondary amenity_item\">{{amenity._attributes.name}}</span>\n    </div>\n    <hr class=\"my-4\">\n    <div class=\"container-fluid\">\n      <h5>Weather Forecast</h5>\n      <p>Weather info will appear here.</p>\n    </div>\n    <hr class=\"my-4\">\n    <p id=\"cground_contact\" class=\"lead\">Contact info : </p>\n      <li *ngFor=\"let contactItem of campingSite.contact\">\n        {{contactItem._attributes.name + ' : ' + contactItem._attributes.number}}\n      </li>\n    <a id=\"learnMore\" class=\"btn btn-primary btn-lg\" href=\"#\" role=\"button\">Learn more</a>\n  </div>\n\n\n</div>\n\n\n\n\n"
 
 /***/ }),
 
@@ -330,7 +345,7 @@ var CampingSiteDetailComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".card {\r\n  margin-bottom: 15px;\r\n}\r\n"
+module.exports = ".card {\n  margin-bottom: 15px;\n}\n"
 
 /***/ }),
 
@@ -341,7 +356,7 @@ module.exports = ".card {\r\n  margin-bottom: 15px;\r\n}\r\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Search Results</h2>\r\n<h4>Total {{campingSitesArray.length}} results</h4>\r\n\r\n<div class=\"row\">\r\n  <div *ngFor=\"let site of campingSitesArray\" class=\"col-sm-3\">\r\n    <div class=\"card\">\r\n      <div class=\"card-body\">\r\n        <h5 class=\"card-title\">{{site._attributes.facilityName}}</h5>\r\n        <p class=\"card-text\">With supporting text below as a natural lead-in to additional content.</p>\r\n        <a\r\n          (click)=\"selectCampingSite(site)\"\r\n          routerLink=\"/camping-site/{{site._attributes.contractID}}/{{site._attributes.facilityID}}/detail\">\r\n          See More</a>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<h2>Search Results</h2>\n<h4>Total {{campingSitesArray.length}} results</h4>\n\n<div class=\"row\">\n  <div *ngFor=\"let site of campingSitesArray\" class=\"col-sm-3\">\n    <div class=\"card\">\n      <div class=\"card-body\">\n        <h5 class=\"card-title\">{{site._attributes.facilityName}}</h5>\n        <p class=\"card-text\">With supporting text below as a natural lead-in to additional content.</p>\n        <a\n          (click)=\"selectCampingSite(site)\"\n          routerLink=\"/camping-site/{{site._attributes.contractID}}/{{site._attributes.facilityID}}/detail\">\n          See More</a>\n      </div>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -454,6 +469,142 @@ var CampingSiteToDetailServiceClient = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/event-card/event-card.component.css":
+/*!*****************************************************!*\
+  !*** ./src/app/event-card/event-card.component.css ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".wbdv-blur {\n  -webkit-filter: blur(5px); /* Safari 6.0 - 9.0 */\n\n  filter: blur(5px);\n}\n\n.wbdv-imageContainer {\n  position: relative;\n\n}\n\n.wbdv-text-block {\n  position: absolute;\n  border-radius: 25px;\n  top: 10%;\n  left: 5%;\n  right: 5%;\n\n\n  color: white;\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.card {\n  border-radius: 30px;\n}\n\niframe {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n}\n\nimg {\n  border-radius: 30px 30px 0 0;\n}\n\nh6 {\n  padding-top: 10px;\n}\n"
+
+/***/ }),
+
+/***/ "./src/app/event-card/event-card.component.html":
+/*!******************************************************!*\
+  !*** ./src/app/event-card/event-card.component.html ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"card text-center\"\n     (mouseenter) =\"mouseEnter()\"\n     (mouseleave) =\"mouseLeave()\">\n  <div class=\"wbdv-imageContainer\">\n    <img [ngClass]=\"{'wbdv-blur': inImage}\"  class=\"card-img-top img-fluid\" src=\"https://images.unsplash.com/photo-1532980400857-e8d9d275d858?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5b501bf3957585b28199e54ec4700806&auto=format&fit=crop&w=934&q=80\" alt=\"Card image cap\">\n\n    <iframe *ngIf=\"inImage\"\n            src=\"https://www.youtube.com/embed/hOTqyh_UibM?autoplay=1\"\n            frameborder=\"0\"\n            allow=\"autoplay; encrypted-media\"\n            allowfullscreen></iframe>\n    <div *ngIf=\"inImage\" class=\"wbdv-text-block\">\n      <h2>Wow</h2>\n      <h4>Hey, what's up guys! This is DaMingBai, bla bla bla...</h4>\n    </div>\n  </div>\n  <h6 class=\"card-subtitle mb-2 text-muted\">Thursday, August 02</h6>\n  <div class=\"card-block\">\n    <h4 class=\"card-title\">Card title that wraps to a new line</h4>\n    <p class=\"card-text\">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>\n  </div>\n\n  <footer>\n    <small>\n      Someone famous in <cite title=\"Source Title\">Source Title</cite>\n    </small>\n  </footer>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/event-card/event-card.component.ts":
+/*!****************************************************!*\
+  !*** ./src/app/event-card/event-card.component.ts ***!
+  \****************************************************/
+/*! exports provided: EventCardComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EventCardComponent", function() { return EventCardComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var EventCardComponent = /** @class */ (function () {
+    function EventCardComponent() {
+        this.inImage = false;
+    }
+    EventCardComponent.prototype.mouseEnter = function () {
+        console.log('in');
+        this.inImage = true;
+    };
+    EventCardComponent.prototype.mouseLeave = function () {
+        console.log('out');
+        this.inImage = false;
+    };
+    EventCardComponent.prototype.ngOnInit = function () {
+    };
+    EventCardComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-event-card',
+            template: __webpack_require__(/*! ./event-card.component.html */ "./src/app/event-card/event-card.component.html"),
+            styles: [__webpack_require__(/*! ./event-card.component.css */ "./src/app/event-card/event-card.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], EventCardComponent);
+    return EventCardComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/event-waterfall/event-waterfall.component.css":
+/*!***************************************************************!*\
+  !*** ./src/app/event-waterfall/event-waterfall.component.css ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".container{\n  padding: 50px;\n  /*background-color: rgba(51, 170, 51, .3);*/\n\n}\n"
+
+/***/ }),
+
+/***/ "./src/app/event-waterfall/event-waterfall.component.html":
+/*!****************************************************************!*\
+  !*** ./src/app/event-waterfall/event-waterfall.component.html ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container\">\n  <div class=\"card-columns\">\n    <app-event-card></app-event-card>\n    <app-event-card></app-event-card>\n    <app-event-card></app-event-card>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/event-waterfall/event-waterfall.component.ts":
+/*!**************************************************************!*\
+  !*** ./src/app/event-waterfall/event-waterfall.component.ts ***!
+  \**************************************************************/
+/*! exports provided: EventWaterfallComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EventWaterfallComponent", function() { return EventWaterfallComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var EventWaterfallComponent = /** @class */ (function () {
+    function EventWaterfallComponent() {
+        this.cards = [];
+    }
+    EventWaterfallComponent.prototype.ngOnInit = function () {
+    };
+    EventWaterfallComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-event-waterfall',
+            template: __webpack_require__(/*! ./event-waterfall.component.html */ "./src/app/event-waterfall/event-waterfall.component.html"),
+            styles: [__webpack_require__(/*! ./event-waterfall.component.css */ "./src/app/event-waterfall/event-waterfall.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], EventWaterfallComponent);
+    return EventWaterfallComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/home-page/home-page.component.css":
 /*!***************************************************!*\
   !*** ./src/app/home-page/home-page.component.css ***!
@@ -461,7 +612,7 @@ var CampingSiteToDetailServiceClient = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "body {\r\n  width: 100%;\r\n  height: 100%;\r\n  padding: 0;\r\n  margin: 0;\r\n  background-repeat: no-repeat;\r\n  background-size: cover;\r\n}\r\n\r\n.homePage {\r\n  padding: 0;\r\n  margin: 0;\r\n  height: 100%;\r\n  width: 100%;\r\n  position: fixed;\r\n  background-size: cover;\r\n  background-image: url('background-img.jpeg');\r\n}\r\n"
+module.exports = "body {\n  width: 100%;\n  height: 100%;\n  padding: 0;\n  margin: 0;\n  background-repeat: no-repeat;\n  background-size: cover;\n}\n\n.homePage {\n  padding: 0;\n  margin: 0;\n  height: 100%;\n  width: 100%;\n  position: fixed;\n  background-size: cover;\n  background-image: url('background-img.jpeg');\n}\n"
 
 /***/ }),
 
@@ -472,7 +623,7 @@ module.exports = "body {\r\n  width: 100%;\r\n  height: 100%;\r\n  padding: 0;\r
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"homePage\">\r\n  <nav class=\"navbar navbar-expand-lg navbar-light bg-light\">\r\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarTogglerDemo03\"\r\n            aria-controls=\"navbarTogglerDemo03\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n      <span class=\"navbar-toggler-icon\"></span>\r\n    </button>\r\n    <a class=\"navbar-brand\" href=\"#\">Navbar</a>\r\n\r\n    <div class=\"collapse navbar-collapse\" id=\"navbarTogglerDemo03\">\r\n      <ul class=\"navbar-nav mr-auto mt-2 mt-lg-0\">\r\n        <li class=\"nav-item active\">\r\n          <a class=\"nav-link\" href=\"#\">Home <span class=\"sr-only\">(current)</span></a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\" href=\"#\">Link</a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link disabled\" href=\"#\">Disabled</a>\r\n        </li>\r\n      </ul>\r\n    </div>\r\n  </nav>\r\n\r\n  <app-search-bar-campground (searchPressed)=\"updateCampgrounds($event)\"></app-search-bar-campground>\r\n\r\n  <app-camping-site-grid [campingSites]=\"campingSites\"></app-camping-site-grid>\r\n\r\n\r\n</div>\r\n"
+module.exports = "<div class=\"homePage\">\n  <nav class=\"navbar navbar-expand-lg navbar-light bg-light\">\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarTogglerDemo03\"\n            aria-controls=\"navbarTogglerDemo03\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n      <span class=\"navbar-toggler-icon\"></span>\n    </button>\n    <a class=\"navbar-brand\" href=\"#\">Navbar</a>\n\n    <div class=\"collapse navbar-collapse\" id=\"navbarTogglerDemo03\">\n      <ul class=\"navbar-nav mr-auto mt-2 mt-lg-0\">\n        <li class=\"nav-item active\">\n          <a class=\"nav-link\" href=\"#\">Home <span class=\"sr-only\">(current)</span></a>\n        </li>\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" href=\"#\">Link</a>\n        </li>\n        <li class=\"nav-item\">\n          <a class=\"nav-link disabled\" href=\"#\">Disabled</a>\n        </li>\n      </ul>\n    </div>\n  </nav>\n\n  <app-search-bar-campground (searchPressed)=\"updateCampgrounds($event)\"></app-search-bar-campground>\n\n  <app-camping-site-grid [campingSites]=\"campingSites\"></app-camping-site-grid>\n\n\n</div>\n"
 
 /***/ }),
 
@@ -521,6 +672,69 @@ var HomePageComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/home/home.component.css":
+/*!*****************************************!*\
+  !*** ./src/app/home/home.component.css ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n.main-background {\n  background-image: url(https://images.unsplash.com/photo-1508768516474-73606cb84ce2?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=e074f33c229b735080438a384e50ada1&auto=format&fit=crop&w=2299&q=80);\n  background-size: cover;\n  background-position: center;\n  width: 100%;\n  height: 550px;\n\n}\n\n#main-button {\n  margin-top: 25px;\n  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, .8),\n              0 6px 30px 5px rgba(0, 0, 0, .8),\n              0 8px 10px -5px rgba(0, 0, 0, .9);\n  background-color: white;\n  opacity: 0.9;\n}\n\n#main-text {\n  text-align: center;\n  padding-top: 200px;\n  text-shadow: 0 8px 8px rgba(0,0,0,0.9),\n                0 8px 13px rgba(0,0,0,0.8),\n                0 8px 23px rgba(0,0,0,0.8);\n}\n\n#main-text h1 {\n  font-weight: 700;\n  font-family: 'Lato';\n  color: white;\n  font-size: 5em\n}\n\n#main-text h3 {\n  font-family: 'Lato';\n  color: white\n}\n\n#main-get-start {\n  text-shadow: none;\n}\n"
+
+/***/ }),
+
+/***/ "./src/app/home/home.component.html":
+/*!******************************************!*\
+  !*** ./src/app/home/home.component.html ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n<div class=\"main-background\">\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-lg-12\">\n        <div id=\"main-text\">\n          <h1>Husky Camp</h1>\n          <h3>The Best Camping Society App</h3>\n            <a id=\"main-button\" class=\"btn btn-lg rounded\">\n              <span id=\"main-get-start\">\n                <i class=\"fa fa-paw\"></i> Get Start!\n              </span>\n            </a>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div>\n  <app-event-waterfall></app-event-waterfall>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/home/home.component.ts":
+/*!****************************************!*\
+  !*** ./src/app/home/home.component.ts ***!
+  \****************************************/
+/*! exports provided: HomeComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HomeComponent", function() { return HomeComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var HomeComponent = /** @class */ (function () {
+    function HomeComponent() {
+    }
+    HomeComponent.prototype.ngOnInit = function () {
+    };
+    HomeComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-home',
+            template: __webpack_require__(/*! ./home.component.html */ "./src/app/home/home.component.html"),
+            styles: [__webpack_require__(/*! ./home.component.css */ "./src/app/home/home.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], HomeComponent);
+    return HomeComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/models/camingSite.model.client.ts":
 /*!***************************************************!*\
   !*** ./src/app/models/camingSite.model.client.ts ***!
@@ -541,6 +755,73 @@ var CampingSite = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/navbar/navbar.component.css":
+/*!*********************************************!*\
+  !*** ./src/app/navbar/navbar.component.css ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/navbar/navbar.component.html":
+/*!**********************************************!*\
+  !*** ./src/app/navbar/navbar.component.html ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<nav class=\"navbar navbar-expand-sm fixed-top navbar-light bg-light\">\n  <div class=\"container\">\n  <a class=\"navbar-brand\" routerLink=\"/home\">HuskyCamp</a>\n  <button class=\"navbar-toggler\"\n          type=\"button\" data-toggle=\"collapse\"\n          data-target=\"#navbarTogglerDemo02\"\n          aria-controls=\"navbarTogglerDemo02\"\n          aria-expanded=\"false\"\n          aria-label=\"Toggle navigation\"\n          (click)=\"toggleCollapsed()\"\n          >\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n  <div id=\"navbarSupportedContent\" [ngClass]=\"{'collapse': collapsed, 'navbar-collapse': true}\">\n    <ul class=\"navbar-nav ml-auto\">\n      <li class=\"nav-item active\">\n        <a class=\"nav-link\" href=\"#\">Home</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"#\">Login</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link disabled\" href=\"#\">Register</a>\n      </li>\n    </ul>\n  </div>\n  </div>\n</nav>\n"
+
+/***/ }),
+
+/***/ "./src/app/navbar/navbar.component.ts":
+/*!********************************************!*\
+  !*** ./src/app/navbar/navbar.component.ts ***!
+  \********************************************/
+/*! exports provided: NavbarComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NavbarComponent", function() { return NavbarComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var NavbarComponent = /** @class */ (function () {
+    function NavbarComponent() {
+        this.collapsed = true;
+    }
+    NavbarComponent.prototype.toggleCollapsed = function () {
+        this.collapsed = !this.collapsed;
+    };
+    NavbarComponent.prototype.ngOnInit = function () {
+    };
+    NavbarComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-navbar',
+            template: __webpack_require__(/*! ./navbar.component.html */ "./src/app/navbar/navbar.component.html"),
+            styles: [__webpack_require__(/*! ./navbar.component.css */ "./src/app/navbar/navbar.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], NavbarComponent);
+    return NavbarComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/search-bar-campground/search-bar-camping-site.component.css":
 /*!*****************************************************************************!*\
   !*** ./src/app/search-bar-campground/search-bar-camping-site.component.css ***!
@@ -548,7 +829,7 @@ var CampingSite = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".search {\r\n  margin: 5px;\r\n}\r\n"
+module.exports = ".search {\n  margin: 5px;\n}\n"
 
 /***/ }),
 
@@ -559,7 +840,7 @@ module.exports = ".search {\r\n  margin: 5px;\r\n}\r\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"input-group mb-auto container-fluid search\">\r\n\r\n  <input type=\"search\"\r\n         class=\"form-control\"\r\n         aria-label=\"Search\"\r\n         placeholder=\"Please type the name of camping site. The length of name must no less than 4\"\r\n         [(ngModel)]=\"pNameInput\">\r\n  <input type=\"search\"\r\n         class=\"form-control\"\r\n         aria-label=\"Search\"\r\n         placeholder=\"Please enter the two character abbreviation for US state or Canadian province\"\r\n         [(ngModel)]=\"pStateInput\">\r\n  <div class=\"input-group-append\">\r\n    <button class=\"btn btn-outline-success my-2 my-sm-0\"\r\n            type=\"submit\"\r\n            (click)=\"searchCampgrounds(pNameInput, pStateInput, $event)\">Search</button>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"input-group mb-auto container-fluid search\">\n\n  <input type=\"search\"\n         class=\"form-control\"\n         aria-label=\"Search\"\n         placeholder=\"Please type the name of camping site. The length of name must no less than 4\"\n         [(ngModel)]=\"pNameInput\">\n  <input type=\"search\"\n         class=\"form-control\"\n         aria-label=\"Search\"\n         placeholder=\"Please enter the two character abbreviation for US state or Canadian province\"\n         [(ngModel)]=\"pStateInput\">\n  <div class=\"input-group-append\">\n    <button class=\"btn btn-outline-success my-2 my-sm-0\"\n            type=\"submit\"\n            (click)=\"searchCampgrounds(pNameInput, pStateInput, $event)\">Search</button>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -761,7 +1042,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! E:\GitHubRepo\CS5610-webdev-summerFull-2018-TeamProject\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /Users/jiapengtao/web/webdev/CS5610-webdev-summerFull-2018-TeamProject/src/main.ts */"./src/main.ts");
 
 
 /***/ })

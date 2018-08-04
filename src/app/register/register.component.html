@@ -1,0 +1,46 @@
+<a class="nav-link" routerLink="" (click)="openRegister(register)">Sign Up</a>
+
+<ng-template #register>
+  <div class="modal-header">
+    <h4 id="signUpHeader" class="modal-title pull-left">Sign Up</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="registerWindow.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div *ngFor="let alert of alerts">
+      <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onClosed(alert)">{{ alert.msg }}</alert>
+    </div>
+    <div>
+      <span id="regisMsg">Already a member?</span>
+      <a id="loginLink" routerLink="/login" (click)="openLogin(login)">Login</a>
+    </div>
+    <input [(ngModel)]="username" id="usernameFld" class="form-control" placeholder="Username">
+    <input [(ngModel)]="password" id="passwordFld" class="form-control" placeholder="Password">
+    <input [(ngModel)]="password2" id="confirmPasswordFld" class="form-control" placeholder="Confirm Password">
+    <div id="locationBlock">
+      <i id="mapPinIcon" class="fas fa-map-marker-alt"></i>
+      <span>{{location}}</span>
+    </div>
+    <button (click)="registerUser(username, password, password2, location)" id="continueBtn" class="btn btn-block btn btn-danger">Continue</button>
+  </div>
+</ng-template>
+
+<ng-template #login>
+  <div class="modal-header">
+    <h4 id="loginHeader" class="modal-title pull-left">Login</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="loginWindow.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div>
+      <span id="loginMsg">Don't have an account?</span>
+      <a id="signUpLink" routerLink="/login" (click)="openRegister(register)">Sign Up</a>
+    </div>
+    <input id="loginUsernameFld" class="form-control" placeholder="Username">
+    <input id="loginPasswordFld" class="form-control" placeholder="Password">
+    <button id="loginContinueBtn" class="btn btn-block btn btn-danger">Continue</button>
+  </div>
+</ng-template>
+

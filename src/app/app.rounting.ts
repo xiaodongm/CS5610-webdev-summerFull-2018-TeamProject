@@ -3,6 +3,8 @@ import {HomePageComponent} from './home-page/home-page.component';
 import {CampingSiteDetailComponent} from './camping-site-detail/camping-site-detail.component';
 import {HomeComponent} from './home/home.component';
 import {ProfileComponent} from './profile/profile.component';
+import {RegisterComponent} from './register/register.component';
+
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
