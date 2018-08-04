@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {EventCard} from '../models/EventCard.model.client';
+import { DomSanitizer } from '@angular/platform-browser';
+import {User} from '../models/user.model.client';
+import {Input} from '@angular/core';
+import {months, dates} from '../constants/dateConstant';
 
 @Component({
   selector: 'app-event-card',
@@ -7,27 +12,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventCardComponent implements OnInit {
 
-  constructor() { }
+  constructor(public sanitizer: DomSanitizer) { }
   inImage = false;
-  hasExtraInfo = true;
-  photos = ['https://images.unsplash.com/' +
-    'photo-1533165743100-747acf5435f3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOj' +
-    'EyMDd9&s=0270c742dd5dba0c2855f69e69831e1f&auto=format&fit=crop&w=700&q=60',
-    'https://images.unsplash.com/photo-1533170033673-325df395d058?ixlib=rb-0.3.5' +
-    '&ixid=eyJhcHBfaWQiOjEyMDd9&s=232566d9765e15bfb5cd22a7448803f9&auto=format' +
-    '&fit=crop&w=700&q=60',
-  ];
+  hasExtraInfo = false;
+  months = months;
+  dates = dates;
+  @Input() data: EventCard;
   mouseEnter() {
-    console.log('in');
     this.inImage = true;
   }
 
   mouseLeave() {
-    console.log('out');
     this.inImage = false;
   }
+  getIframeSource() {
+    const res = this.data.video + '?rel=0&autoplay=1&modestbranding=1';
+    return this.sanitizer.bypassSecurityTrustResourceUrl(res);
+}
 
   ngOnInit() {
+    if (this.data.video && this.data.video !== '') {
+      this.hasExtraInfo = true;
+    }
   }
 
 }

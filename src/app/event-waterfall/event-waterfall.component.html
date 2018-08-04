@@ -1,12 +1,6 @@
 <div class="container">
   <div class="card-columns">
-    <app-event-card></app-event-card>
-    <app-event-card></app-event-card>
-    <app-event-card></app-event-card>
-    <app-event-card></app-event-card>
-    <app-event-card></app-event-card>
-    <app-event-card></app-event-card>
-
+    <app-event-card *ngFor="let card of cards" [data]="card"></app-event-card>
   </div>
 </div>
 
