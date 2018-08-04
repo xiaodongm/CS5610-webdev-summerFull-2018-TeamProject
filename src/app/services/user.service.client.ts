@@ -53,10 +53,11 @@ export class UserServiceClient {
       .then(response => response.json());
   }
 
-  createUser(username, password) {
+  createUser(username, password, location) {
     const user = {
       username: username,
-      password: password
+      password: password,
+      location: location
     };
     return fetch('http://localhost:3000/api/register', {
       body: JSON.stringify(user),
