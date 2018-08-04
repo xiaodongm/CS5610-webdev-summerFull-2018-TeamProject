@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {EventCard} from '../models/EventCard.model.client';
 import {User} from '../models/user.model.client';
-
+import {HostListener} from '@angular/core';
 
 @Component({
   selector: 'app-event-waterfall',
@@ -197,6 +197,16 @@ export class EventWaterfallComponent implements OnInit {
   cards: EventCard[] = [this.event, this.event2, this.event3,
                         this.event4, this.event5, this.event6,
                         this.event7, this.event8, this.event9];
+  @HostListener('window:scroll', ['$event'])
+  onScroll($event: Event): void {
+    // console.log('On Scroll');
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+      console.log('On Scroll Down');
+      this.cards.push(this.event9);
+      this.cards.push(this.event9);
+      this.cards.push(this.event9);
+    }
+  }
   ngOnInit() {
   }
 
