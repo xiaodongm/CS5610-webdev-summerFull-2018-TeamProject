@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/* You can add global styles to this file, and also import other style files */\r\nhtml, body {\r\n  padding: 0;\r\n  margin: 0;\r\n}\r\n"
+module.exports = "/* You can add global styles to this file, and also import other style files */\nhtml, body {\n  padding: 0;\n  margin: 0;\n}\n"
 
 /***/ }),
 
@@ -539,7 +539,7 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! E:\GitHubRepo\CS5610-webdev-summerFull-2018-TeamProject\src\styles.css */"./src/styles.css");
+module.exports = __webpack_require__(/*! /Users/jiapengtao/web/webdev/CS5610-webdev-summerFull-2018-TeamProject/src/styles.css */"./src/styles.css");
 
 
 /***/ })

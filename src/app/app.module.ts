@@ -18,6 +18,8 @@ import {CampingSiteServiceClient} from './services/campingSite.service.client';
 import {CampingSiteToDetailServiceClient} from './communication-services/camping-site-to-detail.service.client';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { EventWaterfallComponent } from './event-waterfall/event-waterfall.component';
+import { EventCardComponent } from './event-card/event-card.component';
 
 
 @NgModule({
@@ -29,6 +31,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     CampingSiteDetailComponent,
     HomeComponent,
     NavbarComponent,
+    EventWaterfallComponent,
+    EventCardComponent,
   ],
   imports: [
     BrowserModule,
