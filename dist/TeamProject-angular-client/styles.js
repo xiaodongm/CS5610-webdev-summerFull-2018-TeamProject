@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/* You can add global styles to this file, and also import other style files */\nhtml, body {\n  padding: 0;\n  margin: 0;\n}\n"
+module.exports = "/* You can add global styles to this file, and also import other style files */\nhtml, body {\n  padding: 0;\n  margin: 0;\n}\n\n"
 
 /***/ }),
 

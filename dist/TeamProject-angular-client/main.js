@@ -101,14 +101,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _camping_site_grid_camping_site_grid_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./camping-site-grid/camping-site-grid.component */ "./src/app/camping-site-grid/camping-site-grid.component.ts");
 /* harmony import */ var _camping_site_detail_camping_site_detail_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./camping-site-detail/camping-site-detail.component */ "./src/app/camping-site-detail/camping-site-detail.component.ts");
 /* harmony import */ var ngx_bootstrap_carousel__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ngx-bootstrap/carousel */ "./node_modules/ngx-bootstrap/carousel/index.js");
-/* harmony import */ var _search_bar_campground_search_bar_camping_site_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./search-bar-campground/search-bar-camping-site.component */ "./src/app/search-bar-campground/search-bar-camping-site.component.ts");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var _services_campingSite_service_client__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./services/campingSite.service.client */ "./src/app/services/campingSite.service.client.ts");
-/* harmony import */ var _communication_services_camping_site_to_detail_service_client__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./communication-services/camping-site-to-detail.service.client */ "./src/app/communication-services/camping-site-to-detail.service.client.ts");
-/* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
-/* harmony import */ var _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./navbar/navbar.component */ "./src/app/navbar/navbar.component.ts");
-/* harmony import */ var _event_waterfall_event_waterfall_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./event-waterfall/event-waterfall.component */ "./src/app/event-waterfall/event-waterfall.component.ts");
-/* harmony import */ var _event_card_event_card_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./event-card/event-card.component */ "./src/app/event-card/event-card.component.ts");
+/* harmony import */ var ngx_bootstrap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ngx-bootstrap */ "./node_modules/ngx-bootstrap/index.js");
+/* harmony import */ var _search_bar_campground_search_bar_camping_site_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./search-bar-campground/search-bar-camping-site.component */ "./src/app/search-bar-campground/search-bar-camping-site.component.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _services_campingSite_service_client__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./services/campingSite.service.client */ "./src/app/services/campingSite.service.client.ts");
+/* harmony import */ var _communication_services_camping_site_to_detail_service_client__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./communication-services/camping-site-to-detail.service.client */ "./src/app/communication-services/camping-site-to-detail.service.client.ts");
+/* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
+/* harmony import */ var _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./navbar/navbar.component */ "./src/app/navbar/navbar.component.ts");
+/* harmony import */ var _profile_profile_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./profile/profile.component */ "./src/app/profile/profile.component.ts");
+/* harmony import */ var _basic_information_basic_information_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./basic-information/basic-information.component */ "./src/app/basic-information/basic-information.component.ts");
+/* harmony import */ var _event_waterfall_event_waterfall_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./event-waterfall/event-waterfall.component */ "./src/app/event-waterfall/event-waterfall.component.ts");
+/* harmony import */ var _event_card_event_card_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./event-card/event-card.component */ "./src/app/event-card/event-card.component.ts");
+/* harmony import */ var _register_register_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./register/register.component */ "./src/app/register/register.component.ts");
+/* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
+/* harmony import */ var _services_user_service_client__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./services/user.service.client */ "./src/app/services/user.service.client.ts");
+/* harmony import */ var _services_map_service_client__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./services/map.service.client */ "./src/app/services/map.service.client.ts");
+/* harmony import */ var ngx_masonry__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ngx-masonry */ "./node_modules/ngx-masonry/fesm5/ngx-masonry.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -132,6 +140,16 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
+
+
+
+
+
+
+
+
+
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -141,22 +159,32 @@ var AppModule = /** @class */ (function () {
                 _app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"],
                 _home_page_home_page_component__WEBPACK_IMPORTED_MODULE_3__["HomePageComponent"],
                 _camping_site_grid_camping_site_grid_component__WEBPACK_IMPORTED_MODULE_5__["CampingSiteGridComponent"],
-                _search_bar_campground_search_bar_camping_site_component__WEBPACK_IMPORTED_MODULE_8__["SearchBarCampingSiteComponent"],
+                _search_bar_campground_search_bar_camping_site_component__WEBPACK_IMPORTED_MODULE_9__["SearchBarCampingSiteComponent"],
                 _camping_site_detail_camping_site_detail_component__WEBPACK_IMPORTED_MODULE_6__["CampingSiteDetailComponent"],
-                _home_home_component__WEBPACK_IMPORTED_MODULE_12__["HomeComponent"],
-                _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_13__["NavbarComponent"],
-                _event_waterfall_event_waterfall_component__WEBPACK_IMPORTED_MODULE_14__["EventWaterfallComponent"],
-                _event_card_event_card_component__WEBPACK_IMPORTED_MODULE_15__["EventCardComponent"],
+                _home_home_component__WEBPACK_IMPORTED_MODULE_13__["HomeComponent"],
+                _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_14__["NavbarComponent"],
+                _profile_profile_component__WEBPACK_IMPORTED_MODULE_15__["ProfileComponent"],
+                _basic_information_basic_information_component__WEBPACK_IMPORTED_MODULE_16__["BasicInformationComponent"],
+                _event_waterfall_event_waterfall_component__WEBPACK_IMPORTED_MODULE_17__["EventWaterfallComponent"],
+                _event_card_event_card_component__WEBPACK_IMPORTED_MODULE_18__["EventCardComponent"],
+                _register_register_component__WEBPACK_IMPORTED_MODULE_19__["RegisterComponent"],
+                _login_login_component__WEBPACK_IMPORTED_MODULE_20__["LoginComponent"],
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
                 _app_rounting__WEBPACK_IMPORTED_MODULE_4__["routing"],
                 ngx_bootstrap_carousel__WEBPACK_IMPORTED_MODULE_7__["CarouselModule"].forRoot(),
-                _angular_forms__WEBPACK_IMPORTED_MODULE_9__["FormsModule"]
+                ngx_bootstrap__WEBPACK_IMPORTED_MODULE_8__["ModalModule"].forRoot(),
+                ngx_bootstrap__WEBPACK_IMPORTED_MODULE_8__["AlertModule"].forRoot(),
+                ngx_bootstrap__WEBPACK_IMPORTED_MODULE_8__["BsDatepickerModule"].forRoot(),
+                _angular_forms__WEBPACK_IMPORTED_MODULE_10__["FormsModule"],
+                ngx_masonry__WEBPACK_IMPORTED_MODULE_23__["NgxMasonryModule"],
             ],
             providers: [
-                _services_campingSite_service_client__WEBPACK_IMPORTED_MODULE_10__["CampingSiteServiceClient"],
-                _communication_services_camping_site_to_detail_service_client__WEBPACK_IMPORTED_MODULE_11__["CampingSiteToDetailServiceClient"]
+                _services_campingSite_service_client__WEBPACK_IMPORTED_MODULE_11__["CampingSiteServiceClient"],
+                _communication_services_camping_site_to_detail_service_client__WEBPACK_IMPORTED_MODULE_12__["CampingSiteToDetailServiceClient"],
+                _services_user_service_client__WEBPACK_IMPORTED_MODULE_21__["UserServiceClient"],
+                _services_map_service_client__WEBPACK_IMPORTED_MODULE_22__["MapServiceClient"],
             ],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"]]
         })
@@ -182,6 +210,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _home_page_home_page_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./home-page/home-page.component */ "./src/app/home-page/home-page.component.ts");
 /* harmony import */ var _camping_site_detail_camping_site_detail_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./camping-site-detail/camping-site-detail.component */ "./src/app/camping-site-detail/camping-site-detail.component.ts");
 /* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
+/* harmony import */ var _profile_profile_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./profile/profile.component */ "./src/app/profile/profile.component.ts");
+
 
 
 
@@ -189,12 +219,102 @@ __webpack_require__.r(__webpack_exports__);
 var appRoutes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: _home_home_component__WEBPACK_IMPORTED_MODULE_3__["HomeComponent"] },
+    { path: 'profile', component: _profile_profile_component__WEBPACK_IMPORTED_MODULE_4__["ProfileComponent"] },
     { path: 'homepage', component: _home_page_home_page_component__WEBPACK_IMPORTED_MODULE_1__["HomePageComponent"] },
     { path: 'camping-site/:contractID/:facilityID/detail', component: _camping_site_detail_camping_site_detail_component__WEBPACK_IMPORTED_MODULE_2__["CampingSiteDetailComponent"] },
     { path: 'detail', component: _camping_site_detail_camping_site_detail_component__WEBPACK_IMPORTED_MODULE_2__["CampingSiteDetailComponent"] },
     { path: '**', component: _home_home_component__WEBPACK_IMPORTED_MODULE_3__["HomeComponent"] },
 ];
 var routing = _angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"].forRoot(appRoutes);
+
+
+/***/ }),
+
+/***/ "./src/app/basic-information/basic-information.component.css":
+/*!*******************************************************************!*\
+  !*** ./src/app/basic-information/basic-information.component.css ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".infoFld {\n  margin-top: 15px;\n}\n\n#saveBtn {\n  margin-top: 10px;\n}\n\n#alertBox {\n  margin-top: 10px;\n}\n"
+
+/***/ }),
+
+/***/ "./src/app/basic-information/basic-information.component.html":
+/*!********************************************************************!*\
+  !*** ./src/app/basic-information/basic-information.component.html ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div *ngFor=\"let alert of alerts\" id=\"alertBox\">\n  <alert [type]=\"alert.type\" [dismissOnTimeout]=\"alert.timeout\" (onClosed)=\"onClosed(alert)\">{{ alert.msg }}</alert>\n</div>\n<div>\n    <div class=\"input-group-append infoFld\">\n      <label for=\"username\" class=\"col-sm-2 col-form-label\">Username</label>\n      <!--<div class=\"col-sm-10\">-->\n        <!--<li class=\"list-group-item\" id = 'username'>{{user.username}}</li>-->\n      <!--</div>-->\n      <input [(ngModel)]=\"user.username\"\n             placeholder=\"username\"\n             class=\"form-control\"\n             id=\"username\"\n             readonly/>\n    </div>\n\n    <div class=\"input-group-append infoFld\">\n      <label for=\"firstName\" class=\"col-sm-2 col-form-label\">First Name</label>\n      <input [(ngModel)]=\"user.firstName\"\n             placeholder=\"first name\"\n             id=\"firstName\"\n             class=\"form-control\"/>\n    </div>\n\n    <div class=\"input-group-append infoFld\">\n      <label for=\"lastName\" class=\"col-sm-2 col-form-label\">Last Name</label>\n      <input [(ngModel)]=\"user.lastName\"\n             placeholder=\"lastName\"\n             id=\"lastName\"\n             class=\"form-control\"/>\n    </div>\n\n    <div class=\"input-group-append infoFld\">\n      <label for=\"dob\" class=\"col-sm-2 col-form-label\">Date of Birth</label>\n      <input type=\"text\"\n             [(ngModel)]=\"user.dateOfBirth\"\n             placeholder=\"Date of Birth\"\n             class=\"form-control\"\n             id=\"dob\"\n             [bsConfig]=\"{ dateInputFormat: 'YYYY-MM-DD' }\"\n             bsDatepicker>\n    </div>\n\n    <div class=\"input-group-append infoFld\">\n      <label for=\"phone\" class=\"col-sm-2 col-form-label\">Phone</label>\n      <input [(ngModel)]=\"user.phoneNumber\"\n             placeholder=\"phone\"\n             id=\"phone\"\n             class=\"form-control\"/>\n    </div>\n\n    <div class=\"input-group-append infoFld\">\n      <label for=\"email\" class=\"col-sm-2 col-form-label\">Email</label>\n      <input [(ngModel)]=\"user.email\"\n             placeholder=\"email\"\n             id=\"email\"\n             class=\"form-control\"/>\n    </div>\n\n    <div class=\"input-group-append infoFld\">\n      <label for=\"address\" class=\"col-sm-2 col-form-label\">Address</label>\n      <input [(ngModel)]=\"user.address\"\n             placeholder=\"address\"\n             id=\"address\"\n             class=\"form-control\"/>\n    </div>\n\n    <hr class=\"my-4\">\n    <div class=\"form-group row\" id=\"saveBtn\">\n      <div class=\"col-sm-10\">\n        <button (click)=\"update()\" class=\"btn btn-primary\">Save</button>\n      </div>\n    </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/basic-information/basic-information.component.ts":
+/*!******************************************************************!*\
+  !*** ./src/app/basic-information/basic-information.component.ts ***!
+  \******************************************************************/
+/*! exports provided: BasicInformationComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BasicInformationComponent", function() { return BasicInformationComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_user_service_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/user.service.client */ "./src/app/services/user.service.client.ts");
+/* harmony import */ var _models_user_model_client__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../models/user.model.client */ "./src/app/models/user.model.client.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var BasicInformationComponent = /** @class */ (function () {
+    function BasicInformationComponent(service) {
+        this.service = service;
+        this.user = new _models_user_model_client__WEBPACK_IMPORTED_MODULE_2__["User"]();
+        this.alerts = [];
+    }
+    BasicInformationComponent.prototype.update = function () {
+        var _this = this;
+        console.log(this.user);
+        this.service
+            .update(this.user).then(function () {
+            _this.alerts.push({
+                type: 'success',
+                msg: "Profile updated successfully.",
+                timeout: 5000
+            });
+        });
+    };
+    BasicInformationComponent.prototype.onClosed = function (dismissedAlert) {
+        this.alerts = this.alerts.filter(function (alert) { return alert !== dismissedAlert; });
+    };
+    BasicInformationComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.service
+            .profile()
+            .then(function (user) { return _this.user = user; });
+    };
+    BasicInformationComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-basic-information',
+            template: __webpack_require__(/*! ./basic-information.component.html */ "./src/app/basic-information/basic-information.component.html"),
+            styles: [__webpack_require__(/*! ./basic-information.component.css */ "./src/app/basic-information/basic-information.component.css")]
+        }),
+        __metadata("design:paramtypes", [_services_user_service_client__WEBPACK_IMPORTED_MODULE_1__["UserServiceClient"]])
+    ], BasicInformationComponent);
+    return BasicInformationComponent;
+}());
+
 
 
 /***/ }),
@@ -469,6 +589,26 @@ var CampingSiteToDetailServiceClient = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/constants/dateConstant.ts":
+/*!*******************************************!*\
+  !*** ./src/app/constants/dateConstant.ts ***!
+  \*******************************************/
+/*! exports provided: months, dates */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "months", function() { return months; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "dates", function() { return dates; });
+var months = ['January', 'February', 'March',
+    'April', 'May', 'June', 'July', 'August', 'September',
+    'October', 'November', 'December'];
+var dates = ['Sunday', 'Monday', 'Tuesday', 'Wednesday',
+    'Thursday', 'Friday', 'Saturday'];
+
+
+/***/ }),
+
 /***/ "./src/app/event-card/event-card.component.css":
 /*!*****************************************************!*\
   !*** ./src/app/event-card/event-card.component.css ***!
@@ -476,7 +616,7 @@ var CampingSiteToDetailServiceClient = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".wbdv-blur {\n  -webkit-filter: blur(5px); /* Safari 6.0 - 9.0 */\n\n  filter: blur(5px);\n}\n\n.wbdv-imageContainer {\n  position: relative;\n\n}\n\n.wbdv-text-block {\n  position: absolute;\n  border-radius: 25px;\n  top: 10%;\n  left: 5%;\n  right: 5%;\n\n\n  color: white;\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.card {\n  border-radius: 30px;\n}\n\niframe {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n}\n\nimg {\n  border-radius: 30px 30px 0 0;\n}\n\nh6 {\n  padding-top: 10px;\n}\n"
+module.exports = ".button-pos {\n  margin-top: 2px;\n  margin-right: 5px;\n  float: right;\n\n}\n\n.button-container {\n  position: relative;\n}\n\n.button-container i {\n  color: red;\n  text-shadow: 2px 2px 2px #aaa;\n}\n\nbutton {\n  position: absolute;\n}\n\n.wbdv-blur {\n  -webkit-filter: blur(5px); /* Safari 6.0 - 9.0 */\n  filter: blur(5px);\n  border-radius: 25px;\n\n}\n\n.wbdv-imageContainer {\n  position: relative;\n  border-radius: 25px 25px 0 0;\n  overflow:hidden;\n  /*background-color: #0b2e13;*/\n  /*-moz-border-radius: 20px;*/\n  /*margin:0 auto;*/\n}\n\n.wbdv-text-block {\n  position: absolute;\n  border-radius: 25px;\n  top: 10%;\n  left: 5%;\n  right: 5%;\n\n\n  color: white;\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.card {\n  border-radius: 30px;\n  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, .1)\n  /*0 6px 10px 5px rgba(0, 0, 0, .1),*/\n  /*0 8px 10px -5px rgba(0, 0, 0, .1);*/\n}\n\n.card-title {\n  margin-bottom: 0;\n\n}\n\n.iframe-pos {\n  top: 0;\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  border-radius: 25px;\n}\n\n.iframe-container {\n  border-radius: 25px;\n  -webkit-border-radius: 20px;\n  /*position: absolute;*/\n  position: relative;\n  overflow: auto;\n  top: 0;\n  width: 100%;\n  height: 100%;\n}\n\niframe {\n  width:100%;\n  height:100%;\n\n}\n\nimg {\n  border-radius: 25px 25px 0 0;\n}\n\n.avatar-container {\n  margin-left: 10%;\n  margin-bottom: 8px;\n  display: inline-block;\n  width: 50px;\n  padding: 0;\n}\n\n.avatar {\n  padding: 0;\n  border-radius: 50%;\n  background-image: url('https://images.unsplash.com/photo-1499996860823-5214fcc65f8f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b6ded683923a678ad03fae323169beb4&auto=format&fit=crop&w=700&q=60');\n  width: 100%;\n  padding-bottom: 100%;\n  background-size: cover;\n  background-position: center;\n}\n\n.host-info {\n  display: inline-block;\n  padding-left: 5%;\n}\n\n.host-info div {\n  /*padding-top: 5px;*/\n  /*margin-bottom: 20px;*/\n  font-family: \"Bradley Hand\";\n  overflow: hidden;\n  white-space: nowrap;\n}\n\nh6 {\n  display: inline-block;\n  padding-top: 15px;\n}\n"
 
 /***/ }),
 
@@ -487,7 +627,7 @@ module.exports = ".wbdv-blur {\n  -webkit-filter: blur(5px); /* Safari 6.0 - 9.0
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card text-center\"\n     (mouseenter) =\"mouseEnter()\"\n     (mouseleave) =\"mouseLeave()\">\n  <div class=\"wbdv-imageContainer\">\n    <img [ngClass]=\"{'wbdv-blur': inImage}\"  class=\"card-img-top img-fluid\" src=\"https://images.unsplash.com/photo-1532980400857-e8d9d275d858?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5b501bf3957585b28199e54ec4700806&auto=format&fit=crop&w=934&q=80\" alt=\"Card image cap\">\n\n    <iframe *ngIf=\"inImage\"\n            src=\"https://www.youtube.com/embed/hOTqyh_UibM?autoplay=1\"\n            frameborder=\"0\"\n            allow=\"autoplay; encrypted-media\"\n            allowfullscreen></iframe>\n    <div *ngIf=\"inImage\" class=\"wbdv-text-block\">\n      <h2>Wow</h2>\n      <h4>Hey, what's up guys! This is DaMingBai, bla bla bla...</h4>\n    </div>\n  </div>\n  <h6 class=\"card-subtitle mb-2 text-muted\">Thursday, August 02</h6>\n  <div class=\"card-block\">\n    <h4 class=\"card-title\">Card title that wraps to a new line</h4>\n    <p class=\"card-text\">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>\n  </div>\n\n  <footer>\n    <small>\n      Someone famous in <cite title=\"Source Title\">Source Title</cite>\n    </small>\n  </footer>\n</div>\n"
+module.exports = "<div class=\"card text-center\"\n     (mouseleave) =\"mouseLeave()\">\n\n    <carousel (activeSlideChange)=\"slideChanged($event)\" data-interval=\"false\" [showIndicators]=\"!(hasExtraInfo && inImage)\">\n      <slide *ngFor=\"let photo of data.photos\" class=\"wbdv-imageContainer\">\n        <img [ngClass]=\"{'wbdv-blur': hasExtraInfo && inImage}\" src={{photo}} alt=\"first slide\" style=\"display: block; width: 100%;\">\n      </slide>\n    </carousel>\n\n  <div class=\"iframe-pos\">\n    <div class=\"iframe-container\">\n      <iframe *ngIf=\"hasExtraInfo && inImage\"\n              [src]='getIframeSource()'\n              frameborder=\"0\"\n              scrolling=false\n              allow=\"autoplay; encrypted-media\"\n              style=\"overflow:hidden;\"\n              allowfullscreen></iframe>\n    </div>\n  </div>\n\n  <div class=\"card-block\">\n    <h6 class=\"card-subtitle mb-2 text-muted\">{{dates[data.start.getDate()]}}, {{months[data.start.getMonth()]}} {{data.start.getDay()}}</h6>\n    <span class=\"button-pos\">\n      <span class=\"button-container\">\n         <span (click) = \"mouseEnter()\">\n          <i *ngIf=\"hasExtraInfo && !inImage\"\n             class=\"fab fa-youtube fa-2x\"\n          ></i>\n        </span>\n      </span>\n    </span>\n\n    <h4 class=\"card-title\">{{data.title}}</h4>\n    <div class=\"card-body\">\n    <div class=\"row\">\n      <div class=\"avatar-container\">\n        <div class=\"avatar\" [ngStyle]=\"{'background-image': 'url(' + data.organizer.profilePhoto + ')'}\">\n        </div>\n      </div>\n\n      <div class=\"host-info\">\n        <div class=\"text-sm-left text-muted\">\n          Hosted by\n          <span>{{data.organizer && data.organizer.firstName}}</span>\n          <span>{{data.organizer && ' ' + data.organizer.lastName}}</span>\n        </div>\n        <div class=\"text-sm-left\">\n          <span class=\"text-muted\">From </span>\n          <span>{{data.organizer.location}}</span>\n        </div>\n      </div>\n    </div>\n    </div>\n  </div>\n\n</div>\n"
 
 /***/ }),
 
@@ -502,6 +642,9 @@ module.exports = "<div class=\"card text-center\"\n     (mouseenter) =\"mouseEnt
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EventCardComponent", function() { return EventCardComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _models_EventCard_model_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../models/EventCard.model.client */ "./src/app/models/EventCard.model.client.ts");
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
+/* harmony import */ var _constants_dateConstant__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../constants/dateConstant */ "./src/app/constants/dateConstant.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -512,27 +655,56 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
+
+
 var EventCardComponent = /** @class */ (function () {
-    function EventCardComponent() {
+    function EventCardComponent(sanitizer) {
+        this.sanitizer = sanitizer;
         this.inImage = false;
+        this.hasExtraInfo = false;
+        this.months = _constants_dateConstant__WEBPACK_IMPORTED_MODULE_3__["months"];
+        this.dates = _constants_dateConstant__WEBPACK_IMPORTED_MODULE_3__["dates"];
+        this.slideIndex = 0;
+        this.updateEvent = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
     }
+    EventCardComponent.prototype.slideChanged = function (event) {
+        if (event !== this.slideIndex) {
+            this.updateEvent.emit('update');
+            this.slideIndex = event;
+        }
+    };
     EventCardComponent.prototype.mouseEnter = function () {
-        console.log('in');
         this.inImage = true;
     };
     EventCardComponent.prototype.mouseLeave = function () {
-        console.log('out');
         this.inImage = false;
     };
-    EventCardComponent.prototype.ngOnInit = function () {
+    EventCardComponent.prototype.getIframeSource = function () {
+        var res = this.data.video + '?rel=0&autoplay=1&modestbranding=1';
+        return this.sanitizer.bypassSecurityTrustResourceUrl(res);
     };
+    EventCardComponent.prototype.ngOnInit = function () {
+        if (this.data.video && this.data.video !== '') {
+            this.hasExtraInfo = true;
+        }
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", _models_EventCard_model_client__WEBPACK_IMPORTED_MODULE_1__["EventCard"])
+    ], EventCardComponent.prototype, "data", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
+        __metadata("design:type", Object)
+    ], EventCardComponent.prototype, "updateEvent", void 0);
     EventCardComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-event-card',
             template: __webpack_require__(/*! ./event-card.component.html */ "./src/app/event-card/event-card.component.html"),
             styles: [__webpack_require__(/*! ./event-card.component.css */ "./src/app/event-card/event-card.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["DomSanitizer"]])
     ], EventCardComponent);
     return EventCardComponent;
 }());
@@ -548,7 +720,7 @@ var EventCardComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".container{\n  padding: 50px;\n  /*background-color: rgba(51, 170, 51, .3);*/\n\n}\n"
+module.exports = ".container{\n  margin-top: 50px;\n  padding: 0;\n  /*background-color: rgba(51, 170, 51, .3);*/\n\n}\n\n@media (min-width: 400px) {\n  .masonry-item {\n    width: 100%;\n    padding: 10px;\n\n  }\n}\n\n@media (min-width: 770px) {\n  .masonry-item {\n    width: 50%;\n    padding: 10px;\n\n  }\n}\n\n@media (min-width: 1000px) {\n   .masonry-item {\n    width: 33.3%;\n    padding: 10px;\n\n  }\n}\n\n\n"
 
 /***/ }),
 
@@ -559,7 +731,7 @@ module.exports = ".container{\n  padding: 50px;\n  /*background-color: rgba(51, 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <div class=\"card-columns\">\n    <app-event-card></app-event-card>\n    <app-event-card></app-event-card>\n    <app-event-card></app-event-card>\n  </div>\n</div>\n"
+module.exports = "\n<div class=\"container\">\n  <ngx-masonry [updateLayout]=\"updateMasonryLayout\" class=\"masonry\">\n    <ngxMasonryItem class=\"masonry-item\" *ngFor=\"let card of cards\">\n      <app-event-card [data]=\"card\"\n                      (updateEvent)=\"receiveUpdateEvent($event)\">\n      </app-event-card>\n    </ngxMasonryItem>\n  </ngx-masonry>\n</div>\n\n\n<div (window:scroll)=\"onScroll($event)\">\n  <h1> Loading ...</h1>\n</div>\n"
 
 /***/ }),
 
@@ -584,12 +756,209 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var EventWaterfallComponent = /** @class */ (function () {
     function EventWaterfallComponent() {
-        this.cards = [];
+        this.organizer = {
+            username: '',
+            password: '',
+            dateOfBirth: new Date(),
+            email: '',
+            phoneNumber: '',
+            address: '',
+            lat: '',
+            lng: '',
+            firstName: 'Zheming',
+            lastName: 'Gao',
+            location: 'San Jose Damingbai',
+            profilePhoto: 'https://images.unsplash.com/' +
+                'photo-1533233336213-b3a32825c689?ixlib=' +
+                'rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5c181' +
+                '76885796e2a3399a4a6906e8270&auto=format&fi' +
+                't=crop&w=800&q=60'
+        };
+        this.organizer2 = {
+            username: '',
+            password: '',
+            dateOfBirth: new Date(),
+            email: '',
+            phoneNumber: '',
+            address: '',
+            lat: '',
+            lng: '',
+            firstName: 'Xiaodong',
+            lastName: 'Ma',
+            location: 'San Francisco',
+            profilePhoto: 'https://images.unsplash.com/photo-1' +
+                '438761681033-6461ffad8d80?ixlib=rb-0.3.5&ixid=eyJ' +
+                'hcHBfaWQiOjEyMDd9&s=5d43ec18ec2cf6ff854513b9e8395c' +
+                '1e&auto=format&fit=crop&w=800&q=60'
+        };
+        this.organizer3 = {
+            username: '',
+            password: '',
+            dateOfBirth: new Date(),
+            email: '',
+            phoneNumber: '',
+            address: '',
+            lat: '',
+            lng: '',
+            firstName: 'Garret',
+            lastName: 'Wu',
+            location: 'NEU Seatle',
+            profilePhoto: 'https://images.unsplash.com/photo-1495078' +
+                '065017-564723e7e3e7?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjE' +
+                'yMDd9&s=09093dcdf66dbcd2397b9dc19384a899&auto=format&fit' +
+                '=crop&w=800&q=60'
+        };
+        this.event = {
+            organizer: this.organizer,
+            start: new Date(),
+            end: new Date(),
+            title: 'Great Camping Opportunity in Yosemite',
+            photos: ['https://images.unsplash.com/photo-153322' +
+                    '8876829-65c94e7b5025?ixlib=rb-0.3.5&ixid' +
+                    '=eyJhcHBfaWQiOjEyMDd9&s=7a60de51ee9dd6af78' +
+                    'f5b796b4586326&auto=format&fit=crop&w=800&q=60',
+                'https://images.unsplash.com/photo-1533227477679' +
+                    '-ca4c58789baf?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOj' +
+                    'EyMDd9&s=f8c4f0513223e7ce1ce7783e0d870190&auto=f' +
+                    'ormat&fit=crop&w=800&q=60'],
+            video: 'https://www.youtube.com/embed/PHQe7Sj56NE',
+            description: ''
+        };
+        this.event2 = {
+            organizer: this.organizer2,
+            start: new Date(),
+            end: new Date(),
+            title: 'Amazing Camp Tour in Deep Grand Canyon',
+            photos: ['https://images.unsplash.com/photo-1510662' +
+                    '145379-13537db782dc?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQ' +
+                    'iOjEyMDd9&s=a88527272e34e0ec18771312843d516e&auto=f' +
+                    'ormat&fit=crop&w=800&q=60',
+                'https://images.unsplash.com/photo-1495756650324-e4' +
+                    '5118cb3e35?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9' +
+                    '&s=a0d9a8f675adf1d8d1763a275e72ac66&auto=format&fit' +
+                    '=crop&w=800&q=60'],
+            video: 'https://www.youtube.com/embed/b6hoBp7Hk-A',
+            description: ''
+        };
+        this.event3 = {
+            organizer: this.organizer3,
+            start: new Date(),
+            end: new Date(),
+            title: 'Where Amazing Happens',
+            photos: ['https://images.unsplash.com/photo-1513673953' +
+                    '682-c64113e2866a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyM' +
+                    'Dd9&s=2ac493edfc02a322820703625d747055&auto=format&fit' +
+                    '=crop&w=800&q=60',
+            ],
+            video: '',
+            description: ''
+        };
+        this.event4 = {
+            organizer: this.organizer2,
+            start: new Date(),
+            end: new Date(),
+            title: 'Hey, The Moutains Are Calling',
+            photos: ['https://images.unsplash.com/p' +
+                    'hoto-1486935964461-b5ac6a3e72cd?ixlib=rb-' +
+                    '0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c57c0c6f' +
+                    'f5b2d9b38f14f96484450607&auto=format&fit=cr' +
+                    'op&w=800&q=60',
+            ],
+            video: '',
+            description: ''
+        };
+        this.event5 = {
+            organizer: this.organizer3,
+            start: new Date(),
+            end: new Date(),
+            title: 'Party in the beach',
+            photos: ['https://images.unsplash.com/photo-15230' +
+                    '44214787-9caaa5ee4d8e?ixlib=rb-0.3.5&ixid=eyJhcH' +
+                    'BfaWQiOjEyMDd9&s=b79aad29f0e5db2af7fa698998f22985' +
+                    '&auto=format&fit=crop&w=800&q=60',
+            ],
+            video: '',
+            description: ''
+        };
+        this.event6 = {
+            organizer: this.organizer3,
+            start: new Date(),
+            end: new Date(),
+            title: 'Party in the beach',
+            photos: ['https://images.unsplash.com/photo-1510797492219-' +
+                    'e110e2a935a4?ixlib=rb-0.3.5&s=485c6f91293bb46aeb510da2ed33' +
+                    '3f87&auto=format&fit=crop&w=800&q=60',
+            ],
+            video: '',
+            description: ''
+        };
+        this.event7 = {
+            organizer: this.organizer3,
+            start: new Date(),
+            end: new Date(),
+            title: 'Party in the beach',
+            photos: ['https://images.unsplash.com/photo-149475061374' +
+                    '6-dff7ee759071?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&' +
+                    's=65b3f3cd89b0a3e27574784d4dc23048&auto=format&fit=crop&' +
+                    'w=800&q=60',
+            ],
+            video: '',
+            description: ''
+        };
+        this.event8 = {
+            organizer: this.organizer3,
+            start: new Date(),
+            end: new Date(),
+            title: 'Party in the beach',
+            photos: ['https://images.unsplash.com/photo-1517321579022-aa' +
+                    '4d037c3b6e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=93072' +
+                    '1f7f08fd5fdc79bc0e107a71e08&auto=format&fit=crop&w=800&q=60',
+            ],
+            video: '',
+            description: ''
+        };
+        this.event9 = {
+            organizer: this.organizer3,
+            start: new Date(),
+            end: new Date(),
+            title: 'Party in the beach',
+            photos: ['https://images.unsplash.com/photo-15258260' +
+                    '78603-8ae39aff46ca?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiO' +
+                    'jEyMDd9&s=a33b5370139fd1bdfc3234fba62d308e&auto=form' +
+                    'at&fit=crop&w=800&q=60',
+            ],
+            video: '',
+            description: ''
+        };
+        this.cards = [this.event, this.event2, this.event3,
+            this.event4, this.event5, this.event6,
+            this.event7, this.event8, this.event9];
+        this.updateMasonryLayout = true;
+        this.initialDataLoaded = false;
     }
+    EventWaterfallComponent.prototype.receiveUpdateEvent = function ($event) {
+        this.updateMasonryLayout = !this.updateMasonryLayout;
+    };
+    EventWaterfallComponent.prototype.onScroll = function ($event) {
+        // console.log('On Scroll');
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+            console.log('On Scroll Down');
+            this.cards.push(this.event9);
+            this.cards.push(this.event9);
+            this.cards.push(this.event9);
+        }
+    };
     EventWaterfallComponent.prototype.ngOnInit = function () {
     };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["HostListener"])('window:scroll', ['$event']),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Event]),
+        __metadata("design:returntype", void 0)
+    ], EventWaterfallComponent.prototype, "onScroll", null);
     EventWaterfallComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-event-waterfall',
@@ -735,6 +1104,221 @@ var HomeComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/login/login.component.css":
+/*!*******************************************!*\
+  !*** ./src/app/login/login.component.css ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/*register*/\n#regisMsg {\n  color: gray;\n  margin-right: 20px;\n}\n#usernameFld {\n  margin-top: 15px;\n}\n#passwordFld {\n  margin-top: 15px;\n}\n#confirmPasswordFld {\n  margin-top: 15px;\n}\n#continueBtn {\n  margin-top: 15px;\n}\n#loginLink {\n  color: cornflowerblue;\n}\n#mapPinIcon {\n  margin-right: 8px;\n}\n#locationBlock {\n  margin-top: 10px;\n}\n/*login*/\n#loginMsg {\n  color: gray;\n  margin-right: 20px;\n}\n#signUpLink {\n  color: cornflowerblue;\n}\n#loginUsernameFld {\n  margin-top: 15px;\n}\n#loginPasswordFld {\n  margin-top: 15px;\n}\n#loginContinueBtn {\n  margin-top: 15px;\n}\n"
+
+/***/ }),
+
+/***/ "./src/app/login/login.component.html":
+/*!********************************************!*\
+  !*** ./src/app/login/login.component.html ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<a class=\"nav-link\" routerLink=\"\" (click)=\"openLogin(login)\">Login</a>\n\n<ng-template #register>\n  <div class=\"modal-header\">\n    <h4 id=\"signUpHeader\" class=\"modal-title pull-left\">Sign Up</h4>\n    <button type=\"button\" class=\"close pull-right\" aria-label=\"Close\" (click)=\"registerWindow.hide()\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <div class=\"modal-body\">\n    <div *ngFor=\"let alert of alerts\">\n      <alert [type]=\"alert.type\" [dismissOnTimeout]=\"alert.timeout\" (onClosed)=\"onClosed(alert)\">{{ alert.msg }}</alert>\n    </div>\n    <div>\n      <span id=\"regisMsg\">Already a member?</span>\n      <a id=\"loginLink\" routerLink=\"/login\" (click)=\"openLogin(login)\">Login</a>\n    </div>\n    <input [(ngModel)]=\"username\" id=\"usernameFld\" class=\"form-control\" placeholder=\"Username\">\n    <input [(ngModel)]=\"password\" id=\"passwordFld\" class=\"form-control\" placeholder=\"Password\">\n    <input [(ngModel)]=\"password2\" id=\"confirmPasswordFld\" class=\"form-control\" placeholder=\"Confirm Password\">\n    <div id=\"locationBlock\">\n      <i id=\"mapPinIcon\" class=\"fas fa-map-marker-alt\"></i>\n      <span>{{location}}</span>\n    </div>\n    <button (click)=\"registerUser(username, password, password2, location)\" id=\"continueBtn\" class=\"btn btn-block btn btn-danger\">Continue</button>\n  </div>\n</ng-template>\n\n<ng-template #login>\n  <div class=\"modal-header\">\n    <h4 id=\"loginHeader\" class=\"modal-title pull-left\">Login</h4>\n    <button type=\"button\" class=\"close pull-right\" aria-label=\"Close\" (click)=\"loginWindow.hide()\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <div class=\"modal-body\">\n    <div *ngFor=\"let alert of alerts\">\n      <alert [type]=\"alert.type\" [dismissOnTimeout]=\"alert.timeout\" (onClosed)=\"onClosed(alert)\">{{ alert.msg }}</alert>\n    </div>\n    <div>\n      <span id=\"loginMsg\">Don't have an account?</span>\n      <a id=\"signUpLink\" routerLink=\"/login\" (click)=\"openRegister(register)\">Sign Up</a>\n    </div>\n    <input [(ngModel)]=\"username\" id=\"loginUsernameFld\" class=\"form-control\" placeholder=\"Username\">\n    <input [(ngModel)]=\"password\" id=\"loginPasswordFld\" class=\"form-control\" placeholder=\"Password\">\n    <button (click)=\"loginUser(username, password)\" id=\"loginContinueBtn\" class=\"btn btn-block btn btn-danger\">Continue</button>\n  </div>\n</ng-template>\n"
+
+/***/ }),
+
+/***/ "./src/app/login/login.component.ts":
+/*!******************************************!*\
+  !*** ./src/app/login/login.component.ts ***!
+  \******************************************/
+/*! exports provided: LoginComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginComponent", function() { return LoginComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var ngx_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ngx-bootstrap */ "./node_modules/ngx-bootstrap/index.js");
+/* harmony import */ var _services_user_service_client__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/user.service.client */ "./src/app/services/user.service.client.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _services_map_service_client__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/map.service.client */ "./src/app/services/map.service.client.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var LoginComponent = /** @class */ (function () {
+    function LoginComponent(modalService, userService, mapService, router) {
+        this.modalService = modalService;
+        this.userService = userService;
+        this.mapService = mapService;
+        this.router = router;
+        this.alerts = [];
+    }
+    LoginComponent.prototype.loginUser = function (username, password) {
+        var _this = this;
+        console.log([username, password]);
+        if (username && password) {
+            this.userService
+                .login(username, password)
+                .then(function (response) {
+                return response.json();
+            })
+                .then(function (user) {
+                if (!user.error) {
+                    _this.closeLogin();
+                    _this.router.navigate(['profile']);
+                }
+                else {
+                    // alert('User not exist or Password incorrect');
+                    _this.alerts.push({
+                        type: 'danger',
+                        msg: "User not exist or password incorrect.",
+                        timeout: 5000
+                    });
+                }
+            });
+        }
+        else {
+            // alert('Please enter valid Username and Password!');
+            this.alerts.push({
+                type: 'danger',
+                msg: "Please enter valid Username and Password.",
+                timeout: 5000
+            });
+        }
+    };
+    LoginComponent.prototype.findLatLng = function () {
+        var _this = this;
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                // this.showPosition(position);
+                console.log(position);
+                _this.mapService.reverseGeocoding(position.coords.latitude, position.coords.longitude)
+                    .then(function (response) {
+                    console.log(response);
+                    _this.location = response.address.city + ', ' + response.address.state;
+                });
+            });
+        }
+        else {
+            alert('Geolocation is not supported by this browser.');
+        }
+    };
+    LoginComponent.prototype.onClosed = function (dismissedAlert) {
+        this.alerts = this.alerts.filter(function (alert) { return alert !== dismissedAlert; });
+    };
+    LoginComponent.prototype.registerUser = function (username, password, password2, location) {
+        var _this = this;
+        if (username && password) {
+            if (password !== password2) {
+                // alert('Passwords not match.');
+                this.alerts.push({
+                    type: 'danger',
+                    msg: "Passwords not match, please enter again.",
+                    timeout: 5000
+                });
+            }
+            else {
+                this.userService
+                    .createUser(username, password, location)
+                    .then(function (response) {
+                    return response.json();
+                })
+                    .then(function (user) {
+                    if (!user.err) {
+                        _this.closeRegister();
+                        _this.router.navigate(['profile']);
+                    }
+                    else {
+                        // alert('Username already exist, please choose another one.');
+                        _this.alerts.push({
+                            type: 'danger',
+                            msg: "Username already exist, please choose another one.",
+                            timeout: 5000
+                        });
+                    }
+                });
+            }
+        }
+        else {
+            // alert('Please enter valid Username and Password.');
+            this.alerts.push({
+                type: 'danger',
+                msg: "Please enter valid Username and Password.",
+                timeout: 5000
+            });
+        }
+    };
+    LoginComponent.prototype.openRegister = function (template) {
+        this.registerWindow = this.modalService.show(template);
+        this.findLatLng();
+        if (this.loginWindow) {
+            this.closeLogin();
+        }
+    };
+    LoginComponent.prototype.openLogin = function (template) {
+        this.loginWindow = this.modalService.show(template);
+        if (this.registerWindow) {
+            this.closeRegister();
+        }
+    };
+    LoginComponent.prototype.closeRegister = function () {
+        this.registerWindow.hide();
+        this.registerWindow = null;
+    };
+    LoginComponent.prototype.closeLogin = function () {
+        this.loginWindow.hide();
+        this.loginWindow = null;
+    };
+    LoginComponent.prototype.ngOnInit = function () {
+    };
+    LoginComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-login',
+            template: __webpack_require__(/*! ./login.component.html */ "./src/app/login/login.component.html"),
+            styles: [__webpack_require__(/*! ./login.component.css */ "./src/app/login/login.component.css")]
+        }),
+        __metadata("design:paramtypes", [ngx_bootstrap__WEBPACK_IMPORTED_MODULE_1__["BsModalService"],
+            _services_user_service_client__WEBPACK_IMPORTED_MODULE_2__["UserServiceClient"],
+            _services_map_service_client__WEBPACK_IMPORTED_MODULE_4__["MapServiceClient"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
+    ], LoginComponent);
+    return LoginComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/models/EventCard.model.client.ts":
+/*!**************************************************!*\
+  !*** ./src/app/models/EventCard.model.client.ts ***!
+  \**************************************************/
+/*! exports provided: EventCard */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EventCard", function() { return EventCard; });
+var EventCard = /** @class */ (function () {
+    function EventCard() {
+    }
+    return EventCard;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/models/camingSite.model.client.ts":
 /*!***************************************************!*\
   !*** ./src/app/models/camingSite.model.client.ts ***!
@@ -749,6 +1333,26 @@ var CampingSite = /** @class */ (function () {
     function CampingSite() {
     }
     return CampingSite;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/models/user.model.client.ts":
+/*!*********************************************!*\
+  !*** ./src/app/models/user.model.client.ts ***!
+  \*********************************************/
+/*! exports provided: User */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "User", function() { return User; });
+var User = /** @class */ (function () {
+    function User() {
+    }
+    return User;
 }());
 
 
@@ -773,7 +1377,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-sm fixed-top navbar-light bg-light\">\n  <div class=\"container\">\n  <a class=\"navbar-brand\" routerLink=\"/home\">HuskyCamp</a>\n  <button class=\"navbar-toggler\"\n          type=\"button\" data-toggle=\"collapse\"\n          data-target=\"#navbarTogglerDemo02\"\n          aria-controls=\"navbarTogglerDemo02\"\n          aria-expanded=\"false\"\n          aria-label=\"Toggle navigation\"\n          (click)=\"toggleCollapsed()\"\n          >\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n  <div id=\"navbarSupportedContent\" [ngClass]=\"{'collapse': collapsed, 'navbar-collapse': true}\">\n    <ul class=\"navbar-nav ml-auto\">\n      <li class=\"nav-item active\">\n        <a class=\"nav-link\" href=\"#\">Home</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"#\">Login</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link disabled\" href=\"#\">Register</a>\n      </li>\n    </ul>\n  </div>\n  </div>\n</nav>\n"
+module.exports = "<nav class=\"navbar navbar-expand-sm fixed-top navbar-light bg-light\">\n  <div class=\"container\">\n  <a class=\"navbar-brand\" routerLink=\"/home\">HuskyCamp</a>\n  <button class=\"navbar-toggler\"\n          type=\"button\" data-toggle=\"collapse\"\n          data-target=\"#navbarTogglerDemo02\"\n          aria-controls=\"navbarTogglerDemo02\"\n          aria-expanded=\"false\"\n          aria-label=\"Toggle navigation\"\n          (click)=\"toggleCollapsed()\"\n          >\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n  <div id=\"navbarSupportedContent\" [ngClass]=\"{'collapse': collapsed, 'navbar-collapse': true}\">\n    <ul class=\"navbar-nav ml-auto\">\n      <li class=\"nav-item active\">\n        <a class=\"nav-link\" routerLink=\"/home\">Home</a>\n      </li>\n      <li class=\"nav-item\">\n        <!--<a class=\"nav-link\" href=\"#\">Login</a>-->\n        <app-login></app-login>\n      </li>\n      <li class=\"nav-item\">\n        <!--<a class=\"nav-link disabled\" href=\"#\">Register</a>-->\n        <app-register></app-register>\n      </li>\n    </ul>\n  </div>\n  </div>\n</nav>\n"
 
 /***/ }),
 
@@ -816,6 +1420,264 @@ var NavbarComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [])
     ], NavbarComponent);
     return NavbarComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/profile/profile.component.css":
+/*!***********************************************!*\
+  !*** ./src/app/profile/profile.component.css ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n.avatar-container {\n  display: inline-block;\n  width: 160px;\n  hight: 160px;\n  z-index: 1;\n  position: absolute;\n  left: 50px;\n  top: 70px;\n}\n\n.avatar {\n  border-radius: 50%;\n  background-image: url('https://images.unsplash.com/photo-1499996860823-5214fcc65f8f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b6ded683923a678ad03fae323169beb4&auto=format&fit=crop&w=700&q=60');\n  width: 100%;\n  padding-bottom: 100%;\n  background-size: cover;\n  background-position: center;\n  border: 3px solid white;\n}\n\n.main-background {\n  background-image: url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw8NDQ0NDQ8PDQ0NDxANDQ0NEBANDQ0NFREWFhURFRUYHSggGBolGxUVITEhMSk3Li4uFx8zOD8tNyg5LisBCgoKDQ0NDg0NDysZFR0rKys3LS0rKy0tKysrKysrLSsrKysrKy0tLSsrKysrKzcrKystKysrKysrKy0rKysrK//AABEIAKgBLAMBIgACEQEDEQH/xAAYAAEBAQEBAAAAAAAAAAAAAAAAAQIHA//EACUQAQAAAwgDAQEBAAAAAAAAAAABAvADFDFBUpLR4RNRkREhYf/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A4iACgCLASACgAoigsORIcgi9kK/h2Q4UO1rBOwF4KwThQODlOF5BOslToiB0HQgdCdABFCIqoICoqAAgAAokQiCgAoAEAgCKBWIFYLWCViViC95FYEK/pWIL3kQ4yO80hxmC95L+1+M95rWKhx6P2vw49lYiHHpefScezn2B1kRjX4dZlYilYFYHWaViiHWRWB1mViKVglYFYka/oAVigKixQBFQAAVCIRBQAAAUARRAFABYCQ5zKxBe/RDg7zIV/QO1TvMrFQ4/xayTj2VigfcP8XlOPa8+wT7l6Wsk6zKxUOgrErFA6DrMrEEIlYkQEVAAAECIAIKERIg0IAoAKIoiiAKIoKJ2ApBO8yAL2rPea1iBwqceysQOF5SsTn2B0ROsysQArFAXpDrMrEAiJEFRUABAABRAAIiRBQAUAAAFAEFQBQ+J8BSAfAO1T5mfAXgT5gvwA5T4fAFQ+AAAdB8yPgCRAFQigKgAAgqoACRVIgoACoAoigKgCiKIqACiAL2IoHAnACiAKJ+gKIAKgAIAqAKAgKgAAAJEIgogCgAKgCgAKgIogCkEWAHasqBwqACoAKgAAAIAqAKAgKgAAACAAICgAoigAAqACiKAAAsEAFQEUQBRABUAVAFAAAQFQAAAAQAEBUAFEAUAFEAUEBQAFQBSCAKIoAigCAKIAogAqAAAAICiAAACAAAAAAqAKIoAAKIAoigAAKgAAAAAAAAAIoAgCoACKgKgAAAIAPW72mifbEu9pon2xUBLvaaJ9sVu9pon2xAC72mifbEu9pon2xAC72mifbEu9pon2xAC72mifbEu9pon2xADwWmifbE8Fpon2xAF8Fpon2xPBaaJ9sUAXwWmifbE8E+ifbFAF8E+ifbE8E+ifbFAF8Fpon2xPBPon2xADwWmifbE8Fpon2xQBfBaaJ9sTwWmifbFAF8E+ifbE8E+ifbFADwWmifbEu9pon2xAC7z6J9sS72mifbEALvaaJ9sS72mifbEALvaaJ9sS72mifbEAS72mifbEu9pon2xUBLvaaJ9sS72mifbEAf/2Q==');\n  background-size: cover;\n  background-position: center;\n  width: 100%;\n  height: 200px;\n}\n\n.main-text {\n  padding-top: 150px;\n  text-shadow: 0 8px 8px rgba(0,0,0,0.9),\n  0 8px 13px rgba(0,0,0,0.8),\n  0 8px 23px rgba(0,0,0,0.8);\n  color: white;\n  font-family: Helvetica, Arial, sans-serif;\n  font-size: 25px;\n  -webkit-font-smoothing: antialiased;\n  font-weight: 500;\n  line-height: 30px;\n  max-width: 275px;\n  position: absolute;\n  left: 230px;\n}\n\n.botton-background {\n  width: 100%;\n  height: 43px;\n  background: white;\n  padding-left: 220px;\n  border: 1px solid rgba(0, 0, 0, 0.125);\n  border-left-style: none;\n}\n\n.grid-item {\n  height: 43px;\n  border-left: 1px solid rgba(0, 0, 0, 0.125);\n}\n\n.button-group {\n  position: absolute;\n  top: 50px;\n  right:50px;\n}\n"
+
+/***/ }),
+
+/***/ "./src/app/profile/profile.component.html":
+/*!************************************************!*\
+  !*** ./src/app/profile/profile.component.html ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<!--<div class=\"card\">-->\n<!--<img class=\"card-img-top\" src='https://images.unsplash.com/photo-1505232070786-2f46d15f9f5e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8d0b72c290cbac7926edb604b1f40793&auto=format&fit=crop&w=800&q=60' alt=\"Card image cap\">-->\n\n<!--</div>-->\n<div>\n  <div class=\"main-background\">\n    <div class=\"row\">\n      <div class=\"avatar-container\">\n        <div class=\"avatar\">\n        </div>\n      </div>\n      <h2 class=\"main-text\">First Name Last Name</h2>\n    </div>\n\n    <div class=\"button-group\">\n      <button>Post A New Event</button>\n      <button>Attend A New Event</button>\n    </div>\n\n  </div>\n\n  <div class=\"botton-background\">\n    <div class=\"input-group-append\">\n      <div class=\"col-sm grid-item\">\n        <a href=\"#\">Private Info</a>\n      </div>\n      <div class=\"col-sm grid-item\">\n        <a href=\"#\">OR</a>\n      </div>\n      <div class=\"col-sm grid-item\">\n        <a href=\"#\">AT</a>\n      </div>\n      <div class=\"col-sm grid-item\">\n        <a href=\"#\">Friends</a>\n      </div>\n      <div class=\"col-sm grid-item\">\n        <a href=\"#\">Reviews</a>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"container\">\n    <app-basic-information></app-basic-information>\n  </div>\n</div>\n\n\n\n\n"
+
+/***/ }),
+
+/***/ "./src/app/profile/profile.component.ts":
+/*!**********************************************!*\
+  !*** ./src/app/profile/profile.component.ts ***!
+  \**********************************************/
+/*! exports provided: ProfileComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProfileComponent", function() { return ProfileComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var ProfileComponent = /** @class */ (function () {
+    function ProfileComponent() {
+    }
+    ProfileComponent.prototype.ngOnInit = function () {
+    };
+    ProfileComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-profile',
+            template: __webpack_require__(/*! ./profile.component.html */ "./src/app/profile/profile.component.html"),
+            styles: [__webpack_require__(/*! ./profile.component.css */ "./src/app/profile/profile.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], ProfileComponent);
+    return ProfileComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/register/register.component.css":
+/*!*************************************************!*\
+  !*** ./src/app/register/register.component.css ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/*register*/\n#regisMsg {\n  color: gray;\n  margin-right: 20px;\n}\n#usernameFld {\n   margin-top: 15px;\n}\n#passwordFld {\n  margin-top: 15px;\n}\n#confirmPasswordFld {\n  margin-top: 15px;\n}\n#continueBtn {\n  margin-top: 15px;\n}\n#loginLink {\n  color: cornflowerblue;\n}\n#mapPinIcon {\n  margin-right: 8px;\n}\n#locationBlock {\n  margin-top: 10px;\n}\n/*login*/\n#loginMsg {\n  color: gray;\n  margin-right: 20px;\n}\n#signUpLink {\n  color: cornflowerblue;\n}\n#loginUsernameFld {\n  margin-top: 15px;\n}\n#loginPasswordFld {\n  margin-top: 15px;\n}\n#loginContinueBtn {\n  margin-top: 15px;\n}\n\n"
+
+/***/ }),
+
+/***/ "./src/app/register/register.component.html":
+/*!**************************************************!*\
+  !*** ./src/app/register/register.component.html ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<a class=\"nav-link\" routerLink=\"\" (click)=\"openRegister(register)\">Sign Up</a>\n\n<ng-template #register>\n  <div class=\"modal-header\">\n    <h4 id=\"signUpHeader\" class=\"modal-title pull-left\">Sign Up</h4>\n    <button type=\"button\" class=\"close pull-right\" aria-label=\"Close\" (click)=\"registerWindow.hide()\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <div class=\"modal-body\">\n    <div *ngFor=\"let alert of alerts\">\n      <alert [type]=\"alert.type\" [dismissOnTimeout]=\"alert.timeout\" (onClosed)=\"onClosed(alert)\">{{ alert.msg }}</alert>\n    </div>\n    <div>\n      <span id=\"regisMsg\">Already a member?</span>\n      <a id=\"loginLink\" routerLink=\"/login\" (click)=\"openLogin(login)\">Login</a>\n    </div>\n    <input [(ngModel)]=\"username\" id=\"usernameFld\" class=\"form-control\" placeholder=\"Username\">\n    <input [(ngModel)]=\"password\" id=\"passwordFld\" class=\"form-control\" placeholder=\"Password\">\n    <input [(ngModel)]=\"password2\" id=\"confirmPasswordFld\" class=\"form-control\" placeholder=\"Confirm Password\">\n    <div id=\"locationBlock\">\n      <i id=\"mapPinIcon\" class=\"fas fa-map-marker-alt\"></i>\n      <span>{{location}}</span>\n    </div>\n    <button (click)=\"registerUser(username, password, password2, location)\" id=\"continueBtn\" class=\"btn btn-block btn btn-danger\">Continue</button>\n  </div>\n</ng-template>\n\n<ng-template #login>\n  <div class=\"modal-header\">\n    <h4 id=\"loginHeader\" class=\"modal-title pull-left\">Login</h4>\n    <button type=\"button\" class=\"close pull-right\" aria-label=\"Close\" (click)=\"loginWindow.hide()\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <div class=\"modal-body\">\n    <div *ngFor=\"let alert of alerts\">\n      <alert [type]=\"alert.type\" [dismissOnTimeout]=\"alert.timeout\" (onClosed)=\"onClosed(alert)\">{{ alert.msg }}</alert>\n    </div>\n    <div>\n      <span id=\"loginMsg\">Don't have an account?</span>\n      <a id=\"signUpLink\" routerLink=\"/login\" (click)=\"openRegister(register)\">Sign Up</a>\n    </div>\n    <input [(ngModel)]=\"username\" id=\"loginUsernameFld\" class=\"form-control\" placeholder=\"Username\">\n    <input [(ngModel)]=\"password\" id=\"loginPasswordFld\" class=\"form-control\" placeholder=\"Password\">\n    <button (click)=\"loginUser(username, password)\" id=\"loginContinueBtn\" class=\"btn btn-block btn btn-danger\">Continue</button>\n  </div>\n</ng-template>\n\n"
+
+/***/ }),
+
+/***/ "./src/app/register/register.component.ts":
+/*!************************************************!*\
+  !*** ./src/app/register/register.component.ts ***!
+  \************************************************/
+/*! exports provided: RegisterComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RegisterComponent", function() { return RegisterComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var ngx_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ngx-bootstrap */ "./node_modules/ngx-bootstrap/index.js");
+/* harmony import */ var _services_user_service_client__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/user.service.client */ "./src/app/services/user.service.client.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _services_map_service_client__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/map.service.client */ "./src/app/services/map.service.client.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var RegisterComponent = /** @class */ (function () {
+    function RegisterComponent(modalService, userService, mapService, router) {
+        this.modalService = modalService;
+        this.userService = userService;
+        this.mapService = mapService;
+        this.router = router;
+        this.alerts = [];
+    }
+    RegisterComponent.prototype.findLatLng = function () {
+        var _this = this;
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                // this.showPosition(position);
+                console.log(position);
+                _this.mapService.reverseGeocoding(position.coords.latitude, position.coords.longitude)
+                    .then(function (response) {
+                    console.log(response);
+                    _this.location = response.address.city + ', ' + response.address.state;
+                });
+            });
+        }
+        else {
+            alert('Geolocation is not supported by this browser.');
+        }
+    };
+    RegisterComponent.prototype.onClosed = function (dismissedAlert) {
+        this.alerts = this.alerts.filter(function (alert) { return alert !== dismissedAlert; });
+    };
+    RegisterComponent.prototype.registerUser = function (username, password, password2, location) {
+        var _this = this;
+        if (username && password) {
+            if (password !== password2) {
+                // alert('Passwords not match.');
+                this.alerts.push({
+                    type: 'danger',
+                    msg: "Passwords not match, please enter again.",
+                    timeout: 5000
+                });
+            }
+            else {
+                this.userService
+                    .createUser(username, password, location)
+                    .then(function (response) {
+                    return response.json();
+                })
+                    .then(function (user) {
+                    if (!user.err) {
+                        _this.closeRegister();
+                        _this.router.navigate(['profile']);
+                    }
+                    else {
+                        // alert('Username already exist, please choose another one.');
+                        _this.alerts.push({
+                            type: 'danger',
+                            msg: "Username already exist, please choose another one.",
+                            timeout: 5000
+                        });
+                    }
+                });
+            }
+        }
+        else {
+            // alert('Please enter valid Username and Password.');
+            this.alerts.push({
+                type: 'danger',
+                msg: "Please enter valid Username and Password.",
+                timeout: 5000
+            });
+        }
+    };
+    RegisterComponent.prototype.loginUser = function (username, password) {
+        var _this = this;
+        console.log([username, password]);
+        if (username && password) {
+            this.userService
+                .login(username, password)
+                .then(function (response) {
+                return response.json();
+            })
+                .then(function (user) {
+                if (!user.error) {
+                    _this.closeLogin();
+                    _this.router.navigate(['profile']);
+                }
+                else {
+                    // alert('User not exist or Password incorrect');
+                    _this.alerts.push({
+                        type: 'danger',
+                        msg: "User not exist or password incorrect.",
+                        timeout: 5000
+                    });
+                }
+            });
+        }
+        else {
+            // alert('Please enter valid Username and Password!');
+            this.alerts.push({
+                type: 'danger',
+                msg: "Please enter valid Username and Password.",
+                timeout: 5000
+            });
+        }
+    };
+    RegisterComponent.prototype.openRegister = function (template) {
+        this.registerWindow = this.modalService.show(template);
+        this.findLatLng();
+        if (this.loginWindow) {
+            this.closeLogin();
+        }
+    };
+    RegisterComponent.prototype.openLogin = function (template) {
+        this.loginWindow = this.modalService.show(template);
+        if (this.registerWindow) {
+            this.closeRegister();
+        }
+    };
+    RegisterComponent.prototype.closeRegister = function () {
+        this.registerWindow.hide();
+        this.registerWindow = null;
+    };
+    RegisterComponent.prototype.closeLogin = function () {
+        this.loginWindow.hide();
+        this.loginWindow = null;
+    };
+    RegisterComponent.prototype.ngOnInit = function () {
+    };
+    RegisterComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-register',
+            template: __webpack_require__(/*! ./register.component.html */ "./src/app/register/register.component.html"),
+            styles: [__webpack_require__(/*! ./register.component.css */ "./src/app/register/register.component.css")]
+        }),
+        __metadata("design:paramtypes", [ngx_bootstrap__WEBPACK_IMPORTED_MODULE_1__["BsModalService"],
+            _services_user_service_client__WEBPACK_IMPORTED_MODULE_2__["UserServiceClient"],
+            _services_map_service_client__WEBPACK_IMPORTED_MODULE_4__["MapServiceClient"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
+    ], RegisterComponent);
+    return RegisterComponent;
 }());
 
 
@@ -976,6 +1838,114 @@ var CampingSiteServiceClient = /** @class */ (function () {
             .then(function (xml) { return JSON.parse(CONVERT.xml2json(xml, { compact: true, spaces: 4 })); });
     };
     return CampingSiteServiceClient;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/map.service.client.ts":
+/*!************************************************!*\
+  !*** ./src/app/services/map.service.client.ts ***!
+  \************************************************/
+/*! exports provided: MapServiceClient */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MapServiceClient", function() { return MapServiceClient; });
+var MapServiceClient = /** @class */ (function () {
+    function MapServiceClient() {
+    }
+    MapServiceClient.prototype.reverseGeocoding = function (lat, lng) {
+        return fetch('https://nominatim.openstreetmap.org/reverse?format=json&lat=' + lat + '&lon=' + lng, {
+            method: 'GET',
+            mode: 'cors',
+        })
+            .then(function (response) { return response.json(); });
+    };
+    return MapServiceClient;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/user.service.client.ts":
+/*!*************************************************!*\
+  !*** ./src/app/services/user.service.client.ts ***!
+  \*************************************************/
+/*! exports provided: UserServiceClient */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserServiceClient", function() { return UserServiceClient; });
+var UserServiceClient = /** @class */ (function () {
+    function UserServiceClient() {
+    }
+    UserServiceClient.prototype.findUserById = function (userId) {
+        return fetch('http://localhost:3000/api/userId/' + userId)
+            .then(function (response) { return response.json(); });
+    };
+    UserServiceClient.prototype.login = function (username, password) {
+        var credentials = {
+            username: username,
+            password: password
+        };
+        return fetch('http://localhost:3000/api/login', {
+            method: 'post',
+            body: JSON.stringify(credentials),
+            credentials: 'include',
+            headers: {
+                'content-type': 'application/json'
+            }
+        });
+    };
+    UserServiceClient.prototype.logout = function () {
+        return fetch('http://localhost:3000/api/logout', {
+            method: 'post',
+            credentials: 'include'
+        });
+    };
+    UserServiceClient.prototype.update = function (user) {
+        return fetch('http://localhost:3000/api/profile', {
+            method: 'put',
+            body: JSON.stringify(user),
+            credentials: 'include',
+            headers: {
+                'content-type': 'application/json'
+            }
+        });
+    };
+    UserServiceClient.prototype.delete = function () {
+        return fetch('http://localhost:3000/api/profile', {
+            method: 'delete',
+            credentials: 'include'
+        });
+    };
+    UserServiceClient.prototype.profile = function () {
+        return fetch('http://localhost:3000/api/profile', {
+            credentials: 'include',
+        })
+            .then(function (response) { return response.json(); });
+    };
+    UserServiceClient.prototype.createUser = function (username, password, location) {
+        var user = {
+            username: username,
+            password: password,
+            location: location
+        };
+        return fetch('http://localhost:3000/api/register', {
+            body: JSON.stringify(user),
+            credentials: 'include',
+            method: 'post',
+            headers: {
+                'content-type': 'application/json'
+            }
+        });
+    };
+    return UserServiceClient;
 }());
 
 
