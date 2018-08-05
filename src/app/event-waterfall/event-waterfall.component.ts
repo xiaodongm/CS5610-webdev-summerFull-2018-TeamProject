@@ -197,14 +197,11 @@ export class EventWaterfallComponent implements OnInit {
   cards: EventCard[] = [this.event, this.event2, this.event3,
                         this.event4, this.event5, this.event6,
                         this.event7, this.event8, this.event9];
-  masonryItems = [
-    { title: 'item 1' },
-    { title: 'item 2' },
-    { title: 'item 3' },
-    { title: 'item 4' },
-    { title: 'item 5' },
-    { title: 'item 6' }
-  ];
+  updateMasonryLayout = true;
+  initialDataLoaded = false;
+  receiveUpdateEvent($event) {
+      this.updateMasonryLayout = !this.updateMasonryLayout;
+  }
   @HostListener('window:scroll', ['$event'])
   onScroll($event: Event): void {
     // console.log('On Scroll');

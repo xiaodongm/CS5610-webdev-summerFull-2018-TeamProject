@@ -1,7 +1,7 @@
 <div class="card text-center"
-
      (mouseleave) ="mouseLeave()">
-    <carousel data-interval="false" [showIndicators]="!(hasExtraInfo && inImage)">
+
+    <carousel (activeSlideChange)="slideChanged($event)" data-interval="false" [showIndicators]="!(hasExtraInfo && inImage)">
       <slide *ngFor="let photo of data.photos" class="wbdv-imageContainer">
         <img [ngClass]="{'wbdv-blur': hasExtraInfo && inImage}" src={{photo}} alt="first slide" style="display: block; width: 100%;">
       </slide>

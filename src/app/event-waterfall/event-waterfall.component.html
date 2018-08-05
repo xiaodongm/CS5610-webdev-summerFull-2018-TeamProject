@@ -1,8 +1,10 @@
 
 <div class="container">
-  <ngx-masonry class="masonry">
+  <ngx-masonry [updateLayout]="updateMasonryLayout" class="masonry">
     <ngxMasonryItem class="masonry-item" *ngFor="let card of cards">
-      <app-event-card [data]="card"></app-event-card>
+      <app-event-card [data]="card"
+                      (updateEvent)="receiveUpdateEvent($event)">
+      </app-event-card>
     </ngxMasonryItem>
   </ngx-masonry>
 </div>
