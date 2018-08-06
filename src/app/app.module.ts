@@ -31,6 +31,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap';
 import { OrganizationSignUpComponent } from './organization-sign-up/organization-sign-up.component';
 import { CollapseModule } from 'ngx-bootstrap';
 import { BsDropdownModule } from 'ngx-bootstrap';
+import {ProviderServiceClient} from './services/provider.service.client';
 
 
 
@@ -69,6 +70,7 @@ import { BsDropdownModule } from 'ngx-bootstrap';
     CampingSiteToDetailServiceClient,
     UserServiceClient,
     MapServiceClient,
+    ProviderServiceClient,
   ],
   bootstrap: [AppComponent]
 })

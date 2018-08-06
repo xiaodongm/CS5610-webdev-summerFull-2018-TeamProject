@@ -54,7 +54,7 @@
         <p><img src="../../assets/images/orgServiceIcon.png">Step 4 of 4</p>
         <span>Tell Us the Service Type of Your Organization</span>
         <div class="input-group-append">
-          <li class="list-group-item form-control" [(ngModel)]="organizationService">{{organizationService}}</li>
+          <li class="list-group-item form-control">{{organizationService}}</li>
           <!--<input [(ngModel)]="organizationService" id="organizationServiceFld" class="form-control" placeholder="Organization Service">-->
           <div class="btn-group" dropdown>
             <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
@@ -63,12 +63,15 @@
             </button>
             <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
                 role="menu" aria-labelledby="button-basic">
-              <li role="menuitem"><a (click)="organizationService = 'Site Manager'" class="dropdown-item">Site Manager</a></li>
-              <li role="menuitem"><a (click)="organizationService = 'Equipment Dealer'" class="dropdown-item">Equipment Dealer</a></li>
+              <li role="menuitem"><a (click)="organizationService = serviceRole.SiteManager" class="dropdown-item">Site Manager</a></li>
+              <li role="menuitem"><a (click)="organizationService = serviceRole.EquipmentDealer" class="dropdown-item">Equipment Dealer</a></li>
             </ul>
           </div>
         </div>
-        <button class="btn btn-danger" [disabled]="!organizationService">Continue</button>
+        <div *ngFor="let alert of alerts" id="alertBox">
+          <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onClosed(alert)">{{ alert.msg }}</alert>
+        </div>
+        <button (click)="registerProvider(username, password, password2, organizationName, organizationAddress, organizationService)" class="btn btn-danger" [disabled]="!organizationService">Continue</button>
       </div>
     </div>
 

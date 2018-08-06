@@ -29,8 +29,6 @@ export class EventWaterfallComponent implements OnInit {
     '76885796e2a3399a4a6906e8270&auto=format&fi' +
     't=crop&w=800&q=60',
     role: 'organizer',
-    organizationName: '',
-    organizationAddress: ''
   };
 
   organizer2: User = {
@@ -50,8 +48,6 @@ export class EventWaterfallComponent implements OnInit {
     'hcHBfaWQiOjEyMDd9&s=5d43ec18ec2cf6ff854513b9e8395c' +
     '1e&auto=format&fit=crop&w=800&q=60',
     role: 'organizer',
-    organizationName: '',
-    organizationAddress: ''
   };
   organizer3: User = {
     username: '',
@@ -70,8 +66,6 @@ export class EventWaterfallComponent implements OnInit {
     'yMDd9&s=09093dcdf66dbcd2397b9dc19384a899&auto=format&fit' +
     '=crop&w=800&q=60',
     role: 'organizer',
-    organizationName: '',
-    organizationAddress: ''
   };
   event: EventCard = {
     organizer: this.organizer,
