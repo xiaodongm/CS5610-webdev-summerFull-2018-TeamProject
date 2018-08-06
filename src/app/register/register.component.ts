@@ -3,6 +3,7 @@ import {AlertComponent, BsModalService} from 'ngx-bootstrap';
 import {UserServiceClient} from '../services/user.service.client';
 import {Router} from '@angular/router';
 import {MapServiceClient} from '../services/map.service.client';
+import {ProviderServiceClient} from '../services/provider.service.client';
 
 @Component({
   selector: 'app-register',
@@ -14,6 +15,7 @@ export class RegisterComponent implements OnInit {
   constructor(private modalService: BsModalService,
               private userService: UserServiceClient,
               private mapService: MapServiceClient,
+              private providerService: ProviderServiceClient,
               private router: Router) { }
 
   registerWindow;
@@ -22,6 +24,7 @@ export class RegisterComponent implements OnInit {
   password;
   password2;
   location;
+  loginType = 'Personal';
 
   alerts = [];
 
@@ -87,24 +90,44 @@ export class RegisterComponent implements OnInit {
   loginUser(username, password) {
     console.log([username, password]);
     if (username && password) {
-      this.userService
-        .login(username, password)
-        .then(response => {
-          return response.json();
-        })
-        .then((user) => {
-          if (!user.error) {
-            this.closeLogin();
-            this.router.navigate(['profile']);
-          } else {
-            // alert('User not exist or Password incorrect');
-            this.alerts.push({
-              type: 'danger',
-              msg: `User not exist or password incorrect.`,
-              timeout: 5000
-            });
-          }
-        });
+      if (this.loginType === 'Personal') {
+        this.userService
+          .login(username, password)
+          .then(response => {
+            return response.json();
+          })
+          .then((user) => {
+            if (!user.error) {
+              this.closeLogin();
+              this.router.navigate(['profile']);
+            } else {
+              // alert('User not exist or Password incorrect');
+              this.alerts.push({
+                type: 'danger',
+                msg: `User not exist or password incorrect.`,
+                timeout: 5000
+              });
+            }
+          });
+      } else if (this.loginType === 'Organization') {
+        this.providerService
+          .login(username, password)
+          .then(response => {
+            return response.json();
+          })
+          .then((user) => {
+            if (!user.error) {
+              this.closeLogin();
+              this.router.navigate(['profile']);
+            } else {
+              this.alerts.push({
+                type: 'danger',
+                msg: `User not exist or password incorrect.`,
+                timeout: 5000
+              });
+            }
+          });
+      }
     } else {
       // alert('Please enter valid Username and Password!');
       this.alerts.push({

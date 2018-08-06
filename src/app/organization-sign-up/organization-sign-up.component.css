@@ -34,7 +34,7 @@
 
 #step-1 {
   margin-top: 30px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 #step-1 span {
@@ -67,6 +67,7 @@
 
 #step-2 {
   margin-top: 40px;
+  margin-bottom: 60px;
 }
 
 #step-2 p {
@@ -91,6 +92,7 @@
 
 #step-3 {
   margin-top: 40px;
+  margin-bottom: 60px;
 }
 
 #step-3 p {
@@ -115,7 +117,7 @@
 
 #step-4 {
   margin-top: 40px;
-  margin-bottom: 40px;
+  margin-bottom: 60px;
 }
 
 #step-4 p {

@@ -57,7 +57,7 @@
           <li class="list-group-item form-control">{{organizationService}}</li>
           <!--<input [(ngModel)]="organizationService" id="organizationServiceFld" class="form-control" placeholder="Organization Service">-->
           <div class="btn-group" dropdown>
-            <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+            <button id="button-basic" dropdownToggle type="button" class="btn btn-danger dropdown-toggle"
                     aria-controls="dropdown-basic">
               Select Service Type
             </button>
@@ -71,7 +71,9 @@
         <div *ngFor="let alert of alerts" id="alertBox">
           <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onClosed(alert)">{{ alert.msg }}</alert>
         </div>
-        <button (click)="registerProvider(username, password, password2, organizationName, organizationAddress, organizationService)" class="btn btn-danger" [disabled]="!organizationService">Continue</button>
+        <button (click)="registerProvider(username, password, password2, organizationName, organizationAddress, organizationService)"
+                class="btn btn-danger" [disabled]="!organizationService">Continue</button>
+        <hr>
       </div>
     </div>
 

@@ -7,6 +7,12 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
+  <div class="modal-header">
+    <div>
+      <span id="organizationMsg">Organization User?</span>
+      <a id="organizationLink" routerLink="/organization/signUp" (click)="closeRegister()">Sign Up as Organization</a>
+    </div>
+  </div>
   <div class="modal-body">
     <div *ngFor="let alert of alerts">
       <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onClosed(alert)">{{ alert.msg }}</alert>
@@ -44,6 +50,20 @@
     </div>
     <input [(ngModel)]="username" id="loginUsernameFld" class="form-control" placeholder="Username">
     <input [(ngModel)]="password" id="loginPasswordFld" class="form-control" placeholder="Password">
+    <div id="loginType" class="input-group-append">
+      <li class="list-group-item form-control">{{loginType}}</li>
+      <div class="btn-group" dropdown>
+        <button id="button-basic" dropdownToggle type="button" class="btn btn-danger dropdown-toggle"
+                aria-controls="dropdown-basic">
+          Select Login Type
+        </button>
+        <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+            role="menu" aria-labelledby="button-basic">
+          <li role="menuitem"><a (click)="loginType = 'Personal'" class="dropdown-item">Personal</a></li>
+          <li role="menuitem"><a (click)="loginType = 'Organization'" class="dropdown-item">Organization</a></li>
+        </ul>
+      </div>
+    </div>
     <button (click)="loginUser(username, password)" id="loginContinueBtn" class="btn btn-block btn btn-danger">Continue</button>
   </div>
 </ng-template>
