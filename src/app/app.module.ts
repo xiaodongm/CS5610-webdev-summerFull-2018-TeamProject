@@ -28,6 +28,11 @@ import {UserServiceClient} from './services/user.service.client';
 import {MapServiceClient} from './services/map.service.client';
 import {NgxMasonryModule} from 'ngx-masonry';
 import { BsDatepickerModule } from 'ngx-bootstrap';
+import { OrganizationSignUpComponent } from './organization-sign-up/organization-sign-up.component';
+import { CollapseModule } from 'ngx-bootstrap';
+import { BsDropdownModule } from 'ngx-bootstrap';
+import {ProviderServiceClient} from './services/provider.service.client';
+
 
 
 
@@ -46,6 +51,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap';
     EventCardComponent,
     RegisterComponent,
     LoginComponent,
+    OrganizationSignUpComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,6 +60,8 @@ import { BsDatepickerModule } from 'ngx-bootstrap';
     ModalModule.forRoot(),
     AlertModule.forRoot(),
     BsDatepickerModule.forRoot(),
+    CollapseModule.forRoot(),
+    BsDropdownModule.forRoot(),
     FormsModule,
     NgxMasonryModule,
   ],
@@ -62,6 +70,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap';
     CampingSiteToDetailServiceClient,
     UserServiceClient,
     MapServiceClient,
+    ProviderServiceClient,
   ],
   bootstrap: [AppComponent]
 })

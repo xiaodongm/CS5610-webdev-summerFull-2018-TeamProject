@@ -32,6 +32,11 @@
   margin-top: 10px;
 }
 
+#locationMsg {
+  margin-top: 10px;
+  color: gray;
+}
+
 /*login*/
 #loginMsg {
   color: gray;

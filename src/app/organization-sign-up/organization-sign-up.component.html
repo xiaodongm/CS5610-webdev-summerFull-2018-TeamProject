@@ -1,0 +1,79 @@
+<div class="organization-background">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div id="organization-text">
+          <h5>Register Your Organization With Us</h5>
+          <!--<h3>The Best Camping Society App</h3>-->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="organization-body">
+  <div id="step-1">
+    <p><img src="../../assets/images/userAccountIcon.png">Step 1 of 4</p>
+    <span>Create Username and Password for your account</span>
+    <input [(ngModel)]="username" id="usernameFld" class="form-control" placeholder="Username">
+    <input [(ngModel)]="password" id="passwordFld" class="form-control" placeholder="Password">
+    <input [(ngModel)]="password2" id="confirmPasswordFld" class="form-control" placeholder="Confirm Password">
+    <button type="button" class="btn btn-danger" (click)="step1isCollapsed = !step1isCollapsed"
+            [attr.aria-expanded]="!step1isCollapsed" aria-controls="collapseBasic"
+            [disabled]="!(username&&password&&password2)">Next
+    </button>
+    <hr>
+  </div>
+
+  <div id="collapseBasic" [collapse]="step1isCollapsed">
+    <div id="step-2">
+      <p><img src="../../assets/images/orgNameIcon.png">Step 2 of 4</p>
+      <span>Tell Us the Name of Your Organization</span>
+      <input [(ngModel)]="organizationName" id="organizationNameFld" class="form-control" placeholder="Organization Name">
+      <button type="button" class="btn btn-danger" (click)="step2isCollapsed = !step2isCollapsed"
+              [attr.aria-expanded]="!step2isCollapsed" aria-controls="collapseBasic2"
+              [disabled]="!organizationName">Next
+      </button>
+      <hr>
+    </div>
+  </div>
+
+  <div id="collapseBasic2" [collapse]="step2isCollapsed">
+    <div id="step-3">
+      <p><img src="../../assets/images/orgAddressIcon.png">Step 3 of 4</p>
+      <span>Tell Us the Address of Your Organization</span>
+      <input [(ngModel)]="organizationAddress" id="organizationAddressFld" class="form-control" placeholder="Organization Address">
+      <button type="button" class="btn btn-danger" (click)="step3isCollapsed = !step3isCollapsed"
+              [attr.aria-expanded]="!step3isCollapsed" aria-controls="collapseBasic3"
+              [disabled]="!organizationAddress">Next
+      </button>
+      <hr>
+    </div>
+
+    <div id="collapseBasic3" [collapse]="step3isCollapsed">
+      <div id="step-4">
+        <p><img src="../../assets/images/orgServiceIcon.png">Step 4 of 4</p>
+        <span>Tell Us the Service Type of Your Organization</span>
+        <div class="input-group-append">
+          <li class="list-group-item form-control">{{organizationService}}</li>
+          <!--<input [(ngModel)]="organizationService" id="organizationServiceFld" class="form-control" placeholder="Organization Service">-->
+          <div class="btn-group" dropdown>
+            <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+                    aria-controls="dropdown-basic">
+              Select Service Type
+            </button>
+            <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+                role="menu" aria-labelledby="button-basic">
+              <li role="menuitem"><a (click)="organizationService = serviceRole.SiteManager" class="dropdown-item">Site Manager</a></li>
+              <li role="menuitem"><a (click)="organizationService = serviceRole.EquipmentDealer" class="dropdown-item">Equipment Dealer</a></li>
+            </ul>
+          </div>
+        </div>
+        <div *ngFor="let alert of alerts" id="alertBox">
+          <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onClosed(alert)">{{ alert.msg }}</alert>
+        </div>
+        <button (click)="registerProvider(username, password, password2, organizationName, organizationAddress, organizationService)" class="btn btn-danger" [disabled]="!organizationService">Continue</button>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand-sm fixed-top navbar-light bg-light">
   <div class="container">
-  <a class="navbar-brand" routerLink="/home">HuskyCamp</a>
+    <img id="logo" src="../../assets/images/logo.png">
+    <a id="HuskyCamp" class="navbar-brand" routerLink="/home">HuskyCamp</a>
   <button class="navbar-toggler"
           type="button" data-toggle="collapse"
           data-target="#navbarTogglerDemo02"
@@ -14,7 +15,7 @@
   <div id="navbarSupportedContent" [ngClass]="{'collapse': collapsed, 'navbar-collapse': true}">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item active">
-        <a class="nav-link" routerLink="/home">Home</a>
+        <a class="nav-link" routerLink="/organization/signUp">Organization SignUp</a>
       </li>
       <li class="nav-item">
         <!--<a class="nav-link" href="#">Login</a>-->
