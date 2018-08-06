@@ -2,7 +2,7 @@
      (mouseleave) ="mouseLeave()">
 
     <carousel (activeSlideChange)="slideChanged($event)" data-interval="false" [showIndicators]="!(hasExtraInfo && inImage)">
-      <slide *ngFor="let photo of data.photos" class="wbdv-imageContainer">
+      <slide *ngFor="let photo of data.photos" >
         <img [ngClass]="{'wbdv-blur': hasExtraInfo && inImage}" src={{photo}} alt="first slide" style="display: block; width: 100%;">
       </slide>
     </carousel>

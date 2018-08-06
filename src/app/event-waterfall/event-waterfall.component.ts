@@ -213,6 +213,7 @@ export class EventWaterfallComponent implements OnInit {
     }
   }
   ngOnInit() {
+    this.updateMasonryLayout = !this.updateMasonryLayout;
   }
 
 }

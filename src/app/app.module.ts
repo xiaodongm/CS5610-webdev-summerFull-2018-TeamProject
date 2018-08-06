@@ -10,7 +10,7 @@ import { CampingSiteDetailComponent } from './camping-site-detail/camping-site-d
 
 // third part imports
 import { CarouselModule } from 'ngx-bootstrap/carousel';
-import { ModalModule } from 'ngx-bootstrap';
+import {CollapseModule, ModalModule} from 'ngx-bootstrap';
 import { AlertModule } from 'ngx-bootstrap';
 import { SearchBarCampingSiteComponent } from './search-bar-campground/search-bar-camping-site.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -28,6 +28,10 @@ import {UserServiceClient} from './services/user.service.client';
 import {MapServiceClient} from './services/map.service.client';
 import {NgxMasonryModule} from 'ngx-masonry';
 import { BsDatepickerModule } from 'ngx-bootstrap';
+import { EventDetailComponent } from './event-detail/event-detail.component';
+import {EventEditorComponent, SafePipe} from './event-editor/event-editor.component';
+import { CreateEventComponent } from './create-event/create-event.component';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 
 
@@ -46,6 +50,10 @@ import { BsDatepickerModule } from 'ngx-bootstrap';
     EventCardComponent,
     RegisterComponent,
     LoginComponent,
+    EventDetailComponent,
+    EventEditorComponent,
+    CreateEventComponent,
+    SafePipe
   ],
   imports: [
     BrowserModule,
@@ -56,6 +64,8 @@ import { BsDatepickerModule } from 'ngx-bootstrap';
     BsDatepickerModule.forRoot(),
     FormsModule,
     NgxMasonryModule,
+    CollapseModule.forRoot(),
+    BsDropdownModule.forRoot()
   ],
   providers: [
     CampingSiteServiceClient,

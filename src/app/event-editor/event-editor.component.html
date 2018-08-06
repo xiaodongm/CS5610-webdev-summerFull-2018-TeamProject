@@ -1,0 +1,152 @@
+<button type="button" class="btn btn-primary" (click)="openModal(template)">Edit Meta Data</button>
+<br><br>
+<pre class="card card-block card-header">{{message}}</pre>
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Modal</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body text-center">
+
+    <div>
+      <h3>Meta data: can only choose one time</h3>
+      <label> Title </label>
+      <input
+        [(ngModel)]="eventTitle"
+        class="form-control"
+        placeholder="Event Title"
+      />
+
+      <label> Video link </label>
+      <input
+        [(ngModel)]="videoUrl"
+        class="form-control"
+        placeholder="Video link"
+      />
+      <form>
+        <label>Event Starts:</label>
+        <input
+          [(ngModel)]="eventStart"
+          type="date"
+          name="bday">
+        <label>Event Ends:</label>
+
+        <input
+          [(ngModel)]="eventEnd"
+          type="date"
+          name="bday">
+      </form>
+
+      <form>
+
+      </form>
+
+      <label> Add Image </label>
+      <ol>
+        <li *ngFor="let img of images">
+          {{img}}
+          <button (click)="deleteImageUrl(img)">Delete</button>
+        </li>
+      </ol>
+      <input
+        [(ngModel)]="imgUrl"
+        class="form-control"
+        placeholder="Image Url">
+      <button (click)="addImageUrl()">Add Image</button>
+
+    </div>
+    <hr>
+    <p>Do you want to confirm?</p>
+    <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
+    <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+  </div>
+</ng-template>
+
+
+
+<div class="container">
+  <h2>Preview</h2>
+  <div>
+    Event Title: {{eventTitle}}
+  </div>
+
+  <div>
+    <div>{{videoUrl}}</div>
+    <iframe [src]='videoUrl | safe'> </iframe>
+  </div>
+
+  <div>
+    Event Start: {{eventStart}}
+  </div>
+
+  <div>
+    Event End: {{eventEnd}}
+  </div>
+  <div>
+    paragraph: {{paragraph}}
+  </div>
+
+  <div>
+    Image: <img src={{imgUrl}}>
+  </div>
+
+  <div>
+    Link: <a href={{linkUrl}}>click to navigate</a>
+  </div>
+
+  <div>
+    List:
+    <ul>
+      <li *ngFor="let item of listItems">{{item}}</li>
+    </ul>
+  </div>
+</div>
+
+
+
+<div>
+  <h3>Description: Add as much as you can</h3>
+  <label>Paragraph</label>
+  <textarea
+    [(ngModel)]="paragraph"
+    class="form-control"
+    placeholder="Paragraph text">
+  </textarea>
+
+  <label> image url</label>
+  <input
+    [(ngModel)]="imgUrl"
+    class="form-control"
+    placeholder="Image URL">
+
+  <label> link url</label>
+  <input
+    [(ngModel)]="linkUrl"
+    class="form-control"
+    placeholder="Link URL">
+
+  <label> List </label>
+  <select class="form-control">
+    <option value="1">Ordered list</option>
+    <option value="2">Unordered list</option>
+  </select>
+  <input
+    [(ngModel)]="item"
+    class="form-control"
+    placeholder="List Item">
+  <button (click)="addListItem()">Add list item</button>
+</div>
+
+<div>
+  <h3>Drop down pick or go other page to get</h3>
+  <ul>
+    <li>features tags</li>
+    <li>camping site</li>
+    <li>camping equipments</li>
+  </ul>
+</div>
+
+
