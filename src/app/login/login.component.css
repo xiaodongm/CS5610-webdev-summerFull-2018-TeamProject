@@ -24,6 +24,15 @@
   color: cornflowerblue;
 }
 
+#organizationLink {
+  color: cornflowerblue;
+}
+
+#organizationMsg {
+  color: gray;
+  margin-right: 20px;
+}
+
 #mapPinIcon {
   margin-right: 8px;
 }
@@ -56,5 +65,10 @@
 }
 
 #loginContinueBtn {
+  margin-top: 30px;
+}
+
+#loginType {
   margin-top: 15px;
 }
+

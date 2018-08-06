@@ -4,6 +4,11 @@
   margin-right: 20px;
 }
 
+#organizationMsg {
+  color: gray;
+  margin-right: 20px;
+}
+
 #usernameFld {
    margin-top: 15px;
 }
@@ -24,6 +29,10 @@
   color: cornflowerblue;
 }
 
+#organizationLink {
+  color: cornflowerblue;
+}
+
 #mapPinIcon {
   margin-right: 8px;
 }
@@ -36,6 +45,7 @@
   margin-top: 10px;
   color: gray;
 }
+
 
 /*login*/
 #loginMsg {
@@ -56,6 +66,10 @@
 }
 
 #loginContinueBtn {
+  margin-top: 30px;
+}
+
+#loginType {
   margin-top: 15px;
 }
 

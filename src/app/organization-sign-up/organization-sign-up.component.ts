@@ -30,6 +30,7 @@ export class OrganizationSignUpComponent implements OnInit {
     EquipmentDealer: 'EquipmentDealer'
   };
 
+
   registerProvider(username, password, password2, organizationName, organizationAddress, service) {
     if (username && password) {
       if (password !== password2) {

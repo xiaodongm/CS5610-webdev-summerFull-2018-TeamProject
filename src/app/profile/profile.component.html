@@ -9,7 +9,10 @@
         <div class="avatar">
         </div>
       </div>
-      <h2 class="main-text">{{user.firstName}} {{user.lastName}}</h2>
+      <h2 *ngIf="user.role !== 'SiteManager' && user.role !== 'EquipmentDealer'"
+          class="main-text">{{user.firstName}} {{user.lastName}}</h2>
+      <h2 *ngIf="user.role === 'SiteManager' || user.role === 'EquipmentDealer'"
+          class="main-text">{{provider.organizationName}}</h2>
     </div>
 
     <div class="button-group">
