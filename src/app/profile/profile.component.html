@@ -9,7 +9,7 @@
         <div class="avatar">
         </div>
       </div>
-      <h2 class="main-text">First Name Last Name</h2>
+      <h2 class="main-text">{{user.firstName}} {{user.lastName}}</h2>
     </div>
 
     <div class="button-group">
@@ -40,7 +40,7 @@
   </div>
 
   <div class="container">
-    <app-basic-information></app-basic-information>
+    <app-basic-information (messageEvent)="receiveMessage($event)"></app-basic-information>
   </div>
 </div>
 

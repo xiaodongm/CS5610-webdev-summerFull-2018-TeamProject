@@ -4,6 +4,7 @@ import {CampingSiteDetailComponent} from './camping-site-detail/camping-site-det
 import {HomeComponent} from './home/home.component';
 import {ProfileComponent} from './profile/profile.component';
 import {RegisterComponent} from './register/register.component';
+import {OrganizationSignUpComponent} from './organization-sign-up/organization-sign-up.component';
 
 
 const appRoutes: Routes = [
@@ -13,6 +14,7 @@ const appRoutes: Routes = [
   { path: 'homepage', component: HomePageComponent},
   { path: 'camping-site/:contractID/:facilityID/detail', component: CampingSiteDetailComponent},
   { path: 'detail', component: CampingSiteDetailComponent},
+  { path: 'organization/signUp', component: OrganizationSignUpComponent},
   { path: '**', component: HomeComponent},
 
 ];

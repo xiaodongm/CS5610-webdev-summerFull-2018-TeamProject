@@ -27,7 +27,10 @@ export class EventWaterfallComponent implements OnInit {
     'photo-1533233336213-b3a32825c689?ixlib=' +
     'rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5c181' +
     '76885796e2a3399a4a6906e8270&auto=format&fi' +
-    't=crop&w=800&q=60'
+    't=crop&w=800&q=60',
+    role: 'organizer',
+    organizationName: '',
+    organizationAddress: ''
   };
 
   organizer2: User = {
@@ -45,7 +48,10 @@ export class EventWaterfallComponent implements OnInit {
     profilePhoto: 'https://images.unsplash.com/photo-1' +
     '438761681033-6461ffad8d80?ixlib=rb-0.3.5&ixid=eyJ' +
     'hcHBfaWQiOjEyMDd9&s=5d43ec18ec2cf6ff854513b9e8395c' +
-    '1e&auto=format&fit=crop&w=800&q=60'
+    '1e&auto=format&fit=crop&w=800&q=60',
+    role: 'organizer',
+    organizationName: '',
+    organizationAddress: ''
   };
   organizer3: User = {
     username: '',
@@ -62,7 +68,10 @@ export class EventWaterfallComponent implements OnInit {
     profilePhoto: 'https://images.unsplash.com/photo-1495078' +
     '065017-564723e7e3e7?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjE' +
     'yMDd9&s=09093dcdf66dbcd2397b9dc19384a899&auto=format&fit' +
-    '=crop&w=800&q=60'
+    '=crop&w=800&q=60',
+    role: 'organizer',
+    organizationName: '',
+    organizationAddress: ''
   };
   event: EventCard = {
     organizer: this.organizer,
