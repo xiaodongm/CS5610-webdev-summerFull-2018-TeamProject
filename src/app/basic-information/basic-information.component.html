@@ -1,6 +1,8 @@
 <div *ngFor="let alert of alerts" id="alertBox">
   <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onClosed(alert)">{{ alert.msg }}</alert>
 </div>
+<h3 *ngIf="user.role !== 'SiteManager' && user.role !== 'EquipmentDealer'" class="accountType">Personal Account</h3>
+<h3 *ngIf="user.role === 'SiteManager' || user.role === 'EquipmentDealer'" class="accountType">Organization Account</h3>
 <div>
     <div class="input-group-append infoFld">
       <label for="username" class="col-sm-2 col-form-label">Username</label>
@@ -14,7 +16,23 @@
              readonly/>
     </div>
 
-    <div class="input-group-append infoFld">
+  <div *ngIf="user.role === 'SiteManager' || user.role === 'EquipmentDealer'" class="input-group-append infoFld">
+    <label for="organizationName" class="col-sm-2 col-form-label">Organization Name</label>
+    <input [(ngModel)]="provider.organizationName"
+           placeholder="Organization Name"
+           id="organizationName"
+           class="form-control"/>
+  </div>
+
+  <div *ngIf="user.role === 'SiteManager' || user.role === 'EquipmentDealer'" class="input-group-append infoFld">
+    <label for="organizationAddress" class="col-sm-2 col-form-label">Organization Address</label>
+    <input [(ngModel)]="provider.organizationAddress"
+           placeholder="Organization Address"
+           id="organizationAddress"
+           class="form-control"/>
+  </div>
+
+    <div *ngIf="user.role !== 'SiteManager' && user.role !== 'EquipmentDealer'" class="input-group-append infoFld">
       <label for="firstName" class="col-sm-2 col-form-label">First Name</label>
       <input [(ngModel)]="user.firstName"
              placeholder="first name"
@@ -22,7 +40,7 @@
              class="form-control"/>
     </div>
 
-    <div class="input-group-append infoFld">
+    <div *ngIf="user.role !== 'SiteManager' && user.role !== 'EquipmentDealer'" class="input-group-append infoFld">
       <label for="lastName" class="col-sm-2 col-form-label">Last Name</label>
       <input [(ngModel)]="user.lastName"
              placeholder="lastName"
@@ -30,7 +48,7 @@
              class="form-control"/>
     </div>
 
-    <div class="input-group-append infoFld">
+    <div *ngIf="user.role !== 'SiteManager' && user.role !== 'EquipmentDealer'" class="input-group-append infoFld">
       <label for="dob" class="col-sm-2 col-form-label">Date of Birth</label>
       <input type="text"
              [(ngModel)]="user.dateOfBirth"
@@ -57,7 +75,17 @@
              class="form-control"/>
     </div>
 
-    <div class="input-group-append infoFld">
+
+  <div *ngIf="user.role === 'SiteManager' || user.role === 'EquipmentDealer'" class="input-group-append infoFld">
+    <label for="serviceType" class="col-sm-2 col-form-label">Service Type</label>
+    <input [(ngModel)]="provider.role"
+           placeholder="Service Type"
+           id="serviceType"
+           readonly
+           class="form-control"/>
+  </div>
+
+    <div *ngIf="user.role !== 'SiteManager' && user.role !== 'EquipmentDealer'" class="input-group-append infoFld">
       <label for="address" class="col-sm-2 col-form-label">Address</label>
       <input [(ngModel)]="user.address"
              placeholder="address"
