@@ -68,6 +68,7 @@ export class RegisterComponent implements OnInit {
           })
           .then((user) => {
             if (!user.err) {
+              this.newMessage();
               this.closeRegister();
               this.router.navigate(['profile']);
             } else {
