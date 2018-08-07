@@ -11,4 +11,5 @@ export class User {
   lat: String;
   lng: String;
   profilePhoto: String;
+  role: String;
 }

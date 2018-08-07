@@ -1,5 +1,7 @@
+import {User} from './user.model.client';
+
 export class EventCard {
-  organizer: object;
+  organizer: User;
   start: Date;
   end: Date;
   title: String;

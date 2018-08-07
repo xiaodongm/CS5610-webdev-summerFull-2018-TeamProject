@@ -3,6 +3,8 @@ import {AlertComponent, BsModalService} from 'ngx-bootstrap';
 import {UserServiceClient} from '../services/user.service.client';
 import {Router} from '@angular/router';
 import {MapServiceClient} from '../services/map.service.client';
+import {ProviderServiceClient} from '../services/provider.service.client';
+import {LoginToNavbarServiceClient} from '../communication-services/login-to-navbar.service.client';
 
 @Component({
   selector: 'app-register',
@@ -14,7 +16,9 @@ export class RegisterComponent implements OnInit {
   constructor(private modalService: BsModalService,
               private userService: UserServiceClient,
               private mapService: MapServiceClient,
-              private router: Router) { }
+              private providerService: ProviderServiceClient,
+              private router: Router,
+              private data: LoginToNavbarServiceClient) { }
 
   registerWindow;
   loginWindow;
@@ -22,8 +26,10 @@ export class RegisterComponent implements OnInit {
   password;
   password2;
   location;
+  loginType = 'Personal';
 
   alerts = [];
+  message;
 
   findLatLng() {
     if (navigator.geolocation) {
@@ -62,6 +68,8 @@ export class RegisterComponent implements OnInit {
           })
           .then((user) => {
             if (!user.err) {
+              this.newMessage();
+              this.closeRegister();
               this.router.navigate(['profile']);
             } else {
               // alert('Username already exist, please choose another one.');
@@ -75,6 +83,59 @@ export class RegisterComponent implements OnInit {
       }
     } else {
       // alert('Please enter valid Username and Password.');
+      this.alerts.push({
+        type: 'danger',
+        msg: `Please enter valid Username and Password.`,
+        timeout: 5000
+      });
+    }
+  }
+
+  loginUser(username, password) {
+    console.log([username, password]);
+    if (username && password) {
+      if (this.loginType === 'Personal') {
+        this.userService
+          .login(username, password)
+          .then(response => {
+            return response.json();
+          })
+          .then((user) => {
+            if (!user.error) {
+              this.newMessage();
+              this.closeLogin();
+              this.router.navigate(['profile']);
+            } else {
+              // alert('User not exist or Password incorrect');
+              this.alerts.push({
+                type: 'danger',
+                msg: `User not exist or password incorrect.`,
+                timeout: 5000
+              });
+            }
+          });
+      } else if (this.loginType === 'Organization') {
+        this.providerService
+          .login(username, password)
+          .then(response => {
+            return response.json();
+          })
+          .then((user) => {
+            if (!user.error) {
+              this.newMessage();
+              this.closeLogin();
+              this.router.navigate(['profile']);
+            } else {
+              this.alerts.push({
+                type: 'danger',
+                msg: `User not exist or password incorrect.`,
+                timeout: 5000
+              });
+            }
+          });
+      }
+    } else {
+      // alert('Please enter valid Username and Password!');
       this.alerts.push({
         type: 'danger',
         msg: `Please enter valid Username and Password.`,
@@ -107,7 +168,12 @@ export class RegisterComponent implements OnInit {
     this.loginWindow = null;
   }
 
+  newMessage() {
+    this.data.changeMessage('login');
+  }
+
   ngOnInit() {
+    this.data.currentMessage.subscribe(message => this.message = message);
   }
 
 }

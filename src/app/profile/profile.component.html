@@ -9,7 +9,10 @@
         <div class="avatar">
         </div>
       </div>
-      <h2 class="main-text">First Name Last Name</h2>
+      <h2 *ngIf="user.role !== 'SiteManager' && user.role !== 'EquipmentDealer'"
+          class="main-text">{{user.firstName}} {{user.lastName}}</h2>
+      <h2 *ngIf="user.role === 'SiteManager' || user.role === 'EquipmentDealer'"
+          class="main-text">{{provider.organizationName}}</h2>
     </div>
 
     <div class="button-group">
@@ -20,7 +23,7 @@
   </div>
 
   <div class="botton-background">
-    <div class="row">
+    <div class="input-group-append">
       <div class="col-sm grid-item">
         <a href="#">Private Info</a>
       </div>
@@ -40,8 +43,8 @@
   </div>
 
   <div class="container">
-    <app-basic-information></app-basic-information>
     <app-friend-list></app-friend-list>
+    <app-basic-information (messageEvent)="receiveMessage($event)"></app-basic-information>
   </div>
 </div>
 

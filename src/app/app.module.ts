@@ -30,6 +30,15 @@ import { FriendListComponent } from './friend-list/friend-list.component';
 import { EventServiceClient} from './services/event.service.client';
 import {EnrollmentServiceClient} from './services/enrollment.service.client';
 
+import { NgxMasonryModule} from 'ngx-masonry';
+import { BsDatepickerModule } from 'ngx-bootstrap';
+import { OrganizationSignUpComponent } from './organization-sign-up/organization-sign-up.component';
+import { CollapseModule } from 'ngx-bootstrap';
+import { BsDropdownModule } from 'ngx-bootstrap';
+import { ProviderServiceClient} from './services/provider.service.client';
+import { LoginToNavbarServiceClient} from './communication-services/login-to-navbar.service.client';
+
+
 
 
 @NgModule({
@@ -48,6 +57,7 @@ import {EnrollmentServiceClient} from './services/enrollment.service.client';
     RegisterComponent,
     LoginComponent,
     FriendListComponent,
+    OrganizationSignUpComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,7 +65,11 @@ import {EnrollmentServiceClient} from './services/enrollment.service.client';
     CarouselModule.forRoot(),  // ngx-bootstrap
     ModalModule.forRoot(),
     AlertModule.forRoot(),
-    FormsModule
+    BsDatepickerModule.forRoot(),
+    CollapseModule.forRoot(),
+    BsDropdownModule.forRoot(),
+    FormsModule,
+    NgxMasonryModule,
   ],
   providers: [
     CampingSiteServiceClient,
@@ -64,6 +78,8 @@ import {EnrollmentServiceClient} from './services/enrollment.service.client';
     MapServiceClient,
     EventServiceClient,
     EnrollmentServiceClient,
+    ProviderServiceClient,
+    LoginToNavbarServiceClient,
   ],
   bootstrap: [AppComponent]
 })
