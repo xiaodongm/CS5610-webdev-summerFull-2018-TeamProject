@@ -3,7 +3,7 @@
 <pre class="card card-block card-header">{{message}}</pre>
 <ng-template #template>
   <div class="modal-header">
-    <h4 class="modal-title pull-left">Modal</h4>
+    <h4 class="modal-title pull-left">Meta data: can only choose one time</h4>
     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -11,8 +11,9 @@
 
   <div class="modal-body text-center">
 
+
+
     <div>
-      <h3>Meta data: can only choose one time</h3>
       <label> Title </label>
       <input
         [(ngModel)]="eventTitle"
@@ -40,10 +41,6 @@
           name="bday">
       </form>
 
-      <form>
-
-      </form>
-
       <label> Add Image </label>
       <ol>
         <li *ngFor="let img of images">
@@ -66,6 +63,115 @@
 </ng-template>
 
 
+<button type="button" class="btn btn-primary" (click)="openModal(template2)">Edit Description</button>
+<br><br>
+<pre class="card card-block card-header">{{message}}</pre>
+<ng-template #template2>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Description: Edit or Add new</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <div>
+      <h4>Edit current descriptions</h4>
+      <div *ngFor="let widget of descriptions">
+        <div *ngIf="widget.type === 'paragraph'">
+          paragraph: {{widget.data}}
+        </div>
+        <div *ngIf="widget.type === 'link'">
+          Link: <a href={{widget.data}}>{{widget.data}}</a>
+        </div>
+
+        <div *ngIf="widget.type === 'unorderedList'">
+          List:
+          <ul >
+            <li *ngFor="let item of splitList(widget.data)">{{item}}</li>
+          </ul>
+        </div>
+
+        <div *ngIf="widget.type === 'orderedList'">
+          List:
+          <ol>
+            <li *ngFor="let item of splitList(widget.data)">{{item}}</li>
+          </ol>
+        </div>
+
+        <hr>
+      </div>
+
+      <div class="amenity_list" *ngIf="tags.length > 0">
+        <span *ngFor="let tag of tags" class="badge badge-secondary amenity_item">{{tag}}</span>
+        <hr>
+      </div>
+    </div>
+    <div>
+      <h4>Add new descriptions</h4>
+      <tabset>
+        <tab heading="Paragraph" id="tab1">
+          Basic content
+          <label>Paragraph</label>
+          <textarea
+            [(ngModel)]="paragraph"
+            class="form-control"
+            placeholder="Paragraph text">
+          </textarea>
+          <button (click)="addParagraph()">Add Paragraph</button>
+        </tab>
+
+        <tab heading="Link">
+          <div>
+            <label> link url</label>
+            <input
+              [(ngModel)]="linkUrl"
+              class="form-control"
+              placeholder="Link URL">
+            <button (click)="addLink()">Add Link</button>
+          </div>
+        </tab>
+
+        <tab heading="List">
+          <div>
+            <label> List </label>
+            <select class="form-control" (change)="setListType()" >
+              <option value="unorderedList">Unordered list</option>
+              <option value="orderedList">Ordered list</option>
+            </select>
+            <textarea
+              [(ngModel)]="list"
+              class="form-control"
+              placeholder="List Item">
+            </textarea>
+            <button (click)="addList()">Add List</button>
+          </div>
+        </tab>
+
+        <tab heading="Features">
+          <div class="btn-group" dropdown>
+            <button dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+                    aria-controls="dropdown-basic">
+              Add feature tags <span class="caret"></span>
+            </button>
+            <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+                role="menu" aria-labelledby="button-basic">
+              <li role="menuitem"><a class="dropdown-item" (click)="toggleTag('Hiking')">Hiking</a></li>
+              <li role="menuitem"><a class="dropdown-item" (click)="toggleTag('Fishing')">Fishing</a></li>
+              <li role="menuitem"><a class="dropdown-item" (click)="toggleTag('Biking')">Biking</a></li>
+            </ul>
+          </div>
+        </tab>
+      </tabset>
+    </div>
+
+    <hr>
+    <p>Do you want to confirm?</p>
+    <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
+    <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+  </div>
+</ng-template>
+
 
 <div class="container">
   <h2>Preview</h2>
@@ -85,65 +191,48 @@
   <div>
     Event End: {{eventEnd}}
   </div>
-  <div>
-    paragraph: {{paragraph}}
-  </div>
 
   <div>
     Image: <img src={{imgUrl}}>
   </div>
 
-  <div>
-    Link: <a href={{linkUrl}}>click to navigate</a>
+</div>
+
+<div class="container">
+  <h2>Descriptions</h2>
+  <div *ngFor="let widget of descriptions">
+    <div *ngIf="widget.type === 'paragraph'">
+      paragraph: {{widget.data}}
+    </div>
+    <div *ngIf="widget.type === 'link'">
+      Link: <a href={{widget.data}}>{{widget.data}}</a>
+    </div>
+
+    <div *ngIf="widget.type === 'unorderedList'">
+      List:
+      <ul >
+        <li *ngFor="let item of splitList(widget.data)">{{item}}</li>
+      </ul>
+    </div>
+
+    <div *ngIf="widget.type === 'orderedList'">
+      List:
+      <ol>
+        <li *ngFor="let item of splitList(widget.data)">{{item}}</li>
+      </ol>
+    </div>
   </div>
 
-  <div>
-    List:
-    <ul>
-      <li *ngFor="let item of listItems">{{item}}</li>
-    </ul>
+  <div class="amenity_list">
+    <span *ngFor="let tag of tags" class="badge badge-secondary amenity_item">{{tag}}</span>
   </div>
 </div>
 
 
-
-<div>
-  <h3>Description: Add as much as you can</h3>
-  <label>Paragraph</label>
-  <textarea
-    [(ngModel)]="paragraph"
-    class="form-control"
-    placeholder="Paragraph text">
-  </textarea>
-
-  <label> image url</label>
-  <input
-    [(ngModel)]="imgUrl"
-    class="form-control"
-    placeholder="Image URL">
-
-  <label> link url</label>
-  <input
-    [(ngModel)]="linkUrl"
-    class="form-control"
-    placeholder="Link URL">
-
-  <label> List </label>
-  <select class="form-control">
-    <option value="1">Ordered list</option>
-    <option value="2">Unordered list</option>
-  </select>
-  <input
-    [(ngModel)]="item"
-    class="form-control"
-    placeholder="List Item">
-  <button (click)="addListItem()">Add list item</button>
-</div>
 
 <div>
   <h3>Drop down pick or go other page to get</h3>
   <ul>
-    <li>features tags</li>
     <li>camping site</li>
     <li>camping equipments</li>
   </ul>

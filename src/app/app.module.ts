@@ -10,7 +10,7 @@ import { CampingSiteDetailComponent } from './camping-site-detail/camping-site-d
 
 // third part imports
 import { CarouselModule } from 'ngx-bootstrap/carousel';
-import {CollapseModule, ModalModule} from 'ngx-bootstrap';
+import {CollapseModule, ModalModule, TabsModule} from 'ngx-bootstrap';
 import { AlertModule } from 'ngx-bootstrap';
 import { SearchBarCampingSiteComponent } from './search-bar-campground/search-bar-camping-site.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -65,7 +65,8 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     FormsModule,
     NgxMasonryModule,
     CollapseModule.forRoot(),
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    TabsModule.forRoot()
   ],
   providers: [
     CampingSiteServiceClient,

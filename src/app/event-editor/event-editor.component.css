@@ -8,3 +8,8 @@
   height:18em;
   background-color: rgba(0,0,0,0.5);
 }
+
+.card {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
