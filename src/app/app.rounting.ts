@@ -7,6 +7,7 @@ import {RegisterComponent} from './register/register.component';
 import {OrganizationSignUpComponent} from './organization-sign-up/organization-sign-up.component';
 
 
+
 const appRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
   { path: 'home', component: HomeComponent},
