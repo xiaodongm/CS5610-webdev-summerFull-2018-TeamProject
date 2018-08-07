@@ -32,6 +32,7 @@ import { OrganizationSignUpComponent } from './organization-sign-up/organization
 import { CollapseModule } from 'ngx-bootstrap';
 import { BsDropdownModule } from 'ngx-bootstrap';
 import {ProviderServiceClient} from './services/provider.service.client';
+import {LoginToNavbarServiceClient} from './communication-services/login-to-navbar.service.client';
 
 
 
@@ -71,6 +72,7 @@ import {ProviderServiceClient} from './services/provider.service.client';
     UserServiceClient,
     MapServiceClient,
     ProviderServiceClient,
+    LoginToNavbarServiceClient,
   ],
   bootstrap: [AppComponent]
 })

@@ -4,6 +4,7 @@ import {UserServiceClient} from '../services/user.service.client';
 import {Router} from '@angular/router';
 import {MapServiceClient} from '../services/map.service.client';
 import {ProviderServiceClient} from '../services/provider.service.client';
+import {LoginToNavbarServiceClient} from '../communication-services/login-to-navbar.service.client';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,8 @@ export class LoginComponent implements OnInit {
               private userService: UserServiceClient,
               private mapService: MapServiceClient,
               private providerService: ProviderServiceClient,
-              private router: Router) { }
+              private router: Router,
+              private data: LoginToNavbarServiceClient) { }
 
   registerWindow;
   loginWindow;
@@ -25,6 +27,7 @@ export class LoginComponent implements OnInit {
   password2;
   location;
   loginType = 'Personal';
+  message;
 
   alerts = [];
 
@@ -39,6 +42,7 @@ export class LoginComponent implements OnInit {
           })
           .then((user) => {
             if (!user.error) {
+              this.newMessage();
               this.closeLogin();
               this.router.navigate(['profile']);
             } else {
@@ -58,6 +62,7 @@ export class LoginComponent implements OnInit {
           })
           .then((user) => {
             if (!user.error) {
+              this.newMessage();
               this.closeLogin();
               this.router.navigate(['profile']);
             } else {
@@ -162,7 +167,12 @@ export class LoginComponent implements OnInit {
     this.loginWindow = null;
   }
 
+  newMessage() {
+    this.data.changeMessage('login');
+  }
+
   ngOnInit() {
+    this.data.currentMessage.subscribe(message => this.message = message);
   }
 
 }

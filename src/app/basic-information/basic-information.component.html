@@ -1,8 +1,13 @@
 <div *ngFor="let alert of alerts" id="alertBox">
   <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onClosed(alert)">{{ alert.msg }}</alert>
 </div>
-<h3 *ngIf="user.role !== 'SiteManager' && user.role !== 'EquipmentDealer'" class="accountType">Personal Account</h3>
-<h3 *ngIf="user.role === 'SiteManager' || user.role === 'EquipmentDealer'" class="accountType">Organization Account</h3>
+<h3 *ngIf="user.role !== 'SiteManager' && user.role !== 'EquipmentDealer'" class="accountType">
+  Personal Account
+</h3>
+<h3 *ngIf="user.role === 'SiteManager' || user.role === 'EquipmentDealer'" class="accountType">
+  Organization Account
+</h3>
+<hr class="my-3">
 <div>
     <div class="input-group-append infoFld">
       <label for="username" class="col-sm-2 col-form-label">Username</label>

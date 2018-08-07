@@ -4,6 +4,7 @@ import {User} from '../models/user.model.client';
 import {AlertComponent} from 'ngx-bootstrap';
 import {Provider} from '../models/provider.model.client';
 import {ProviderServiceClient} from '../services/provider.service.client';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-basic-information',
@@ -12,13 +13,15 @@ import {ProviderServiceClient} from '../services/provider.service.client';
 })
 export class BasicInformationComponent implements OnInit {
 
-  constructor(private service: UserServiceClient,
-              private providerService: ProviderServiceClient ) { }
+  constructor(private userService: UserServiceClient,
+              private providerService: ProviderServiceClient,
+              private router: Router) { }
 
   user = new User();
   provider = new Provider();
   alerts = [];
   message;
+
 
   @Output() messageEvent = new EventEmitter<string>();
 
@@ -29,7 +32,7 @@ export class BasicInformationComponent implements OnInit {
   update() {
     console.log(this.user);
     if (this.user.role !== 'SiteManager' && this.user.role !== 'EquipmentDealer') {
-      this.service
+      this.userService
         .update(this.user)
         .then((response) => {
           this.message = response;
@@ -61,7 +64,7 @@ export class BasicInformationComponent implements OnInit {
 
 
   ngOnInit() {
-    this.service
+    this.userService
       .profile()
       .then(user => this.user = user);
     this.providerService

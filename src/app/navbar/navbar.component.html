@@ -26,6 +26,13 @@
         <!--<a class="nav-link disabled" href="#">Register</a>-->
         <app-register></app-register>
       </li>
+      <li *ngIf="message === 'login'" id="divider" class="divider-vertical"></li>
+      <li *ngIf="message === 'login'" class="nav-item">
+        <a class="nav-link" routerLink="/profile">Profile</a>
+      </li>
+      <li *ngIf="message === 'login'" class="nav-item">
+        <a (click)="logout()" class="nav-link" routerLink="/home">Logout</a>
+      </li>
     </ul>
   </div>
   </div>
