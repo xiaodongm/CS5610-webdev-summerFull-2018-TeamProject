@@ -78,7 +78,8 @@ export class EventWaterfallComponent implements OnInit {
       'EyMDd9&s=f8c4f0513223e7ce1ce7783e0d870190&auto=f' +
       'ormat&fit=crop&w=800&q=60'],
     video: 'https://www.youtube.com/embed/PHQe7Sj56NE',
-    description: ''
+    descriptions: [],
+    tags: []
   };
 
   event2: EventCard = {
@@ -95,7 +96,8 @@ export class EventWaterfallComponent implements OnInit {
       '&s=a0d9a8f675adf1d8d1763a275e72ac66&auto=format&fit' +
       '=crop&w=800&q=60'],
     video: 'https://www.youtube.com/embed/b6hoBp7Hk-A',
-    description: ''
+    descriptions: [],
+    tags: []
   };
 
   event3: EventCard = {
@@ -109,7 +111,8 @@ export class EventWaterfallComponent implements OnInit {
       '=crop&w=800&q=60',
       ],
     video: '',
-    description: ''
+    descriptions: [],
+    tags: []
   };
 
   event4: EventCard = {
@@ -124,7 +127,8 @@ export class EventWaterfallComponent implements OnInit {
     'op&w=800&q=60',
     ],
     video: '',
-    description: ''
+    descriptions: [],
+    tags: []
   };
 
   event5: EventCard = {
@@ -138,7 +142,8 @@ export class EventWaterfallComponent implements OnInit {
     '&auto=format&fit=crop&w=800&q=60',
     ],
     video: '',
-    description: ''
+    descriptions: [],
+    tags: []
   };
 
   event6: EventCard = {
@@ -151,7 +156,8 @@ export class EventWaterfallComponent implements OnInit {
     '3f87&auto=format&fit=crop&w=800&q=60',
     ],
     video: '',
-    description: ''
+    descriptions: [],
+    tags: []
   };
 
   event7: EventCard = {
@@ -165,7 +171,8 @@ export class EventWaterfallComponent implements OnInit {
     'w=800&q=60',
     ],
     video: '',
-    description: ''
+    descriptions: [],
+    tags: []
   };
 
   event8: EventCard = {
@@ -178,7 +185,8 @@ export class EventWaterfallComponent implements OnInit {
     '1f7f08fd5fdc79bc0e107a71e08&auto=format&fit=crop&w=800&q=60',
     ],
     video: '',
-    description: ''
+    descriptions: [],
+    tags: []
   };
 
   event9: EventCard = {
@@ -192,7 +200,8 @@ export class EventWaterfallComponent implements OnInit {
     'at&fit=crop&w=800&q=60',
     ],
     video: '',
-    description: ''
+    descriptions: [],
+    tags: []
   };
   cards: EventCard[] = [this.event, this.event2, this.event3,
                         this.event4, this.event5, this.event6,

@@ -32,6 +32,7 @@ import { EventDetailComponent } from './event-detail/event-detail.component';
 import {EventEditorComponent, SafePipe} from './event-editor/event-editor.component';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { EventDescriptionWidgetEditorComponent } from './event-description-widget-editor/event-description-widget-editor.component';
 
 
 
@@ -53,7 +54,8 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     EventDetailComponent,
     EventEditorComponent,
     CreateEventComponent,
-    SafePipe
+    SafePipe,
+    EventDescriptionWidgetEditorComponent,
   ],
   imports: [
     BrowserModule,

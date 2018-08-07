@@ -1,15 +1,40 @@
-.modal.fade {
-  display: flex !important;
-  justify-content: center;
-  align-items: center;
-}
-.modal-dialog {
-  vertical-align:middle;
-  height:18em;
-  background-color: rgba(0,0,0,0.5);
+
+.content-of-modal .card {
+  background-color: #9fcdff;
+  padding: 10px;
 }
 
-.card {
-  padding-top: 5px;
-  padding-bottom: 5px;
+.content-of-modal .span-box {
+
 }
+
+.content-of-modal .delete-span {
+  display: inline-block;
+  margin-right: 3px;
+  float: right;
+
+}
+
+.content-of-modal .edit-span {
+  display: inline-block;
+  margin-right: 4px;
+  float: right;
+}
+
+
+/*.my-modal {*/
+  /*border: solid 4px blue;*/
+/*}*/
+
+/*.my-modal .modal-header {*/
+  /*background-color: lime;*/
+  /*color: red;*/
+/*}*/
+
+/*.my-modal .modal-body {*/
+  /*background-color: orange;*/
+/*}*/
+
+/*.my-modal .modal-body div {*/
+  /*padding: 10px;*/
+/*}*/

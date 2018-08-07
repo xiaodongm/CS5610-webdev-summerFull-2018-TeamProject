@@ -3,6 +3,70 @@
 </div>
 
 <div class="container">
-  <app-event-editor></app-event-editor>
+  <app-event-editor [event]="event"></app-event-editor>
 </div>
+
+<div class="container">
+  <h2>Preview</h2>
+  <div>
+    Event Title: {{event.title}}
+  </div>
+
+  <div>
+    <div>{{event.video}}</div>
+    <iframe [src]='event.video | safe'> </iframe>
+  </div>
+
+  <div>
+    Event Start: {{event.start}}
+  </div>
+
+  <div>
+    Event End: {{event.end}}
+  </div>
+
+  <div *ngFor="let photo of event.photos">
+    Image: <img src={{photo}}>
+  </div>
+
+
+  <h2>Descriptions</h2>
+  <div *ngFor="let widget of this.event.descriptions">
+    <div *ngIf="widget.type === 'paragraph'">
+      paragraph: {{widget.data}}
+    </div>
+    <div *ngIf="widget.type === 'link'">
+      Link: <a href={{widget.data}}>{{widget.data}}</a>
+    </div>
+
+    <div *ngIf="widget.type === 'unorderedList'">
+      List:
+      <ul >
+        <li *ngFor="let item of splitList(widget.data)">{{item}}</li>
+      </ul>
+    </div>
+
+    <div *ngIf="widget.type === 'orderedList'">
+      List:
+      <ol>
+        <li *ngFor="let item of splitList(widget.data)">{{item}}</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="amenity_list">
+    <span *ngFor="let tag of this.event.tags" class="badge badge-secondary amenity_item">{{tag}}</span>
+  </div>
+
+  <div>
+    <h3>Drop down pick or go other page to get</h3>
+    <ul>
+      <li>camping site</li>
+      <li>camping equipments</li>
+    </ul>
+  </div>
+</div>
+
+
+
 

@@ -11,39 +11,37 @@
 
   <div class="modal-body text-center">
 
-
-
     <div>
       <label> Title </label>
       <input
-        [(ngModel)]="eventTitle"
+        [(ngModel)]="event.title"
         class="form-control"
         placeholder="Event Title"
       />
 
       <label> Video link </label>
       <input
-        [(ngModel)]="videoUrl"
+        [(ngModel)]="event.video"
         class="form-control"
         placeholder="Video link"
       />
       <form>
         <label>Event Starts:</label>
         <input
-          [(ngModel)]="eventStart"
+          [(ngModel)]="event.start"
           type="date"
           name="bday">
         <label>Event Ends:</label>
 
         <input
-          [(ngModel)]="eventEnd"
+          [(ngModel)]="event.end"
           type="date"
           name="bday">
       </form>
 
       <label> Add Image </label>
       <ol>
-        <li *ngFor="let img of images">
+        <li *ngFor="let img of event.photos">
           {{img}}
           <button (click)="deleteImageUrl(img)">Delete</button>
         </li>
@@ -75,35 +73,25 @@
   </div>
 
   <div class="modal-body">
-    <div>
+    <div class="content-of-modal">
       <h4>Edit current descriptions</h4>
-      <div *ngFor="let widget of descriptions">
-        <div *ngIf="widget.type === 'paragraph'">
-          paragraph: {{widget.data}}
-        </div>
-        <div *ngIf="widget.type === 'link'">
-          Link: <a href={{widget.data}}>{{widget.data}}</a>
-        </div>
+      <div *ngFor="let widget of this.event.descriptions">
+        <div class="card">
 
-        <div *ngIf="widget.type === 'unorderedList'">
-          List:
-          <ul >
-            <li *ngFor="let item of splitList(widget.data)">{{item}}</li>
-          </ul>
-        </div>
+          <app-event-description-widget-editor
+            [widget]="widget"
+            (deleteEmitter)="deleteWidget($event)"
+            (editEmitter)="updateWidget($event)"
+          >
 
-        <div *ngIf="widget.type === 'orderedList'">
-          List:
-          <ol>
-            <li *ngFor="let item of splitList(widget.data)">{{item}}</li>
-          </ol>
-        </div>
+          </app-event-description-widget-editor>
 
+          </div>
         <hr>
       </div>
 
-      <div class="amenity_list" *ngIf="tags.length > 0">
-        <span *ngFor="let tag of tags" class="badge badge-secondary amenity_item">{{tag}}</span>
+      <div class="amenity_list" *ngIf="this.event.tags.length > 0">
+        <span *ngFor="let tag of this.event.tags" class="badge badge-secondary amenity_item">{{tag}}</span>
         <hr>
       </div>
     </div>
@@ -166,76 +154,11 @@
     </div>
 
     <hr>
-    <p>Do you want to confirm?</p>
+    <p>Save new added widget?</p>
     <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
     <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
   </div>
 </ng-template>
 
-
-<div class="container">
-  <h2>Preview</h2>
-  <div>
-    Event Title: {{eventTitle}}
-  </div>
-
-  <div>
-    <div>{{videoUrl}}</div>
-    <iframe [src]='videoUrl | safe'> </iframe>
-  </div>
-
-  <div>
-    Event Start: {{eventStart}}
-  </div>
-
-  <div>
-    Event End: {{eventEnd}}
-  </div>
-
-  <div>
-    Image: <img src={{imgUrl}}>
-  </div>
-
-</div>
-
-<div class="container">
-  <h2>Descriptions</h2>
-  <div *ngFor="let widget of descriptions">
-    <div *ngIf="widget.type === 'paragraph'">
-      paragraph: {{widget.data}}
-    </div>
-    <div *ngIf="widget.type === 'link'">
-      Link: <a href={{widget.data}}>{{widget.data}}</a>
-    </div>
-
-    <div *ngIf="widget.type === 'unorderedList'">
-      List:
-      <ul >
-        <li *ngFor="let item of splitList(widget.data)">{{item}}</li>
-      </ul>
-    </div>
-
-    <div *ngIf="widget.type === 'orderedList'">
-      List:
-      <ol>
-        <li *ngFor="let item of splitList(widget.data)">{{item}}</li>
-      </ol>
-    </div>
-  </div>
-
-  <div class="amenity_list">
-    <span *ngFor="let tag of tags" class="badge badge-secondary amenity_item">{{tag}}</span>
-  </div>
-</div>
-
-
-
-<div>
-  <h3>Drop down pick or go other page to get</h3>
-  <ul>
-    <li>camping site</li>
-    <li>camping equipments</li>
-  </ul>
-</div>
 
 

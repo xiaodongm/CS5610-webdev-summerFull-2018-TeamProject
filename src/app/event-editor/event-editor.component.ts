@@ -1,9 +1,11 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit, TemplateRef, Input } from '@angular/core';
 import { BsModalRef} from 'ngx-bootstrap';
 import {BsModalService} from 'ngx-bootstrap';
 import { Pipe, PipeTransform } from '@angular/core';
 import { DomSanitizer} from '@angular/platform-browser';
 import {Widget} from '../models/widget.model.client';
+import {ViewEncapsulation} from '@angular/core';
+import {EventCard} from '../models/EventCard.model.client';
 
 @Pipe({ name: 'safe' })
 export class SafePipe implements PipeTransform {
@@ -16,32 +18,30 @@ export class SafePipe implements PipeTransform {
 @Component({
   selector: 'app-event-editor',
   templateUrl: './event-editor.component.html',
-  styleUrls: ['./event-editor.component.css']
+  styleUrls: ['./event-editor.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class EventEditorComponent implements OnInit {
 
   constructor(private modalService: BsModalService) {
   }
-  eventTitle: string;
-  eventStart: Date;
-  eventEnd: Date;
+  @Input() event: EventCard;
+  // event: EventCard = new EventCard();
   paragraph: string;
   imgUrl: string;
-  images = [];
   linkUrl: string;
-  videoUrl: string;
   list = '';
   listType = 'unorderedList';
   message: string;
-  tags = [];
-  descriptions: Widget[] = [];
   modalRef: BsModalRef;
   config = {
+    animated: true,
     keyboard: true,
-    class: 'modal-lg'
+    class: 'my-modal'
   };
   openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template, this.config);
+    this.modalRef = this.modalService
+      .show(template, Object.assign({}, { class: 'my-modal modal-lg modal-dialog-centered' } ));
   }
   confirm(): void {
     this.message = 'Confirmed!';
@@ -55,20 +55,22 @@ export class EventEditorComponent implements OnInit {
     this.modalRef.hide();
   }
   addImageUrl() {
-    this.images.push(this.imgUrl);
+    console.log(this.imgUrl);
+    this.event.photos.push(this.imgUrl);
+    this.imgUrl = '';
   }
   deleteImageUrl(imgUrl) {
-    if (this.images.includes(imgUrl)) {
-      const index = this.images.indexOf(imgUrl);
-      this.images.splice(index, 1);
+    if (this.event.photos.includes(imgUrl)) {
+      const index = this.event.photos.indexOf(imgUrl);
+      this.event.photos.splice(index, 1);
     }
   }
   addParagraph() {
-    this.descriptions.push(new Widget('paragraph', this.paragraph));
+    this.event.descriptions.push(new Widget('paragraph', this.paragraph));
     this.paragraph = '';
   }
   addLink() {
-    this.descriptions.push(new Widget('link', this.linkUrl));
+    this.event.descriptions.push(new Widget('link', this.linkUrl));
   }
   setListType() {
     if (this.listType === 'orderedList') {
@@ -78,18 +80,30 @@ export class EventEditorComponent implements OnInit {
     }
   }
   addList() {
-    this.descriptions.push(new Widget(this.listType, this.list));
+    this.event.descriptions.push(new Widget(this.listType, this.list));
   }
   splitList(data) {
     return data.split(/\r?\n/);
   }
   toggleTag(tag) {
-    if (this.tags.includes(tag)) {
-      const index = this.tags.indexOf(tag);
-      this.tags.splice(index, 1);
+    if (this.event.tags.includes(tag)) {
+      const index = this.event.tags.indexOf(tag);
+      this.event.tags.splice(index, 1);
     } else {
-      this.tags.push(tag);
+      this.event.tags.push(tag);
     }
+  }
+  updateWidget(event) {
+    const oldWidget = event[0];
+    const newWidget = event[1];
+    const index = this.event.descriptions.indexOf(oldWidget);
+    this.event.descriptions[index] = newWidget;
+  }
+  deleteWidget(widget) {
+    console.log(widget);
+    const index = this.event.descriptions.indexOf(widget);
+    this.event.descriptions.splice(index, 1);
+    console.log(this.event.descriptions);
   }
   ngOnInit() {
   }
