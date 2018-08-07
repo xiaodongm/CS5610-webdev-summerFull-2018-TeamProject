@@ -27,6 +27,8 @@ import { LoginComponent } from './login/login.component';
 import {UserServiceClient} from './services/user.service.client';
 import {MapServiceClient} from './services/map.service.client';
 import { FriendListComponent } from './friend-list/friend-list.component';
+import { EventServiceClient} from './services/event.service.client';
+import {EnrollmentServiceClient} from './services/enrollment.service.client';
 
 
 
@@ -60,6 +62,8 @@ import { FriendListComponent } from './friend-list/friend-list.component';
     CampingSiteToDetailServiceClient,
     UserServiceClient,
     MapServiceClient,
+    EventServiceClient,
+    EnrollmentServiceClient,
   ],
   bootstrap: [AppComponent]
 })
