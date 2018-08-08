@@ -33,6 +33,7 @@ import { CollapseModule } from 'ngx-bootstrap';
 import { BsDropdownModule } from 'ngx-bootstrap';
 import {ProviderServiceClient} from './services/provider.service.client';
 import {LoginToNavbarServiceClient} from './communication-services/login-to-navbar.service.client';
+import { AdminComponent } from './admin/admin.component';
 
 
 
@@ -53,6 +54,7 @@ import {LoginToNavbarServiceClient} from './communication-services/login-to-navb
     RegisterComponent,
     LoginComponent,
     OrganizationSignUpComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,

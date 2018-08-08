@@ -33,6 +33,22 @@
       <li *ngIf="message === 'login'" class="nav-item">
         <a (click)="logout()" class="nav-link" routerLink="/home">Logout</a>
       </li>
+      <li class="nav-item">
+        <div class="btn-group" dropdown>
+          <i id="menuBtn" dropdownToggle class="nav-link fas fa-ellipsis-h"
+                  aria-controls="dropdown-basic">
+          </i>
+          <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+              role="menu" aria-labelledby="button-basic">
+            <li role="menuitem"><a class="dropdown-item" href="#">Link1</a></li>
+            <li role="menuitem"><a class="dropdown-item" href="#">Link2</a></li>
+            <li role="menuitem"><a class="dropdown-item" href="#">Link3</a></li>
+            <li class="divider dropdown-divider"></li>
+            <li role="menuitem"><a class="dropdown-item" href="#">Separated link</a>
+            </li>
+          </ul>
+        </div>
+      </li>
     </ul>
   </div>
   </div>

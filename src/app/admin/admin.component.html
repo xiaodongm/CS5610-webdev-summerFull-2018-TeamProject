@@ -1,0 +1,27 @@
+<div id="menu" class="row container-fluid">
+  <div class="col-3">
+    <ul class="list-group">
+      <li class="list-group-item active">Console</li>
+      <!--<li class="list-group-item wbdv">User</li>-->
+      <!--<li class="list-group-item wbdv">Organizer</li>-->
+      <!--<li class="list-group-item wbdv">Attendee</li>-->
+      <!--<li class="list-group-item wbdv">Provider</li>-->
+      <!--<li class="list-group-item wbdv">SiteManager</li>-->
+      <!--<li class="list-group-item wbdv">EquipmentDealer</li>-->
+      <!--<li class="list-group-item wbdv">Event</li>-->
+      <!--<li class="list-group-item wbdv">Campsite</li>-->
+      <li *ngFor="let item of menuItems"
+          class="list-group-item wbdv">
+        <a routerLink="/admin">
+          {{item}}
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="col-9">
+    <!--<app-section-list></app-section-list>-->
+  </div>
+</div>
+
+<!--[ngClass]="{'active': course.id == courseId}"-->
