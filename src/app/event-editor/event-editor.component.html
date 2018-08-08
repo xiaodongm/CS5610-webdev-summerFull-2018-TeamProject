@@ -1,6 +1,155 @@
-<button type="button" class="btn btn-primary" (click)="openModal(template)">Edit Meta Data</button>
-<br><br>
-<pre class="card card-block card-header">{{message}}</pre>
+<!--<div class="container">-->
+  <!--this page shows event details-->
+<!--</div>-->
+
+<div class="card meta-div">
+<div class="container" (mouseleave) ="mouseLeave()">
+  <div class="row meta-row">
+    <div class="col-md-7 meta-div" >
+      <div class="card media-container">
+        <div class="carousel-container">
+          <carousel data-interval="false"
+                    [showIndicators]="!(hasExtraInfo && inImage)">
+            <slide class="slide" *ngFor="let photo of event.photos" >
+              <div class="image"
+                   [ngClass]="{'wbdv-blur': hasExtraInfo && inImage}"
+                   [ngStyle]="{'background-image': 'url(' + photo + ')'}">
+              </div>
+              <!--<img [ngClass]="{'wbdv-blur': hasExtraInfo && inImage}"-->
+              <!--src={{photo}} alt="first slide">-->
+            </slide>
+          </carousel>
+        </div>
+        <div class="iframe-pos">
+          <div class="iframe-container">
+            <iframe *ngIf="hasExtraInfo && inImage"
+                    [src]='getIframeSource()'
+                    frameborder="0"
+                    scrolling=false
+                    allow="encrypted-media"
+                    style="overflow:hidden;"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+    <div class="col-md-5">
+      <div class="card event-meda">
+      <span class="edit-span" (click)="openModal(template)">
+        <i class="fas fa-pencil-alt"></i>
+      </span>
+        <h2 class="">{{event.title}}</h2>
+
+        <div class="row">
+          <div class="avatar-container col-3">
+            <div class="avatar" [ngStyle]="{'background-image': 'url(' + event.organizer.profilePhoto + ')'}">
+            </div>
+          </div>
+
+          <div class="host-info col-7">
+            <div class="text-sm-left text-muted">
+              Hosted by
+              <span>{{event.organizer && event.organizer.firstName}}</span>
+              <span>{{event.organizer && ' ' + event.organizer.lastName}}</span>
+            </div>
+            <div class="text-sm-left">
+              <span class="text-muted">From </span>
+              <span>{{event.organizer.location}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="button-pos">
+      <span class="button-container">
+        <span (click) = "mouseEnter()">
+          <i *ngIf='hasVideo()'
+             class="fab fa-youtube fa-2x"
+          ></i>
+        </span>
+      </span>
+    </span>
+    </div>
+
+  </div>
+</div>
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+    <h2>Descriptions: </h2>
+      <span class="edit-span" (click)="openModal(template2)">
+        <i class="fas fa-pencil-alt"></i>
+      </span>
+      <!--<div>-->
+        <!--<div>{{event.video}}</div>-->
+        <!--<iframe [src]='event.video | safe'> </iframe>-->
+      <!--</div>-->
+
+      <div *ngFor="let widget of this.event.descriptions">
+        <div *ngIf="widget.type === 'paragraph'">
+          paragraph: {{widget.data}}
+        </div>
+        <div *ngIf="widget.type === 'link'">
+          Link: <a href={{widget.data}}>{{widget.data}}</a>
+        </div>
+
+        <div *ngIf="widget.type === 'unorderedList'">
+          List:
+          <ul >
+            <li *ngFor="let item of splitList(widget.data)">{{item}}</li>
+          </ul>
+        </div>
+
+        <div *ngIf="widget.type === 'orderedList'">
+          List:
+          <ol>
+            <li *ngFor="let item of splitList(widget.data)">{{item}}</li>
+          </ol>
+        </div>
+
+        <div class="amenity_list">
+          <span *ngFor="let tag of this.event.tags" class="badge badge-secondary amenity_item">{{tag}}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div>
+        Event Start:
+        {{dates[event.start.getDay()]}}, {{months[event.start.getMonth()]}} {{event.start.getDate()}}
+      </div>
+
+      <div>
+        Event End:
+        {{dates[event.end.getDay()]}}, {{months[event.end.getMonth()]}} {{event.end.getDate()}}
+
+      </div>
+
+      <div>
+        <h3>Drop down pick or go other page to get</h3>
+        <ul>
+          <li>camping site</li>
+          <li>camping equipments</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!--<button type="button" class="btn btn-primary" (click)="openModal(template)">Edit Meta Data</button>-->
+
 <ng-template #template>
   <div class="modal-header">
     <h4 class="modal-title pull-left">Meta data: can only choose one time</h4>
@@ -61,9 +210,8 @@
 </ng-template>
 
 
-<button type="button" class="btn btn-primary" (click)="openModal(template2)">Edit Description</button>
-<br><br>
-<pre class="card card-block card-header">{{message}}</pre>
+<!--<button type="button" class="btn btn-primary" (click)="openModal(template2)">Edit Description</button>-->
+
 <ng-template #template2>
   <div class="modal-header">
     <h4 class="modal-title pull-left">Description: Edit or Add new</h4>

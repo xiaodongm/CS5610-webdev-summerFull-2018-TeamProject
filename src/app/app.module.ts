@@ -34,6 +34,7 @@ import { CreateEventComponent } from './create-event/create-event.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { EventDescriptionWidgetEditorComponent } from './event-description-widget-editor/event-description-widget-editor.component';
 import {SortablejsModule} from 'angular-sortablejs';
+import { EventMetaEditorComponent } from './event-meta-editor/event-meta-editor.component';
 
 
 
