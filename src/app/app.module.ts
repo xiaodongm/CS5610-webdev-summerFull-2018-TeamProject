@@ -33,6 +33,7 @@ import {EventEditorComponent, SafePipe} from './event-editor/event-editor.compon
 import { CreateEventComponent } from './create-event/create-event.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { EventDescriptionWidgetEditorComponent } from './event-description-widget-editor/event-description-widget-editor.component';
+import {SortablejsModule} from 'angular-sortablejs';
 
 
 
@@ -68,7 +69,8 @@ import { EventDescriptionWidgetEditorComponent } from './event-description-widge
     NgxMasonryModule,
     CollapseModule.forRoot(),
     BsDropdownModule.forRoot(),
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
+    SortablejsModule.forRoot({ animation: 150 })
   ],
   providers: [
     CampingSiteServiceClient,

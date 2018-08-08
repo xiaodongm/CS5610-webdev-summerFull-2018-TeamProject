@@ -6,6 +6,7 @@ import { DomSanitizer} from '@angular/platform-browser';
 import {Widget} from '../models/widget.model.client';
 import {ViewEncapsulation} from '@angular/core';
 import {EventCard} from '../models/EventCard.model.client';
+import {SortablejsModule} from 'angular-sortablejs';
 
 @Pipe({ name: 'safe' })
 export class SafePipe implements PipeTransform {

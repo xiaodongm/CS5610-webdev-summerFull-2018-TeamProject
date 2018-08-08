@@ -75,19 +75,15 @@
   <div class="modal-body">
     <div class="content-of-modal">
       <h4>Edit current descriptions</h4>
-      <div *ngFor="let widget of this.event.descriptions">
-        <div class="card">
-
-          <app-event-description-widget-editor
-            [widget]="widget"
-            (deleteEmitter)="deleteWidget($event)"
-            (editEmitter)="updateWidget($event)"
-          >
-
-          </app-event-description-widget-editor>
-
-          </div>
-        <hr>
+      <span class="text-muted">drag to swich order</span>
+      <div [sortablejs]='this.event.descriptions' [sortablejsOptions]="{ animation: 150 }">
+        <div class="card" *ngFor="let widget of this.event.descriptions">
+            <app-event-description-widget-editor
+              [widget]="widget"
+              (deleteEmitter)="deleteWidget($event)"
+              (editEmitter)="updateWidget($event)">
+            </app-event-description-widget-editor>
+        </div>
       </div>
 
       <div class="amenity_list" *ngIf="this.event.tags.length > 0">
