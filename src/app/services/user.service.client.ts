@@ -5,6 +5,11 @@ export class UserServiceClient {
       .then(response => response.json());
   }
 
+  findAllUsers() {
+    return fetch('http://localhost:3000/api/user')
+      .then(response => response.json());
+  }
+
   login(username, password) {
     const credentials = {
       username: username,

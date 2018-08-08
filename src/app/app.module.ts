@@ -34,6 +34,8 @@ import { BsDropdownModule } from 'ngx-bootstrap';
 import {ProviderServiceClient} from './services/provider.service.client';
 import {LoginToNavbarServiceClient} from './communication-services/login-to-navbar.service.client';
 import { AdminComponent } from './admin/admin.component';
+import { UserListComponent } from './user-list/user-list.component';
+
 
 
 
@@ -55,6 +57,7 @@ import { AdminComponent } from './admin/admin.component';
     LoginComponent,
     OrganizationSignUpComponent,
     AdminComponent,
+    UserListComponent,
   ],
   imports: [
     BrowserModule,

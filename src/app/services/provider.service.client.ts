@@ -23,6 +23,11 @@ export class ProviderServiceClient {
       .then(response => response.json());
   }
 
+  findAllProviders() {
+    return fetch('http://localhost:3000/api/provider')
+      .then(response => response.json());
+  }
+
   login(username, password) {
     const credentials = {
       username: username,

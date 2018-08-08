@@ -2,11 +2,23 @@
   margin-top: 70px;
 }
 
-.active.wbdv {
-  background-color: red;
-  border-color: red;
+.card {
+  margin: 10px;
 }
 
-.active.wbdv a {
-  color: white;
+#title p {
+  margin-top: 20px;
+  margin-left: 10px;
+  color:gray;
 }
+
+#arrow {
+  color: white;
+  margin-top: 20px
+}
+
+
+
+
+
+

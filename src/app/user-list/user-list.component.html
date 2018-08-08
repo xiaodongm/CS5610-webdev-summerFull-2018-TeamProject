@@ -1,0 +1,45 @@
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link" routerLink="/admin" (click)="openOrganizerTab()">
+      Organizer({{organizers.length}})
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" routerLink="/admin" (click)="openAttendeeTab()">
+      Attendee({{attendees.length}})
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" routerLink="/admin" (click)="openSiteManagerTab()">
+      SiteManager({{siteManagers.length}})
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" routerLink="/admin" (click)="openEquipmentDealerTab()">
+      EquipmentDealer({{equipmentDealers.length}})
+    </a>
+  </li>
+</ul>
+
+<div>
+  <ul *ngIf="userType === 'attendee'" class="list-group">
+    <li *ngFor="let attendee of attendees" class="list-group-item">
+      {{attendee.username}}
+    </li>
+  </ul>
+  <ul *ngIf="userType === 'organizer'" class="list-group">
+    <li *ngFor="let organizer of organizers" class="list-group-item">
+      {{organizer.username}}
+    </li>
+  </ul>
+  <ul *ngIf="userType === 'siteManager'" class="list-group">
+    <li *ngFor="let siteManager of siteManagers" class="list-group-item">
+      {{siteManager.username}}
+    </li>
+  </ul>
+  <ul *ngIf="userType === 'equipmentDealer'" class="list-group">
+    <li *ngFor="let equipmentDealer of equipmentDealers" class="list-group-item">
+      {{equipmentDealer.username}}
+    </li>
+  </ul>
+</div>
