@@ -1,0 +1,13 @@
+.card {
+  margin: 20px;
+  border-radius: 10px;
+}
+
+#postDiv {
+  margin: 20px;
+}
+
+#postBtn {
+  margin-top: 10px;
+  margin-bottom: 30px;
+}

@@ -30,7 +30,6 @@ export class DiscussionComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(new Date());
     // console.log(this.discussionToChild.postPeople);
     this.userService.findUserById(this.discussionToChild.postPeople)
       .then(res => {
@@ -48,7 +47,7 @@ export class DiscussionComponent implements OnInit {
              }
            });
        } else {
-           this.discussionToChild.preDiscussion = {postPeople: '', content: 'deleted message'};
+           this.discussionToChild.preDiscussion = {postPeople: '', content: 'Original post has been deleted.'};
        }
     }
 
