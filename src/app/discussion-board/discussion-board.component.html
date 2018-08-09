@@ -1,19 +1,16 @@
-<br>
-<br>
-<br>
-<h2>Discussion Board</h2>
-<!--<button (click)="create()">create</button>-->
 
-<!--<button (click)="update()">update</button>-->
-
-<!--<button (click)="findAllDiscussions()">findAll</button>-->
-
-<!--<button (click)="Delete()">Delete</button>-->
-
-<div>
-  <ul *ngFor="let discussion of discussions">
-    <app-discussion (messageEvent)="receiveMessage($event)" [discussionToChild]="discussion"></app-discussion>
-  </ul>
+<div class="container-fluid">
+  <br>
+  <br>
+  <br>
+  <h1>Discussions({{discussions.length}})</h1>
+  <div>
+    <div class="card bg-light" *ngFor="let discussion of discussions">
+      <app-discussion (messageEvent)="receiveMessage($event)" [discussionToChild]="discussion"></app-discussion>
+    </div>
+  </div>
+  <div id="postDiv">
+    <textarea class="form-control" placeholder="Start A new discussion" [(ngModel)] = "newContent"></textarea>
+    <button id="postBtn" class="btn btn-dark float-right" (click)='postDiscussion()'>Post</button>
+  </div>
 </div>
-<input placeholder="Start A new discussion" [(ngModel)] = "newContent">
-<button (click)='postDiscussion()'>Post</button>

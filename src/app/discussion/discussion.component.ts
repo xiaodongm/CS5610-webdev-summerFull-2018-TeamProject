@@ -22,6 +22,7 @@ export class DiscussionComponent implements OnInit {
   receiver = {username: 'Canceled Account'};
   curUser = {_id: '', error: ''};
   content;
+  isPostPeopleLoaded = false;
 
 
 
@@ -31,14 +32,15 @@ export class DiscussionComponent implements OnInit {
 
   ngOnInit() {
     // console.log(new Date());
-    // console.log(this.discussionToChild.postPeople);
-    this.userService.findUserById(this.discussionToChild.postPeople)
+    this.userService.findUserById(this.discussionToChild.postPeople._id)
       .then(res => {
-
+        console.log(res);
         if (res) {
           this.postPeople = res;
-          console.log(res);
+
         }
+        this.isPostPeopleLoaded = true;
+
       });
 
      if (this.discussionToChild.type === 'reply') {
@@ -50,7 +52,7 @@ export class DiscussionComponent implements OnInit {
              }
            });
        } else {
-           this.discussionToChild.preDiscussion = {postPeople: '', content: 'deleted message'};
+           this.discussionToChild.preDiscussion = {postPeople: '', content: 'Original post has been deleted.'};
        }
     }
 
@@ -72,7 +74,7 @@ export class DiscussionComponent implements OnInit {
         content: this.content,
         preDiscussion: this.discussionToChild._id,
         postTime: new Date(),
-        // event:
+        event: this.discussionToChild.event,
         type: 'reply'
       };
       this.discussionService
@@ -83,7 +85,7 @@ export class DiscussionComponent implements OnInit {
 
   finAllDiscussions() {
     this.discussionService
-      .findAllDiscussions()
+      .findDiscussionsForEvent(this.discussionToChild.event)
       .then(discussions => this.sendMessage(discussions));
   }
 
