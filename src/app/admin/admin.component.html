@@ -1,0 +1,34 @@
+<div id="menu">
+  <div id="title" class="input-group-append container-fluid">
+    <h1>Admin Dashboard</h1>
+    <p>Control panel</p>
+  </div>
+  <div class="row" style="width: 100%">
+    <div id="cardList" class="col-3">
+      <div class="card text-white bg-info">
+        <div class="card-header input-group-append">
+          <h4>User</h4>
+        </div>
+        <div class="card-body">
+          <h2 class="card-title">Total Users : {{personalUsers.length + providers.length}}</h2>
+          <a id="arrow" (click)="openUserList()" routerLink="/admin">
+            More Info
+            <i class="fas fa-arrow-circle-right"></i>
+          </a>
+        </div>
+      </div>
+      <div class="card text-white bg-warning">
+        <div class="card-header">Event</div>
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-9">
+      <app-user-list *ngIf="listType === 'userList'" (messageEvent)="receiveMessage($event)"></app-user-list>
+    </div>
+  </div>
+</div>
+
+

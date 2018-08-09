@@ -1,0 +1,313 @@
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link" routerLink="/admin" (click)="openOrganizerTab()">
+      Organizer({{organizers.length}})
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" routerLink="/admin" (click)="openAttendeeTab()">
+      Attendee({{attendees.length}})
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" routerLink="/admin" (click)="openSiteManagerTab()">
+      SiteManager({{siteManagers.length}})
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" routerLink="/admin" (click)="openEquipmentDealerTab()">
+      EquipmentDealer({{equipmentDealers.length}})
+    </a>
+  </li>
+</ul>
+
+<div>
+
+
+  <accordion [closeOthers]="true">
+    <div *ngIf="userType === 'attendee'">
+    <accordion-group *ngFor="let attendee of attendees" (isOpenChange)="log(attendee)">
+      <button class="btn btn-link btn-block clearfix" accordion-heading>
+        <div class="pull-left float-left">{{attendee.username}}</div>
+        <!--<button class="badge badge-secondary float-right pull-right">Update</button>-->
+      </button>
+      <div *ngFor="let alert of alerts">
+        <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onClosed(alert)">{{ alert.msg }}</alert>
+      </div>
+      <div class="input-group-append wrapDiv">
+        <label for="usernameFld-att" class="col-sm-2 col-form-label">Username</label>
+        <input id="usernameFld-att" [(ngModel)]="attendee.username" class="form-control">
+      </div>
+      <div class="input-group-append wrapDiv">
+        <label for="passwordFld-att" class="col-sm-2 col-form-label">Password</label>
+        <input id="passwordFld-att" [(ngModel)]="attendee.password" class="form-control">
+      </div>
+      <div class="input-group-append wrapDiv">
+        <label for="firstnameFld-att" class="col-sm-2 col-form-label">First Name</label>
+        <input id="firstnameFld-att" [(ngModel)]="attendee.firstName" class="form-control">
+      </div>
+      <div class="input-group-append wrapDiv">
+        <label for="lastnameFld-att" class="col-sm-2 col-form-label">Last Name</label>
+        <input id="lastnameFld-att" [(ngModel)]="attendee.lastName" class="form-control">
+      </div>
+      <div class="input-group-append wrapDiv">
+        <label for="roleFld-att" class="col-sm-2 col-form-label">User Role</label>
+        <li  id="roleFld-att" class="list-group-item form-control">{{attendee.role}}</li>
+        <div class="btn-group" dropdown>
+          <button id="button-basic-att" dropdownToggle type="button" class="btn btn-outline-dark dropdown-toggle"
+                  aria-controls="dropdown-basic-att">
+            Select Role
+          </button>
+          <ul id="dropdown-basic-att" *dropdownMenu class="dropdown-menu"
+              role="menu" aria-labelledby="button-basic">
+            <li role="menuitem"><a (click)="switchOrganizerToAttendee(attendee)" class="dropdown-item">Attendee</a></li>
+            <li role="menuitem"><a (click)="switchAttendeeToOrganizer(attendee)" class="dropdown-item">Organizer</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="input-group-append wrapDiv">
+        <label for="dob-att" class="col-sm-2 col-form-label">Date of Birth</label>
+        <input type="text"
+               [(ngModel)]="attendee.dateOfBirth"
+               placeholder="Date of Birth"
+               class="form-control"
+               id="dob-att"
+               [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }"
+               bsDatepicker>
+      </div>
+      <div class="input-group-append wrapDiv">
+        <label for="phoneFld-att" class="col-sm-2 col-form-label">Phone</label>
+        <input id="phoneFld-att" [(ngModel)]="attendee.phoneNumber" class="form-control">
+      </div>
+      <div class="input-group-append wrapDiv">
+        <label for="emailFld-att" class="col-sm-2 col-form-label">Email</label>
+        <input id="emailFld-att" [(ngModel)]="attendee.email" class="form-control">
+      </div>
+      <div class="input-group-append wrapDiv">
+        <label for="addressFld-att" class="col-sm-2 col-form-label">Address</label>
+        <input id="addressFld-att" [(ngModel)]="attendee.address" class="form-control">
+      </div>
+      <div class="UpdateDeleteBtns">
+        <button class="btn btn-success updateBtn" (click)="update(attendee)">Update</button>
+        <button (click)="openModal(deleteConfirm)" class="btn btn-danger">Delete</button>
+      </div>
+
+      <ng-template #deleteConfirm>
+        <div class="modal-body text-center">
+          <p>Are you sure you want to <strong>DELETE</strong> this account?</p>
+          <button type="button" class="btn btn-danger confirmDelete" (click)="delete(attendee)" >Delete</button>
+          <button type="button" class="btn btn-default" (click)="modalRef.hide();" >Cancel</button>
+        </div>
+      </ng-template>
+    </accordion-group>
+    </div>
+
+    <div *ngIf="userType === 'organizer'">
+      <accordion-group *ngFor="let organizer of organizers" (isOpenChange)="log(organizer)">
+        <button class="btn btn-link btn-block clearfix" accordion-heading>
+          <div class="pull-left float-left">{{organizer.username}}</div>
+          <!--<button class="badge badge-secondary float-right pull-right">Update</button>-->
+        </button>
+        <div *ngFor="let alert of alerts">
+          <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onClosed(alert)">{{ alert.msg }}</alert>
+        </div>
+        <div class="input-group-append wrapDiv">
+          <label for="usernameFld-org" class="col-sm-2 col-form-label">Username</label>
+          <input id="usernameFld-org" [(ngModel)]="organizer.username" class="form-control">
+        </div>
+        <div class="input-group-append wrapDiv">
+          <label for="passwordFld-org" class="col-sm-2 col-form-label">Password</label>
+          <input id="passwordFld-org" [(ngModel)]="organizer.password" class="form-control">
+        </div>
+        <div class="input-group-append wrapDiv">
+          <label for="firstnameFld-org" class="col-sm-2 col-form-label">First Name</label>
+          <input id="firstnameFld-org" [(ngModel)]="organizer.firstName" class="form-control">
+        </div>
+        <div class="input-group-append wrapDiv">
+          <label for="lastnameFld-org" class="col-sm-2 col-form-label">Last Name</label>
+          <input id="lastnameFld-org" [(ngModel)]="organizer.lastName" class="form-control">
+        </div>
+        <div class="input-group-append wrapDiv">
+          <label for="roleFld-org" class="col-sm-2 col-form-label">User Role</label>
+          <li  id="roleFld-org" class="list-group-item form-control">{{organizer.role}}</li>
+          <div class="btn-group" dropdown>
+            <button id="button-basic-org" dropdownToggle type="button" class="btn btn-outline-dark dropdown-toggle"
+                    aria-controls="dropdown-basic-org">
+              Select Role
+            </button>
+            <ul id="dropdown-basic-org" *dropdownMenu class="dropdown-menu"
+                role="menu" aria-labelledby="button-basic">
+              <li role="menuitem"><a (click)="switchOrganizerToAttendee(organizer)" class="dropdown-item">Attendee</a></li>
+              <li role="menuitem"><a (click)="switchAttendeeToOrganizer(organizer)" class="dropdown-item">Organizer</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="input-group-append wrapDiv">
+          <label for="dob-org" class="col-sm-2 col-form-label">Date of Birth</label>
+          <input type="text"
+                 [(ngModel)]="organizer.dateOfBirth"
+                 placeholder="Date of Birth"
+                 class="form-control"
+                 id="dob-org"
+                 [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }"
+                 bsDatepicker>
+        </div>
+        <div class="input-group-append wrapDiv">
+          <label for="phoneFld-org" class="col-sm-2 col-form-label">Phone</label>
+          <input id="phoneFld-org" [(ngModel)]="organizer.phoneNumber" class="form-control">
+        </div>
+        <div class="input-group-append wrapDiv">
+          <label for="emailFld-org" class="col-sm-2 col-form-label">Email</label>
+          <input id="emailFld-org" [(ngModel)]="organizer.email" class="form-control">
+        </div>
+        <div class="input-group-append wrapDiv">
+          <label for="addressFld-org" class="col-sm-2 col-form-label">Address</label>
+          <input id="addressFld-org" [(ngModel)]="organizer.address" class="form-control">
+        </div>
+        <div class="UpdateDeleteBtns">
+          <button class="btn btn-success updateBtn" (click)="update(organizer)">Update</button>
+          <button (click)="openModal(deleteConfirm)" class="btn btn-danger">Delete</button>
+        </div>
+
+        <ng-template #deleteConfirm>
+          <div class="modal-body text-center">
+            <p>Are you sure you want to <strong>DELETE</strong> this account?</p>
+            <button type="button" class="btn btn-danger confirmDelete" (click)="delete(organizer)" >Delete</button>
+            <button type="button" class="btn btn-default" (click)="modalRef.hide();" >Cancel</button>
+          </div>
+        </ng-template>
+      </accordion-group>
+    </div>
+
+
+    <div *ngIf="userType === 'SiteManager'">
+      <accordion-group *ngFor="let siteManager of siteManagers" (isOpenChange)="log(siteManager)">
+        <button class="btn btn-link btn-block clearfix" accordion-heading>
+          <div class="pull-left float-left">{{siteManager.username}}</div>
+          <!--<button class="badge badge-secondary float-right pull-right">Update</button>-->
+        </button>
+        <div *ngFor="let alert of alerts">
+          <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onClosed(alert)">{{ alert.msg }}</alert>
+        </div>
+        <div class="input-group-append wrapDiv">
+          <label for="usernameFld-sit" class="col-sm-2 col-form-label">Username</label>
+          <input id="usernameFld-sit" [(ngModel)]="siteManager.username" class="form-control">
+        </div>
+        <div class="input-group-append wrapDiv">
+          <label for="passwordFld-sit" class="col-sm-2 col-form-label">Password</label>
+          <input id="passwordFld-sit" [(ngModel)]="siteManager.password" class="form-control">
+        </div>
+        <div class="input-group-append wrapDiv">
+          <label for="organizationNameFld-sit" class="col-sm-2 col-form-label">Organization Name</label>
+          <input id="organizationNameFld-sit" [(ngModel)]="siteManager.organizationName" class="form-control">
+        </div>
+        <div class="input-group-append wrapDiv">
+          <label for="organizationAddressFld-sit" class="col-sm-2 col-form-label">Organization Address</label>
+          <input id="organizationAddressFld-sit" [(ngModel)]="siteManager.organizationAddress" class="form-control">
+        </div>
+        <div class="input-group-append wrapDiv">
+          <label for="roleFld-sit" class="col-sm-2 col-form-label">Service Role</label>
+          <li  id="roleFld-sit" class="list-group-item form-control">{{siteManager.role}}</li>
+          <div class="btn-group" dropdown>
+            <button id="button-basic-sit" dropdownToggle type="button" class="btn btn-outline-dark dropdown-toggle"
+                    aria-controls="dropdown-basic-sit">
+              Select Role
+            </button>
+            <ul id="dropdown-basic-sit" *dropdownMenu class="dropdown-menu"
+                role="menu" aria-labelledby="button-basic">
+              <li role="menuitem"><a (click)="siteManager.role = 'SiteManager'" class="dropdown-item">SiteManager</a></li>
+              <li role="menuitem"><a (click)="siteManager.role = 'EquipmentDealer'" class="dropdown-item">EquipmentDealer</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="input-group-append wrapDiv">
+          <label for="phoneFld-sit" class="col-sm-2 col-form-label">Phone</label>
+          <input id="phoneFld-sit" [(ngModel)]="siteManager.phoneNumber" class="form-control">
+        </div>
+        <div class="input-group-append wrapDiv">
+          <label for="emailFld-sit" class="col-sm-2 col-form-label">Email</label>
+          <input id="emailFld-sit" [(ngModel)]="siteManager.email" class="form-control">
+        </div>
+        <div class="UpdateDeleteBtns">
+          <button class="btn btn-success updateBtn" (click)="update(siteManager)">Update</button>
+          <button (click)="openModal(deleteConfirm)" class="btn btn-danger">Delete</button>
+        </div>
+
+        <ng-template #deleteConfirm>
+          <div class="modal-body text-center">
+            <p>Are you sure you want to <strong>DELETE</strong> this account?</p>
+            <button type="button" class="btn btn-danger confirmDelete" (click)="delete(siteManager)" >Delete</button>
+            <button type="button" class="btn btn-default" (click)="modalRef.hide();" >Cancel</button>
+          </div>
+        </ng-template>
+      </accordion-group>
+    </div>
+
+
+
+    <div *ngIf="userType === 'EquipmentDealer'">
+      <accordion-group *ngFor="let equipmentDealer of equipmentDealers" (isOpenChange)="log(equipmentDealer)">
+        <button class="btn btn-link btn-block clearfix" accordion-heading>
+          <div class="pull-left float-left">{{equipmentDealer.username}}</div>
+          <!--<button class="badge badge-secondary float-right pull-right">Update</button>-->
+        </button>
+        <div *ngFor="let alert of alerts">
+          <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onClosed(alert)">{{ alert.msg }}</alert>
+        </div>
+        <div class="input-group-append wrapDiv">
+          <label for="usernameFld-equ" class="col-sm-2 col-form-label">Username</label>
+          <input id="usernameFld-equ" [(ngModel)]="equipmentDealer.username" class="form-control">
+        </div>
+        <div class="input-group-append wrapDiv">
+          <label for="passwordFld-equ" class="col-sm-2 col-form-label">Password</label>
+          <input id="passwordFld-equ" [(ngModel)]="equipmentDealer.password" class="form-control">
+        </div>
+        <div class="input-group-append wrapDiv">
+          <label for="organizationNameFld-equ" class="col-sm-2 col-form-label">Organization Name</label>
+          <input id="organizationNameFld-equ" [(ngModel)]="equipmentDealer.organizationName" class="form-control">
+        </div>
+        <div class="input-group-append wrapDiv">
+          <label for="organizationAddressFld-equ" class="col-sm-2 col-form-label">Organization Address</label>
+          <input id="organizationAddressFld-equ" [(ngModel)]="equipmentDealer.organizationAddress" class="form-control">
+        </div>
+        <div class="input-group-append wrapDiv">
+          <label for="roleFld-equ" class="col-sm-2 col-form-label">Service Role</label>
+          <li  id="roleFld-equ" class="list-group-item form-control">{{equipmentDealer.role}}</li>
+          <div class="btn-group" dropdown>
+            <button id="button-basic-equ" dropdownToggle type="button" class="btn btn-outline-dark dropdown-toggle"
+                    aria-controls="dropdown-basic-sit">
+              Select Role
+            </button>
+            <ul id="dropdown-basic-equ" *dropdownMenu class="dropdown-menu"
+                role="menu" aria-labelledby="button-basic">
+              <li role="menuitem"><a (click)="equipmentDealer.role = 'SiteManager'" class="dropdown-item">SiteManager</a></li>
+              <li role="menuitem"><a (click)="equipmentDealer.role = 'EquipmentDealer'" class="dropdown-item">EquipmentDealer</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="input-group-append wrapDiv">
+          <label for="phoneFld-equ" class="col-sm-2 col-form-label">Phone</label>
+          <input id="phoneFld-equ" [(ngModel)]="equipmentDealer.phoneNumber" class="form-control">
+        </div>
+        <div class="input-group-append wrapDiv">
+          <label for="emailFld-equ" class="col-sm-2 col-form-label">Email</label>
+          <input id="emailFld-equ" [(ngModel)]="equipmentDealer.email" class="form-control">
+        </div>
+        <div class="UpdateDeleteBtns">
+          <button class="btn btn-success updateBtn" (click)="update(equipmentDealer)">Update</button>
+          <button (click)="openModal(deleteConfirm)" class="btn btn-danger">Delete</button>
+        </div>
+
+        <ng-template #deleteConfirm>
+          <div class="modal-body text-center">
+            <p>Are you sure you want to <strong>DELETE</strong> this account?</p>
+            <button type="button" class="btn btn-danger confirmDelete" (click)="delete(equipmentDealer)" >Delete</button>
+            <button type="button" class="btn btn-default" (click)="modalRef.hide();" >Cancel</button>
+          </div>
+        </ng-template>
+      </accordion-group>
+    </div>
+
+  </accordion>
+
+</div>

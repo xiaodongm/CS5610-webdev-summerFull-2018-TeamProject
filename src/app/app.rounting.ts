@@ -10,13 +10,15 @@ import {CreateEventComponent} from './create-event/create-event.component';
 import {EventEditorComponent} from './event-editor/event-editor.component';
 
 import {OrganizationSignUpComponent} from './organization-sign-up/organization-sign-up.component';
-
+import {AdminComponent} from './admin/admin.component';
+import {DiscussionBoardComponent} from './discussion-board/discussion-board.component';
 
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
   { path: 'home', component: HomeComponent},
   { path: 'profile', component: ProfileComponent},
+  { path: 'admin', component: AdminComponent},
   { path: 'homepage', component: HomePageComponent},
   { path: 'camping-site/:contractID/:facilityID/detail', component: CampingSiteDetailComponent},
   { path: 'detail', component: CampingSiteDetailComponent},
@@ -24,6 +26,7 @@ const appRoutes: Routes = [
   { path: 'eventDetail/:eventId', component: EventDetailComponent},
   { path: 'createEvent', component: CreateEventComponent},
   { path: 'organization/signUp', component: OrganizationSignUpComponent},
+  { path: 'test', component: DiscussionBoardComponent},
   { path: '**', component: HomeComponent},
 
 ];

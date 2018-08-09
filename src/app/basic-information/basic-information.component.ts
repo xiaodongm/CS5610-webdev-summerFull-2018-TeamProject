@@ -1,10 +1,11 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {UserServiceClient} from '../services/user.service.client';
 import {User} from '../models/user.model.client';
-import {AlertComponent} from 'ngx-bootstrap';
+import {AlertComponent, BsModalRef, BsModalService} from 'ngx-bootstrap';
 import {Provider} from '../models/provider.model.client';
 import {ProviderServiceClient} from '../services/provider.service.client';
 import {Router} from '@angular/router';
+import {LoginToNavbarServiceClient} from '../communication-services/login-to-navbar.service.client';
 
 @Component({
   selector: 'app-basic-information',
@@ -15,12 +16,17 @@ export class BasicInformationComponent implements OnInit {
 
   constructor(private userService: UserServiceClient,
               private providerService: ProviderServiceClient,
-              private router: Router) { }
+              private router: Router,
+              private data: LoginToNavbarServiceClient,
+              private modalService: BsModalService) { }
+
+  modalRef: BsModalRef;
 
   user = new User();
   provider = new Provider();
   alerts = [];
   message;
+  logoutMessage;
 
 
   @Output() messageEvent = new EventEmitter<string>();
@@ -62,8 +68,40 @@ export class BasicInformationComponent implements OnInit {
     this.alerts = this.alerts.filter(alert => alert !== dismissedAlert);
   }
 
+  delete() {
+    // if (confirm('Do you really want to delete this user profile?')) {
+      if (this.user.role !== 'SiteManager' && this.user.role !== 'EquipmentDealer') {
+        this.userService.delete()
+        .then(() => this.logout())
+        .then(() => this.modalRef.hide());
+      } else if (this.user.role === 'SiteManager' || this.user.role === 'EquipmentDealer') {
+        this.providerService.delete()
+          .then(() => this.logout())
+          .then(() => this.modalRef.hide());
+      }
+    // }
+  }
+
+  logout() {
+    this.userService
+      .logout()
+      .then(() => {
+        this.sendLogoutMessage();
+        this.router.navigate(['home']);
+      });
+  }
+
+  sendLogoutMessage() {
+    this.data.changeMessage('logout');
+  }
+
+
+  openModal(template) {
+    this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
+  }
 
   ngOnInit() {
+    this.data.currentMessage.subscribe(message => this.logoutMessage = message);
     this.userService
       .profile()
       .then(user => this.user = user);

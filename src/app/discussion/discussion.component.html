@@ -1,0 +1,27 @@
+<div class="card">
+  <p>{{discussionToChild.postTime}}</p>
+  <div *ngIf="discussionToChild.type === 'reply'">
+    <div *ngIf="discussionToChild.preDiscussion.postPeople === ''">
+      <li>{{discussionToChild.preDiscussion.content}}</li>
+      <li>{{postPeople.username}}: {{discussionToChild.content}}</li>
+    </div>
+
+    <div *ngIf="discussionToChild.preDiscussion.postPeople !== ''">
+      <li>{{receiver.username}}: {{discussionToChild.preDiscussion.content}}</li>
+      <li>{{postPeople.username}} reply to {{receiver.username}}: {{discussionToChild.content}}</li>
+    </div>
+
+  </div>
+
+
+  <div *ngIf="discussionToChild.type === 'post'">
+    <li>{{postPeople.username}}: {{discussionToChild.content}}</li>
+  </div>
+
+  <input [(ngModel)]= 'content' placeholder="Reply">
+  <button (click)="reply()">Reply</button>
+  <button (click)="delete()" *ngIf="curUser._id === postPeople._id">Delete</button>
+
+</div>
+
+

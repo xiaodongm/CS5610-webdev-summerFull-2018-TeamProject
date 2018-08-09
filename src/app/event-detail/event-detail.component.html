@@ -69,8 +69,10 @@
             ></i>
           </span>
         </span>
-          <button class="btn btn-primary" (click)="enrollEvent()">Enroll</button>
-      </span>
+          <button class="btn btn-primary" *ngIf="!isEnrolled" (click)="enrollEvent()">Enroll</button>
+          <button class="btn btn-danger" *ngIf="isEnrolled" (click)="unenrollEvent()">Unenroll</button>
+
+        </span>
 
         <div class="amenity_list">
           <span *ngFor="let tag of this.event.tags" class="badge badge-secondary amenity_item">{{tag}}</span>
@@ -117,8 +119,12 @@
         </div>
 
       </div>
-      <div>
+      <div *ngIf="event.attendee.length > 0">
         <app-attendee-list [attendeeIds]="event.attendee"></app-attendee-list>
+      </div>
+
+      <div *ngIf="event._id && event._id !== ''">
+        <app-discussion-board [eventId]="event._id" ></app-discussion-board>
       </div>
 
     </div>

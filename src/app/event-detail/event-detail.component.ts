@@ -247,13 +247,13 @@ export class EventDetailComponent implements OnInit {
   refreshEvent() {
     return this.eventService.findEventById(this.eventId)
       .then(event => {
+        console.log(event);
         // event.startTime = this.refactorDate(event.startTime);
         // event.endTime = this.refactorDate(event.endTime);
         return this.event = event; } );
   }
 
   enrollEvent() {
-
     let enrollment;
     this.userService.profile()
       .then(user => {
@@ -261,9 +261,45 @@ export class EventDetailComponent implements OnInit {
           event: this.event._id,
           attendee: user._id
         };
+        console.log(user);
         return this.enrollmentService.enrollAttendeeInEvent(enrollment); })
-      .then(() => releaseEvents())
+      .then((enroll) => {
+        console.log(enroll);
+        return this.refreshEvent();
+      })
       .then(() => this.isEnrolled = true);
+  }
+
+  unenrollEvent() {
+    let enrollment;
+    this.userService.profile()
+      .then(user => {
+        enrollment = {
+          event: this.event._id,
+          attendee: user._id
+        };
+        console.log(user);
+        return this.enrollmentService.unenrollAttendeeInEvent(enrollment); })
+      .then((enroll) => {
+        console.log(enroll);
+        return this.refreshEvent();
+      })
+      .then(() => this.isEnrolled = false);
+  }
+
+  checkEnrollment() {
+    return this.userService.profile()
+      .then(user => {
+        for (let i = 0; i < this.event.attendee.length; i++) {
+          if (this.event.attendee[i] === user._id) {
+            this.isEnrolled = true;
+            return true;
+          }
+
+        }
+        this.isEnrolled = false;
+        return false;
+      });
   }
 
   ngOnInit() {
@@ -277,7 +313,6 @@ export class EventDetailComponent implements OnInit {
         return this.userService.findUserById(event.organizer);
       }).then(user => {
       // console.log(this.event.organizer);
-      console.log(user);
       this.organizer = user;
       if (!this.organizer.profilePhoto) {
         this.organizer.profilePhoto = '';
@@ -287,7 +322,7 @@ export class EventDetailComponent implements OnInit {
         this.hasExtraInfo = true;
       }
       this.isOrganizerLoaded = true;
-    });
+    }).then(() => this.checkEnrollment());
 
   }
 

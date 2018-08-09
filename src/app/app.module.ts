@@ -39,9 +39,16 @@ import { EventDescriptionWidgetEditorComponent } from './event-description-widge
 import {SortablejsModule} from 'angular-sortablejs';
 import { OrganizationSignUpComponent } from './organization-sign-up/organization-sign-up.component';
 import { BsDropdownModule } from 'ngx-bootstrap';
-import { ProviderServiceClient} from './services/provider.service.client';
-import { LoginToNavbarServiceClient} from './communication-services/login-to-navbar.service.client';
 import { AttendeeListComponent } from './attendee-list/attendee-list.component';
+import {ProviderServiceClient} from './services/provider.service.client';
+import {LoginToNavbarServiceClient} from './communication-services/login-to-navbar.service.client';
+import { AdminComponent } from './admin/admin.component';
+import { UserListComponent } from './user-list/user-list.component';
+import { AccordionModule } from 'ngx-bootstrap';
+import { DiscussionBoardComponent } from './discussion-board/discussion-board.component';
+import {DiscussionServiceClient} from './services/discussion.service.client';
+import { DiscussionComponent } from './discussion/discussion.component';
+
 
 
 
@@ -68,6 +75,10 @@ import { AttendeeListComponent } from './attendee-list/attendee-list.component';
     FriendListComponent,
     OrganizationSignUpComponent,
     AttendeeListComponent,
+    AdminComponent,
+    UserListComponent,
+    DiscussionBoardComponent,
+    DiscussionComponent,
   ],
   imports: [
     BrowserModule,
@@ -78,6 +89,7 @@ import { AttendeeListComponent } from './attendee-list/attendee-list.component';
     BsDatepickerModule.forRoot(),
     CollapseModule.forRoot(),
     BsDropdownModule.forRoot(),
+    AccordionModule.forRoot(),
     FormsModule,
     NgxMasonryModule,
     CollapseModule.forRoot(),
@@ -95,6 +107,7 @@ import { AttendeeListComponent } from './attendee-list/attendee-list.component';
     EnrollmentServiceClient,
     ProviderServiceClient,
     LoginToNavbarServiceClient,
+    DiscussionServiceClient
   ],
   bootstrap: [AppComponent]
 })

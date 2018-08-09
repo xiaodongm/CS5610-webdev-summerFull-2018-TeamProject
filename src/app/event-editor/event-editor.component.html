@@ -122,10 +122,13 @@
         </div>
 
       </div>
-      <div>
+      <div *ngIf="event.attendee.length > 0">
         <app-attendee-list [attendeeIds]="event.attendee"></app-attendee-list>
       </div>
 
+      <div *ngIf="event._id && event._id !== ''">
+        <app-discussion-board [eventId]="event._id" ></app-discussion-board>
+      </div>
     </div>
 
     <div class="col-4">

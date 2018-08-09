@@ -11,3 +11,8 @@
   margin-top: 4px;
   border-right: 1px solid #aaaaaa;
 }
+
+#menuBtn {
+  margin-top: 5px;
+  cursor: pointer;
+}

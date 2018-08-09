@@ -1,0 +1,19 @@
+<br>
+<br>
+<br>
+<h2>Discussion Board</h2>
+<!--<button (click)="create()">create</button>-->
+
+<!--<button (click)="update()">update</button>-->
+
+<!--<button (click)="findAllDiscussions()">findAll</button>-->
+
+<!--<button (click)="Delete()">Delete</button>-->
+
+<div>
+  <ul *ngFor="let discussion of discussions">
+    <app-discussion (messageEvent)="receiveMessage($event)" [discussionToChild]="discussion"></app-discussion>
+  </ul>
+</div>
+<input placeholder="Start A new discussion" [(ngModel)] = "newContent">
+<button (click)='postDiscussion()'>Post</button>
