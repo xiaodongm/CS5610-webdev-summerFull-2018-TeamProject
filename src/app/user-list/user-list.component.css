@@ -18,3 +18,7 @@
 .dropdown-item {
   cursor: pointer;
 }
+
+.adminInput {
+  margin-top: 20px;
+}

@@ -90,4 +90,21 @@ export class UserServiceClient {
       }
     });
   }
+
+  adminCreateUser(username, password, role) {
+    const user = {
+      username: username,
+      password: password,
+      role: role
+    };
+    return fetch('http://localhost:3000/api/register', {
+      body: JSON.stringify(user),
+      credentials: 'include', // include, same-origin, *omit
+      method: 'post',
+      headers: {
+        'content-type': 'application/json'
+      }
+    });
+  }
+
 }
