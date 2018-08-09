@@ -35,8 +35,11 @@ import { BsDatepickerModule } from 'ngx-bootstrap';
 import { OrganizationSignUpComponent } from './organization-sign-up/organization-sign-up.component';
 import { CollapseModule } from 'ngx-bootstrap';
 import { BsDropdownModule } from 'ngx-bootstrap';
-import { ProviderServiceClient} from './services/provider.service.client';
-import { LoginToNavbarServiceClient} from './communication-services/login-to-navbar.service.client';
+import {ProviderServiceClient} from './services/provider.service.client';
+import {LoginToNavbarServiceClient} from './communication-services/login-to-navbar.service.client';
+import { AdminComponent } from './admin/admin.component';
+import { UserListComponent } from './user-list/user-list.component';
+import { AccordionModule } from 'ngx-bootstrap';
 import { DiscussionBoardComponent } from './discussion-board/discussion-board.component';
 import {DiscussionServiceClient} from './services/discussion.service.client';
 import { DiscussionComponent } from './discussion/discussion.component';
@@ -61,6 +64,8 @@ import { DiscussionComponent } from './discussion/discussion.component';
     LoginComponent,
     FriendListComponent,
     OrganizationSignUpComponent,
+    AdminComponent,
+    UserListComponent,
     DiscussionBoardComponent,
     DiscussionComponent,
   ],
@@ -73,6 +78,7 @@ import { DiscussionComponent } from './discussion/discussion.component';
     BsDatepickerModule.forRoot(),
     CollapseModule.forRoot(),
     BsDropdownModule.forRoot(),
+    AccordionModule.forRoot(),
     FormsModule,
     NgxMasonryModule,
   ],

@@ -1,0 +1,20 @@
+.wrapDiv {
+  margin-bottom: 10px;
+}
+
+.UpdateDeleteBtns {
+  margin-left: 12px;
+}
+
+.updateBtn {
+  margin-right: 10px;
+}
+
+
+.confirmDelete {
+  margin-right: 30px;
+}
+
+.dropdown-item {
+  cursor: pointer;
+}

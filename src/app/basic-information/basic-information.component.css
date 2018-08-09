@@ -19,3 +19,15 @@
   margin-left: 20px;
   font-size: 15px;
 }
+
+#deleteBtn {
+  margin-left: 80px;
+}
+
+#confirmDelete {
+  margin-right: 30px;
+}
+
+#adminBtn {
+  margin-left: 20px;
+}

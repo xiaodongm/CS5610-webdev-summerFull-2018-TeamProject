@@ -31,6 +31,12 @@ export class OrganizationSignUpComponent implements OnInit {
   };
 
 
+  _opened = false;
+
+  _toggleSidebar() {
+    this._opened = !this._opened;
+  }
+
   registerProvider(username, password, password2, organizationName, organizationAddress, service) {
     if (username && password) {
       if (password !== password2) {

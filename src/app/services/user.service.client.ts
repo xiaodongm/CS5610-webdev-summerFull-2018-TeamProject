@@ -5,6 +5,11 @@ export class UserServiceClient {
       .then(response => response.json());
   }
 
+  findAllUsers() {
+    return fetch('http://localhost:3000/api/user')
+      .then(response => response.json());
+  }
+
   login(username, password) {
     const credentials = {
       username: username,
@@ -38,10 +43,26 @@ export class UserServiceClient {
     }).then(response => response.json());
   }
 
+  adminUpdate(user) {
+    return fetch('http://localhost:3000/api/admin/updateUser', {
+      method: 'put',
+      body: JSON.stringify(user),
+      headers: {
+        'content-type': 'application/json'
+      }
+    }).then(response => response.json());
+  }
+
   delete() {
     return fetch('http://localhost:3000/api/profile', {
       method: 'delete',
       credentials: 'include'
+    });
+  }
+
+  deleteUserById(userId) {
+    return fetch('http://localhost:3000/api/user/userId/' + userId, {
+      method: 'delete'
     });
   }
 

@@ -5,14 +5,15 @@ import {HomeComponent} from './home/home.component';
 import {ProfileComponent} from './profile/profile.component';
 import {RegisterComponent} from './register/register.component';
 import {OrganizationSignUpComponent} from './organization-sign-up/organization-sign-up.component';
+import {AdminComponent} from './admin/admin.component';
 import {DiscussionBoardComponent} from './discussion-board/discussion-board.component';
-
 
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
   { path: 'home', component: HomeComponent},
   { path: 'profile', component: ProfileComponent},
+  { path: 'admin', component: AdminComponent},
   { path: 'homepage', component: HomePageComponent},
   { path: 'camping-site/:contractID/:facilityID/detail', component: CampingSiteDetailComponent},
   { path: 'detail', component: CampingSiteDetailComponent},
