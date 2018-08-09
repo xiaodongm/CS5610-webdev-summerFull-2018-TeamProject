@@ -37,6 +37,9 @@ import { CollapseModule } from 'ngx-bootstrap';
 import { BsDropdownModule } from 'ngx-bootstrap';
 import { ProviderServiceClient} from './services/provider.service.client';
 import { LoginToNavbarServiceClient} from './communication-services/login-to-navbar.service.client';
+import { DiscussionBoardComponent } from './discussion-board/discussion-board.component';
+import {DiscussionServiceClient} from './services/discussion.service.client';
+import { DiscussionComponent } from './discussion/discussion.component';
 
 
 
@@ -58,6 +61,8 @@ import { LoginToNavbarServiceClient} from './communication-services/login-to-nav
     LoginComponent,
     FriendListComponent,
     OrganizationSignUpComponent,
+    DiscussionBoardComponent,
+    DiscussionComponent,
   ],
   imports: [
     BrowserModule,
@@ -80,6 +85,7 @@ import { LoginToNavbarServiceClient} from './communication-services/login-to-nav
     EnrollmentServiceClient,
     ProviderServiceClient,
     LoginToNavbarServiceClient,
+    DiscussionServiceClient
   ],
   bootstrap: [AppComponent]
 })
