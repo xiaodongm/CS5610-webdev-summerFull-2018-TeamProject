@@ -26,7 +26,11 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import {UserServiceClient} from './services/user.service.client';
 import {MapServiceClient} from './services/map.service.client';
-import {NgxMasonryModule} from 'ngx-masonry';
+import { FriendListComponent } from './friend-list/friend-list.component';
+import { EventServiceClient} from './services/event.service.client';
+import {EnrollmentServiceClient} from './services/enrollment.service.client';
+
+import { NgxMasonryModule} from 'ngx-masonry';
 import { BsDatepickerModule } from 'ngx-bootstrap';
 import { OrganizationSignUpComponent } from './organization-sign-up/organization-sign-up.component';
 import { CollapseModule } from 'ngx-bootstrap';
@@ -36,7 +40,9 @@ import {LoginToNavbarServiceClient} from './communication-services/login-to-navb
 import { AdminComponent } from './admin/admin.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { AccordionModule } from 'ngx-bootstrap';
-
+import { DiscussionBoardComponent } from './discussion-board/discussion-board.component';
+import {DiscussionServiceClient} from './services/discussion.service.client';
+import { DiscussionComponent } from './discussion/discussion.component';
 
 
 
@@ -56,9 +62,12 @@ import { AccordionModule } from 'ngx-bootstrap';
     EventCardComponent,
     RegisterComponent,
     LoginComponent,
+    FriendListComponent,
     OrganizationSignUpComponent,
     AdminComponent,
     UserListComponent,
+    DiscussionBoardComponent,
+    DiscussionComponent,
   ],
   imports: [
     BrowserModule,
@@ -78,8 +87,11 @@ import { AccordionModule } from 'ngx-bootstrap';
     CampingSiteToDetailServiceClient,
     UserServiceClient,
     MapServiceClient,
+    EventServiceClient,
+    EnrollmentServiceClient,
     ProviderServiceClient,
     LoginToNavbarServiceClient,
+    DiscussionServiceClient
   ],
   bootstrap: [AppComponent]
 })

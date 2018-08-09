@@ -6,6 +6,7 @@ import {ProfileComponent} from './profile/profile.component';
 import {RegisterComponent} from './register/register.component';
 import {OrganizationSignUpComponent} from './organization-sign-up/organization-sign-up.component';
 import {AdminComponent} from './admin/admin.component';
+import {DiscussionBoardComponent} from './discussion-board/discussion-board.component';
 
 
 const appRoutes: Routes = [
@@ -17,6 +18,7 @@ const appRoutes: Routes = [
   { path: 'camping-site/:contractID/:facilityID/detail', component: CampingSiteDetailComponent},
   { path: 'detail', component: CampingSiteDetailComponent},
   { path: 'organization/signUp', component: OrganizationSignUpComponent},
+  { path: 'test', component: DiscussionBoardComponent},
   { path: '**', component: HomeComponent},
 
 ];
