@@ -35,6 +35,7 @@ import {ProviderServiceClient} from './services/provider.service.client';
 import {LoginToNavbarServiceClient} from './communication-services/login-to-navbar.service.client';
 import { AdminComponent } from './admin/admin.component';
 import { UserListComponent } from './user-list/user-list.component';
+import { AccordionModule } from 'ngx-bootstrap';
 
 
 
@@ -68,6 +69,7 @@ import { UserListComponent } from './user-list/user-list.component';
     BsDatepickerModule.forRoot(),
     CollapseModule.forRoot(),
     BsDropdownModule.forRoot(),
+    AccordionModule.forRoot(),
     FormsModule,
     NgxMasonryModule,
   ],

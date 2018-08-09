@@ -42,6 +42,11 @@ export class AdminComponent implements OnInit {
     this.listType = this.listTypeModel.userList;
   }
 
+  receiveMessage($event) {
+    this.findAllUsers();
+    this.findAllProviders();
+  }
+
   ngOnInit() {
     this.findAllUsers();
     this.findAllProviders();

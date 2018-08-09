@@ -26,8 +26,8 @@
       <!--<a id="loginLink" routerLink="/login" (click)="openLogin(login)">Login</a>-->
     <!--</div>-->
     <input [(ngModel)]="username" id="usernameFld" class="form-control" placeholder="Username">
-    <input [(ngModel)]="password" id="passwordFld" class="form-control" placeholder="Password">
-    <input [(ngModel)]="password2" id="confirmPasswordFld" class="form-control" placeholder="Confirm Password">
+    <input [(ngModel)]="password" id="passwordFld" class="form-control" placeholder="Password" type="password">
+    <input [(ngModel)]="password2" id="confirmPasswordFld" class="form-control" placeholder="Confirm Password" type="password">
     <div id="locationBlock">
       <i id="mapPinIcon" class="fas fa-map-marker-alt"></i>
       <span>{{location}}</span>
@@ -57,7 +57,7 @@
       <!--<a id="signUpLink" routerLink="/login" (click)="openRegister(register)">Sign Up</a>-->
     <!--</div>-->
     <input [(ngModel)]="username" id="loginUsernameFld" class="form-control" placeholder="Username">
-    <input [(ngModel)]="password" id="loginPasswordFld" class="form-control" placeholder="Password">
+    <input [(ngModel)]="password" id="loginPasswordFld" class="form-control" placeholder="Password" type="password">
     <div id="loginType" class="input-group-append">
       <li class="list-group-item form-control">{{loginType}}</li>
       <div class="btn-group" dropdown>

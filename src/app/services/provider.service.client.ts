@@ -61,10 +61,26 @@ export class ProviderServiceClient {
     }).then(response => response.json());
   }
 
+  adminUpdate(user) {
+    return fetch('http://localhost:3000/api/admin/updateProvider', {
+      method: 'put',
+      body: JSON.stringify(user),
+      headers: {
+        'content-type': 'application/json'
+      }
+    }).then(response => response.json());
+  }
+
   delete() {
     return fetch('http://localhost:3000/api/provider/profile', {
       method: 'delete',
       credentials: 'include'
+    });
+  }
+
+  deleteProviderById(providerId) {
+    return fetch('http://localhost:3000/api/provider/providerId/' + providerId, {
+      method: 'delete'
     });
   }
 
