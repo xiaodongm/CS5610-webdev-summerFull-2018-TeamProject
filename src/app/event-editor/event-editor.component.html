@@ -1,0 +1,335 @@
+<!--<div class="container">-->
+  <!--this page shows event details-->
+<!--</div>-->
+
+<div class="card meta-div" *ngIf="isOrganizerLoaded">
+<div class="container" (mouseleave) ="mouseLeave()">
+  <div class="row meta-row">
+    <div class="col-md-7 meta-div" >
+      <div class="card media-container">
+        <div class="carousel-container">
+          <carousel data-interval="false"
+                    [showIndicators]="!(hasExtraInfo && inImage)">
+            <slide class="slide" *ngFor="let photo of event.photos" >
+              <div class="image"
+                   [ngClass]="{'wbdv-blur': hasExtraInfo && inImage}"
+                   [ngStyle]="{'background-image': 'url(' + photo + ')'}">
+              </div>
+              <!--<img [ngClass]="{'wbdv-blur': hasExtraInfo && inImage}"-->
+              <!--src={{photo}} alt="first slide">-->
+            </slide>
+          </carousel>
+        </div>
+        <div class="iframe-pos">
+          <div class="iframe-container">
+            <iframe *ngIf="hasExtraInfo && inImage"
+                    [src]='getIframeSource()'
+                    frameborder="0"
+                    scrolling=false
+                    allow="encrypted-media"
+                    style="overflow:hidden;"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+    <div class="col-md-5">
+      <div class="card event-meda">
+      <span class="edit-span" (click)="openModal(template)">
+        <i class="fas fa-pencil-alt"></i>
+      </span>
+        <h2 class="">{{event.title}}</h2>
+
+        <div class="row" *ngIf="isOrganizerLoaded">
+          <div class="avatar-container col-3">
+            <div class="avatar" [ngStyle]="{'background-image': 'url(' + organizer.profilePhoto + ')'}">
+            </div>
+          </div>
+
+          <div class="host-info col-7">
+            <div class="text-sm-left text-muted">
+              Hosted by
+              <span>{{organizer && organizer.firstName}}</span>
+              <span>{{organizer && ' ' + organizer.lastName}}</span>
+            </div>
+            <div class="text-sm-left">
+              <span class="text-muted">From </span>
+              <span>{{organizer.location}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="button-pos">
+        <span class="button-container">
+          <span (click) = "mouseEnter()">
+            <i *ngIf='hasVideo()'
+               class="fab fa-youtube fa-2x"
+            ></i>
+          </span>
+        </span>
+      </span>
+
+      <div class="amenity_list">
+        <span *ngFor="let tag of this.event.tags" class="badge badge-secondary amenity_item">{{tag}}</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+    <h2>Descriptions: </h2>
+      <span class="edit-span" (click)="openModal(template2)">
+        <i class="fas fa-pencil-alt"></i>
+      </span>
+      <!--<div>-->
+        <!--<div>{{event.video}}</div>-->
+        <!--<iframe [src]='event.video | safe'> </iframe>-->
+      <!--</div>-->
+
+      <div *ngFor="let widget of this.event.description">
+        <div *ngIf="widget.type === 'heading'">
+          heading: {{widget.data}}
+        </div>
+        <div *ngIf="widget.type === 'paragraph'">
+          paragraph: {{widget.data}}
+        </div>
+        <div *ngIf="widget.type === 'link'">
+          Link: <a href={{widget.data}}>{{widget.data}}</a>
+        </div>
+
+        <div *ngIf="widget.type === 'unorderedList'">
+          List:
+          <ul >
+            <li *ngFor="let item of splitList(widget.data)">{{item}}</li>
+          </ul>
+        </div>
+
+        <div *ngIf="widget.type === 'orderedList'">
+          List:
+          <ol>
+            <li *ngFor="let item of splitList(widget.data)">{{item}}</li>
+          </ol>
+        </div>
+
+      </div>
+      <div *ngIf="event.attendee.length > 0">
+        <app-attendee-list [attendeeIds]="event.attendee"></app-attendee-list>
+      </div>
+
+      <div *ngIf="event._id && event._id !== ''">
+        <app-discussion-board [eventId]="event._id" ></app-discussion-board>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div>
+        Event Start:
+        {{event.startTime}}
+        <!--{{dates[event.start.getDay()]}}, {{months[event.start.getMonth()]}} {{event.start.getDate()}}-->
+      </div>
+
+      <div>
+        Event End:
+        {{event.endTime}}
+        <!--{{dates[event.end.getDay()]}}, {{months[event.end.getMonth()]}} {{event.end.getDate()}}-->
+
+      </div>
+
+      <div>
+        <h3>Drop down pick or go other page to get</h3>
+        <ul>
+          <li>camping site</li>
+          <li>camping equipments</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<!--<button type="button" class="btn btn-primary" (click)="openModal(template)">Edit Meta Data</button>-->
+
+<ng-template #template>
+  <div class="modal-header" *ngIf="isOrganizerLoaded">
+    <h4 class="modal-title pull-left">Meta data: can only choose one time</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body text-center">
+
+    <div>
+      <label> Title </label>
+      <input
+        [(ngModel)]="event.title"
+        class="form-control"
+        placeholder="Event Title"
+      />
+
+      <label> Video link </label>
+      <input
+        [(ngModel)]="event.video"
+        class="form-control"
+        placeholder="Video link"
+      />
+      <form>
+        <label>Event Starts:</label>
+        <input
+          [(ngModel)]="event.startTime"
+          type="date"
+          name="bday">
+        <label>Event Ends:</label>
+
+        <input
+          [(ngModel)]="event.endTime"
+          type="date"
+          name="bday">
+      </form>
+
+      <label> Add Image </label>
+      <ol>
+        <li *ngFor="let img of event.photos">
+          {{img}}
+          <button (click)="deleteImageUrl(img)">Delete</button>
+        </li>
+      </ol>
+      <input
+        [(ngModel)]="imgUrl"
+        class="form-control"
+        placeholder="Image Url">
+      <button (click)="addImageUrl()">Add Image</button>
+
+    </div>
+    <hr>
+    <p>Do you want to confirm?</p>
+    <button type="button" class="btn btn-default" (click)="confirmUpdateMeta()" >Yes</button>
+    <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+  </div>
+</ng-template>
+
+
+<!--<button type="button" class="btn btn-primary" (click)="openModal(template2)">Edit Description</button>-->
+
+<ng-template #template2>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Description: Edit or Add new</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <div class="content-of-modal">
+      <h4>Edit current descriptions</h4>
+      <span class="text-muted">drag to swich order</span>
+      <div [sortablejs]='this.event.description' [sortablejsOptions]="{ animation: 150 }">
+        <div class="card" *ngFor="let widget of this.event.description">
+            <app-event-description-widget-editor
+              [widget]="widget"
+              (deleteEmitter)="deleteWidget($event)"
+              (editEmitter)="updateWidget($event)">
+            </app-event-description-widget-editor>
+        </div>
+      </div>
+
+      <div class="amenity_list" *ngIf="this.event.tags.length > 0">
+        <span *ngFor="let tag of this.event.tags" class="badge badge-secondary amenity_item">{{tag}}</span>
+        <hr>
+      </div>
+    </div>
+    <div>
+      <h4>Add new descriptions</h4>
+      <tabset>
+        <tab heading="Heading" id="tab0">
+          Content heading
+          <label>Heading</label>
+          <input
+            [(ngModel)]="heading"
+            class="form-control"
+            placeholder="New Heading">
+          <button (click)="addHeading()">Add Heading</button>
+        </tab>
+
+
+        <tab heading="Paragraph" id="tab1">
+          Basic content
+          <label>Paragraph</label>
+          <textarea
+            [(ngModel)]="paragraph"
+            class="form-control"
+            placeholder="Paragraph text">
+          </textarea>
+          <button (click)="addParagraph()">Add Paragraph</button>
+        </tab>
+
+        <tab heading="Link">
+          <div>
+            <label> link url</label>
+            <input
+              [(ngModel)]="linkUrl"
+              class="form-control"
+              placeholder="Link URL">
+            <button (click)="addLink()">Add Link</button>
+          </div>
+        </tab>
+
+        <tab heading="List">
+          <div>
+            <label> List </label>
+            <select class="form-control" (change)="setListType()" >
+              <option value="unorderedList">Unordered list</option>
+              <option value="orderedList">Ordered list</option>
+            </select>
+            <textarea
+              [(ngModel)]="list"
+              class="form-control"
+              placeholder="List Item">
+            </textarea>
+            <button (click)="addList()">Add List</button>
+          </div>
+        </tab>
+
+        <tab heading="Features">
+          <div class="btn-group" dropdown>
+            <button dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+                    aria-controls="dropdown-basic">
+              Add feature tags <span class="caret"></span>
+            </button>
+            <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+                role="menu" aria-labelledby="button-basic">
+              <li role="menuitem"><a class="dropdown-item" (click)="toggleTag('Hiking')">Hiking</a></li>
+              <li role="menuitem"><a class="dropdown-item" (click)="toggleTag('Fishing')">Fishing</a></li>
+              <li role="menuitem"><a class="dropdown-item" (click)="toggleTag('Biking')">Biking</a></li>
+            </ul>
+          </div>
+        </tab>
+      </tabset>
+    </div>
+
+    <hr>
+    <p>Save new added widget?</p>
+    <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
+    <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+  </div>
+</ng-template>
+
+
+

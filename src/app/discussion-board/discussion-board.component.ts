@@ -14,12 +14,11 @@ export class DiscussionBoardComponent implements OnInit {
 
   discussions = [];
 
-  @Input()
-  discussionToChild;
+  @Input() eventId;
 
   newContent;
 
-  curUser
+  curUser;
 
   ngOnInit() {
     this.findAllDiscussions();
@@ -32,35 +31,10 @@ export class DiscussionBoardComponent implements OnInit {
       this.discussions = $event;
   }
 
-  create () {
-    const discussion = {
-      postPeople: '5b693b87565e00c425ced382',
-      content: 'how r u',
-      preDiscussion: '5b6a8034565e00c425ced386',
-      postTime: new Date()
-    }
-    this.service
-      .postDiscussion(discussion)
-      .then(res => {
-        console.log(res);
-      });
-  }
-
-  update () {
-    const discussion = {
-      _id: '5b6a8034565e00c425ced386',
-      postPeople: '5b693762565e00c425ced381',
-      content: 'Hi',
-      postTime: new Date()
-    }
-    this.service
-      .updateDiscussion(discussion)
-      .then(res => console.log(res));
-  }
 
   findAllDiscussions () {
     this.service
-      .findAllDiscussions()
+      .findDiscussionsForEvent(this.eventId)
       .then(res => {
         res.sort((a, b) => a.postTime - b.postTime);
         this.discussions = res;
@@ -85,9 +59,9 @@ export class DiscussionBoardComponent implements OnInit {
         content: this.newContent,
         postPeople: this.curUser,
         postTime: new Date(),
-        // event:
+        event: this.eventId,
         type: 'post'
-      }
+      };
       this.service
         .postDiscussion(newDiscussion)
         .then(() => this.findAllDiscussions());

@@ -10,7 +10,7 @@ import { CampingSiteDetailComponent } from './camping-site-detail/camping-site-d
 
 // third part imports
 import { CarouselModule } from 'ngx-bootstrap/carousel';
-import { ModalModule } from 'ngx-bootstrap';
+import {CollapseModule, ModalModule, TabsModule} from 'ngx-bootstrap';
 import { AlertModule } from 'ngx-bootstrap';
 import { SearchBarCampingSiteComponent } from './search-bar-campground/search-bar-camping-site.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -32,9 +32,14 @@ import {EnrollmentServiceClient} from './services/enrollment.service.client';
 
 import { NgxMasonryModule} from 'ngx-masonry';
 import { BsDatepickerModule } from 'ngx-bootstrap';
+import { EventDetailComponent } from './event-detail/event-detail.component';
+import {EventEditorComponent, SafePipe} from './event-editor/event-editor.component';
+import { CreateEventComponent } from './create-event/create-event.component';
+import { EventDescriptionWidgetEditorComponent } from './event-description-widget-editor/event-description-widget-editor.component';
+import {SortablejsModule} from 'angular-sortablejs';
 import { OrganizationSignUpComponent } from './organization-sign-up/organization-sign-up.component';
-import { CollapseModule } from 'ngx-bootstrap';
 import { BsDropdownModule } from 'ngx-bootstrap';
+import { AttendeeListComponent } from './attendee-list/attendee-list.component';
 import {ProviderServiceClient} from './services/provider.service.client';
 import {LoginToNavbarServiceClient} from './communication-services/login-to-navbar.service.client';
 import { AdminComponent } from './admin/admin.component';
@@ -62,8 +67,14 @@ import { DiscussionComponent } from './discussion/discussion.component';
     EventCardComponent,
     RegisterComponent,
     LoginComponent,
+    EventDetailComponent,
+    EventEditorComponent,
+    CreateEventComponent,
+    SafePipe,
+    EventDescriptionWidgetEditorComponent,
     FriendListComponent,
     OrganizationSignUpComponent,
+    AttendeeListComponent,
     AdminComponent,
     UserListComponent,
     DiscussionBoardComponent,
@@ -81,6 +92,11 @@ import { DiscussionComponent } from './discussion/discussion.component';
     AccordionModule.forRoot(),
     FormsModule,
     NgxMasonryModule,
+    CollapseModule.forRoot(),
+    BsDropdownModule.forRoot(),
+    TabsModule.forRoot(),
+    SortablejsModule.forRoot({ animation: 150 }),
+    BsDatepickerModule.forRoot()
   ],
   providers: [
     CampingSiteServiceClient,

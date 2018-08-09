@@ -117,6 +117,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_user_service_client__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./services/user.service.client */ "./src/app/services/user.service.client.ts");
 /* harmony import */ var _services_map_service_client__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./services/map.service.client */ "./src/app/services/map.service.client.ts");
 /* harmony import */ var ngx_masonry__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ngx-masonry */ "./node_modules/ngx-masonry/fesm5/ngx-masonry.js");
+/* harmony import */ var _event_detail_event_detail_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./event-detail/event-detail.component */ "./src/app/event-detail/event-detail.component.ts");
+/* harmony import */ var _event_editor_event_editor_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./event-editor/event-editor.component */ "./src/app/event-editor/event-editor.component.ts");
+/* harmony import */ var _create_event_create_event_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./create-event/create-event.component */ "./src/app/create-event/create-event.component.ts");
+/* harmony import */ var ngx_bootstrap_dropdown__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ngx-bootstrap/dropdown */ "./node_modules/ngx-bootstrap/dropdown/index.js");
+/* harmony import */ var _event_description_widget_editor_event_description_widget_editor_component__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./event-description-widget-editor/event-description-widget-editor.component */ "./src/app/event-description-widget-editor/event-description-widget-editor.component.ts");
+/* harmony import */ var angular_sortablejs__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! angular-sortablejs */ "./node_modules/angular-sortablejs/dist/index.js");
+/* harmony import */ var angular_sortablejs__WEBPACK_IMPORTED_MODULE_29___default = /*#__PURE__*/__webpack_require__.n(angular_sortablejs__WEBPACK_IMPORTED_MODULE_29__);
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -131,6 +138,12 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 // third part imports
+
+
+
+
+
+
 
 
 
@@ -169,6 +182,11 @@ var AppModule = /** @class */ (function () {
                 _event_card_event_card_component__WEBPACK_IMPORTED_MODULE_18__["EventCardComponent"],
                 _register_register_component__WEBPACK_IMPORTED_MODULE_19__["RegisterComponent"],
                 _login_login_component__WEBPACK_IMPORTED_MODULE_20__["LoginComponent"],
+                _event_detail_event_detail_component__WEBPACK_IMPORTED_MODULE_24__["EventDetailComponent"],
+                _event_editor_event_editor_component__WEBPACK_IMPORTED_MODULE_25__["EventEditorComponent"],
+                _create_event_create_event_component__WEBPACK_IMPORTED_MODULE_26__["CreateEventComponent"],
+                _event_editor_event_editor_component__WEBPACK_IMPORTED_MODULE_25__["SafePipe"],
+                _event_description_widget_editor_event_description_widget_editor_component__WEBPACK_IMPORTED_MODULE_28__["EventDescriptionWidgetEditorComponent"],
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -179,6 +197,10 @@ var AppModule = /** @class */ (function () {
                 ngx_bootstrap__WEBPACK_IMPORTED_MODULE_8__["BsDatepickerModule"].forRoot(),
                 _angular_forms__WEBPACK_IMPORTED_MODULE_10__["FormsModule"],
                 ngx_masonry__WEBPACK_IMPORTED_MODULE_23__["NgxMasonryModule"],
+                ngx_bootstrap__WEBPACK_IMPORTED_MODULE_8__["CollapseModule"].forRoot(),
+                ngx_bootstrap_dropdown__WEBPACK_IMPORTED_MODULE_27__["BsDropdownModule"].forRoot(),
+                ngx_bootstrap__WEBPACK_IMPORTED_MODULE_8__["TabsModule"].forRoot(),
+                angular_sortablejs__WEBPACK_IMPORTED_MODULE_29__["SortablejsModule"].forRoot({ animation: 150 })
             ],
             providers: [
                 _services_campingSite_service_client__WEBPACK_IMPORTED_MODULE_11__["CampingSiteServiceClient"],
@@ -211,6 +233,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _camping_site_detail_camping_site_detail_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./camping-site-detail/camping-site-detail.component */ "./src/app/camping-site-detail/camping-site-detail.component.ts");
 /* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
 /* harmony import */ var _profile_profile_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./profile/profile.component */ "./src/app/profile/profile.component.ts");
+/* harmony import */ var _event_detail_event_detail_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./event-detail/event-detail.component */ "./src/app/event-detail/event-detail.component.ts");
+/* harmony import */ var _create_event_create_event_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./create-event/create-event.component */ "./src/app/create-event/create-event.component.ts");
+
+
 
 
 
@@ -223,6 +249,8 @@ var appRoutes = [
     { path: 'homepage', component: _home_page_home_page_component__WEBPACK_IMPORTED_MODULE_1__["HomePageComponent"] },
     { path: 'camping-site/:contractID/:facilityID/detail', component: _camping_site_detail_camping_site_detail_component__WEBPACK_IMPORTED_MODULE_2__["CampingSiteDetailComponent"] },
     { path: 'detail', component: _camping_site_detail_camping_site_detail_component__WEBPACK_IMPORTED_MODULE_2__["CampingSiteDetailComponent"] },
+    { path: 'eventDetail', component: _event_detail_event_detail_component__WEBPACK_IMPORTED_MODULE_5__["EventDetailComponent"] },
+    { path: 'createEvent', component: _create_event_create_event_component__WEBPACK_IMPORTED_MODULE_6__["CreateEventComponent"] },
     { path: '**', component: _home_home_component__WEBPACK_IMPORTED_MODULE_3__["HomeComponent"] },
 ];
 var routing = _angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"].forRoot(appRoutes);
@@ -609,6 +637,88 @@ var dates = ['Sunday', 'Monday', 'Tuesday', 'Wednesday',
 
 /***/ }),
 
+/***/ "./src/app/create-event/create-event.component.css":
+/*!*********************************************************!*\
+  !*** ./src/app/create-event/create-event.component.css ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".container {\n  margin-top: 80px;\n}\n\n#amenity_list {\n  margin-left: 35px;\n}\n\n.amenity_item {\n  margin-right: 8px;\n}\n"
+
+/***/ }),
+
+/***/ "./src/app/create-event/create-event.component.html":
+/*!**********************************************************!*\
+  !*** ./src/app/create-event/create-event.component.html ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container\">\n  <div class=\"card\">\n    <div class=\"card-body\">\n      <h6 class=\"card-subtitle mb-2 text-muted\">step 1</h6>\n      <h5 class=\"card-title\">What's your new Camping position?</h5>\n\n      <input\n        [(ngModel)]=\"campSite\"\n        class=\"form-control\"\n        placeholder=\"Type your camping site\">\n\n      <button type=\"button\" class=\"btn btn-primary\" (click)=\"isCollapsed1 = !isCollapsed1\"\n              [attr.aria-expanded]=\"!isCollapsed1\" aria-controls=\"collapseBasic\">Next\n      </button>\n\n    </div>\n  </div>\n\n\n  <div  id=\"collapseBasic\" [collapse]=\"isCollapsed1\">\n    <hr>\n    <div class=\"card\">\n      <div class=\"card-body\">\n        <h6 class=\"card-subtitle mb-2 text-muted\">step 2</h6>\n        <h5 class=\"card-title\">What's your camping event featured for?</h5>\n\n        <div class=\"btn-group\" dropdown>\n          <button dropdownToggle type=\"button\" class=\"btn btn-primary dropdown-toggle\"\n                  aria-controls=\"dropdown-basic\">\n            Add feature tags <span class=\"caret\"></span>\n          </button>\n          <ul id=\"dropdown-basic\" *dropdownMenu class=\"dropdown-menu\"\n              role=\"menu\" aria-labelledby=\"button-basic\">\n            <li role=\"menuitem\"><a class=\"dropdown-item\" (click)=\"toggleTag('Hiking')\">Hiking</a></li>\n            <li role=\"menuitem\"><a class=\"dropdown-item\" (click)=\"toggleTag('Fishing')\">Fishing</a></li>\n            <li role=\"menuitem\"><a class=\"dropdown-item\" (click)=\"toggleTag('Biking')\">Biking</a></li>\n          </ul>\n        </div>\n        <div id=\"amenity_list\">\n          <span *ngFor=\"let tag of tags\" class=\"badge badge-secondary amenity_item\">{{tag}}</span>\n        </div>\n        <div>\n          <button type=\"button\" class=\"btn btn-primary\" (click)=\"isCollapsed2 = !isCollapsed2\"\n                  [attr.aria-expanded]=\"!isCollapsed2\" aria-controls=\"collapseBasic2\">Next\n          </button>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <div id=\"collapseBasic2\" [collapse]=\"isCollapsed2\">\n    <hr>\n    <div class=\"card\">\n      <div class=\"card-body\">\n        <h6 class=\"card-subtitle mb-2 text-muted\">step 3</h6>\n        <h5 class=\"card-title\">What will your Camp Event name be?</h5>\n\n        <input\n          [(ngModel)]=\"title\"\n          class=\"form-control\"\n          placeholder=\"Type your camping site\">\n        <h5 class=\"card-title\"> Choose your event time stamp</h5>\n        <form>\n          Event Starts:\n          <input\n            [(ngModel)]=\"eventStart\"\n            type=\"date\"\n            name=\"bday\">\n        </form>\n\n        <form>\n          Event Ends:\n          <input\n            [(ngModel)]=\"eventEnd\"\n            type=\"date\"\n            name=\"bday\">\n        </form>\n        <h5 class=\"card-title\">Describe who should join, and what your Meetup will do.</h5>\n        <textarea\n          [(ngModel)]=\"paragraph\"\n          class=\"form-control\"\n          placeholder=\"Paragraph text\">\n        </textarea>\n        <div>\n          <button type=\"button\" class=\"btn btn-success\" (click)=\"createEvent()\"\n                  [attr.aria-expanded]=\"!isCollapsed3\" aria-controls=\"collapseBasic3\">Create\n          </button>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n"
+
+/***/ }),
+
+/***/ "./src/app/create-event/create-event.component.ts":
+/*!********************************************************!*\
+  !*** ./src/app/create-event/create-event.component.ts ***!
+  \********************************************************/
+/*! exports provided: CreateEventComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CreateEventComponent", function() { return CreateEventComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var CreateEventComponent = /** @class */ (function () {
+    function CreateEventComponent(router) {
+        this.router = router;
+        this.isCollapsed1 = true;
+        this.isCollapsed2 = true;
+        this.isCollapsed3 = true;
+        this.tags = [];
+    }
+    CreateEventComponent.prototype.toggleTag = function (tag) {
+        if (this.tags.includes(tag)) {
+            var index = this.tags.indexOf(tag);
+            this.tags.splice(index, 1);
+        }
+        else {
+            this.tags.push(tag);
+        }
+    };
+    CreateEventComponent.prototype.createEvent = function () {
+        this.router.navigateByUrl('/eventDetail');
+    };
+    CreateEventComponent.prototype.ngOnInit = function () {
+    };
+    CreateEventComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-create-event',
+            template: __webpack_require__(/*! ./create-event.component.html */ "./src/app/create-event/create-event.component.html"),
+            styles: [__webpack_require__(/*! ./create-event.component.css */ "./src/app/create-event/create-event.component.css")]
+        }),
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
+    ], CreateEventComponent);
+    return CreateEventComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/event-card/event-card.component.css":
 /*!*****************************************************!*\
   !*** ./src/app/event-card/event-card.component.css ***!
@@ -627,7 +737,7 @@ module.exports = ".button-pos {\n  margin-top: 2px;\n  margin-right: 5px;\n  flo
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card text-center\"\n     (mouseleave) =\"mouseLeave()\">\n\n    <carousel (activeSlideChange)=\"slideChanged($event)\" data-interval=\"false\" [showIndicators]=\"!(hasExtraInfo && inImage)\">\n      <slide *ngFor=\"let photo of data.photos\" class=\"wbdv-imageContainer\">\n        <img [ngClass]=\"{'wbdv-blur': hasExtraInfo && inImage}\" src={{photo}} alt=\"first slide\" style=\"display: block; width: 100%;\">\n      </slide>\n    </carousel>\n\n  <div class=\"iframe-pos\">\n    <div class=\"iframe-container\">\n      <iframe *ngIf=\"hasExtraInfo && inImage\"\n              [src]='getIframeSource()'\n              frameborder=\"0\"\n              scrolling=false\n              allow=\"autoplay; encrypted-media\"\n              style=\"overflow:hidden;\"\n              allowfullscreen></iframe>\n    </div>\n  </div>\n\n  <div class=\"card-block\">\n    <h6 class=\"card-subtitle mb-2 text-muted\">{{dates[data.start.getDate()]}}, {{months[data.start.getMonth()]}} {{data.start.getDay()}}</h6>\n    <span class=\"button-pos\">\n      <span class=\"button-container\">\n         <span (click) = \"mouseEnter()\">\n          <i *ngIf=\"hasExtraInfo && !inImage\"\n             class=\"fab fa-youtube fa-2x\"\n          ></i>\n        </span>\n      </span>\n    </span>\n\n    <h4 class=\"card-title\">{{data.title}}</h4>\n    <div class=\"card-body\">\n    <div class=\"row\">\n      <div class=\"avatar-container\">\n        <div class=\"avatar\" [ngStyle]=\"{'background-image': 'url(' + data.organizer.profilePhoto + ')'}\">\n        </div>\n      </div>\n\n      <div class=\"host-info\">\n        <div class=\"text-sm-left text-muted\">\n          Hosted by\n          <span>{{data.organizer && data.organizer.firstName}}</span>\n          <span>{{data.organizer && ' ' + data.organizer.lastName}}</span>\n        </div>\n        <div class=\"text-sm-left\">\n          <span class=\"text-muted\">From </span>\n          <span>{{data.organizer.location}}</span>\n        </div>\n      </div>\n    </div>\n    </div>\n  </div>\n\n</div>\n"
+module.exports = "<div class=\"card text-center\"\n     (mouseleave) =\"mouseLeave()\">\n\n    <carousel (activeSlideChange)=\"slideChanged($event)\" data-interval=\"false\" [showIndicators]=\"!(hasExtraInfo && inImage)\">\n      <slide *ngFor=\"let photo of data.photos\" >\n        <img [ngClass]=\"{'wbdv-blur': hasExtraInfo && inImage}\" src={{photo}} alt=\"first slide\" style=\"display: block; width: 100%;\">\n      </slide>\n    </carousel>\n\n  <div class=\"iframe-pos\">\n    <div class=\"iframe-container\">\n      <iframe *ngIf=\"hasExtraInfo && inImage\"\n              [src]='getIframeSource()'\n              frameborder=\"0\"\n              scrolling=false\n              allow=\"autoplay; encrypted-media\"\n              style=\"overflow:hidden;\"\n              ></iframe>\n    </div>\n  </div>\n\n  <div class=\"card-block\">\n    <h6 class=\"card-subtitle mb-2 text-muted\">{{dates[data.start.getDate()]}}, {{months[data.start.getMonth()]}} {{data.start.getDay()}}</h6>\n    <span class=\"button-pos\">\n      <span class=\"button-container\">\n         <span (click) = \"mouseEnter()\">\n          <i *ngIf=\"hasExtraInfo && !inImage\"\n             class=\"fab fa-youtube fa-2x\"\n          ></i>\n        </span>\n      </span>\n    </span>\n\n    <h4 class=\"card-title\">{{data.title}}</h4>\n    <div class=\"card-body\">\n    <div class=\"row\">\n      <div class=\"avatar-container\">\n        <div class=\"avatar\" [ngStyle]=\"{'background-image': 'url(' + data.organizer.profilePhoto + ')'}\">\n        </div>\n      </div>\n\n      <div class=\"host-info\">\n        <div class=\"text-sm-left text-muted\">\n          Hosted by\n          <span>{{data.organizer && data.organizer.firstName}}</span>\n          <span>{{data.organizer && ' ' + data.organizer.lastName}}</span>\n        </div>\n        <div class=\"text-sm-left\">\n          <span class=\"text-muted\">From </span>\n          <span>{{data.organizer.location}}</span>\n        </div>\n      </div>\n    </div>\n    </div>\n  </div>\n\n</div>\n"
 
 /***/ }),
 
@@ -707,6 +817,412 @@ var EventCardComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["DomSanitizer"]])
     ], EventCardComponent);
     return EventCardComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/event-description-widget-editor/event-description-widget-editor.component.css":
+/*!***********************************************************************************************!*\
+  !*** ./src/app/event-description-widget-editor/event-description-widget-editor.component.css ***!
+  \***********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/event-description-widget-editor/event-description-widget-editor.component.html":
+/*!************************************************************************************************!*\
+  !*** ./src/app/event-description-widget-editor/event-description-widget-editor.component.html ***!
+  \************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div>\n  <span class=\"span-box\">\n\n    <span class=\"delete-span\" (click)=\"deleteWidget(widget)\">\n      <i class=\"far fa-trash-alt\"></i>\n    </span>\n\n    <span class=\"edit-span\" (click)=\"editWidget()\">\n      <i class=\"fas fa-pencil-alt\"></i>\n    </span>\n  </span>\n\n  <div *ngIf=\"widget.type === 'paragraph'\">\n    paragraph: {{widget.data}}\n  </div>\n  <div *ngIf=\"widget.type === 'link'\">\n    Link: <a href={{widget.data}}>{{widget.data}}</a>\n  </div>\n\n  <div *ngIf=\"widget.type === 'unorderedList'\">\n    List:\n    <ul>\n      <li *ngFor=\"let item of splitList(widget.data)\">{{item}}</li>\n    </ul>\n  </div>\n\n  <div *ngIf=\"widget.type === 'orderedList'\">\n    List:\n    <ol>\n      <li *ngFor=\"let item of splitList(widget.data)\">{{item}}</li>\n    </ol>\n  </div>\n\n\n    <div *ngIf=\"widget.type === 'paragraph' && !isEditorHidden\">\n      Basic content\n      <label>Paragraph</label>\n      <textarea\n        [(ngModel)]=\"newWidget.data\"\n        class=\"form-control\"\n        placeholder=\"Paragraph text\">\n      </textarea>\n      <button (click)=\"updateWidget()\">Save Paragraph</button>\n    </div>\n\n    <div *ngIf=\"widget.type === 'link' && !isEditorHidden\">\n      <label> link url</label>\n      <input\n        [(ngModel)]=\"newWidget.data\"\n        class=\"form-control\"\n        placeholder=\"Link URL\">\n      <button (click)=\"updateWidget()\">Save Link</button>\n    </div>\n\n    <div *ngIf=\"(widget.type === 'orderedList' || widget.type === 'unorderedList') && !isEditorHidden\">\n      <label> List </label>\n      <select class=\"form-control\" [value]=\"this.newWidget.type\" (change)=\"setListType()\" >\n        <option value=\"unorderedList\">Unordered list</option>\n        <option value=\"orderedList\">Ordered list</option>\n      </select>\n      <textarea\n        [(ngModel)]=\"newWidget.data\"\n        class=\"form-control\"\n        placeholder=\"List Item\">\n            </textarea>\n      <button (click)=\"updateWidget()\">Save List</button>\n    </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/event-description-widget-editor/event-description-widget-editor.component.ts":
+/*!**********************************************************************************************!*\
+  !*** ./src/app/event-description-widget-editor/event-description-widget-editor.component.ts ***!
+  \**********************************************************************************************/
+/*! exports provided: EventDescriptionWidgetEditorComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EventDescriptionWidgetEditorComponent", function() { return EventDescriptionWidgetEditorComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _models_widget_model_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../models/widget.model.client */ "./src/app/models/widget.model.client.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var EventDescriptionWidgetEditorComponent = /** @class */ (function () {
+    function EventDescriptionWidgetEditorComponent() {
+        this.deleteEmitter = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        this.editEmitter = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        this.isEditorHidden = true;
+        this.newWidget = new _models_widget_model_client__WEBPACK_IMPORTED_MODULE_1__["Widget"]('paragraph', '');
+    }
+    EventDescriptionWidgetEditorComponent.prototype.splitList = function (data) {
+        return data.split(/\r?\n/);
+    };
+    EventDescriptionWidgetEditorComponent.prototype.setListType = function () {
+        if (this.newWidget.type === 'unorderedList') {
+            this.newWidget.type = 'orderedList';
+        }
+        else {
+            this.newWidget.type = 'unorderedList';
+        }
+    };
+    EventDescriptionWidgetEditorComponent.prototype.editWidget = function () {
+        this.isEditorHidden = !this.isEditorHidden;
+        this.newWidget.type = this.widget.type;
+        this.newWidget.data = this.widget.data;
+    };
+    EventDescriptionWidgetEditorComponent.prototype.updateWidget = function () {
+        this.editEmitter.emit([this.widget, this.newWidget]);
+    };
+    EventDescriptionWidgetEditorComponent.prototype.deleteWidget = function (widget) {
+        this.deleteEmitter.emit(widget);
+    };
+    EventDescriptionWidgetEditorComponent.prototype.ngOnInit = function () {
+        // this.newWidget.type = this.widget.type;
+        // this.newWidget.data = this.widget.data;
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", _models_widget_model_client__WEBPACK_IMPORTED_MODULE_1__["Widget"])
+    ], EventDescriptionWidgetEditorComponent.prototype, "widget", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
+        __metadata("design:type", Object)
+    ], EventDescriptionWidgetEditorComponent.prototype, "deleteEmitter", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
+        __metadata("design:type", Object)
+    ], EventDescriptionWidgetEditorComponent.prototype, "editEmitter", void 0);
+    EventDescriptionWidgetEditorComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-event-description-widget-editor',
+            template: __webpack_require__(/*! ./event-description-widget-editor.component.html */ "./src/app/event-description-widget-editor/event-description-widget-editor.component.html"),
+            styles: [__webpack_require__(/*! ./event-description-widget-editor.component.css */ "./src/app/event-description-widget-editor/event-description-widget-editor.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], EventDescriptionWidgetEditorComponent);
+    return EventDescriptionWidgetEditorComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/event-detail/event-detail.component.css":
+/*!*********************************************************!*\
+  !*** ./src/app/event-detail/event-detail.component.css ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".container {\n  margin-top: 100px;\n}\n\n.button-pos {\n  margin-top: 2px;\n  margin-right: 5px;\n  float: right;\n\n}\n\n.button-container {\n  position: relative;\n}\n\n.button-container i {\n  color: red;\n  text-shadow: 2px 2px 2px #aaa;\n}\n\nbutton {\n  position: absolute;\n}\n\n.carousel-container {\n  padding: 15px;\n  padding-left: 30px;\n  width: 600px;\n  height: 400px;\n  border-radius: 10px;\n  overflow: hidden;\n\n}\n\n.carousel-cantainer .slide {\n  width: 100%;\n  height: 400px;\n}\n\n.carousel-item {\n  border-radius: 10px;\n  /*overflow: hidden;*/\n}\n\n/*.item {*/\n\n/*width: 100%;*/\n\n/*height: 100%;*/\n\n/*}*/\n\n/*slide {*/\n\n/*width: 600px;*/\n\n/*height: 400px;*/\n\n/*justify-content: center;*/\n\n/*align-items: center;*/\n\n/*/*overflow: hidden;*/\n\n/*}*/\n\n.image-container {\n\n  background-position: center center;\n  width: 100%;\n  height: 100%;\n  background-image: url('https://images.unsplash.com/photo-1499996860823-5214fcc65f8f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b6ded683923a678ad03fae323169beb4&auto=format&fit=crop&w=700&q=60');\n  padding-bottom: 100%;\n  background-size: cover;\n  /*overflow: hidden*/\n}\n\n.wbdv-blur {\n  -webkit-filter: blur(5px); /* Safari 6.0 - 9.0 */\n  filter: blur(5px);\n  border-radius: 25px;\n\n}\n\n.wbdv-text-block {\n  position: absolute;\n  border-radius: 25px;\n  top: 10%;\n  left: 5%;\n  right: 5%;\n\n\n  color: white;\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.card {\n  /*border-radius: 30px;*/\n  height: 430px;\n  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, .1)\n  /*0 6px 10px 5px rgba(0, 0, 0, .1),*/\n  /*0 8px 10px -5px rgba(0, 0, 0, .1);*/\n}\n\n.card-title {\n  margin-bottom: 0;\n\n}\n\n.iframe-pos {\n  top: 0;\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  border-radius: 25px;\n}\n\n.iframe-container {\n  border-radius: 25px;\n  -webkit-border-radius: 20px;\n  /*position: absolute;*/\n  position: relative;\n  overflow: auto;\n  top: 0;\n  width: 100%;\n  height: 100%;\n}\n\niframe {\n  width:100%;\n  height:100%;\n\n}\n\n.avatar-container {\n  margin-left: 10%;\n  margin-bottom: 8px;\n  display: inline-block;\n  width: 50px;\n  padding: 0;\n}\n\n.avatar {\n  padding: 0;\n  border-radius: 50%;\n  background-image: url('https://images.unsplash.com/photo-1499996860823-5214fcc65f8f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b6ded683923a678ad03fae323169beb4&auto=format&fit=crop&w=700&q=60');\n  width: 100%;\n  padding-bottom: 100%;\n  background-size: cover;\n  background-position: center;\n}\n\n.host-info {\n  display: inline-block;\n  padding-left: 5%;\n}\n\n.host-info div {\n  /*padding-top: 5px;*/\n  /*margin-bottom: 20px;*/\n  font-family: \"Bradley Hand\";\n  overflow: hidden;\n  white-space: nowrap;\n}\n\nh6 {\n  display: inline-block;\n  padding-top: 15px;\n}\n\n"
+
+/***/ }),
+
+/***/ "./src/app/event-detail/event-detail.component.html":
+/*!**********************************************************!*\
+  !*** ./src/app/event-detail/event-detail.component.html ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container\">\n  this page shows event details\n</div>\n\n<div class=\"card\" (mouseleave) =\"mouseLeave()\">\n  <div class=\"carousel-container\">\n    <carousel (activeSlideChange)=\"slideChanged($event)\"\n              data-interval=\"false\"\n              [showIndicators]=\"!(hasExtraInfo && inImage)\">\n      <slide class=\"slide\" *ngFor=\"let photo of event.photos\" >\n        <div class=\"image-container\"\n             [ngClass]=\"{'wbdv-blur': hasExtraInfo && inImage}\"\n             [ngStyle]=\"{'background-image': 'url(' + photo + ')'}\">\n        </div>\n        <!--<img [ngClass]=\"{'wbdv-blur': hasExtraInfo && inImage}\"-->\n             <!--src={{photo}} alt=\"first slide\">-->\n      </slide>\n    </carousel>\n  </div>\n  <!--<div class=\"iframe-pos\">-->\n    <!--<div class=\"iframe-container\">-->\n      <!--<iframe *ngIf=\"hasExtraInfo && inImage\"-->\n              <!--[src]='getIframeSource()'-->\n              <!--frameborder=\"0\"-->\n              <!--scrolling=false-->\n              <!--allow=\"autoplay; encrypted-media\"-->\n              <!--style=\"overflow:hidden;\"-->\n      <!--&gt;</iframe>-->\n    <!--</div>-->\n  <!--</div>-->\n\n  <!--<div class=\"card-block\">-->\n    <!--<h6 class=\"card-subtitle mb-2 text-muted\">{{dates[event.start.getDate()]}}, {{months[event.start.getMonth()]}} {{event.start.getDay()}}</h6>-->\n    <!--<span class=\"button-pos\">-->\n      <!--<span class=\"button-container\">-->\n         <!--<span (click) = \"mouseEnter()\">-->\n          <!--<i *ngIf=\"hasExtraInfo && !inImage\"-->\n             <!--class=\"fab fa-youtube fa-2x\"-->\n          <!--&gt;</i>-->\n        <!--</span>-->\n      <!--</span>-->\n    <!--</span>-->\n\n    <!--<h4 class=\"card-title\">{{event.title}}</h4>-->\n    <!--<div class=\"card-body\">-->\n      <!--<div class=\"row\">-->\n        <!--<div class=\"avatar-container\">-->\n          <!--<div class=\"avatar\" [ngStyle]=\"{'background-image': 'url(' + event.organizer.profilePhoto + ')'}\">-->\n          <!--</div>-->\n        <!--</div>-->\n\n        <!--<div class=\"host-info\">-->\n          <!--<div class=\"text-sm-left text-muted\">-->\n            <!--Hosted by-->\n            <!--<span>{{event.organizer && event.organizer.firstName}}</span>-->\n            <!--<span>{{event.organizer && ' ' + event.organizer.lastName}}</span>-->\n          <!--</div>-->\n          <!--<div class=\"text-sm-left\">-->\n            <!--<span class=\"text-muted\">From </span>-->\n            <!--<span>{{event.organizer.location}}</span>-->\n          <!--</div>-->\n        <!--</div>-->\n      <!--</div>-->\n    <!--</div>-->\n  <!--</div>-->\n\n</div>\n\n\n<div class=\"container\">\n  <app-event-editor [event]=\"event\"></app-event-editor>\n</div>\n\n<div class=\"container\">\n  <h2>Preview</h2>\n  <div>\n    Event Title: {{event.title}}\n  </div>\n\n  <div>\n    <div>{{event.video}}</div>\n    <iframe [src]='event.video | safe'> </iframe>\n  </div>\n\n  <div>\n    Event Start: {{event.start}}\n  </div>\n\n  <div>\n    Event End: {{event.end}}\n  </div>\n\n  <div *ngFor=\"let photo of event.photos\">\n    Image: <img src={{photo}}>\n  </div>\n\n\n  <h2>Descriptions</h2>\n  <div *ngFor=\"let widget of this.event.descriptions\">\n    <div *ngIf=\"widget.type === 'paragraph'\">\n      paragraph: {{widget.data}}\n    </div>\n    <div *ngIf=\"widget.type === 'link'\">\n      Link: <a href={{widget.data}}>{{widget.data}}</a>\n    </div>\n\n    <div *ngIf=\"widget.type === 'unorderedList'\">\n      List:\n      <ul >\n        <li *ngFor=\"let item of splitList(widget.data)\">{{item}}</li>\n      </ul>\n    </div>\n\n    <div *ngIf=\"widget.type === 'orderedList'\">\n      List:\n      <ol>\n        <li *ngFor=\"let item of splitList(widget.data)\">{{item}}</li>\n      </ol>\n    </div>\n  </div>\n\n  <div class=\"amenity_list\">\n    <span *ngFor=\"let tag of this.event.tags\" class=\"badge badge-secondary amenity_item\">{{tag}}</span>\n  </div>\n\n  <div>\n    <h3>Drop down pick or go other page to get</h3>\n    <ul>\n      <li>camping site</li>\n      <li>camping equipments</li>\n    </ul>\n  </div>\n</div>\n\n\n\n\n"
+
+/***/ }),
+
+/***/ "./src/app/event-detail/event-detail.component.ts":
+/*!********************************************************!*\
+  !*** ./src/app/event-detail/event-detail.component.ts ***!
+  \********************************************************/
+/*! exports provided: EventDetailComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EventDetailComponent", function() { return EventDetailComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _constants_dateConstant__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../constants/dateConstant */ "./src/app/constants/dateConstant.ts");
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var EventDetailComponent = /** @class */ (function () {
+    function EventDetailComponent(sanitizer) {
+        this.sanitizer = sanitizer;
+        // event: EventCard = new EventCard();
+        this.inImage = false;
+        this.hasExtraInfo = false;
+        this.months = _constants_dateConstant__WEBPACK_IMPORTED_MODULE_1__["months"];
+        this.dates = _constants_dateConstant__WEBPACK_IMPORTED_MODULE_1__["dates"];
+        this.slideIndex = 0;
+        this.updateEvent = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        this.organizer = {
+            username: '',
+            password: '',
+            dateOfBirth: new Date(),
+            email: '',
+            phoneNumber: '',
+            address: '',
+            lat: '',
+            lng: '',
+            firstName: 'Zheming',
+            lastName: 'Gao',
+            location: 'San Jose Damingbai',
+            profilePhoto: 'https://images.unsplash.com/' +
+                'photo-1533233336213-b3a32825c689?ixlib=' +
+                'rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5c181' +
+                '76885796e2a3399a4a6906e8270&auto=format&fi' +
+                't=crop&w=800&q=60'
+        };
+        this.event = {
+            organizer: this.organizer,
+            start: new Date(),
+            end: new Date(),
+            title: 'Amazing Camp Tour in Deep Grand Canyon',
+            photos: ['https://images.unsplash.com/photo-1510662' +
+                    '145379-13537db782dc?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQ' +
+                    'iOjEyMDd9&s=a88527272e34e0ec18771312843d516e&auto=f' +
+                    'ormat&fit=crop&w=800&q=60',
+                'https://images.unsplash.com/photo-1495756650324-e4' +
+                    '5118cb3e35?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9' +
+                    '&s=a0d9a8f675adf1d8d1763a275e72ac66&auto=format&fit' +
+                    '=crop&w=800&q=60'],
+            video: 'https://www.youtube.com/embed/b6hoBp7Hk-A',
+            descriptions: [],
+            tags: []
+        };
+    }
+    EventDetailComponent.prototype.slideChanged = function (event) {
+        if (event !== this.slideIndex) {
+            this.updateEvent.emit('update');
+            this.slideIndex = event;
+        }
+    };
+    EventDetailComponent.prototype.mouseEnter = function () {
+        this.inImage = true;
+    };
+    EventDetailComponent.prototype.mouseLeave = function () {
+        this.inImage = false;
+    };
+    EventDetailComponent.prototype.getIframeSource = function () {
+        var res = this.event.video + '?rel=0&autoplay=1&modestbranding=1';
+        return this.sanitizer.bypassSecurityTrustResourceUrl(res);
+    };
+    EventDetailComponent.prototype.splitList = function (data) {
+        return data.split(/\r?\n/);
+    };
+    EventDetailComponent.prototype.ngOnInit = function () {
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
+        __metadata("design:type", Object)
+    ], EventDetailComponent.prototype, "updateEvent", void 0);
+    EventDetailComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-event-detail',
+            template: __webpack_require__(/*! ./event-detail.component.html */ "./src/app/event-detail/event-detail.component.html"),
+            styles: [__webpack_require__(/*! ./event-detail.component.css */ "./src/app/event-detail/event-detail.component.css")]
+        }),
+        __metadata("design:paramtypes", [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["DomSanitizer"]])
+    ], EventDetailComponent);
+    return EventDetailComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/event-editor/event-editor.component.css":
+/*!*********************************************************!*\
+  !*** ./src/app/event-editor/event-editor.component.css ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n.content-of-modal .card {\n  background-color: #9fcdff;\n  margin: 5px;\n  padding: 10px;\n}\n\n.content-of-modal .span-box {\n\n}\n\n.content-of-modal .delete-span {\n  display: inline-block;\n  margin-right: 3px;\n  float: right;\n\n}\n\n.content-of-modal .edit-span {\n  display: inline-block;\n  margin-right: 4px;\n  float: right;\n}\n\n/*.my-modal {*/\n\n/*border: solid 4px blue;*/\n\n/*}*/\n\n/*.my-modal .modal-header {*/\n\n/*background-color: lime;*/\n\n/*color: red;*/\n\n/*}*/\n\n/*.my-modal .modal-body {*/\n\n/*background-color: orange;*/\n\n/*}*/\n\n/*.my-modal .modal-body div {*/\n\n/*padding: 10px;*/\n\n/*}*/\n"
+
+/***/ }),
+
+/***/ "./src/app/event-editor/event-editor.component.html":
+/*!**********************************************************!*\
+  !*** ./src/app/event-editor/event-editor.component.html ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<button type=\"button\" class=\"btn btn-primary\" (click)=\"openModal(template)\">Edit Meta Data</button>\n<br><br>\n<pre class=\"card card-block card-header\">{{message}}</pre>\n<ng-template #template>\n  <div class=\"modal-header\">\n    <h4 class=\"modal-title pull-left\">Meta data: can only choose one time</h4>\n    <button type=\"button\" class=\"close pull-right\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n\n  <div class=\"modal-body text-center\">\n\n    <div>\n      <label> Title </label>\n      <input\n        [(ngModel)]=\"event.title\"\n        class=\"form-control\"\n        placeholder=\"Event Title\"\n      />\n\n      <label> Video link </label>\n      <input\n        [(ngModel)]=\"event.video\"\n        class=\"form-control\"\n        placeholder=\"Video link\"\n      />\n      <form>\n        <label>Event Starts:</label>\n        <input\n          [(ngModel)]=\"event.start\"\n          type=\"date\"\n          name=\"bday\">\n        <label>Event Ends:</label>\n\n        <input\n          [(ngModel)]=\"event.end\"\n          type=\"date\"\n          name=\"bday\">\n      </form>\n\n      <label> Add Image </label>\n      <ol>\n        <li *ngFor=\"let img of event.photos\">\n          {{img}}\n          <button (click)=\"deleteImageUrl(img)\">Delete</button>\n        </li>\n      </ol>\n      <input\n        [(ngModel)]=\"imgUrl\"\n        class=\"form-control\"\n        placeholder=\"Image Url\">\n      <button (click)=\"addImageUrl()\">Add Image</button>\n\n    </div>\n    <hr>\n    <p>Do you want to confirm?</p>\n    <button type=\"button\" class=\"btn btn-default\" (click)=\"confirm()\" >Yes</button>\n    <button type=\"button\" class=\"btn btn-primary\" (click)=\"decline()\" >No</button>\n  </div>\n</ng-template>\n\n\n<button type=\"button\" class=\"btn btn-primary\" (click)=\"openModal(template2)\">Edit Description</button>\n<br><br>\n<pre class=\"card card-block card-header\">{{message}}</pre>\n<ng-template #template2>\n  <div class=\"modal-header\">\n    <h4 class=\"modal-title pull-left\">Description: Edit or Add new</h4>\n    <button type=\"button\" class=\"close pull-right\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n\n  <div class=\"modal-body\">\n    <div class=\"content-of-modal\">\n      <h4>Edit current descriptions</h4>\n      <span class=\"text-muted\">drag to swich order</span>\n      <div [sortablejs]='this.event.descriptions' [sortablejsOptions]=\"{ animation: 150 }\">\n        <div class=\"card\" *ngFor=\"let widget of this.event.descriptions\">\n            <app-event-description-widget-editor\n              [widget]=\"widget\"\n              (deleteEmitter)=\"deleteWidget($event)\"\n              (editEmitter)=\"updateWidget($event)\">\n            </app-event-description-widget-editor>\n        </div>\n      </div>\n\n      <div class=\"amenity_list\" *ngIf=\"this.event.tags.length > 0\">\n        <span *ngFor=\"let tag of this.event.tags\" class=\"badge badge-secondary amenity_item\">{{tag}}</span>\n        <hr>\n      </div>\n    </div>\n    <div>\n      <h4>Add new descriptions</h4>\n      <tabset>\n        <tab heading=\"Paragraph\" id=\"tab1\">\n          Basic content\n          <label>Paragraph</label>\n          <textarea\n            [(ngModel)]=\"paragraph\"\n            class=\"form-control\"\n            placeholder=\"Paragraph text\">\n          </textarea>\n          <button (click)=\"addParagraph()\">Add Paragraph</button>\n        </tab>\n\n        <tab heading=\"Link\">\n          <div>\n            <label> link url</label>\n            <input\n              [(ngModel)]=\"linkUrl\"\n              class=\"form-control\"\n              placeholder=\"Link URL\">\n            <button (click)=\"addLink()\">Add Link</button>\n          </div>\n        </tab>\n\n        <tab heading=\"List\">\n          <div>\n            <label> List </label>\n            <select class=\"form-control\" (change)=\"setListType()\" >\n              <option value=\"unorderedList\">Unordered list</option>\n              <option value=\"orderedList\">Ordered list</option>\n            </select>\n            <textarea\n              [(ngModel)]=\"list\"\n              class=\"form-control\"\n              placeholder=\"List Item\">\n            </textarea>\n            <button (click)=\"addList()\">Add List</button>\n          </div>\n        </tab>\n\n        <tab heading=\"Features\">\n          <div class=\"btn-group\" dropdown>\n            <button dropdownToggle type=\"button\" class=\"btn btn-primary dropdown-toggle\"\n                    aria-controls=\"dropdown-basic\">\n              Add feature tags <span class=\"caret\"></span>\n            </button>\n            <ul id=\"dropdown-basic\" *dropdownMenu class=\"dropdown-menu\"\n                role=\"menu\" aria-labelledby=\"button-basic\">\n              <li role=\"menuitem\"><a class=\"dropdown-item\" (click)=\"toggleTag('Hiking')\">Hiking</a></li>\n              <li role=\"menuitem\"><a class=\"dropdown-item\" (click)=\"toggleTag('Fishing')\">Fishing</a></li>\n              <li role=\"menuitem\"><a class=\"dropdown-item\" (click)=\"toggleTag('Biking')\">Biking</a></li>\n            </ul>\n          </div>\n        </tab>\n      </tabset>\n    </div>\n\n    <hr>\n    <p>Save new added widget?</p>\n    <button type=\"button\" class=\"btn btn-default\" (click)=\"confirm()\" >Yes</button>\n    <button type=\"button\" class=\"btn btn-primary\" (click)=\"decline()\" >No</button>\n  </div>\n</ng-template>\n\n\n\n"
+
+/***/ }),
+
+/***/ "./src/app/event-editor/event-editor.component.ts":
+/*!********************************************************!*\
+  !*** ./src/app/event-editor/event-editor.component.ts ***!
+  \********************************************************/
+/*! exports provided: SafePipe, EventEditorComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SafePipe", function() { return SafePipe; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EventEditorComponent", function() { return EventEditorComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var ngx_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ngx-bootstrap */ "./node_modules/ngx-bootstrap/index.js");
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
+/* harmony import */ var _models_widget_model_client__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../models/widget.model.client */ "./src/app/models/widget.model.client.ts");
+/* harmony import */ var _models_EventCard_model_client__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../models/EventCard.model.client */ "./src/app/models/EventCard.model.client.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+var SafePipe = /** @class */ (function () {
+    function SafePipe(sanitizer) {
+        this.sanitizer = sanitizer;
+    }
+    SafePipe.prototype.transform = function (url) {
+        return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+    };
+    SafePipe = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"])({ name: 'safe' }),
+        __metadata("design:paramtypes", [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["DomSanitizer"]])
+    ], SafePipe);
+    return SafePipe;
+}());
+
+var EventEditorComponent = /** @class */ (function () {
+    function EventEditorComponent(modalService) {
+        this.modalService = modalService;
+        this.list = '';
+        this.listType = 'unorderedList';
+        this.config = {
+            animated: true,
+            keyboard: true,
+            class: 'my-modal'
+        };
+    }
+    EventEditorComponent.prototype.openModal = function (template) {
+        this.modalRef = this.modalService
+            .show(template, Object.assign({}, { class: 'my-modal modal-lg modal-dialog-centered' }));
+    };
+    EventEditorComponent.prototype.confirm = function () {
+        this.message = 'Confirmed!';
+        console.log('Confirmed!');
+        this.modalRef.hide();
+    };
+    EventEditorComponent.prototype.decline = function () {
+        this.message = 'Declined!';
+        console.log('Declined!');
+        this.modalRef.hide();
+    };
+    EventEditorComponent.prototype.addImageUrl = function () {
+        console.log(this.imgUrl);
+        this.event.photos.push(this.imgUrl);
+        this.imgUrl = '';
+    };
+    EventEditorComponent.prototype.deleteImageUrl = function (imgUrl) {
+        if (this.event.photos.includes(imgUrl)) {
+            var index = this.event.photos.indexOf(imgUrl);
+            this.event.photos.splice(index, 1);
+        }
+    };
+    EventEditorComponent.prototype.addParagraph = function () {
+        this.event.descriptions.push(new _models_widget_model_client__WEBPACK_IMPORTED_MODULE_3__["Widget"]('paragraph', this.paragraph));
+        this.paragraph = '';
+    };
+    EventEditorComponent.prototype.addLink = function () {
+        this.event.descriptions.push(new _models_widget_model_client__WEBPACK_IMPORTED_MODULE_3__["Widget"]('link', this.linkUrl));
+    };
+    EventEditorComponent.prototype.setListType = function () {
+        if (this.listType === 'orderedList') {
+            this.listType = 'unorderedList';
+        }
+        else {
+            this.listType = 'orderedList';
+        }
+    };
+    EventEditorComponent.prototype.addList = function () {
+        this.event.descriptions.push(new _models_widget_model_client__WEBPACK_IMPORTED_MODULE_3__["Widget"](this.listType, this.list));
+    };
+    EventEditorComponent.prototype.splitList = function (data) {
+        return data.split(/\r?\n/);
+    };
+    EventEditorComponent.prototype.toggleTag = function (tag) {
+        if (this.event.tags.includes(tag)) {
+            var index = this.event.tags.indexOf(tag);
+            this.event.tags.splice(index, 1);
+        }
+        else {
+            this.event.tags.push(tag);
+        }
+    };
+    EventEditorComponent.prototype.updateWidget = function (event) {
+        var oldWidget = event[0];
+        var newWidget = event[1];
+        var index = this.event.descriptions.indexOf(oldWidget);
+        this.event.descriptions[index] = newWidget;
+    };
+    EventEditorComponent.prototype.deleteWidget = function (widget) {
+        console.log(widget);
+        var index = this.event.descriptions.indexOf(widget);
+        this.event.descriptions.splice(index, 1);
+        console.log(this.event.descriptions);
+    };
+    EventEditorComponent.prototype.ngOnInit = function () {
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", _models_EventCard_model_client__WEBPACK_IMPORTED_MODULE_4__["EventCard"])
+    ], EventEditorComponent.prototype, "event", void 0);
+    EventEditorComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-event-editor',
+            template: __webpack_require__(/*! ./event-editor.component.html */ "./src/app/event-editor/event-editor.component.html"),
+            styles: [__webpack_require__(/*! ./event-editor.component.css */ "./src/app/event-editor/event-editor.component.css")],
+            encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewEncapsulation"].None
+        }),
+        __metadata("design:paramtypes", [ngx_bootstrap__WEBPACK_IMPORTED_MODULE_1__["BsModalService"]])
+    ], EventEditorComponent);
+    return EventEditorComponent;
 }());
 
 
@@ -825,7 +1341,8 @@ var EventWaterfallComponent = /** @class */ (function () {
                     'EyMDd9&s=f8c4f0513223e7ce1ce7783e0d870190&auto=f' +
                     'ormat&fit=crop&w=800&q=60'],
             video: 'https://www.youtube.com/embed/PHQe7Sj56NE',
-            description: ''
+            descriptions: [],
+            tags: []
         };
         this.event2 = {
             organizer: this.organizer2,
@@ -841,7 +1358,8 @@ var EventWaterfallComponent = /** @class */ (function () {
                     '&s=a0d9a8f675adf1d8d1763a275e72ac66&auto=format&fit' +
                     '=crop&w=800&q=60'],
             video: 'https://www.youtube.com/embed/b6hoBp7Hk-A',
-            description: ''
+            descriptions: [],
+            tags: []
         };
         this.event3 = {
             organizer: this.organizer3,
@@ -854,7 +1372,8 @@ var EventWaterfallComponent = /** @class */ (function () {
                     '=crop&w=800&q=60',
             ],
             video: '',
-            description: ''
+            descriptions: [],
+            tags: []
         };
         this.event4 = {
             organizer: this.organizer2,
@@ -868,7 +1387,8 @@ var EventWaterfallComponent = /** @class */ (function () {
                     'op&w=800&q=60',
             ],
             video: '',
-            description: ''
+            descriptions: [],
+            tags: []
         };
         this.event5 = {
             organizer: this.organizer3,
@@ -881,7 +1401,8 @@ var EventWaterfallComponent = /** @class */ (function () {
                     '&auto=format&fit=crop&w=800&q=60',
             ],
             video: '',
-            description: ''
+            descriptions: [],
+            tags: []
         };
         this.event6 = {
             organizer: this.organizer3,
@@ -893,7 +1414,8 @@ var EventWaterfallComponent = /** @class */ (function () {
                     '3f87&auto=format&fit=crop&w=800&q=60',
             ],
             video: '',
-            description: ''
+            descriptions: [],
+            tags: []
         };
         this.event7 = {
             organizer: this.organizer3,
@@ -906,7 +1428,8 @@ var EventWaterfallComponent = /** @class */ (function () {
                     'w=800&q=60',
             ],
             video: '',
-            description: ''
+            descriptions: [],
+            tags: []
         };
         this.event8 = {
             organizer: this.organizer3,
@@ -918,7 +1441,8 @@ var EventWaterfallComponent = /** @class */ (function () {
                     '1f7f08fd5fdc79bc0e107a71e08&auto=format&fit=crop&w=800&q=60',
             ],
             video: '',
-            description: ''
+            descriptions: [],
+            tags: []
         };
         this.event9 = {
             organizer: this.organizer3,
@@ -931,7 +1455,8 @@ var EventWaterfallComponent = /** @class */ (function () {
                     'at&fit=crop&w=800&q=60',
             ],
             video: '',
-            description: ''
+            descriptions: [],
+            tags: []
         };
         this.cards = [this.event, this.event2, this.event3,
             this.event4, this.event5, this.event6,
@@ -952,6 +1477,7 @@ var EventWaterfallComponent = /** @class */ (function () {
         }
     };
     EventWaterfallComponent.prototype.ngOnInit = function () {
+        this.updateMasonryLayout = !this.updateMasonryLayout;
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["HostListener"])('window:scroll', ['$event']),
@@ -1309,8 +1835,18 @@ var LoginComponent = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EventCard", function() { return EventCard; });
+/* harmony import */ var _user_model_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./user.model.client */ "./src/app/models/user.model.client.ts");
+
 var EventCard = /** @class */ (function () {
     function EventCard() {
+        this.organizer = new _user_model_client__WEBPACK_IMPORTED_MODULE_0__["User"]();
+        this.start = new Date();
+        this.end = new Date();
+        this.title = '';
+        this.photos = [];
+        this.video = '';
+        this.descriptions = [];
+        this.tags = [];
     }
     return EventCard;
 }());
@@ -1351,8 +1887,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "User", function() { return User; });
 var User = /** @class */ (function () {
     function User() {
+        this.profilePhoto = '';
     }
     return User;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/models/widget.model.client.ts":
+/*!***********************************************!*\
+  !*** ./src/app/models/widget.model.client.ts ***!
+  \***********************************************/
+/*! exports provided: Widget */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Widget", function() { return Widget; });
+var Widget = /** @class */ (function () {
+    function Widget(type, data) {
+        this.type = type;
+        this.data = data;
+    }
+    return Widget;
 }());
 
 

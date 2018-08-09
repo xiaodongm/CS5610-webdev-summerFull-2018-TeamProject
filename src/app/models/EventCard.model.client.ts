@@ -1,11 +1,15 @@
 import {User} from './user.model.client';
+import {Widget} from './widget.model.client';
 
 export class EventCard {
-  organizer: User;
-  start: Date;
-  end: Date;
-  title: String;
-  photos: String[];
-  video: String;
-  description: String;
+  _id: string;
+  organizer: string;
+  startTime: Date = new Date();
+  endTime: Date = new Date();
+  title = '';
+  photos: string[] = [];
+  video = '';
+  description: Widget[] = [];
+  tags: String[] = [];
+  attendee: string[] = [];
 }

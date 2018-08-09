@@ -15,7 +15,7 @@
           class="main-text">{{provider.organizationName}}</h2>
     </div>
 
-    <div class="button-group">
+    <div class="button-group" (click)="goCreateEvent()">
       <button>Post A New Event</button>
       <button>Attend A New Event</button>
     </div>
@@ -45,6 +45,17 @@
   <div class="container">
     <app-friend-list></app-friend-list>
     <app-basic-information (messageEvent)="receiveMessage($event)"></app-basic-information>
+  </div>
+
+  <div class="container">
+    <div> My Hosted Events</div>
+    <div *ngFor="let event of hostedEvents">
+      <div class="card">
+        {{event.title}}
+        <a [routerLink]="['/eventEditor/' + event._id]">Edit</a>
+        <button (click)="deleteHostedEvent(event)" class="btn btn-danger">Delete</button>
+      </div>
+    </div>
   </div>
 </div>
 

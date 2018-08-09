@@ -1,4 +1,4 @@
-const URL = 'http://localhost:3000'
+const URL = 'http://localhost:3000';
 
 export class DiscussionServiceClient {
   postDiscussion(discussion) {
@@ -21,6 +21,11 @@ export class DiscussionServiceClient {
         'content-type': 'application/json'
       }
     }).then(res => res.json());
+  }
+
+  findDiscussionsForEvent (eventId) {
+    return fetch( URL + '/api/discussion/event/' + eventId)
+      .then(res => res.json());
   }
 
   findAllDiscussions () {

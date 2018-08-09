@@ -1,4 +1,5 @@
 export class User {
+  _id: string;
   username: String;
   password: String;
   firstName: String;
@@ -10,6 +11,6 @@ export class User {
   location: String;
   lat: String;
   lng: String;
-  profilePhoto: String;
+  profilePhoto: String = '';
   role: String;
 }

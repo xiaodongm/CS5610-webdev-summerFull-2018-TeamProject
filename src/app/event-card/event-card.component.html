@@ -2,7 +2,7 @@
      (mouseleave) ="mouseLeave()">
 
     <carousel (activeSlideChange)="slideChanged($event)" data-interval="false" [showIndicators]="!(hasExtraInfo && inImage)">
-      <slide *ngFor="let photo of data.photos" class="wbdv-imageContainer">
+      <slide *ngFor="let photo of data.photos" >
         <img [ngClass]="{'wbdv-blur': hasExtraInfo && inImage}" src={{photo}} alt="first slide" style="display: block; width: 100%;">
       </slide>
     </carousel>
@@ -15,12 +15,12 @@
               scrolling=false
               allow="autoplay; encrypted-media"
               style="overflow:hidden;"
-              allowfullscreen></iframe>
+              ></iframe>
     </div>
   </div>
 
   <div class="card-block">
-    <h6 class="card-subtitle mb-2 text-muted">{{dates[data.start.getDate()]}}, {{months[data.start.getMonth()]}} {{data.start.getDay()}}</h6>
+    <h6 class="card-subtitle mb-2 text-muted">{{data.startTime}}</h6>
     <span class="button-pos">
       <span class="button-container">
          <span (click) = "mouseEnter()">
@@ -34,20 +34,20 @@
     <h4 class="card-title">{{data.title}}</h4>
     <div class="card-body">
     <div class="row">
-      <div class="avatar-container">
-        <div class="avatar" [ngStyle]="{'background-image': 'url(' + data.organizer.profilePhoto + ')'}">
+      <div class="avatar-container" *ngIf="organizer.profilePhoto">
+        <div class="avatar" [ngStyle]="{'background-image': 'url(' + organizer.profilePhoto + ')'}">
         </div>
       </div>
 
       <div class="host-info">
         <div class="text-sm-left text-muted">
           Hosted by
-          <span>{{data.organizer && data.organizer.firstName}}</span>
-          <span>{{data.organizer && ' ' + data.organizer.lastName}}</span>
+          <span>{{organizer && organizer.firstName}}</span>
+          <span>{{organizer && ' ' + organizer.lastName}}</span>
         </div>
         <div class="text-sm-left">
           <span class="text-muted">From </span>
-          <span>{{data.organizer.location}}</span>
+          <span>{{organizer.location}}</span>
         </div>
       </div>
     </div>
