@@ -90,4 +90,14 @@ export class UserServiceClient {
       }
     });
   }
+
+  followFriends(userId) {
+    return fetch('http://localhost:3000/api/user/follow' + userId, {
+      credentials: 'include', // include, same-origin, *omit
+      method: 'put',
+      headers: {
+        'content-type': 'application/json'
+      }
+    });
+  }
 }

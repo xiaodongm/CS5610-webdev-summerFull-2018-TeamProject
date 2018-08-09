@@ -30,8 +30,6 @@ export class DiscussionComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(new Date());
-    // console.log(this.discussionToChild.postPeople);
     this.userService.findUserById(this.discussionToChild.postPeople)
       .then(res => {
         if (res) {
