@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {EventCard} from '../models/EventCard.model.client';
 import {User} from '../models/user.model.client';
 import {HostListener} from '@angular/core';
+import {EventServiceClient} from '../services/event.service.client';
 
 @Component({
   selector: 'app-event-waterfall',
@@ -10,8 +11,9 @@ import {HostListener} from '@angular/core';
 })
 export class EventWaterfallComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service: EventServiceClient) { }
   organizer: User = {
+    _id: '',
     username: '',
     password: '',
     dateOfBirth: new Date(),
@@ -27,10 +29,12 @@ export class EventWaterfallComponent implements OnInit {
     'photo-1533233336213-b3a32825c689?ixlib=' +
     'rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5c181' +
     '76885796e2a3399a4a6906e8270&auto=format&fi' +
-    't=crop&w=800&q=60'
+    't=crop&w=800&q=60',
+    role: 'organizer',
   };
 
   organizer2: User = {
+    _id: '',
     username: '',
     password: '',
     dateOfBirth: new Date(),
@@ -45,9 +49,11 @@ export class EventWaterfallComponent implements OnInit {
     profilePhoto: 'https://images.unsplash.com/photo-1' +
     '438761681033-6461ffad8d80?ixlib=rb-0.3.5&ixid=eyJ' +
     'hcHBfaWQiOjEyMDd9&s=5d43ec18ec2cf6ff854513b9e8395c' +
-    '1e&auto=format&fit=crop&w=800&q=60'
+    '1e&auto=format&fit=crop&w=800&q=60',
+    role: 'organizer',
   };
   organizer3: User = {
+    _id: '',
     username: '',
     password: '',
     dateOfBirth: new Date(),
@@ -62,12 +68,14 @@ export class EventWaterfallComponent implements OnInit {
     profilePhoto: 'https://images.unsplash.com/photo-1495078' +
     '065017-564723e7e3e7?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjE' +
     'yMDd9&s=09093dcdf66dbcd2397b9dc19384a899&auto=format&fit' +
-    '=crop&w=800&q=60'
+    '=crop&w=800&q=60',
+    role: 'organizer',
   };
   event: EventCard = {
-    organizer: this.organizer,
-    start: new Date(),
-    end: new Date(),
+    _id: '',
+    organizer: '',
+    startTime: new Date(),
+    endTime: new Date(),
     title: 'Great Camping Opportunity in Yosemite',
     photos: ['https://images.unsplash.com/photo-153322' +
     '8876829-65c94e7b5025?ixlib=rb-0.3.5&ixid' +
@@ -78,14 +86,16 @@ export class EventWaterfallComponent implements OnInit {
       'EyMDd9&s=f8c4f0513223e7ce1ce7783e0d870190&auto=f' +
       'ormat&fit=crop&w=800&q=60'],
     video: 'https://www.youtube.com/embed/PHQe7Sj56NE',
-    descriptions: [],
-    tags: []
+    description: [],
+    tags: [],
+    attendee: []
   };
 
   event2: EventCard = {
-    organizer: this.organizer2,
-    start: new Date(),
-    end: new Date(),
+    _id: '',
+    organizer: '',
+    startTime: new Date(),
+    endTime: new Date(),
     title: 'Amazing Camp Tour in Deep Grand Canyon',
     photos: ['https://images.unsplash.com/photo-1510662' +
       '145379-13537db782dc?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQ' +
@@ -96,14 +106,16 @@ export class EventWaterfallComponent implements OnInit {
       '&s=a0d9a8f675adf1d8d1763a275e72ac66&auto=format&fit' +
       '=crop&w=800&q=60'],
     video: 'https://www.youtube.com/embed/b6hoBp7Hk-A',
-    descriptions: [],
-    tags: []
+    description: [],
+    tags: [],
+    attendee: []
   };
 
   event3: EventCard = {
-    organizer: this.organizer3,
-    start: new Date(),
-    end: new Date(),
+    _id: '',
+    organizer: '',
+    startTime: new Date(),
+    endTime: new Date(),
     title: 'Where Amazing Happens',
     photos: ['https://images.unsplash.com/photo-1513673953' +
       '682-c64113e2866a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyM' +
@@ -111,14 +123,16 @@ export class EventWaterfallComponent implements OnInit {
       '=crop&w=800&q=60',
       ],
     video: '',
-    descriptions: [],
-    tags: []
+    description: [],
+    tags: [],
+    attendee: []
   };
 
   event4: EventCard = {
-    organizer: this.organizer2,
-    start: new Date(),
-    end: new Date(),
+    _id: '',
+    organizer: '',
+    startTime: new Date(),
+    endTime: new Date(),
     title: 'Hey, The Moutains Are Calling',
     photos: ['https://images.unsplash.com/p' +
     'hoto-1486935964461-b5ac6a3e72cd?ixlib=rb-' +
@@ -127,14 +141,16 @@ export class EventWaterfallComponent implements OnInit {
     'op&w=800&q=60',
     ],
     video: '',
-    descriptions: [],
-    tags: []
+    description: [],
+    tags: [],
+    attendee: []
   };
 
   event5: EventCard = {
-    organizer: this.organizer3,
-    start: new Date(),
-    end: new Date(),
+    _id: '',
+    organizer: '',
+    startTime: new Date(),
+    endTime: new Date(),
     title: 'Party in the beach',
     photos: ['https://images.unsplash.com/photo-15230' +
     '44214787-9caaa5ee4d8e?ixlib=rb-0.3.5&ixid=eyJhcH' +
@@ -142,28 +158,32 @@ export class EventWaterfallComponent implements OnInit {
     '&auto=format&fit=crop&w=800&q=60',
     ],
     video: '',
-    descriptions: [],
-    tags: []
+    description: [],
+    tags: [],
+    attendee: []
   };
 
   event6: EventCard = {
-    organizer: this.organizer3,
-    start: new Date(),
-    end: new Date(),
+    _id: '',
+    organizer: '',
+    startTime: new Date(),
+    endTime: new Date(),
     title: 'Party in the beach',
     photos: ['https://images.unsplash.com/photo-1510797492219-' +
     'e110e2a935a4?ixlib=rb-0.3.5&s=485c6f91293bb46aeb510da2ed33' +
     '3f87&auto=format&fit=crop&w=800&q=60',
     ],
     video: '',
-    descriptions: [],
-    tags: []
+    description: [],
+    tags: [],
+    attendee: []
   };
 
   event7: EventCard = {
-    organizer: this.organizer3,
-    start: new Date(),
-    end: new Date(),
+    _id: '',
+    organizer: '',
+    startTime: new Date(),
+    endTime: new Date(),
     title: 'Party in the beach',
     photos: ['https://images.unsplash.com/photo-149475061374' +
     '6-dff7ee759071?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&' +
@@ -171,28 +191,32 @@ export class EventWaterfallComponent implements OnInit {
     'w=800&q=60',
     ],
     video: '',
-    descriptions: [],
-    tags: []
+    description: [],
+    tags: [],
+    attendee: []
   };
 
   event8: EventCard = {
-    organizer: this.organizer3,
-    start: new Date(),
-    end: new Date(),
+    _id: '',
+    organizer: '',
+    startTime: new Date(),
+    endTime: new Date(),
     title: 'Party in the beach',
     photos: ['https://images.unsplash.com/photo-1517321579022-aa' +
     '4d037c3b6e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=93072' +
     '1f7f08fd5fdc79bc0e107a71e08&auto=format&fit=crop&w=800&q=60',
     ],
     video: '',
-    descriptions: [],
-    tags: []
+    description: [],
+    tags: [],
+    attendee: []
   };
 
   event9: EventCard = {
-    organizer: this.organizer3,
-    start: new Date(),
-    end: new Date(),
+    _id: '',
+    organizer: '',
+    startTime: new Date(),
+    endTime: new Date(),
     title: 'Party in the beach',
     photos: ['https://images.unsplash.com/photo-15258260' +
     '78603-8ae39aff46ca?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiO' +
@@ -200,12 +224,14 @@ export class EventWaterfallComponent implements OnInit {
     'at&fit=crop&w=800&q=60',
     ],
     video: '',
-    descriptions: [],
-    tags: []
+    description: [],
+    tags: [],
+    attendee: []
   };
-  cards: EventCard[] = [this.event, this.event2, this.event3,
-                        this.event4, this.event5, this.event6,
-                        this.event7, this.event8, this.event9];
+  // cards: EventCard[] = [this.event, this.event2, this.event3,
+  //                       this.event4, this.event5, this.event6,
+  //                       this.event7, this.event8, this.event9];
+  cards: EventCard[];
   updateMasonryLayout = true;
   initialDataLoaded = false;
   receiveUpdateEvent($event) {
@@ -216,13 +242,17 @@ export class EventWaterfallComponent implements OnInit {
     // console.log('On Scroll');
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
       console.log('On Scroll Down');
-      this.cards.push(this.event9);
-      this.cards.push(this.event9);
-      this.cards.push(this.event9);
+      // this.cards.push(this.event9);
+      // this.cards.push(this.event9);
+      // this.cards.push(this.event9);
     }
   }
   ngOnInit() {
-    this.updateMasonryLayout = !this.updateMasonryLayout;
+    this.service.findAllEvents()
+      .then((events) => {
+        this.cards = events;
+        this.updateMasonryLayout = !this.updateMasonryLayout;
+      });
   }
 
 }

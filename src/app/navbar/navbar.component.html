@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand-sm fixed-top navbar-light bg-light">
   <div class="container">
-  <a class="navbar-brand" routerLink="/home">HuskyCamp</a>
+    <img id="logo" src="../../assets/images/logo.png">
+    <a id="HuskyCamp" class="navbar-brand" routerLink="/home">HuskyCamp</a>
   <button class="navbar-toggler"
           type="button" data-toggle="collapse"
           data-target="#navbarTogglerDemo02"
@@ -13,16 +14,24 @@
   </button>
   <div id="navbarSupportedContent" [ngClass]="{'collapse': collapsed, 'navbar-collapse': true}">
     <ul class="navbar-nav ml-auto">
-      <li class="nav-item active">
-        <a class="nav-link" routerLink="/home">Home</a>
-      </li>
-      <li class="nav-item">
+      <!--<li class="nav-item">-->
+        <!--<a class="nav-link" routerLink="/organization/signUp">Organization SignUp</a>-->
+      <!--</li>-->
+      <!--<li id="divider" class="divider-vertical"></li>-->
+      <li *ngIf="message !== 'login'" class="nav-item">
         <!--<a class="nav-link" href="#">Login</a>-->
         <app-login></app-login>
       </li>
-      <li class="nav-item">
+      <li *ngIf="message !== 'login'" class="nav-item">
         <!--<a class="nav-link disabled" href="#">Register</a>-->
         <app-register></app-register>
+      </li>
+      <!--<li *ngIf="message === 'login'" id="divider" class="divider-vertical"></li>-->
+      <li *ngIf="message === 'login'" class="nav-item">
+        <a class="nav-link" routerLink="/profile">Profile</a>
+      </li>
+      <li *ngIf="message === 'login'" class="nav-item">
+        <a (click)="logout()" class="nav-link" routerLink="/home">Logout</a>
       </li>
     </ul>
   </div>

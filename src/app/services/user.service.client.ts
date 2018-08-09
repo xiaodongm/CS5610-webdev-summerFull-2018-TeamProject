@@ -1,7 +1,7 @@
 export class UserServiceClient {
 
   findUserById(userId) {
-    return fetch('http://localhost:3000/api/userId/' + userId)
+    return fetch('http://localhost:3000/api/user/userId/' + userId)
       .then(response => response.json());
   }
 
@@ -35,7 +35,7 @@ export class UserServiceClient {
       headers: {
         'content-type': 'application/json'
       }
-    });
+    }).then(response => response.json());
   }
 
   delete() {
@@ -57,7 +57,8 @@ export class UserServiceClient {
     const user = {
       username: username,
       password: password,
-      location: location
+      location: location,
+      role: 'attendee'
     };
     return fetch('http://localhost:3000/api/register', {
       body: JSON.stringify(user),

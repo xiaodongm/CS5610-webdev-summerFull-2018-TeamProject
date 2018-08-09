@@ -9,6 +9,9 @@ import {EventCard} from '../models/EventCard.model.client';
 import {SortablejsModule} from 'angular-sortablejs';
 import {User} from '../models/user.model.client';
 import {dates, months} from '../constants/dateConstant';
+import {ActivatedRoute} from '@angular/router';
+import {EventServiceClient} from '../services/event.service.client';
+import {UserServiceClient} from '../services/user.service.client';
 
 @Pipe({ name: 'safe' })
 export class SafePipe implements PipeTransform {
@@ -26,16 +29,26 @@ export class SafePipe implements PipeTransform {
 })
 export class EventEditorComponent implements OnInit {
 
-  constructor(private modalService: BsModalService, public sanitizer: DomSanitizer) {
+  constructor(private modalService: BsModalService,
+              public sanitizer: DomSanitizer,
+              private userService: UserServiceClient,
+              private eventService: EventServiceClient,
+              private route: ActivatedRoute) {
+    this.route.params.subscribe( params => this.setParams(params));
   }
   // event: EventCard = new EventCard();
+  isOrganizerLoaded = false;
+  eventId: string;
+  heading: string;
   paragraph: string;
   imgUrl: string;
   linkUrl: string;
   list = '';
   listType = 'unorderedList';
   message: string;
-  organizer: User = {
+  organizer = new User();
+  organizer1: User = {
+    _id: '',
     username: '',
     password: '',
     dateOfBirth: new Date(),
@@ -51,36 +64,71 @@ export class EventEditorComponent implements OnInit {
     'photo-1533233336213-b3a32825c689?ixlib=' +
     'rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5c181' +
     '76885796e2a3399a4a6906e8270&auto=format&fi' +
-    't=crop&w=800&q=60'
+    't=crop&w=800&q=60',
+    role: 'organizer'
   };
 
-  event: EventCard = {
-    organizer: this.organizer,
-    start: new Date(),
-    end: new Date(),
-    title: 'Amazing Camp Tour in Deep Grand Canyon',
-    photos: ['https://images.unsplash.com/photo-1510662' +
-    '145379-13537db782dc?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQ' +
-    'iOjEyMDd9&s=a88527272e34e0ec18771312843d516e&auto=f' +
-    'ormat&fit=crop&w=800&q=60',
-      'https://images.unsplash.com/photo-1495756650324-e4' +
-      '5118cb3e35?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9' +
-      '&s=a0d9a8f675adf1d8d1763a275e72ac66&auto=format&fit' +
-      '=crop&w=800&q=60'],
-    video: 'https://www.youtube.com/embed/b6hoBp7Hk-A',
-    descriptions: [{type: 'paragraph', data: 'Lorem Ipsum is ' +
-      'simply dummy text of the printing and typesetting indus' +
-      'try. Lorem Ipsum has been the industry\'s standard dummy' +
-      ' text ever since the 1500s, when an unknown printer took ' +
-      'a galley of type and scrambled it to make a type specimen ' +
-      'book. It has survived not only five centuries, but also ' +
-      'the leap into electronic typesetting, remaining essentially' +
-      ' unchanged. It was popularised in the 1960s with the release ' +
-      'of Letraset sheets containing Lorem Ipsum passages, and more ' +
-      'recently with desktop publishing software like Aldus PageMaker' +
-      ' including versions of Lorem Ipsum.'}],
-    tags: []
+  attendee1: User = {
+    _id: '',
+    username: '',
+    password: '',
+    dateOfBirth: new Date(),
+    email: '',
+    phoneNumber: '',
+    address: '',
+    lat: '',
+    lng: '',
+    firstName: 'Zheming',
+    lastName: 'Gao',
+    location: 'San Jose Damingbai',
+    profilePhoto: 'https://images.unsplash.com/' +
+    'photo-1533233336213-b3a32825c689?ixlib=' +
+    'rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5c181' +
+    '76885796e2a3399a4a6906e8270&auto=format&fi' +
+    't=crop&w=800&q=60',
+    role: 'organizer',
   };
+
+  attendee2: User = {
+    _id: '',
+    username: '',
+    password: '',
+    dateOfBirth: new Date(),
+    email: '',
+    phoneNumber: '',
+    address: '',
+    lat: '',
+    lng: '',
+    firstName: 'Xiaodong',
+    lastName: 'Ma',
+    location: 'San Francisco',
+    profilePhoto: 'https://images.unsplash.com/photo-1' +
+    '438761681033-6461ffad8d80?ixlib=rb-0.3.5&ixid=eyJ' +
+    'hcHBfaWQiOjEyMDd9&s=5d43ec18ec2cf6ff854513b9e8395c' +
+    '1e&auto=format&fit=crop&w=800&q=60',
+    role: 'organizer',
+  };
+  attendee3: User = {
+    _id: '',
+    username: '',
+    password: '',
+    dateOfBirth: new Date(),
+    email: '',
+    phoneNumber: '',
+    address: '',
+    lat: '',
+    lng: '',
+    firstName: 'Garret',
+    lastName: 'Wu',
+    location: 'NEU Seatle',
+    profilePhoto: 'https://images.unsplash.com/photo-1495078' +
+    '065017-564723e7e3e7?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjE' +
+    'yMDd9&s=09093dcdf66dbcd2397b9dc19384a899&auto=format&fit' +
+    '=crop&w=800&q=60',
+    role: 'organizer',
+  };
+
+  event: EventCard = new EventCard();
 
   inImage = false;
   hasExtraInfo = false;
@@ -94,6 +142,11 @@ export class EventEditorComponent implements OnInit {
     keyboard: true,
     class: 'my-modal'
   };
+  setParams(params) {
+    console.log(params);
+    this.eventId = params['eventId'];
+    console.log(this.eventId);
+  }
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService
       .show(template, Object.assign({}, { class: 'my-modal modal-lg modal-dialog-centered' } ));
@@ -101,13 +154,15 @@ export class EventEditorComponent implements OnInit {
   confirm(): void {
     this.message = 'Confirmed!';
     console.log('Confirmed!');
-    this.modalRef.hide();
+    this.eventService.updateEvent(this.event)
+      .then(() => this.refreshEvent())
+      .then(() => this.modalRef.hide());
   }
   decline(): void {
     this.message = 'Declined!';
-
+    this.refreshEvent().then(() => this.modalRef.hide());
     console.log('Declined!');
-    this.modalRef.hide();
+
   }
   addImageUrl() {
     console.log(this.imgUrl);
@@ -120,12 +175,16 @@ export class EventEditorComponent implements OnInit {
       this.event.photos.splice(index, 1);
     }
   }
+  addHeading() {
+    this.event.description.push(new Widget('heading', this.heading));
+    this.paragraph = '';
+  }
   addParagraph() {
-    this.event.descriptions.push(new Widget('paragraph', this.paragraph));
+    this.event.description.push(new Widget('paragraph', this.paragraph));
     this.paragraph = '';
   }
   addLink() {
-    this.event.descriptions.push(new Widget('link', this.linkUrl));
+    this.event.description.push(new Widget('link', this.linkUrl));
   }
   setListType() {
     if (this.listType === 'orderedList') {
@@ -135,7 +194,7 @@ export class EventEditorComponent implements OnInit {
     }
   }
   addList() {
-    this.event.descriptions.push(new Widget(this.listType, this.list));
+    this.event.description.push(new Widget(this.listType, this.list));
   }
   splitList(data) {
     return data.split(/\r?\n/);
@@ -151,14 +210,14 @@ export class EventEditorComponent implements OnInit {
   updateWidget(event) {
     const oldWidget = event[0];
     const newWidget = event[1];
-    const index = this.event.descriptions.indexOf(oldWidget);
-    this.event.descriptions[index] = newWidget;
+    const index = this.event.description.indexOf(oldWidget);
+    this.event.description[index] = newWidget;
   }
   deleteWidget(widget) {
     console.log(widget);
-    const index = this.event.descriptions.indexOf(widget);
-    this.event.descriptions.splice(index, 1);
-    console.log(this.event.descriptions);
+    const index = this.event.description.indexOf(widget);
+    this.event.description.splice(index, 1);
+    console.log(this.event.description);
   }
 
   mouseEnter() {
@@ -176,10 +235,70 @@ export class EventEditorComponent implements OnInit {
   hasVideo() {
     return this.event.video !== '';
   }
+  // setEvent(event) {
+  //   this.event.title = event.title;
+  //   this.event.descriptions = event.description;
+  //   this.event.start = event.startTime;
+  //   this.event.end = event.endTime;
+  //   this.event.tags = event.tags;
+  //   this.event._id = event.id;
+  //   console.log(event);
+  //   return this.userService.findUserById(event.organizer);
+  // }
+  confirmUpdateMeta() {
+    console.log(this.event);
+    this.eventService.updateEvent(this.event)
+      .then(() => this.refreshEvent())
+      .then(() => this.modalRef.hide());
+  }
+
+  refreshEvent() {
+    return this.eventService.findEventById(this.eventId)
+      .then(event => {
+        // event.startTime = this.refactorDate(event.startTime);
+        // event.endTime = this.refactorDate(event.endTime);
+        return this.event = event; } );
+  }
+
+  // refactorDate(d) {
+  //   const date = new Date(d);
+  //   const year = date.getFullYear();
+  //   let month = date.getMonth() + 1;
+  //   let dt = date.getDate();
+  //
+  //   if (dt < 10) {
+  //     dt = '0' + dt;
+  //   }
+  //   if (month < 10) {
+  //     month = '0' + month;
+  //   }
+  //
+  //   return new Date(year + '-' + month + '-' + dt);
+  // }
+
   ngOnInit() {
-    if (this.event.video && this.event.video !== '') {
-      this.hasExtraInfo = true;
-    }
+
+    this.eventService.findEventById(this.eventId)
+      .then(event => {
+          this.event = event;
+          // this.event.startTime = this.refactorDate(this.event.startTime);
+          // this.event.endTime = this.refactorDate(this.event.endTime);
+          console.log(event);
+          return this.userService.findUserById(event.organizer);
+      }).then(user => {
+        // console.log(this.event.organizer);
+        console.log(user);
+        this.organizer = user;
+        if (!this.organizer.profilePhoto) {
+          this.organizer.profilePhoto = '';
+        }
+
+        if (this.event.video && this.event.video !== '') {
+          this.hasExtraInfo = true;
+        }
+        this.isOrganizerLoaded = true;
+    });
+
   }
 }
 

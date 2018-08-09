@@ -26,15 +26,22 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import {UserServiceClient} from './services/user.service.client';
 import {MapServiceClient} from './services/map.service.client';
-import {NgxMasonryModule} from 'ngx-masonry';
+import { FriendListComponent } from './friend-list/friend-list.component';
+import { EventServiceClient} from './services/event.service.client';
+import {EnrollmentServiceClient} from './services/enrollment.service.client';
+
+import { NgxMasonryModule} from 'ngx-masonry';
 import { BsDatepickerModule } from 'ngx-bootstrap';
 import { EventDetailComponent } from './event-detail/event-detail.component';
 import {EventEditorComponent, SafePipe} from './event-editor/event-editor.component';
 import { CreateEventComponent } from './create-event/create-event.component';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { EventDescriptionWidgetEditorComponent } from './event-description-widget-editor/event-description-widget-editor.component';
 import {SortablejsModule} from 'angular-sortablejs';
-import { EventMetaEditorComponent } from './event-meta-editor/event-meta-editor.component';
+import { OrganizationSignUpComponent } from './organization-sign-up/organization-sign-up.component';
+import { BsDropdownModule } from 'ngx-bootstrap';
+import { ProviderServiceClient} from './services/provider.service.client';
+import { LoginToNavbarServiceClient} from './communication-services/login-to-navbar.service.client';
+import { AttendeeListComponent } from './attendee-list/attendee-list.component';
 
 
 
@@ -58,6 +65,9 @@ import { EventMetaEditorComponent } from './event-meta-editor/event-meta-editor.
     CreateEventComponent,
     SafePipe,
     EventDescriptionWidgetEditorComponent,
+    FriendListComponent,
+    OrganizationSignUpComponent,
+    AttendeeListComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,18 +76,25 @@ import { EventMetaEditorComponent } from './event-meta-editor/event-meta-editor.
     ModalModule.forRoot(),
     AlertModule.forRoot(),
     BsDatepickerModule.forRoot(),
+    CollapseModule.forRoot(),
+    BsDropdownModule.forRoot(),
     FormsModule,
     NgxMasonryModule,
     CollapseModule.forRoot(),
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
-    SortablejsModule.forRoot({ animation: 150 })
+    SortablejsModule.forRoot({ animation: 150 }),
+    BsDatepickerModule.forRoot()
   ],
   providers: [
     CampingSiteServiceClient,
     CampingSiteToDetailServiceClient,
     UserServiceClient,
     MapServiceClient,
+    EventServiceClient,
+    EnrollmentServiceClient,
+    ProviderServiceClient,
+    LoginToNavbarServiceClient,
   ],
   bootstrap: [AppComponent]
 })

@@ -4,9 +4,13 @@ import {CampingSiteDetailComponent} from './camping-site-detail/camping-site-det
 import {HomeComponent} from './home/home.component';
 import {ProfileComponent} from './profile/profile.component';
 import {RegisterComponent} from './register/register.component';
+
 import {EventDetailComponent} from './event-detail/event-detail.component';
 import {CreateEventComponent} from './create-event/create-event.component';
 import {EventEditorComponent} from './event-editor/event-editor.component';
+
+import {OrganizationSignUpComponent} from './organization-sign-up/organization-sign-up.component';
+
 
 
 const appRoutes: Routes = [
@@ -16,8 +20,10 @@ const appRoutes: Routes = [
   { path: 'homepage', component: HomePageComponent},
   { path: 'camping-site/:contractID/:facilityID/detail', component: CampingSiteDetailComponent},
   { path: 'detail', component: CampingSiteDetailComponent},
-  { path: 'eventEditor', component: EventEditorComponent},
+  { path: 'eventEditor/:eventId', component: EventEditorComponent},
+  { path: 'eventDetail/:eventId', component: EventDetailComponent},
   { path: 'createEvent', component: CreateEventComponent},
+  { path: 'organization/signUp', component: OrganizationSignUpComponent},
   { path: '**', component: HomeComponent},
 
 ];

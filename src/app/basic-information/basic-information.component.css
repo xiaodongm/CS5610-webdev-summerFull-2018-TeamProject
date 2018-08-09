@@ -9,3 +9,13 @@
 #alertBox {
   margin-top: 10px;
 }
+
+.accountType {
+  margin-left: 15px;
+  margin-top: 5px;
+}
+
+.logoutLink {
+  margin-left: 20px;
+  font-size: 15px;
+}

@@ -1,7 +1,12 @@
 /*register*/
-#regisMsg {
+#regisMsg span {
   color: gray;
   margin-right: 20px;
+}
+
+#regisMsg {
+  margin-top: 20px;
+  margin-left: 120px;
 }
 
 #usernameFld {
@@ -24,6 +29,15 @@
   color: cornflowerblue;
 }
 
+#organizationLink {
+  color: cornflowerblue;
+}
+
+#organizationMsg {
+  color: gray;
+  margin-right: 20px;
+}
+
 #mapPinIcon {
   margin-right: 8px;
 }
@@ -32,10 +46,20 @@
   margin-top: 10px;
 }
 
+#locationMsg {
+  margin-top: 10px;
+  color: gray;
+}
+
 /*login*/
-#loginMsg {
+#loginMsg span {
   color: gray;
   margin-right: 20px;
+}
+
+#loginMsg {
+  margin-top: 20px;
+  margin-left: 100px;
 }
 
 #signUpLink {
@@ -51,5 +75,20 @@
 }
 
 #loginContinueBtn {
+  margin-top: 30px;
+}
+
+#loginType {
   margin-top: 15px;
 }
+
+.dropdown-item {
+  cursor: pointer;
+}
+
+#loginNavLink {
+  cursor: pointer;
+}
+
+
+

@@ -2,7 +2,7 @@
   <!--this page shows event details-->
 <!--</div>-->
 
-<div class="card meta-div">
+<div class="card meta-div" *ngIf="isOrganizerLoaded">
 <div class="container" (mouseleave) ="mouseLeave()">
   <div class="row meta-row">
     <div class="col-md-7 meta-div" >
@@ -45,34 +45,38 @@
       </span>
         <h2 class="">{{event.title}}</h2>
 
-        <div class="row">
+        <div class="row" *ngIf="isOrganizerLoaded">
           <div class="avatar-container col-3">
-            <div class="avatar" [ngStyle]="{'background-image': 'url(' + event.organizer.profilePhoto + ')'}">
+            <div class="avatar" [ngStyle]="{'background-image': 'url(' + organizer.profilePhoto + ')'}">
             </div>
           </div>
 
           <div class="host-info col-7">
             <div class="text-sm-left text-muted">
               Hosted by
-              <span>{{event.organizer && event.organizer.firstName}}</span>
-              <span>{{event.organizer && ' ' + event.organizer.lastName}}</span>
+              <span>{{organizer && organizer.firstName}}</span>
+              <span>{{organizer && ' ' + organizer.lastName}}</span>
             </div>
             <div class="text-sm-left">
               <span class="text-muted">From </span>
-              <span>{{event.organizer.location}}</span>
+              <span>{{organizer.location}}</span>
             </div>
           </div>
         </div>
       </div>
       <span class="button-pos">
-      <span class="button-container">
-        <span (click) = "mouseEnter()">
-          <i *ngIf='hasVideo()'
-             class="fab fa-youtube fa-2x"
-          ></i>
+        <span class="button-container">
+          <span (click) = "mouseEnter()">
+            <i *ngIf='hasVideo()'
+               class="fab fa-youtube fa-2x"
+            ></i>
+          </span>
         </span>
       </span>
-    </span>
+
+      <div class="amenity_list">
+        <span *ngFor="let tag of this.event.tags" class="badge badge-secondary amenity_item">{{tag}}</span>
+      </div>
     </div>
 
   </div>
@@ -92,7 +96,10 @@
         <!--<iframe [src]='event.video | safe'> </iframe>-->
       <!--</div>-->
 
-      <div *ngFor="let widget of this.event.descriptions">
+      <div *ngFor="let widget of this.event.description">
+        <div *ngIf="widget.type === 'heading'">
+          heading: {{widget.data}}
+        </div>
         <div *ngIf="widget.type === 'paragraph'">
           paragraph: {{widget.data}}
         </div>
@@ -114,21 +121,24 @@
           </ol>
         </div>
 
-        <div class="amenity_list">
-          <span *ngFor="let tag of this.event.tags" class="badge badge-secondary amenity_item">{{tag}}</span>
-        </div>
       </div>
+      <div>
+        <app-attendee-list [attendeeIds]="event.attendee"></app-attendee-list>
+      </div>
+
     </div>
 
     <div class="col-4">
       <div>
         Event Start:
-        {{dates[event.start.getDay()]}}, {{months[event.start.getMonth()]}} {{event.start.getDate()}}
+        {{event.startTime}}
+        <!--{{dates[event.start.getDay()]}}, {{months[event.start.getMonth()]}} {{event.start.getDate()}}-->
       </div>
 
       <div>
         Event End:
-        {{dates[event.end.getDay()]}}, {{months[event.end.getMonth()]}} {{event.end.getDate()}}
+        {{event.endTime}}
+        <!--{{dates[event.end.getDay()]}}, {{months[event.end.getMonth()]}} {{event.end.getDate()}}-->
 
       </div>
 
@@ -148,10 +158,13 @@
 
 
 
+
+
+
 <!--<button type="button" class="btn btn-primary" (click)="openModal(template)">Edit Meta Data</button>-->
 
 <ng-template #template>
-  <div class="modal-header">
+  <div class="modal-header" *ngIf="isOrganizerLoaded">
     <h4 class="modal-title pull-left">Meta data: can only choose one time</h4>
     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
       <span aria-hidden="true">&times;</span>
@@ -177,13 +190,13 @@
       <form>
         <label>Event Starts:</label>
         <input
-          [(ngModel)]="event.start"
+          [(ngModel)]="event.startTime"
           type="date"
           name="bday">
         <label>Event Ends:</label>
 
         <input
-          [(ngModel)]="event.end"
+          [(ngModel)]="event.endTime"
           type="date"
           name="bday">
       </form>
@@ -204,7 +217,7 @@
     </div>
     <hr>
     <p>Do you want to confirm?</p>
-    <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
+    <button type="button" class="btn btn-default" (click)="confirmUpdateMeta()" >Yes</button>
     <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
   </div>
 </ng-template>
@@ -224,8 +237,8 @@
     <div class="content-of-modal">
       <h4>Edit current descriptions</h4>
       <span class="text-muted">drag to swich order</span>
-      <div [sortablejs]='this.event.descriptions' [sortablejsOptions]="{ animation: 150 }">
-        <div class="card" *ngFor="let widget of this.event.descriptions">
+      <div [sortablejs]='this.event.description' [sortablejsOptions]="{ animation: 150 }">
+        <div class="card" *ngFor="let widget of this.event.description">
             <app-event-description-widget-editor
               [widget]="widget"
               (deleteEmitter)="deleteWidget($event)"
@@ -242,6 +255,17 @@
     <div>
       <h4>Add new descriptions</h4>
       <tabset>
+        <tab heading="Heading" id="tab0">
+          Content heading
+          <label>Heading</label>
+          <input
+            [(ngModel)]="heading"
+            class="form-control"
+            placeholder="New Heading">
+          <button (click)="addHeading()">Add Heading</button>
+        </tab>
+
+
         <tab heading="Paragraph" id="tab1">
           Basic content
           <label>Paragraph</label>
