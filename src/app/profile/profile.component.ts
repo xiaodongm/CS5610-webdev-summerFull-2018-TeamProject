@@ -9,6 +9,8 @@ import {EventServiceClient} from '../services/event.service.client';
 import {EnrollmentServiceClient} from '../services/enrollment.service.client';
 import {Equipment} from '../models/equipment.model.client';
 import {EquipmentServiceClient} from '../services/equipment.service.client';
+import {SiteServiceClient} from '../services/site.service.client';
+import {Site} from '../models/site.model.client';
 
 @Component({
   selector: 'app-profile',
@@ -20,7 +22,8 @@ export class ProfileComponent implements OnInit {
   constructor(private userService: UserServiceClient,
               private providerService: ProviderServiceClient,
               private equipmentService: EquipmentServiceClient,
-              private eventSercice: EventServiceClient,
+              private eventService: EventServiceClient,
+              private siteService: SiteServiceClient,
               private enrollmentService: EnrollmentServiceClient,
               private router: Router) { }
 
@@ -29,6 +32,7 @@ export class ProfileComponent implements OnInit {
   hostedEvents: EventCard[];
   enrolledEvents: EventCard[] = [];
   myEquipments: Equipment[] = [];
+  mySites: Site[] = [];
   receiveMessage($event) {
     if (this.user.role !== 'SiteManager' && this.user.role !== 'EquipmentDealer') {
       this.user = $event;
@@ -50,9 +54,9 @@ export class ProfileComponent implements OnInit {
   }
 
   deleteHostedEvent(event) {
-    this.eventSercice.deleteEvent(event._id)
+    this.eventService.deleteEvent(event._id)
       .then(() =>
-        this.eventSercice.findEventsForOrganizer(this.user._id))
+        this.eventService.findEventsForOrganizer(this.user._id))
       .then(events => this.hostedEvents = events);
   }
   ngOnInit() {
@@ -60,7 +64,7 @@ export class ProfileComponent implements OnInit {
       .profile()
       .then(user => {
         this.user = user;
-        return this.eventSercice.findEventsForOrganizer(user._id);
+        return this.eventService.findEventsForOrganizer(user._id);
       }).then(events => {
         this.hostedEvents = events;
         return this.enrollmentService.findEnrollmentsForAttendee(this.user._id);
@@ -78,7 +82,12 @@ export class ProfileComponent implements OnInit {
         this.provider = provider;
         return this.equipmentService.findEquipmentsForProvider(this.provider._id);
       })
-      .then((equipments) => this.myEquipments = equipments);
+      .then((equipments) => {
+        this.myEquipments = equipments;
+        return this.siteService.findSitesForProvider(this.provider._id);
+      })
+      .then((sites) => this.mySites = sites);
+
   }
 
 }

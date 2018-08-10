@@ -84,6 +84,19 @@
       </div>
     </div>
   </div>
+
+  <div class="container">
+    <div> My Sites</div>
+
+    <div *ngFor="let site of mySites">
+      <div class="card">
+        <a [routerLink]="['/siteEditor/' + site._id]">Edit</a>
+        {{site.title}}
+        <!--<a [routerLink]="['/eventDetail/' + event._id]">View</a>-->
+        <!--<button (click)="deleteHostedEvent(event)" class="btn btn-danger">Delete</button>-->
+      </div>
+    </div>
+  </div>
 </div>
 
 

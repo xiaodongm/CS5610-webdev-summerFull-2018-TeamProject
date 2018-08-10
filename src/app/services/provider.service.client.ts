@@ -19,7 +19,7 @@ export class ProviderServiceClient {
   }
 
   findProviderById(providerId) {
-    return fetch('http://localhost:3000/api/providerId/' + providerId)
+    return fetch('http://localhost:3000/api/provider/providerId/' + providerId)
       .then(response => response.json());
   }
 

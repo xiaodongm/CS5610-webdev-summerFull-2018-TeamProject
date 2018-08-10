@@ -1,0 +1,100 @@
+<div *ngIf="isDataAvailable" class="container-fluid">
+
+  <div id="pageArea" class="jumbotron">
+
+    <h1 id="cground_name" class="display-4">
+      {{site.title}}
+      <!--<span id="tag" class="badge badge-secondary">{{campingSiteFromCommunication._attributes.contractType}}</span>-->
+    </h1>
+    <p id="cground_address" class="lead">
+      {{site.location}}
+    </p>
+    <hr class="my-4">
+    <div>
+      <div *ngFor="let widget of site.description">
+        <div *ngIf="widget.type === 'heading'">
+          heading: {{widget.data}}
+        </div>
+        <div *ngIf="widget.type === 'paragraph'">
+          paragraph: {{widget.data}}
+        </div>
+        <div *ngIf="widget.type === 'link'">
+          Link: <a href={{widget.data}}>{{widget.data}}</a>
+        </div>
+
+        <div *ngIf="widget.type === 'unorderedList'">
+          List:
+          <ul >
+            <li *ngFor="let item of splitList(widget.data)">{{item}}</li>
+          </ul>
+        </div>
+
+        <div *ngIf="widget.type === 'orderedList'">
+          List:
+          <ol>
+            <li *ngFor="let item of splitList(widget.data)">{{item}}</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <div id="carousel">
+      <carousel>
+        <slide *ngFor="let photo of site.photos">
+          <img src={{photo}} alt="first slide" style="display: block; width: 100%;">
+          <div class="carousel-caption d-none d-md-block">
+            <h3>First slide label</h3>
+            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          </div>
+        </slide>
+        <!--<slide>-->
+        <!--<img src="../../assets/images/backGround_image_2.jpg" alt="second slide" style="display: block; width: 100%;">-->
+        <!--<div class="carousel-caption d-none d-md-block">-->
+        <!--<h3>Second slide label</h3>-->
+        <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>-->
+        <!--</div>-->
+        <!--</slide>-->
+        <!--<slide>-->
+        <!--<img src="../../assets/images/backGround_image_3.jpg" alt="third slide" style="display: block; width: 100%;">-->
+        <!--<div class="carousel-caption d-none d-md-block">-->
+        <!--<h3>Third slide label</h3>-->
+        <!--<p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>-->
+        <!--</div>-->
+        <!--</slide>-->
+      </carousel>
+    </div>
+    <hr class="my-4">
+    <h5>Amenities :</h5>
+    <div id="amenity_list">
+      <span *ngFor="let amenity of site.tags" class="badge badge-secondary amenity_item">{{amenity}}</span>
+    </div>
+    <hr class="my-4">
+    <div class="container-fluid">
+      <h5>Weather Forecast</h5>
+      <p>Weather info will appear here.</p>
+    </div>
+    <hr class="my-4">
+    <p id="cground_contact" class="lead">Contact info : </p>
+    <!--<li *ngFor="let contactItem of campingSite.contact">-->
+    <!--{{contactItem._attributes.name + ' : ' + contactItem._attributes.number}}-->
+    <!--</li>-->
+    <!--<a id="learnMore" class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>-->
+
+    <div class="row" >
+      <div class="avatar-container col-3">
+        <div class="avatar" [ngStyle]="{'background-image': 'url(' + provider.profilePhoto + ')'}">
+        </div>
+      </div>
+
+      <div class="host-info col-7">
+        <div class="text-sm-left text-muted">
+          Hosted by
+          <span>{{provider.organizationName}}</span>
+        </div>
+        <div class="text-sm-left">
+          <span class="text-muted">From </span>
+          <span>{{provider.organizationAddress}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

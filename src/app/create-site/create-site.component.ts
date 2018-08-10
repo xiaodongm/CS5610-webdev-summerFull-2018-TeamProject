@@ -4,6 +4,7 @@ import {UserServiceClient} from '../services/user.service.client';
 import {Router} from '@angular/router';
 import {Widget} from '../models/widget.model.client';
 import {Site} from '../models/site.model.client';
+import {SiteServiceClient} from '../services/site.service.client';
 
 @Component({
   selector: 'app-create-site',
@@ -13,7 +14,7 @@ import {Site} from '../models/site.model.client';
 export class CreateSiteComponent implements OnInit {
 
   constructor(private router: Router,
-              private service: EventServiceClient,
+              private service: SiteServiceClient,
               private userService: UserServiceClient) { }
   location;
   isCollapsed1 = true;
@@ -45,10 +46,10 @@ export class CreateSiteComponent implements OnInit {
         newSite.tags = this.tags;
         newSite.description = [];
         newSite.description.push(new Widget('paragraph', this.paragraph));
-        // console.log(newEvent);
-        // this.service.createEvent(newEvent);
-      });
-      // .then(() => this.router.navigateByUrl('/profile') );
+        console.log(newSite);
+        return this.service.createSite(newSite);
+      })
+      .then(() => this.router.navigateByUrl('/profile') );
 
   }
 

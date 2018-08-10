@@ -53,6 +53,9 @@ import { CreateEquipmentComponent } from './create-equipment/create-equipment.co
 import { EquipmentEditorComponent } from './equipment-editor/equipment-editor.component';
 import {EquipmentServiceClient} from './services/equipment.service.client';
 import { EquipmentContentEditorComponent } from './equipment-content-editor/equipment-content-editor.component';
+import {SiteServiceClient} from './services/site.service.client';
+import { SiteEditorComponent } from './site-editor/site-editor.component';
+import { SiteDetailComponent } from './site-detail/site-detail.component';
 
 
 
@@ -88,6 +91,8 @@ import { EquipmentContentEditorComponent } from './equipment-content-editor/equi
     CreateEquipmentComponent,
     EquipmentEditorComponent,
     EquipmentContentEditorComponent,
+    SiteEditorComponent,
+    SiteDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -117,7 +122,8 @@ import { EquipmentContentEditorComponent } from './equipment-content-editor/equi
     ProviderServiceClient,
     LoginToNavbarServiceClient,
     DiscussionServiceClient,
-    EquipmentServiceClient
+    EquipmentServiceClient,
+    SiteServiceClient
   ],
   bootstrap: [AppComponent]
 })

@@ -15,6 +15,8 @@ import {DiscussionBoardComponent} from './discussion-board/discussion-board.comp
 import {CreateSiteComponent} from './create-site/create-site.component';
 import {CreateEquipmentComponent} from './create-equipment/create-equipment.component';
 import {EquipmentEditorComponent} from './equipment-editor/equipment-editor.component';
+import {SiteEditorComponent} from './site-editor/site-editor.component';
+import {SiteDetailComponent} from './site-detail/site-detail.component';
 
 
 const appRoutes: Routes = [
@@ -26,6 +28,8 @@ const appRoutes: Routes = [
   { path: 'camping-site/:contractID/:facilityID/detail', component: CampingSiteDetailComponent},
   { path: 'detail', component: CampingSiteDetailComponent},
   { path: 'eventEditor/:eventId', component: EventEditorComponent},
+  { path: 'siteEditor/:siteId', component: SiteEditorComponent},
+  { path: 'siteDetail/:siteId', component: SiteDetailComponent},
   { path: 'eventDetail/:eventId', component: EventDetailComponent},
   { path: 'equipmentEditor', component: EquipmentEditorComponent},
   { path: 'createEvent', component: CreateEventComponent},
