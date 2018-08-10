@@ -102,7 +102,7 @@ export class UserServiceClient {
   }
 
   un_followFriend(userId) {
-    return fetch('http://localhost:3000/api/user/follow/' + userId, {
+    return fetch('http://localhost:3000/api/user/un_follow/' + userId, {
       credentials: 'include', // include, same-origin, *omit
       method: 'put',
       headers: {

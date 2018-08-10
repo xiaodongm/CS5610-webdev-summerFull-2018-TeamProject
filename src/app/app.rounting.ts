@@ -12,12 +12,14 @@ import {EventEditorComponent} from './event-editor/event-editor.component';
 import {OrganizationSignUpComponent} from './organization-sign-up/organization-sign-up.component';
 import {AdminComponent} from './admin/admin.component';
 import {DiscussionBoardComponent} from './discussion-board/discussion-board.component';
+import {ProfileForVisitorComponent} from './profile-for-visitor/profile-for-visitor.component';
 
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
   { path: 'home', component: HomeComponent},
   { path: 'profile', component: ProfileComponent},
+  { path: 'profile/:userId', component: ProfileForVisitorComponent},
   { path: 'admin', component: AdminComponent},
   { path: 'homepage', component: HomePageComponent},
   { path: 'camping-site/:contractID/:facilityID/detail', component: CampingSiteDetailComponent},

@@ -48,6 +48,7 @@ import { AccordionModule } from 'ngx-bootstrap';
 import { DiscussionBoardComponent } from './discussion-board/discussion-board.component';
 import { DiscussionServiceClient} from './services/discussion.service.client';
 import { DiscussionComponent } from './discussion/discussion.component';
+import { ProfileForVisitorComponent } from './profile-for-visitor/profile-for-visitor.component';
 
 
 
@@ -79,6 +80,7 @@ import { DiscussionComponent } from './discussion/discussion.component';
     UserListComponent,
     DiscussionBoardComponent,
     DiscussionComponent,
+    ProfileForVisitorComponent,
   ],
   imports: [
     BrowserModule,

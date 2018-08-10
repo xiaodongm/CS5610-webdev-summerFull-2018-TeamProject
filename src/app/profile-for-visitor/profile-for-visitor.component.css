@@ -1,0 +1,79 @@
+
+.avatar-container {
+  display: inline-block;
+  width: 160px;
+  hight: 160px;
+  z-index: 1;
+  position: absolute;
+  left: 50px;
+  top: 70px;
+}
+
+.avatar {
+  border-radius: 50%;
+  background-image: url('https://images.unsplash.com/photo-1499996860823-5214fcc65f8f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b6ded683923a678ad03fae323169beb4&auto=format&fit=crop&w=700&q=60');
+  width: 100%;
+  padding-bottom: 100%;
+  background-size: cover;
+  background-position: center;
+  border: 3px solid white;
+}
+
+
+.main-background {
+  background-image: url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw8NDQ0NDQ8PDQ0NDxANDQ0NEBANDQ0NFREWFhURFRUYHSggGBolGxUVITEhMSk3Li4uFx8zOD8tNyg5LisBCgoKDQ0NDg0NDysZFR0rKys3LS0rKy0tKysrKysrLSsrKysrKy0tLSsrKysrKzcrKystKysrKysrKy0rKysrK//AABEIAKgBLAMBIgACEQEDEQH/xAAYAAEBAQEBAAAAAAAAAAAAAAAAAQIHA//EACUQAQAAAwgDAQEBAAAAAAAAAAABAvADFDFBUpLR4RNRkREhYf/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A4iACgCLASACgAoigsORIcgi9kK/h2Q4UO1rBOwF4KwThQODlOF5BOslToiB0HQgdCdABFCIqoICoqAAgAAokQiCgAoAEAgCKBWIFYLWCViViC95FYEK/pWIL3kQ4yO80hxmC95L+1+M95rWKhx6P2vw49lYiHHpefScezn2B1kRjX4dZlYilYFYHWaViiHWRWB1mViKVglYFYka/oAVigKixQBFQAAVCIRBQAAAUARRAFABYCQ5zKxBe/RDg7zIV/QO1TvMrFQ4/xayTj2VigfcP8XlOPa8+wT7l6Wsk6zKxUOgrErFA6DrMrEEIlYkQEVAAAECIAIKERIg0IAoAKIoiiAKIoKJ2ApBO8yAL2rPea1iBwqceysQOF5SsTn2B0ROsysQArFAXpDrMrEAiJEFRUABAABRAAIiRBQAUAAAFAEFQBQ+J8BSAfAO1T5mfAXgT5gvwA5T4fAFQ+AAAdB8yPgCRAFQigKgAAgqoACRVIgoACoAoigKgCiKIqACiAL2IoHAnACiAKJ+gKIAKgAIAqAKAgKgAAAJEIgogCgAKgCgAKgIogCkEWAHasqBwqACoAKgAAAIAqAKAgKgAAACAAICgAoigAAqACiKAAAsEAFQEUQBRABUAVAFAAAQFQAAAAQAEBUAFEAUAFEAUEBQAFQBSCAKIoAigCAKIAogAqAAAAICiAAACAAAAAAqAKIoAAKIAoigAAKgAAAAAAAAAIoAgCoACKgKgAAAIAPW72mifbEu9pon2xUBLvaaJ9sVu9pon2xAC72mifbEu9pon2xAC72mifbEu9pon2xAC72mifbEu9pon2xADwWmifbE8Fpon2xAF8Fpon2xPBaaJ9sUAXwWmifbE8E+ifbFAF8E+ifbE8E+ifbFAF8Fpon2xPBPon2xADwWmifbE8Fpon2xQBfBaaJ9sTwWmifbFAF8E+ifbE8E+ifbFADwWmifbEu9pon2xAC7z6J9sS72mifbEALvaaJ9sS72mifbEALvaaJ9sS72mifbEAS72mifbEu9pon2xUBLvaaJ9sS72mifbEAf/2Q==');
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 200px;
+}
+
+.main-text {
+  padding-top: 150px;
+  text-shadow: 0 8px 8px rgba(0,0,0,0.9),
+  0 8px 13px rgba(0,0,0,0.8),
+  0 8px 23px rgba(0,0,0,0.8);
+  color: white;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 25px;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 500;
+  line-height: 30px;
+  max-width: 275px;
+  position: absolute;
+  left: 230px;
+}
+
+.botton-background {
+  width: 100%;
+  height: 43px;
+  background: white;
+  padding-left: 220px;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-left-style: none;
+}
+
+.grid-item {
+  height: 43px;
+  border-left: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+
+
+.btn-position {
+  position: absolute;
+  top: 100px;
+  right:50px;
+}
+
+.nav-links {
+  cursor: pointer;
+}
+
+.active {
+  background-color: powderblue;
+  border-color: powderblue;
+}
+
+
+

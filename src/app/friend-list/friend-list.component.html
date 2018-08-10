@@ -1,74 +1,23 @@
 <div>
   <div class="header">
     <i class="fas fa-user-friends fa-2x icon"></i>
-    <span>(total)</span>
+    <span>(Total: {{following.length}})</span>
   </div>
-  <div class="card-columns">
-    <div class="card">
-      <div class="avatar-container">
-        <div class="avatar" [ngStyle]="{'background-image': 'url(' + user.url + ')'}"></div>
-      </div>
-      <div class="name">
-        <div class="text-sm-left">
-          <a class="text-muted" href="#">Tao. J </a>
+  <div *ngFor="let people of followingInfo">
+    <div class="card-columns">
+      <div class="card">
+        <div class="avatar-container">
+          <div class="avatar" [ngStyle]="{'background-image': 'url(' + people.profilePhoto + ')'}"></div>
         </div>
-      </div>
-      <button class="button btn btn-outline-primary">
-        Un-follow
-      </button>
-    </div>
-    <div class="card">
-      <div class="avatar-container">
-        <div class="avatar" [ngStyle]="{'background-image': 'url(' + user.url + ')'}"></div>
-      </div>
-      <div class="name">
-        <div class="text-sm-left">
-          <a class="text-muted" href="#">Tao. J </a>
+        <div class="name">
+          <div class="text-sm-left">
+            <a class="text-muted" [routerLink]="['/profile/' + people._id]">{{people.username}} </a>
+          </div>
         </div>
+        <button  *ngIf="isSame" class="button btn btn-outline-primary" (click)="unfollowUser(people._id)">
+          Un-follow
+        </button>
       </div>
-      <button class="button btn btn-outline-primary">
-        Un-follow
-      </button>
     </div>
-    <div class="card">
-      <div class="avatar-container">
-        <div class="avatar" [ngStyle]="{'background-image': 'url(' + user.url + ')'}"></div>
-      </div>
-      <div class="name">
-        <div class="text-sm-left">
-          <a class="text-muted" href="#">Tao. J </a>
-        </div>
-      </div>
-      <button class="button btn btn-outline-primary">
-        Un-follow
-      </button>
-    </div>
-    <div class="card">
-      <div class="avatar-container">
-        <div class="avatar" [ngStyle]="{'background-image': 'url(' + user.url + ')'}"></div>
-      </div>
-      <div class="name">
-        <div class="text-sm-left">
-          <a class="text-muted" href="#">Tao. J </a>
-        </div>
-      </div>
-      <button class="button btn btn-outline-primary">
-        Un-follow
-      </button>
-    </div>
-    <div class="card">
-      <div class="avatar-container">
-        <div class="avatar" [ngStyle]="{'background-image': 'url(' + user.url + ')'}"></div>
-      </div>
-      <div class="name">
-        <div class="text-sm-left">
-          <a class="text-muted" href="#">Tao. J </a>
-        </div>
-      </div>
-      <button class="button btn btn-outline-primary">
-        Un-follow
-      </button>
-    </div>
-
   </div>
 </div>

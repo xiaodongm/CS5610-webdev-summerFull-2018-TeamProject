@@ -16,17 +16,14 @@
     </div>
 
     <div class = 'btn-position'>
-      <button *ngIf="user.role === 'organizer'" (click)="goCreateEvent()">Post A New Event</button>
-      <button *ngIf="user.role === 'attendee'" >Attend A New Event</button>
+      <button *ngIf="!isFollowed" (click)="followUser()" class="btn btn-primary">Follow</button>
+      <button *ngIf="isFollowed" (click)="unfollowUser()" class="btn btn-primary">Un-Follow</button>
     </div>
 
   </div>
 
   <div class="botton-background">
     <div class="input-group-append">
-      <div class="col-sm grid-item" [ngClass]="{'active': curPage === 'pi'}">
-        <a (click)="setCurPage('pi')" class="nav-links">Private Info</a>
-      </div>
       <div class="col-sm grid-item" [ngClass]="{'active': curPage === 'oa'}">
         <a (click)="setCurPage('oa')" class="nav-links">Organized Activities</a>
       </div>
@@ -44,7 +41,6 @@
 
   <div class="container">
     <app-friend-list *ngIf="curPage === 'ff'" [user] = user></app-friend-list>
-    <app-basic-information *ngIf="curPage ==='pi'" (messageEvent)="receiveMessage($event)"></app-basic-information>
   </div>
 
   <div class="container">
