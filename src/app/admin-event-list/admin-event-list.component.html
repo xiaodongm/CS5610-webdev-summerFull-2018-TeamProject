@@ -1,0 +1,184 @@
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link" routerLink="/admin" (click)="openRelaxTab()">
+      Relax({{relaxEvents.length}})
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" routerLink="/admin" (click)="openTrainingTab()">
+      Training({{trainingEvents.length}})
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" routerLink="/admin" (click)="openAdventureTab()">
+      Adventure({{adventureEvents.length}})
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" routerLink="/admin" (click)="openCreateEventTab()">
+      Create New Event
+    </a>
+  </li>
+</ul>
+
+
+<accordion [closeOthers]="true">
+
+  <div *ngIf="eventType === 'Relax'">
+    <accordion-group *ngFor="let relaxEvent of relaxEvents" (isOpenChange)="log(relaxEvent)">
+      <button class="btn btn-link btn-block clearfix" accordion-heading>
+        <div class="pull-left float-left">{{relaxEvent.title}}</div>
+      </button>
+      <div *ngFor="let alert of alerts">
+        <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onClosed(alert)">{{ alert.msg }}</alert>
+      </div>
+      <div class="input-group-append wrapDiv">
+        <label for="titleFld-rel" class="col-sm-2 col-form-label">Event Title</label>
+        <input id="titleFld-rel" [(ngModel)]="relaxEvent.title" class="form-control">
+      </div>
+      <div class="input-group-append wrapDiv">
+        <label for="start-rel" class="col-sm-2 col-form-label">Start Time</label>
+        <input type="text"
+               [(ngModel)]="relaxEvent.startTime"
+               placeholder="Start Time"
+               class="form-control"
+               id="start-rel"
+               [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }"
+               bsDatepicker>
+      </div>
+      <div class="input-group-append wrapDiv">
+        <label for="end-rel" class="col-sm-2 col-form-label">End Time</label>
+        <input type="text"
+               [(ngModel)]="relaxEvent.endTime"
+               placeholder="End Time"
+               class="form-control"
+               id="end-rel"
+               [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }"
+               bsDatepicker>
+      </div>
+      <div class="input-group-append wrapDiv">
+        <label for="levelFld-rel" class="col-sm-2 col-form-label">Event Level</label>
+        <input id="levelFld-rel" [(ngModel)]="relaxEvent.level" class="form-control">
+      </div>
+
+      <div class="UpdateDeleteBtns">
+        <button class="btn btn-success updateBtn" (click)="update(relaxEvent)">Update</button>
+        <button (click)="openModal(deleteConfirm)" class="btn btn-danger">Delete</button>
+      </div>
+
+      <ng-template #deleteConfirm>
+        <div class="modal-body text-center">
+          <p>Are you sure you want to <strong>DELETE</strong> this Event?</p>
+          <button type="button" class="btn btn-danger confirmDelete" (click)="delete(relaxEvent)" >Delete</button>
+          <button type="button" class="btn btn-default" (click)="modalRef.hide();" >Cancel</button>
+        </div>
+      </ng-template>
+    </accordion-group>
+
+  </div>
+
+  <div *ngIf="eventType === 'Training'">
+    <accordion-group *ngFor="let trainingEvent of trainingEvents" (isOpenChange)="log(trainingEvent)">
+      <button class="btn btn-link btn-block clearfix" accordion-heading>
+        <div class="pull-left float-left">{{trainingEvent.title}}</div>
+      </button>
+      <div *ngFor="let alert of alerts">
+        <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onClosed(alert)">{{ alert.msg }}</alert>
+      </div>
+      <div class="input-group-append wrapDiv">
+        <label for="titleFld-tra" class="col-sm-2 col-form-label">Event Title</label>
+        <input id="titleFld-tra" [(ngModel)]="trainingEvent.title" class="form-control">
+      </div>
+      <div class="input-group-append wrapDiv">
+        <label for="start-tra" class="col-sm-2 col-form-label">Start Time</label>
+        <input type="text"
+               [(ngModel)]="trainingEvent.startTime"
+               placeholder="Start Time"
+               class="form-control"
+               id="start-tra"
+               [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }"
+               bsDatepicker>
+      </div>
+      <div class="input-group-append wrapDiv">
+        <label for="end-tra" class="col-sm-2 col-form-label">End Time</label>
+        <input type="text"
+               [(ngModel)]="trainingEvent.endTime"
+               placeholder="End Time"
+               class="form-control"
+               id="end-tra"
+               [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }"
+               bsDatepicker>
+      </div>
+      <div class="input-group-append wrapDiv">
+        <label for="levelFld-tra" class="col-sm-2 col-form-label">Event Level</label>
+        <input id="levelFld-tra" [(ngModel)]="trainingEvent.level" class="form-control">
+      </div>
+
+      <div class="UpdateDeleteBtns">
+        <button class="btn btn-success updateBtn" (click)="update(trainingEvent)">Update</button>
+        <button (click)="openModal(deleteConfirm)" class="btn btn-danger">Delete</button>
+      </div>
+      <ng-template #deleteConfirm>
+        <div class="modal-body text-center">
+          <p>Are you sure you want to <strong>DELETE</strong> this Event?</p>
+          <button type="button" class="btn btn-danger confirmDelete" (click)="delete(trainingEvent)" >Delete</button>
+          <button type="button" class="btn btn-default" (click)="modalRef.hide();" >Cancel</button>
+        </div>
+      </ng-template>
+    </accordion-group>
+
+  </div>
+
+  <div *ngIf="eventType === 'Adventure'">
+    <accordion-group *ngFor="let adventureEvent of adventureEvents" (isOpenChange)="log(adventureEvent)">
+      <button class="btn btn-link btn-block clearfix" accordion-heading>
+        <div class="pull-left float-left">{{adventureEvent.title}}</div>
+      </button>
+      <div *ngFor="let alert of alerts">
+        <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onClosed(alert)">{{ alert.msg }}</alert>
+      </div>
+      <div class="input-group-append wrapDiv">
+        <label for="titleFld-adv" class="col-sm-2 col-form-label">Event Title</label>
+        <input id="titleFld-adv" [(ngModel)]="adventureEvent.title" class="form-control">
+      </div>
+      <div class="input-group-append wrapDiv">
+        <label for="start-adv" class="col-sm-2 col-form-label">Start Time</label>
+        <input type="text"
+               [(ngModel)]="adventureEvent.startTime"
+               placeholder="Start Time"
+               class="form-control"
+               id="start-adv"
+               [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }"
+               bsDatepicker>
+      </div>
+      <div class="input-group-append wrapDiv">
+        <label for="end-adv" class="col-sm-2 col-form-label">End Time</label>
+        <input type="text"
+               [(ngModel)]="adventureEvent.endTime"
+               placeholder="End Time"
+               class="form-control"
+               id="end-adv"
+               [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }"
+               bsDatepicker>
+      </div>
+      <div class="input-group-append wrapDiv">
+        <label for="levelFld-adv" class="col-sm-2 col-form-label">Event Level</label>
+        <input id="levelFld-adv" [(ngModel)]="adventureEvent.level" class="form-control">
+      </div>
+
+      <div class="UpdateDeleteBtns">
+        <button class="btn btn-success updateBtn" (click)="update(adventureEvent)">Update</button>
+        <button (click)="openModal(deleteConfirm)" class="btn btn-danger">Delete</button>
+      </div>
+      <ng-template #deleteConfirm>
+        <div class="modal-body text-center">
+          <p>Are you sure you want to <strong>DELETE</strong> this Event?</p>
+          <button type="button" class="btn btn-danger confirmDelete" (click)="delete(adventureEvent)" >Delete</button>
+          <button type="button" class="btn btn-default" (click)="modalRef.hide();" >Cancel</button>
+        </div>
+      </ng-template>
+    </accordion-group>
+
+  </div>
+
+</accordion>

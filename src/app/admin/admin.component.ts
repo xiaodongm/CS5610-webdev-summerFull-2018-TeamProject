@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {UserServiceClient} from '../services/user.service.client';
 import {ProviderServiceClient} from '../services/provider.service.client';
 import {Router} from '@angular/router';
+import {EventServiceClient} from '../services/event.service.client';
 
 
 @Component({
@@ -13,6 +14,7 @@ export class AdminComponent implements OnInit {
 
   constructor(private userService: UserServiceClient,
               private providerService: ProviderServiceClient,
+              private eventService: EventServiceClient,
               private router: Router) { }
 
   // menuItems = ['User', 'Organizer', 'Attendee', 'Provider', 'SiteManager', 'EquipmentDealer', 'Event', 'CampSite'];
@@ -20,6 +22,7 @@ export class AdminComponent implements OnInit {
 
   personalUsers = [];
   providers = [];
+  events = [];
 
   listType;
 
@@ -42,13 +45,25 @@ export class AdminComponent implements OnInit {
       });
   }
 
+  findAllEvents() {
+    this.eventService.findAllEvents()
+      .then(events => {
+        this.events = events;
+      });
+  }
+
   openUserList() {
     this.listType = this.listTypeModel.userList;
+  }
+
+  openEventList() {
+    this.listType = this.listTypeModel.eventList;
   }
 
   receiveMessage($event) {
     this.findAllUsers();
     this.findAllProviders();
+    this.findAllEvents();
   }
 
 
@@ -62,6 +77,7 @@ export class AdminComponent implements OnInit {
       } );
     this.findAllUsers();
     this.findAllProviders();
+    this.findAllEvents();
   }
 
 }

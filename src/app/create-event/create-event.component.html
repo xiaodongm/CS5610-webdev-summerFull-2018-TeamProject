@@ -10,7 +10,6 @@
         placeholder="Type your camping site">
 
       <button type="button" class="btn btn-danger nextBtn" (click)="isCollapsed1 = !isCollapsed1"
-              [disabled]="!campSite"
               [attr.aria-expanded]="!isCollapsed1" aria-controls="collapseBasic">Next
       </button>
 
