@@ -19,6 +19,11 @@
       EquipmentDealer({{equipmentDealers.length}})
     </a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" routerLink="/admin" (click)="openCreateUserTab()">
+      Create New User
+    </a>
+  </li>
 </ul>
 
 <div>
@@ -309,5 +314,37 @@
     </div>
 
   </accordion>
+
+  <div *ngIf="userType === 'admin'">
+    <div *ngFor="let alert of alerts">
+      <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onClosed(alert)">{{ alert.msg }}</alert>
+    </div>
+    <div class="input-group-append wrapDiv adminInput">
+      <label for="adminUsernameFld" class="col-sm-2 col-form-label">Username</label>
+      <input id="adminUsernameFld" [(ngModel)]="newUser.username" class="form-control">
+    </div>
+    <div class="input-group-append wrapDiv adminInput">
+      <label for="adminPasswordFld" class="col-sm-2 col-form-label">Password</label>
+      <input id="adminPasswordFld" [(ngModel)]="newUser.password" class="form-control">
+    </div>
+    <div class="input-group-append wrapDiv adminInput">
+      <label for="adminRoleFld-sit" class="col-sm-2 col-form-label">User Role</label>
+      <li  id="adminRoleFld-sit" class="list-group-item form-control">{{newUser.role}}</li>
+      <div class="btn-group" dropdown>
+        <button id="button-basic-adm" dropdownToggle type="button" class="btn btn-outline-dark dropdown-toggle"
+                aria-controls="dropdown-basic-adm">
+          Select Role
+        </button>
+        <ul id="dropdown-basic-adm" *dropdownMenu class="dropdown-menu"
+            role="menu" aria-labelledby="button-basic">
+          <li role="menuitem"><a (click)="newUser.role = 'attendee'" class="dropdown-item">Attendee</a></li>
+          <li role="menuitem"><a (click)="newUser.role = 'organizer'" class="dropdown-item">Organizer</a></li>
+          <li role="menuitem"><a (click)="newUser.role = 'SiteManager'" class="dropdown-item">SiteManager</a></li>
+          <li role="menuitem"><a (click)="newUser.role = 'EquipmentDealer'" class="dropdown-item">EquipmentDealer</a></li>
+        </ul>
+      </div>
+    </div>
+    <button (click)="createUser(newUser.username, newUser.password, newUser.role)" class="btn btn-success">Create User</button>
+  </div>
 
 </div>

@@ -2,6 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {UserServiceClient} from '../services/user.service.client';
 import {ProviderServiceClient} from '../services/provider.service.client';
 import {AlertComponent, BsModalRef, BsModalService} from 'ngx-bootstrap';
+import {User} from '../models/user.model.client';
 
 @Component({
   selector: 'app-user-list',
@@ -20,12 +21,14 @@ export class UserListComponent implements OnInit {
   equipmentDealers = [];
 
   userType;
+  newUser = new User();
 
   userTypeModel = {
     attendee: 'attendee',
     organizer: 'organizer',
     siteManager: 'SiteManager',
-    EquipmentDealer: 'EquipmentDealer'
+    EquipmentDealer: 'EquipmentDealer',
+    admin: 'admin'
   };
 
   alerts = [];
@@ -73,6 +76,10 @@ export class UserListComponent implements OnInit {
 
   openEquipmentDealerTab() {
     this.userType = this.userTypeModel.EquipmentDealer;
+  }
+
+  openCreateUserTab() {
+    this.userType = this.userTypeModel.admin;
   }
 
   findAllAttendees() {
@@ -181,6 +188,70 @@ export class UserListComponent implements OnInit {
           this.message = this.siteManagers.length = this.equipmentDealers.length;
           this.sendMessage();
         });
+    }
+  }
+
+  createUser(username, password, role) {
+    if (username && password) {
+      if (role === 'attendee' || role === 'organizer') {
+        this.userService
+          .adminCreateUser(username, password, role)
+          .then(response => {
+            return response.json();
+          })
+          .then((user) => {
+            if (!user.err) {
+              this.alerts.push({
+                type: 'success',
+                msg: `User created successfully.`,
+                timeout: 5000
+              });
+              this.findAllAttendees();
+              this.findAllOrganizers();
+              this.message = this.attendees.length + this.organizers.length;
+              this.sendMessage();
+            } else {
+              // alert('Username already exist, please choose another one.');
+              this.alerts.push({
+                type: 'danger',
+                msg: `Username already exist, please choose another one.`,
+                timeout: 5000
+              });
+            }
+          });
+      } else if (role === 'SiteManager' || role === 'EquipmentDealer') {
+        this.providerService
+          .adminCreateProvider(username, password, role)
+          .then(response => {
+            return response.json();
+          })
+          .then((user) => {
+            if (!user.err) {
+              this.alerts.push({
+                type: 'success',
+                msg: `User created successfully.`,
+                timeout: 5000
+              });
+              this.findAllSiteManagers();
+              this.findAllEquipmentDeals();
+              this.message = this.siteManagers.length = this.equipmentDealers.length;
+              this.sendMessage();
+            } else {
+              // alert('Username already exist, please choose another one.');
+              this.alerts.push({
+                type: 'danger',
+                msg: `Username already exist, please choose another one.`,
+                timeout: 5000
+              });
+            }
+          });
+      }
+    } else {
+      this.alerts.push({
+        type: 'danger',
+        msg: `Please enter valid Username and Password.`,
+        timeout: 5000
+      });
     }
   }
 

@@ -12,4 +12,5 @@ export class EventCard {
   description: Widget[] = [];
   tags: String[] = [];
   attendee: string[] = [];
+  level: String;
 }

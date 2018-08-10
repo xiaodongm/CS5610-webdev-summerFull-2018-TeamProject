@@ -18,6 +18,22 @@ export class ProviderServiceClient {
     });
   }
 
+  adminCreateProvider(username, password, role) {
+    const provider = {
+      username: username,
+      password: password,
+      role: role
+    };
+    return fetch('http://localhost:3000/api/provider/register', {
+      body: JSON.stringify(provider),
+      credentials: 'include', // include, same-origin, *omit
+      method: 'post',
+      headers: {
+        'content-type': 'application/json'
+      }
+    });
+  }
+
   findProviderById(providerId) {
     return fetch('http://localhost:3000/api/provider/providerId/' + providerId)
       .then(response => response.json());

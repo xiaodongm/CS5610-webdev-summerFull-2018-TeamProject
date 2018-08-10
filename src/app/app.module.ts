@@ -56,6 +56,8 @@ import { EquipmentContentEditorComponent } from './equipment-content-editor/equi
 import {SiteServiceClient} from './services/site.service.client';
 import { SiteEditorComponent } from './site-editor/site-editor.component';
 import { SiteDetailComponent } from './site-detail/site-detail.component';
+import { AdminEventListComponent } from './admin-event-list/admin-event-list.component';
+
 
 
 
@@ -93,6 +95,8 @@ import { SiteDetailComponent } from './site-detail/site-detail.component';
     EquipmentContentEditorComponent,
     SiteEditorComponent,
     SiteDetailComponent,
+    AdminEventListComponent,
+
   ],
   imports: [
     BrowserModule,

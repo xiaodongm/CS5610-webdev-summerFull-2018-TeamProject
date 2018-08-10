@@ -88,7 +88,8 @@ export class EventWaterfallComponent implements OnInit {
     video: 'https://www.youtube.com/embed/PHQe7Sj56NE',
     description: [],
     tags: [],
-    attendee: []
+    attendee: [],
+    level: ''
   };
 
   event2: EventCard = {
@@ -108,7 +109,8 @@ export class EventWaterfallComponent implements OnInit {
     video: 'https://www.youtube.com/embed/b6hoBp7Hk-A',
     description: [],
     tags: [],
-    attendee: []
+    attendee: [],
+    level: ''
   };
 
   event3: EventCard = {
@@ -125,7 +127,8 @@ export class EventWaterfallComponent implements OnInit {
     video: '',
     description: [],
     tags: [],
-    attendee: []
+    attendee: [],
+    level: ''
   };
 
   event4: EventCard = {
@@ -143,7 +146,8 @@ export class EventWaterfallComponent implements OnInit {
     video: '',
     description: [],
     tags: [],
-    attendee: []
+    attendee: [],
+    level: ''
   };
 
   event5: EventCard = {
@@ -160,7 +164,8 @@ export class EventWaterfallComponent implements OnInit {
     video: '',
     description: [],
     tags: [],
-    attendee: []
+    attendee: [],
+    level: ''
   };
 
   event6: EventCard = {
@@ -176,7 +181,8 @@ export class EventWaterfallComponent implements OnInit {
     video: '',
     description: [],
     tags: [],
-    attendee: []
+    attendee: [],
+    level: ''
   };
 
   event7: EventCard = {
@@ -193,7 +199,8 @@ export class EventWaterfallComponent implements OnInit {
     video: '',
     description: [],
     tags: [],
-    attendee: []
+    attendee: [],
+    level: ''
   };
 
   event8: EventCard = {
@@ -209,7 +216,8 @@ export class EventWaterfallComponent implements OnInit {
     video: '',
     description: [],
     tags: [],
-    attendee: []
+    attendee: [],
+    level: ''
   };
 
   event9: EventCard = {
@@ -226,7 +234,8 @@ export class EventWaterfallComponent implements OnInit {
     video: '',
     description: [],
     tags: [],
-    attendee: []
+    attendee: [],
+    level: ''
   };
   // cards: EventCard[] = [this.event, this.event2, this.event3,
   //                       this.event4, this.event5, this.event6,
