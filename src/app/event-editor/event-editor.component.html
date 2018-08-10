@@ -200,14 +200,22 @@
         />
       </div>
 
-      <div class="input-group-append fields">
-        <label for="videoLink" class="col-sm-2 col-form-label"> Video link </label>
-        <input
-          id="videoLink"
-          [(ngModel)]="event.video"
-          class="form-control"
-          placeholder="Video link"
-        />
+      <div class="input-group-append">
+        <label for="level" class="col-sm-2 col-form-label" >Level</label>
+        <li  id="level" class="list-group-item form-control">{{event.level}}</li>
+        <div class="btn-group" dropdown>
+          <button id="button-basic" dropdownToggle type="button" class="btn btn-outline-dark dropdown-toggle"
+                  aria-controls="dropdown-basic">
+            Select level
+          </button>
+          <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+              role="menu" aria-labelledby="button-basic">
+            <li role="menuitem"><a (click)="event.level = 'Relax'" class="dropdown-item">Relax</a></li>
+            <li role="menuitem"><a (click)="event.level = 'Training'" class="dropdown-item">Training</a></li>
+            <li role="menuitem"><a (click)="event.level = 'Adventure'" class="dropdown-item">Adventure</a></li>
+          </ul>
+        </div>
+
       </div>
 
       <div>
@@ -240,7 +248,15 @@
                  bsDatepicker>
         </div>
       </div>
-
+      <div class="input-group-append fields">
+        <label for="videoLink" class="col-sm-2 col-form-label"> Video link </label>
+        <input
+          id="videoLink"
+          [(ngModel)]="event.video"
+          class="form-control"
+          placeholder="Video link"
+        />
+      </div>
       <div class="input-group-append fields">
         <label for="imgUrl" class="col-sm-2 col-form-label"> Add Image </label>
         <input

@@ -9,7 +9,8 @@
         class="form-control"
         placeholder="Type your camping site">
 
-      <button type="button" class="btn btn-primary" (click)="isCollapsed1 = !isCollapsed1"
+      <button type="button" class="btn btn-danger nextBtn" (click)="isCollapsed1 = !isCollapsed1"
+              [disabled]="!campSite"
               [attr.aria-expanded]="!isCollapsed1" aria-controls="collapseBasic">Next
       </button>
 
@@ -24,23 +25,14 @@
         <h6 class="card-subtitle mb-2 text-muted">step 2</h6>
         <h5 class="card-title">What's your camping event featured for?</h5>
 
-        <div class="btn-group" dropdown>
-          <button dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
-                  aria-controls="dropdown-basic">
-            Add feature tags <span class="caret"></span>
-          </button>
-          <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
-              role="menu" aria-labelledby="button-basic">
-            <li role="menuitem"><a class="dropdown-item" (click)="toggleTag('Hiking')">Hiking</a></li>
-            <li role="menuitem"><a class="dropdown-item" (click)="toggleTag('Fishing')">Fishing</a></li>
-            <li role="menuitem"><a class="dropdown-item" (click)="toggleTag('Biking')">Biking</a></li>
-          </ul>
-        </div>
+        <span *ngFor="let tag of featureTags" (click)="toggleFeatureTag(tag)" class="featureTag badge badge-info">{{tag}}</span>
+        <hr>
         <div id="amenity_list">
-          <span *ngFor="let tag of tags" class="badge badge-secondary amenity_item">{{tag}}</span>
+          <span *ngFor="let tag of tags" (click)="toggleEventTag(tag)" class="badge badge-info amenity_item">{{tag}}</span>
         </div>
         <div>
-          <button type="button" class="btn btn-primary" (click)="isCollapsed2 = !isCollapsed2"
+          <hr *ngIf="tags.length !== 0">
+          <button type="button" class="btn btn-danger" (click)="isCollapsed2 = !isCollapsed2"
                   [attr.aria-expanded]="!isCollapsed2" aria-controls="collapseBasic2">Next
           </button>
         </div>
@@ -53,36 +45,47 @@
     <div class="card">
       <div class="card-body">
         <h6 class="card-subtitle mb-2 text-muted">step 3</h6>
-        <h5 class="card-title">What will your Camp Event name be?</h5>
-
-        <input
-          [(ngModel)]="title"
-          class="form-control"
-          placeholder="Type your camping site">
-        <h5 class="card-title"> Choose your event time stamp</h5>
-        <form>
-          Event Starts:
+        <div id="titleDiv">
+          <h5 class="card-title">What will your event name be?</h5>
           <input
-            [(ngModel)]="eventStart"
-            type="date"
-            name="bday">
-        </form>
-
-        <form>
-          Event Ends:
-          <input
-            [(ngModel)]="eventEnd"
-            type="date"
-            name="bday">
-        </form>
-        <h5 class="card-title">Describe who should join, and what your Meetup will do.</h5>
+            [(ngModel)]="title"
+            class="form-control"
+            placeholder="Event Title">
+        </div>
+        <hr>
+        <div id="timeDiv">
+          <h5 class="card-title"> Choose your event time stamp.</h5>
+          <div class="input-group-append">
+            <label for="startTime" class="col-sm-2 col-form-label">Event Starts:</label>
+            <input type="text"
+                   [(ngModel)]="eventStart"
+                   placeholder="Start Time"
+                   class="form-control"
+                   id="startTime"
+                   [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }"
+                   bsDatepicker>
+          </div>
+          <hr>
+          <div class="input-group-append">
+            <label for="endTime" class="col-sm-2 col-form-label">Event Ends:</label>
+            <input type="text"
+                   [(ngModel)]="eventEnd"
+                   placeholder="End Time"
+                   class="form-control"
+                   id="endTime"
+                   [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }"
+                   bsDatepicker>
+          </div>
+        </div>
+        <hr>
+        <h5 class="card-title">Describe who should join, and what your event will do.</h5>
         <textarea
           [(ngModel)]="paragraph"
           class="form-control"
           placeholder="Paragraph text">
         </textarea>
         <div>
-          <button type="button" class="btn btn-success" (click)="createEvent()"
+          <button id="createBtn" type="button" class="btn btn-danger" (click)="createEvent()"
                   [attr.aria-expanded]="!isCollapsed3" aria-controls="collapseBasic3">Create
           </button>
         </div>
