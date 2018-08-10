@@ -1,0 +1,208 @@
+<span class="edit-span" (click)="openModal(template2)">
+  <i class="fas fa-pencil-alt"></i>
+</span>
+<span class="edit-span" (click)="deleteEquipment()">
+  <i class="far fa-trash-alt"></i>
+</span>
+
+<h4>{{equipment.title}}</h4>
+
+<div class="carousel-container">
+  <carousel data-interval="false">
+    <slide *ngFor="let photo of equipment.photos">
+      <img src={{photo}} alt="first slide" style="display: block; width: 100%;">
+
+    </slide>
+  </carousel>
+</div>
+
+<div>
+  <span>quantity: {{equipment.quantity}}</span>
+  <span>available: {{equipment.available}}</span>
+</div>
+<div class="amenity_list">
+  <span *ngFor="let tag of equipment.tags" class="badge badge-secondary amenity_item">{{tag}}</span>
+</div>
+
+<div>
+  <div *ngFor="let widget of equipment.description">
+    <div *ngIf="widget.type === 'heading'">
+      heading: {{widget.data}}
+    </div>
+    <div *ngIf="widget.type === 'paragraph'">
+      paragraph: {{widget.data}}
+    </div>
+    <div *ngIf="widget.type === 'link'">
+      Link: <a href={{widget.data}}>{{widget.data}}</a>
+    </div>
+
+    <div *ngIf="widget.type === 'unorderedList'">
+      List:
+      <ul >
+        <li *ngFor="let item of splitList(widget.data)">{{item}}</li>
+      </ul>
+    </div>
+
+    <div *ngIf="widget.type === 'orderedList'">
+      List:
+      <ol>
+        <li *ngFor="let item of splitList(widget.data)">{{item}}</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<ng-template #template2>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Description: Edit or Add new</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <div class="content-of-modal">
+      <h4>Edit basic informations</h4>
+      <div>
+        <label> Title </label>
+        <input
+          [(ngModel)]="equipment.title"
+          class="form-control"
+          placeholder="Event Title"
+        />
+
+        <label> Capacity: </label>
+        <input
+          [(ngModel)]="equipment.quantity"
+          class="form-control"
+          placeholder="whole quantity of this equipment"
+        />
+
+        <label> Avalable: </label>
+        <input
+          [(ngModel)]="equipment.available"
+          class="form-control"
+          placeholder="how many available"
+        />
+
+        <label> Add Image </label>
+        <ol>
+          <li *ngFor="let img of equipment.photos">
+            {{img}}
+            <button (click)="deleteImageUrl(img)">Delete</button>
+          </li>
+        </ol>
+        <input
+          [(ngModel)]="imgUrl"
+          class="form-control"
+          placeholder="Image Url">
+        <button (click)="addImageUrl()">Add Image</button>
+
+      </div>
+      <h4>Edit current descriptions</h4>
+      <span class="text-muted">drag to swich order</span>
+      <div [sortablejs]='equipment.description' [sortablejsOptions]="{ animation: 150 }">
+        <div class="card" *ngFor="let widget of equipment.description">
+          <app-event-description-widget-editor
+            [widget]="widget"
+            (deleteEmitter)="deleteWidget($event)"
+            (editEmitter)="updateWidget($event)">
+          </app-event-description-widget-editor>
+        </div>
+      </div>
+
+      <div class="amenity_list" *ngIf="equipment.tags.length > 0">
+        <span *ngFor="let tag of equipment.tags" class="badge badge-secondary amenity_item">{{tag}}</span>
+        <hr>
+      </div>
+    </div>
+    <div>
+      <h4>Add new descriptions</h4>
+      <tabset>
+        <tab heading="Heading" id="tab0">
+          Content heading
+          <label>Heading</label>
+          <input
+            [(ngModel)]="heading"
+            class="form-control"
+            placeholder="New Heading">
+          <button (click)="addHeading()">Add Heading</button>
+        </tab>
+
+
+        <tab heading="Paragraph" id="tab1">
+          Basic content
+          <label>Paragraph</label>
+          <textarea
+            [(ngModel)]="paragraph"
+            class="form-control"
+            placeholder="Paragraph text">
+          </textarea>
+          <button (click)="addParagraph()">Add Paragraph</button>
+        </tab>
+
+        <tab heading="Link">
+          <div>
+            <label> link url</label>
+            <input
+              [(ngModel)]="linkUrl"
+              class="form-control"
+              placeholder="Link URL">
+            <button (click)="addLink()">Add Link</button>
+          </div>
+        </tab>
+
+        <tab heading="List">
+          <div>
+            <label> List </label>
+            <select class="form-control" (change)="setListType()" >
+              <option value="unorderedList">Unordered list</option>
+              <option value="orderedList">Ordered list</option>
+            </select>
+            <textarea
+              [(ngModel)]="list"
+              class="form-control"
+              placeholder="List Item">
+            </textarea>
+            <button (click)="addList()">Add List</button>
+          </div>
+        </tab>
+
+        <tab heading="Features">
+          <div class="btn-group" dropdown>
+            <button dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+                    aria-controls="dropdown-basic">
+              Add feature tags <span class="caret"></span>
+            </button>
+            <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+                role="menu" aria-labelledby="button-basic">
+              <li role="menuitem"><a class="dropdown-item" (click)="toggleTag('Hiking')">Hiking</a></li>
+              <li role="menuitem"><a class="dropdown-item" (click)="toggleTag('Fishing')">Fishing</a></li>
+              <li role="menuitem"><a class="dropdown-item" (click)="toggleTag('Biking')">Biking</a></li>
+            </ul>
+          </div>
+        </tab>
+      </tabset>
+    </div>
+
+    <hr>
+    <p>Save new added widget?</p>
+    <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
+    <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+  </div>
+</ng-template>
+
+
+
+
+
+<!--export class Equipment {-->
+<!--_id: string;-->
+<!--provider: string;-->
+<!--title: string;-->
+<!--description: Widget[];-->
+<!--photos: string[] = [];-->
+<!--tags: string[] = [];-->
+<!--quantity: number;-->
+<!--available: number;-->
+<!--}-->

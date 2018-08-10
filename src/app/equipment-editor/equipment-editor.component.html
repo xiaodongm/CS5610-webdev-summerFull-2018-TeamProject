@@ -1,0 +1,13 @@
+
+<div class="container">
+  <div class="card-columns">
+
+      <div class="card" *ngFor="let equipment of equipments">
+        <app-equipment-content-editor [equipment]="equipment" (refreshEmitter)="refreshEquipments()"></app-equipment-content-editor>
+
+      </div>
+
+  </div>
+</div>
+
+

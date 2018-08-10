@@ -15,9 +15,13 @@
           class="main-text">{{provider.organizationName}}</h2>
     </div>
 
-    <div class="button-group" (click)="goCreateEvent()">
-      <button>Post A New Event</button>
+    <div class="button-group" >
+      <button (click)="goCreateEvent()">Post A New Event</button>
       <button>Attend A New Event</button>
+      <button (click)="goCreateSite()">Post A New Site</button>
+      <button>Pick a site for your event</button>
+      <button (click)="goCreateEquipments()">Post A New Equipment</button>
+      <button>Pick equipments for your event</button>
     </div>
 
   </div>
@@ -64,6 +68,18 @@
       <div class="card">
         {{event.title}}
         <a [routerLink]="['/eventDetail/' + event._id]">View</a>
+        <!--<button (click)="deleteHostedEvent(event)" class="btn btn-danger">Delete</button>-->
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div> My Equipments</div>
+    <a [routerLink]="['/equipmentEditor']">Edit</a>
+    <div *ngFor="let equipment of myEquipments">
+      <div class="card">
+        {{equipment.title}}
+        <!--<a [routerLink]="['/eventDetail/' + event._id]">View</a>-->
         <!--<button (click)="deleteHostedEvent(event)" class="btn btn-danger">Delete</button>-->
       </div>
     </div>

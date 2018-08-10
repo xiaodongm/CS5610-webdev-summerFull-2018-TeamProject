@@ -7,6 +7,8 @@ import {ActivatedRoute, Route, Router} from '@angular/router';
 import {EventCard} from '../models/EventCard.model.client';
 import {EventServiceClient} from '../services/event.service.client';
 import {EnrollmentServiceClient} from '../services/enrollment.service.client';
+import {Equipment} from '../models/equipment.model.client';
+import {EquipmentServiceClient} from '../services/equipment.service.client';
 
 @Component({
   selector: 'app-profile',
@@ -17,6 +19,7 @@ export class ProfileComponent implements OnInit {
 
   constructor(private userService: UserServiceClient,
               private providerService: ProviderServiceClient,
+              private equipmentService: EquipmentServiceClient,
               private eventSercice: EventServiceClient,
               private enrollmentService: EnrollmentServiceClient,
               private router: Router) { }
@@ -25,6 +28,7 @@ export class ProfileComponent implements OnInit {
   provider = new Provider();
   hostedEvents: EventCard[];
   enrolledEvents: EventCard[] = [];
+  myEquipments: Equipment[] = [];
   receiveMessage($event) {
     if (this.user.role !== 'SiteManager' && this.user.role !== 'EquipmentDealer') {
       this.user = $event;
@@ -35,6 +39,14 @@ export class ProfileComponent implements OnInit {
 
   goCreateEvent() {
     this.router.navigate(['createEvent']);
+  }
+
+  goCreateSite() {
+    this.router.navigate(['createSite']);
+  }
+
+  goCreateEquipments() {
+    this.router.navigate(['createEquipment']);
   }
 
   deleteHostedEvent(event) {
@@ -62,7 +74,11 @@ export class ProfileComponent implements OnInit {
 
     this.providerService
       .profile()
-      .then(provider => this.provider = provider);
+      .then(provider => {
+        this.provider = provider;
+        return this.equipmentService.findEquipmentsForProvider(this.provider._id);
+      })
+      .then((equipments) => this.myEquipments = equipments);
   }
 
 }

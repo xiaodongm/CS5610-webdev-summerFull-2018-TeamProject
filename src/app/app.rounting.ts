@@ -12,6 +12,9 @@ import {EventEditorComponent} from './event-editor/event-editor.component';
 import {OrganizationSignUpComponent} from './organization-sign-up/organization-sign-up.component';
 import {AdminComponent} from './admin/admin.component';
 import {DiscussionBoardComponent} from './discussion-board/discussion-board.component';
+import {CreateSiteComponent} from './create-site/create-site.component';
+import {CreateEquipmentComponent} from './create-equipment/create-equipment.component';
+import {EquipmentEditorComponent} from './equipment-editor/equipment-editor.component';
 
 
 const appRoutes: Routes = [
@@ -24,7 +27,10 @@ const appRoutes: Routes = [
   { path: 'detail', component: CampingSiteDetailComponent},
   { path: 'eventEditor/:eventId', component: EventEditorComponent},
   { path: 'eventDetail/:eventId', component: EventDetailComponent},
+  { path: 'equipmentEditor', component: EquipmentEditorComponent},
   { path: 'createEvent', component: CreateEventComponent},
+  { path: 'createSite', component: CreateSiteComponent},
+  { path: 'createEquipment', component: CreateEquipmentComponent},
   { path: 'organization/signUp', component: OrganizationSignUpComponent},
   { path: 'test', component: DiscussionBoardComponent},
   { path: '**', component: HomeComponent},

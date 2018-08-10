@@ -48,6 +48,11 @@ import { AccordionModule } from 'ngx-bootstrap';
 import { DiscussionBoardComponent } from './discussion-board/discussion-board.component';
 import {DiscussionServiceClient} from './services/discussion.service.client';
 import { DiscussionComponent } from './discussion/discussion.component';
+import { CreateSiteComponent } from './create-site/create-site.component';
+import { CreateEquipmentComponent } from './create-equipment/create-equipment.component';
+import { EquipmentEditorComponent } from './equipment-editor/equipment-editor.component';
+import {EquipmentServiceClient} from './services/equipment.service.client';
+import { EquipmentContentEditorComponent } from './equipment-content-editor/equipment-content-editor.component';
 
 
 
@@ -79,6 +84,10 @@ import { DiscussionComponent } from './discussion/discussion.component';
     UserListComponent,
     DiscussionBoardComponent,
     DiscussionComponent,
+    CreateSiteComponent,
+    CreateEquipmentComponent,
+    EquipmentEditorComponent,
+    EquipmentContentEditorComponent,
   ],
   imports: [
     BrowserModule,
@@ -107,7 +116,8 @@ import { DiscussionComponent } from './discussion/discussion.component';
     EnrollmentServiceClient,
     ProviderServiceClient,
     LoginToNavbarServiceClient,
-    DiscussionServiceClient
+    DiscussionServiceClient,
+    EquipmentServiceClient
   ],
   bootstrap: [AppComponent]
 })
