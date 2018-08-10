@@ -1,26 +1,52 @@
-<div>
-  <p>{{discussionToChild.postTime}}</p>
+
+<div *ngIf="isPostPeopleLoaded">
+
+  <div *ngIf="discussionToChild.type === 'post'">
+    <div id="owner" class="input-group-append">
+      <p class="badge badge-secondary" id="ownerName">{{postPeople.username}}</p>
+      <p id="ownerTime"><span class="divider">•</span>{{discussionToChild.postTime}}</p>
+    </div>
+    <p id="ownerContent">{{discussionToChild.content}}</p>
+  </div>
+
   <div *ngIf="discussionToChild.type === 'reply'">
+
     <div *ngIf="discussionToChild.preDiscussion.postPeople === ''">
-      <li>{{discussionToChild.preDiscussion.content}}</li>
-      <li>{{postPeople.username}}: {{discussionToChild.content}}</li>
+      <div class="card-header">
+        <p>{{discussionToChild.preDiscussion.content}}</p>
+      </div>
+      <div id="deletedReplyer" class="input-group-append">
+        <p id="deletedReplyerName" class="badge badge-secondary">{{postPeople.username}}</p>
+        <p id="deletedReplyerTime"><span class="divider">•</span>{{discussionToChild.postTime}}</p>
+      </div>
+      <p id="deletedReplyerContent">{{discussionToChild.content}}</p>
     </div>
 
     <div *ngIf="discussionToChild.preDiscussion.postPeople !== ''">
-      <li>{{receiver.username}}: {{discussionToChild.preDiscussion.content}}</li>
-      <li>{{postPeople.username}} reply to {{receiver.username}}: {{discussionToChild.content}}</li>
+      <div class="card-header">
+        <div class="input-group-append">
+          <p class="badge badge-secondary" id="prePosterName">{{receiver.username}}</p>
+          <p id="prePosterTime"><span class="divider">•</span>{{discussionToChild.preDiscussion.postTime}}</p>
+        </div>
+        <p>{{discussionToChild.preDiscussion.content}}</p>
+      </div>
+      <div id="replyer" class="input-group-append">
+        <p id="replyerName">
+          <span class="badge badge-secondary">{{postPeople.username}}</span>
+          reply to
+          <span class="badge badge-secondary">{{receiver.username}}</span>
+        </p>
+        <p id="replyerTime"><span class="divider">•</span>{{discussionToChild.postTime}}</p>
+      </div>
+      <p id="replyerContent">{{discussionToChild.content}}</p>
     </div>
-
   </div>
 
-
-  <div *ngIf="discussionToChild.type === 'post'">
-    <li>{{postPeople.username}}: {{discussionToChild.content}}</li>
+  <div id="replyDiv" class="input-group-append">
+    <input class="form-control" [(ngModel)]= 'content' placeholder="Reply">
+    <button id="replyBtn" class="btn btn-default" (click)="reply()">Reply</button>
+    <button class="btn btn-default" (click)="delete()" *ngIf="curUser._id === postPeople._id">Delete</button>
   </div>
-
-  <input [(ngModel)]= 'content' placeholder="Reply">
-  <button (click)="reply()">Reply</button>
-  <button (click)="delete()" *ngIf="curUser._id === postPeople._id">Delete</button>
 
 </div>
 

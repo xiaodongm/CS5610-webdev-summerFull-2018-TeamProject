@@ -1,0 +1,166 @@
+<!--<div class="container">-->
+<!--this page shows event details-->
+<!--</div>-->
+
+<div class="card meta-div" *ngIf="isOrganizerLoaded">
+  <div class="container" (mouseleave) ="mouseLeave()">
+    <div class="row meta-row">
+      <div class="col-md-7 meta-div" >
+        <div class="card media-container">
+          <div class="carousel-container">
+            <carousel data-interval="false"
+                      [showIndicators]="!(hasExtraInfo && inImage)">
+              <slide class="slide" *ngFor="let photo of event.photos" >
+                <div class="image"
+                     [ngClass]="{'wbdv-blur': hasExtraInfo && inImage}"
+                     [ngStyle]="{'background-image': 'url(' + photo + ')'}">
+                </div>
+                <!--<img [ngClass]="{'wbdv-blur': hasExtraInfo && inImage}"-->
+                <!--src={{photo}} alt="first slide">-->
+              </slide>
+            </carousel>
+          </div>
+          <div class="iframe-pos">
+            <div class="iframe-container">
+              <iframe *ngIf="hasExtraInfo && inImage"
+                      [src]='getIframeSource()'
+                      frameborder="0"
+                      scrolling=false
+                      allow="encrypted-media"
+                      style="overflow:hidden;"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+
+
+      <div class="col-md-5">
+        <div class="card event-meda">
+          <h2 class="">{{event.title}}</h2>
+
+          <div class="row" *ngIf="isOrganizerLoaded">
+            <div class="avatar-container col-3">
+              <div class="avatar" [ngStyle]="{'background-image': 'url(' + organizer.profilePhoto + ')'}">
+              </div>
+            </div>
+
+            <div class="host-info col-7">
+              <div class="text-sm-left text-muted">
+                Hosted by
+                <span>{{organizer && organizer.firstName}}</span>
+                <span>{{organizer && ' ' + organizer.lastName}}</span>
+              </div>
+              <div class="text-sm-left">
+                <span class="text-muted">From </span>
+                <span>{{organizer.location}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <span class="button-pos">
+        <span class="button-container">
+          <span (click) = "mouseEnter()">
+            <i *ngIf='hasVideo()'
+               class="fab fa-youtube fa-2x"
+            ></i>
+          </span>
+        </span>
+          <button class="btn btn-primary" *ngIf="!isEnrolled" (click)="enrollEvent()">Enroll</button>
+          <button class="btn btn-danger" *ngIf="isEnrolled" (click)="unenrollEvent()">Unenroll</button>
+
+        </span>
+
+        <div class="amenity_list">
+          <span *ngFor="let tag of this.event.tags" class="badge badge-secondary amenity_item">{{tag}}</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      <h2>Descriptions: </h2>
+      <!--<div>-->
+      <!--<div>{{event.video}}</div>-->
+      <!--<iframe [src]='event.video | safe'> </iframe>-->
+      <!--</div>-->
+
+      <div *ngFor="let widget of this.event.description">
+        <div *ngIf="widget.type === 'heading'">
+          heading: {{widget.data}}
+        </div>
+        <div *ngIf="widget.type === 'paragraph'">
+          paragraph: {{widget.data}}
+        </div>
+        <div *ngIf="widget.type === 'link'">
+          Link: <a href={{widget.data}}>{{widget.data}}</a>
+        </div>
+
+        <div *ngIf="widget.type === 'unorderedList'">
+          List:
+          <ul >
+            <li *ngFor="let item of splitList(widget.data)">{{item}}</li>
+          </ul>
+        </div>
+
+        <div *ngIf="widget.type === 'orderedList'">
+          List:
+          <ol>
+            <li *ngFor="let item of splitList(widget.data)">{{item}}</li>
+          </ol>
+        </div>
+
+      </div>
+      <div *ngIf="event.attendee.length > 0">
+        <app-attendee-list [attendeeIds]="event.attendee"></app-attendee-list>
+      </div>
+
+      <div *ngIf="event._id && event._id !== ''">
+        <app-discussion-board [eventId]="event._id" ></app-discussion-board>
+      </div>
+
+    </div>
+
+    <div class="col-4">
+      <div>
+        Event Start:
+        {{event.startTime}}
+        <!--{{dates[event.start.getDay()]}}, {{months[event.start.getMonth()]}} {{event.start.getDate()}}-->
+      </div>
+
+      <div>
+        Event End:
+        {{event.endTime}}
+        <!--{{dates[event.end.getDay()]}}, {{months[event.end.getMonth()]}} {{event.end.getDate()}}-->
+
+      </div>
+
+      <div>
+        <h3>Drop down pick or go other page to get</h3>
+        <ul>
+          <li>camping site</li>
+          <li>camping equipments</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+

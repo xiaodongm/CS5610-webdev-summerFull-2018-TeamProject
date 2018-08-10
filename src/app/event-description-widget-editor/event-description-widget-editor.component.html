@@ -1,0 +1,78 @@
+<div>
+  <span class="span-box">
+
+    <span class="delete-span" (click)="deleteWidget(widget)">
+      <i class="far fa-trash-alt"></i>
+    </span>
+
+    <span class="edit-span" (click)="editWidget()">
+      <i class="fas fa-pencil-alt"></i>
+    </span>
+  </span>
+  <div *ngIf="widget.type === 'heading'">
+    heading: {{widget.data}}
+  </div>
+  <div *ngIf="widget.type === 'paragraph'">
+    paragraph: {{widget.data}}
+  </div>
+  <div *ngIf="widget.type === 'link'">
+    Link: <a href={{widget.data}}>{{widget.data}}</a>
+  </div>
+
+  <div *ngIf="widget.type === 'unorderedList'">
+    List:
+    <ul>
+      <li *ngFor="let item of splitList(widget.data)">{{item}}</li>
+    </ul>
+  </div>
+
+  <div *ngIf="widget.type === 'orderedList'">
+    List:
+    <ol>
+      <li *ngFor="let item of splitList(widget.data)">{{item}}</li>
+    </ol>
+  </div>
+
+    <div *ngIf="widget.type === 'heading' && !isEditorHidden">
+      <label> Heading </label>
+      <input
+        [(ngModel)]="newWidget.data"
+        class="form-control"
+        placeholder="Heading">
+      <button (click)="updateWidget()">Save Heading</button>
+    </div>
+
+    <div *ngIf="widget.type === 'paragraph' && !isEditorHidden">
+      Basic content
+      <label>Paragraph</label>
+      <textarea
+        [(ngModel)]="newWidget.data"
+        class="form-control"
+        placeholder="Paragraph text">
+      </textarea>
+      <button (click)="updateWidget()">Save Paragraph</button>
+    </div>
+
+    <div *ngIf="widget.type === 'link' && !isEditorHidden">
+      <label> link url</label>
+      <input
+        [(ngModel)]="newWidget.data"
+        class="form-control"
+        placeholder="Link URL">
+      <button (click)="updateWidget()">Save Link</button>
+    </div>
+
+    <div *ngIf="(widget.type === 'orderedList' || widget.type === 'unorderedList') && !isEditorHidden">
+      <label> List </label>
+      <select class="form-control" [value]="this.newWidget.type" (change)="setListType()" >
+        <option value="unorderedList">Unordered list</option>
+        <option value="orderedList">Ordered list</option>
+      </select>
+      <textarea
+        [(ngModel)]="newWidget.data"
+        class="form-control"
+        placeholder="List Item">
+            </textarea>
+      <button (click)="updateWidget()">Save List</button>
+    </div>
+</div>

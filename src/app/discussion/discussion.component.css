@@ -1,0 +1,69 @@
+#replyDiv {
+  margin: 10px;
+}
+
+#owner {
+  margin: 20px;
+}
+
+#ownerName {
+  margin-right: 30px;
+}
+
+#ownerTime {
+  color: darkgray;
+}
+
+.divider {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#ownerContent {
+  margin: 20px;
+}
+
+#replyBtn {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+#prePosterName {
+  margin-right: 30px;
+}
+
+#prePosterTime {
+  color: darkgray;
+}
+
+#replyer {
+  margin: 20px;
+}
+
+#replyerContent {
+  margin: 20px;
+}
+
+#replyerTime {
+  color: darkgray;
+}
+
+#replyerName {
+  margin-right: 30px;
+}
+
+#deletedReplyer {
+  margin: 20px;
+}
+
+#deletedReplyerTime {
+  color: darkgray;
+}
+
+#deletedReplyerName {
+  margin-right: 30px;
+}
+
+#deletedReplyerContent {
+  margin: 20px;
+}

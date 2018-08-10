@@ -6,7 +6,7 @@
   <div class="main-background">
     <div class="row">
       <div class="avatar-container">
-        <div class="avatar">
+        <div class="avatar" [ngStyle]="{'background-image': 'url(' + user.profilePhoto + ')'}">
         </div>
       </div>
       <h2 *ngIf="user.role !== 'SiteManager' && user.role !== 'EquipmentDealer'"
@@ -15,36 +15,47 @@
           class="main-text">{{provider.organizationName}}</h2>
     </div>
 
-    <div class="button-group">
-      <button>Post A New Event</button>
-      <button>Attend A New Event</button>
+    <div class = 'btn-position'>
+      <button *ngIf="user.role === 'organizer'" (click)="goCreateEvent()">Post A New Event</button>
+      <button *ngIf="user.role === 'attendee'" >Attend A New Event</button>
     </div>
 
   </div>
 
   <div class="botton-background">
     <div class="input-group-append">
-      <div class="col-sm grid-item">
-        <a href="#">Private Info</a>
+      <div class="col-sm grid-item" [ngClass]="{'active': curPage === 'pi'}">
+        <a (click)="setCurPage('pi')" class="nav-links">Private Info</a>
       </div>
-      <div class="col-sm grid-item">
-        <a href="#">OR</a>
+      <div class="col-sm grid-item" [ngClass]="{'active': curPage === 'oa'}">
+        <a (click)="setCurPage('oa')" class="nav-links">Organized Activities</a>
       </div>
-      <div class="col-sm grid-item">
-        <a href="#">AT</a>
+      <div class="col-sm grid-item" [ngClass]="{'active': curPage === 'pa'}">
+        <a (click)="setCurPage('pa')" class="nav-links">Participating Activities</a>
       </div>
-      <div class="col-sm grid-item">
-        <a href="#">Friends</a>
+      <div class="col-sm grid-item" [ngClass]="{'active': curPage === 'ff'}">
+        <a (click)="setCurPage('ff')" class="nav-links">Following</a>
       </div>
-      <div class="col-sm grid-item">
-        <a href="#">Reviews</a>
+      <div class="col-sm grid-item" [ngClass]="{'active': curPage === 'ds'}">
+        <a (click)="setCurPage('ds')" class="nav-links">Discussions</a>
       </div>
     </div>
   </div>
 
   <div class="container">
-    <app-friend-list></app-friend-list>
-    <app-basic-information (messageEvent)="receiveMessage($event)"></app-basic-information>
+    <app-friend-list *ngIf="curPage === 'ff'"></app-friend-list>
+    <app-basic-information *ngIf="curPage ==='pi'" (messageEvent)="receiveMessage($event)"></app-basic-information>
+  </div>
+
+  <div class="container">
+    <div> My Hosted Events</div>
+    <div *ngFor="let event of hostedEvents">
+      <div class="card">
+        {{event.title}}
+        <a [routerLink]="['/eventEditor/' + event._id]">Edit</a>
+        <button (click)="deleteHostedEvent(event)" class="btn btn-danger">Delete</button>
+      </div>
+    </div>
   </div>
 </div>
 

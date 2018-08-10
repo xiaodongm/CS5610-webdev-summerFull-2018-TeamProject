@@ -53,6 +53,14 @@
              class="form-control"/>
     </div>
 
+  <div *ngIf="user.role !== 'SiteManager' && user.role !== 'EquipmentDealer'" class="input-group-append infoFld">
+    <label for="lastName" class="col-sm-2 col-form-label">Photo Url</label>
+    <input [(ngModel)]="user.profilePhoto"
+           placeholder="profile photo url"
+           id="profilePhoto"
+           class="form-control"/>
+  </div>
+
     <div *ngIf="user.role !== 'SiteManager' && user.role !== 'EquipmentDealer'" class="input-group-append infoFld">
       <label for="dob" class="col-sm-2 col-form-label">Date of Birth</label>
       <input type="text"

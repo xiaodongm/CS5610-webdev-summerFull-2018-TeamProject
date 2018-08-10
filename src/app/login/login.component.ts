@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
   alerts = [];
 
   loginUser(username, password) {
-    console.log([username, password]);
+   //  console.log([username, password]);
     if (username && password) {
       if (this.loginType === 'Personal') {
         this.userService
