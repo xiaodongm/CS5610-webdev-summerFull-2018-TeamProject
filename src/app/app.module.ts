@@ -2,7 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { HomePageComponent } from './home-page/home-page.component';
+// import { CampingSiteSearchComponent } from './camping-site-search/camping-site-search.component';
+import {CampingSiteSearchComponent} from './camping-site-search/camping-site-search.component';
 import {routing} from './app.rounting';
 import {CampingSiteGridComponent} from './camping-site-grid/camping-site-grid.component';
 
@@ -65,7 +66,7 @@ import { AdminEventListComponent } from './admin-event-list/admin-event-list.com
 @NgModule({
   declarations: [
     AppComponent,
-    HomePageComponent,
+    CampingSiteSearchComponent,
     CampingSiteGridComponent,
     SearchBarCampingSiteComponent,
     CampingSiteDetailComponent,

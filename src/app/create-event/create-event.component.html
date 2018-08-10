@@ -78,6 +78,25 @@
           </div>
         </div>
         <hr>
+        <h5 class="card-title">Select a level for your event.</h5>
+        <div class="input-group-append wrapDiv levelInput">
+          <label for="LevelFld-sit" class="col-sm-2 col-form-label">Event Level</label>
+          <li  id="LevelFld-sit" class="list-group-item form-control">{{level}}</li>
+          <div class="btn-group" dropdown>
+            <button id="button-basic" dropdownToggle type="button" class="btn btn-outline-dark dropdown-toggle"
+                    aria-controls="dropdown-basic">
+              Select Level
+            </button>
+            <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+                role="menu" aria-labelledby="button-basic">
+              <li role="menuitem"><a (click)="level = 'Relax'" class="dropdown-item">Relax</a></li>
+              <li role="menuitem"><a (click)="level = 'Training'" class="dropdown-item">Training</a></li>
+              <li role="menuitem"><a (click)="level = 'Adventure'" class="dropdown-item">Adventure</a></li>
+            </ul>
+          </div>
+        </div>
+        <hr>
+
         <h5 class="card-title">Describe who should join, and what your event will do.</h5>
         <textarea
           [(ngModel)]="paragraph"

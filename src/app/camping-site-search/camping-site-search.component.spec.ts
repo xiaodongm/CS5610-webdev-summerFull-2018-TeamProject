@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HomePageComponent } from './home-page.component';
+import { CampingSiteSearchComponent } from './camping-site-search.component';
 
-describe('HomePageComponent', () => {
-  let component: HomePageComponent;
-  let fixture: ComponentFixture<HomePageComponent>;
+describe('CampingSiteSearchComponent', () => {
+  let component: CampingSiteSearchComponent;
+  let fixture: ComponentFixture<CampingSiteSearchComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HomePageComponent ]
+      declarations: [ CampingSiteSearchComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HomePageComponent);
+    fixture = TestBed.createComponent(CampingSiteSearchComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

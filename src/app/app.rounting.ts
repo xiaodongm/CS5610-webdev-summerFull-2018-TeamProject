@@ -1,5 +1,6 @@
 import { Routes, RouterModule } from '@angular/router';
-import {HomePageComponent} from './home-page/home-page.component';
+// import {CampingSiteSearchComponent} from './camping-site-search/camping-site-search.component';
+import {CampingSiteSearchComponent} from './camping-site-search/camping-site-search.component';
 import {CampingSiteDetailComponent} from './camping-site-detail/camping-site-detail.component';
 import {HomeComponent} from './home/home.component';
 import {ProfileComponent} from './profile/profile.component';
@@ -24,7 +25,7 @@ const appRoutes: Routes = [
   { path: 'home', component: HomeComponent},
   { path: 'profile', component: ProfileComponent},
   { path: 'admin', component: AdminComponent},
-  { path: 'homepage', component: HomePageComponent},
+  { path: 'search', component: CampingSiteSearchComponent},
   { path: 'camping-site/:contractID/:facilityID/detail', component: CampingSiteDetailComponent},
   { path: 'detail', component: CampingSiteDetailComponent},
   { path: 'eventEditor/:eventId', component: EventEditorComponent},
