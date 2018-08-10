@@ -25,7 +25,8 @@
 
 
 .meta-div {
-  margin-top: 50px;
+  margin-top: 40px;
+  margin-bottom: 20px;
 }
 
 .media-container {
@@ -120,4 +121,77 @@ iframe {
 .button-container i {
   color: red;
   text-shadow: 2px 2px 2px #aaa;
+}
+
+.fields {
+  margin-bottom: 10px;
+}
+
+#imgUrlList {
+  margin-bottom: 5px;
+}
+
+#yesBtn {
+  margin-right: 20px;
+}
+
+#organizerInfoDiv {
+  margin-top: 45px;
+}
+
+.editIcon {
+  margin-top: 8px;
+  margin-left: 30px;
+  color: #e4606d;
+  cursor: pointer;
+}
+
+#eventTitleDisplay {
+  margin-left: 38px;
+  margin-bottom: 20px;
+}
+
+.host-info {
+  margin-top: 35px;
+}
+
+#youtubeIcon {
+  cursor: pointer;
+}
+
+#dragInfo {
+  margin-left: 20px;
+  margin-top: 5px;
+}
+
+.divider {
+  margin-right: 8px;
+}
+
+.widgetFields {
+  margin-top: 20px;
+}
+
+#addParaBtn {
+  margin-top: 5px;
+}
+
+
+#addListBtn {
+  margin-top: 5px;
+}
+
+
+#desYesBtn {
+  margin-right: 15px;
+}
+
+.featureTag {
+  cursor: pointer;
+  margin-right: 5px;
+  margin-top: 10px;
+}
+
+#tagsDisplay {
+  margin-left: 30px;
 }

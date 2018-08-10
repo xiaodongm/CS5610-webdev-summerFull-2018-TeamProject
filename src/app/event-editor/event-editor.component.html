@@ -5,7 +5,8 @@
 <div class="card meta-div" *ngIf="isOrganizerLoaded">
 <div class="container" (mouseleave) ="mouseLeave()">
   <div class="row meta-row">
-    <div class="col-md-7 meta-div" >
+
+    <div class="col-md-6 meta-div">
       <div class="card media-container">
         <div class="carousel-container">
           <carousel data-interval="false"
@@ -32,18 +33,21 @@
           </div>
         </div>
       </div>
-
     </div>
 
 
 
 
-    <div class="col-md-5">
+    <div id="organizerInfoDiv" class="col-md-6">
       <div class="card event-meda">
-      <span class="edit-span" (click)="openModal(template)">
-        <i class="fas fa-pencil-alt"></i>
-      </span>
-        <h2 class="">{{event.title}}</h2>
+
+        <div class="input-group-append">
+          <h2 id="eventTitleDisplay" class="">{{event.title}}</h2>
+          <span class="editIcon edit-span" (click)="openModal(template)">
+            <i class="fas fa-pencil-alt"></i>
+          </span>
+        </div>
+
 
         <div class="row" *ngIf="isOrganizerLoaded">
           <div class="avatar-container col-3">
@@ -52,6 +56,19 @@
           </div>
 
           <div class="host-info col-7">
+            <div>
+              <span class="button-pos">
+                <span class="button-container">
+                  <span (click) = "mouseEnter()">
+                    <i *ngIf='hasVideo()'
+                       id="youtubeIcon"
+                       class="fab fa-youtube fa-2x">
+                    </i>
+                  </span>
+                </span>
+              </span>
+            </div>
+
             <div class="text-sm-left text-muted">
               Hosted by
               <span>{{organizer && organizer.firstName}}</span>
@@ -62,20 +79,16 @@
               <span>{{organizer.location}}</span>
             </div>
           </div>
+
         </div>
       </div>
-      <span class="button-pos">
-        <span class="button-container">
-          <span (click) = "mouseEnter()">
-            <i *ngIf='hasVideo()'
-               class="fab fa-youtube fa-2x"
-            ></i>
-          </span>
-        </span>
-      </span>
 
-      <div class="amenity_list">
-        <span *ngFor="let tag of this.event.tags" class="badge badge-secondary amenity_item">{{tag}}</span>
+      <div id="tagsDisplay">
+        <hr>
+        <p>This event features :</p>
+        <div class="amenity_list">
+          <span *ngFor="let tag of this.event.tags" class="featureTag badge badge-info amenity_item">{{tag}}</span>
+        </div>
       </div>
     </div>
 
@@ -87,10 +100,12 @@
 <div class="container">
   <div class="row">
     <div class="col-8">
-    <h2>Descriptions: </h2>
-      <span class="edit-span" (click)="openModal(template2)">
-        <i class="fas fa-pencil-alt"></i>
-      </span>
+      <div class="input-group-append">
+        <h2>Descriptions: </h2>
+        <span class="editIcon edit-span" (click)="openModal(template2)">
+          <i class="fas fa-pencil-alt"></i>
+        </span>
+      </div>
       <!--<div>-->
         <!--<div>{{event.video}}</div>-->
         <!--<iframe [src]='event.video | safe'> </iframe>-->
@@ -98,24 +113,22 @@
 
       <div *ngFor="let widget of this.event.description">
         <div *ngIf="widget.type === 'heading'">
-          heading: {{widget.data}}
+          <h1>{{widget.data}}</h1>
         </div>
         <div *ngIf="widget.type === 'paragraph'">
-          paragraph: {{widget.data}}
+          <p>{{widget.data}}</p>
         </div>
         <div *ngIf="widget.type === 'link'">
-          Link: <a href={{widget.data}}>{{widget.data}}</a>
+          <p><a href={{widget.data}}>{{widget.data}}</a></p>
         </div>
 
         <div *ngIf="widget.type === 'unorderedList'">
-          List:
           <ul >
             <li *ngFor="let item of splitList(widget.data)">{{item}}</li>
           </ul>
         </div>
 
         <div *ngIf="widget.type === 'orderedList'">
-          List:
           <ol>
             <li *ngFor="let item of splitList(widget.data)">{{item}}</li>
           </ol>
@@ -167,8 +180,8 @@
 <!--<button type="button" class="btn btn-primary" (click)="openModal(template)">Edit Meta Data</button>-->
 
 <ng-template #template>
-  <div class="modal-header" *ngIf="isOrganizerLoaded">
-    <h4 class="modal-title pull-left">Meta data: can only choose one time</h4>
+  <div class="modal-header" id="metaDateHeader" *ngIf="isOrganizerLoaded">
+    <h4 class="modal-title pull-left">Meta data: Edit meta data for your event here</h4>
     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -177,51 +190,95 @@
   <div class="modal-body text-center">
 
     <div>
-      <label> Title </label>
-      <input
-        [(ngModel)]="event.title"
-        class="form-control"
-        placeholder="Event Title"
-      />
-
-      <label> Video link </label>
-      <input
-        [(ngModel)]="event.video"
-        class="form-control"
-        placeholder="Video link"
-      />
-      <form>
-        <label>Event Starts:</label>
+      <div class="input-group-append fields">
+        <label for="eventTitle" class="col-sm-2 col-form-label"> Title </label>
         <input
-          [(ngModel)]="event.startTime"
-          type="date"
-          name="bday">
-        <label>Event Ends:</label>
+          id="eventTitle"
+          [(ngModel)]="event.title"
+          class="form-control"
+          placeholder="Event Title"
+        />
+      </div>
 
+      <div class="input-group-append">
+        <label for="level" class="col-sm-2 col-form-label" >Level</label>
+        <li  id="level" class="list-group-item form-control">{{event.level}}</li>
+        <div class="btn-group" dropdown>
+          <button id="button-basic" dropdownToggle type="button" class="btn btn-outline-dark dropdown-toggle"
+                  aria-controls="dropdown-basic">
+            Select level
+          </button>
+          <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+              role="menu" aria-labelledby="button-basic">
+            <li role="menuitem"><a (click)="event.level = 'Relax'" class="dropdown-item">Relax</a></li>
+            <li role="menuitem"><a (click)="event.level = 'Training'" class="dropdown-item">Training</a></li>
+            <li role="menuitem"><a (click)="event.level = 'Adventure'" class="dropdown-item">Adventure</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div>
+        <div class="input-group-append fields">
+          <label for="startTime" class="col-sm-2 col-form-label">Event Starts:</label>
+          <!--<input-->
+            <!--[(ngModel)]="event.startTime"-->
+            <!--type="date"-->
+            <!--name="bday">-->
+          <input type="text"
+                 [(ngModel)]="event.startTime"
+                 placeholder="Start Time"
+                 class="form-control"
+                 id="startTime"
+                 [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }"
+                 bsDatepicker>
+        </div>
+        <div class="input-group-append fields">
+          <label for="endTime" class="col-sm-2 col-form-label">Event Ends:</label>
+          <!--<input-->
+            <!--[(ngModel)]="event.endTime"-->
+            <!--type="date"-->
+            <!--name="bday">-->
+          <input type="text"
+                 [(ngModel)]="event.endTime"
+                 placeholder="End Time"
+                 class="form-control"
+                 id="endTime"
+                 [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }"
+                 bsDatepicker>
+        </div>
+      </div>
+      <div class="input-group-append fields">
+        <label for="videoLink" class="col-sm-2 col-form-label"> Video link </label>
         <input
-          [(ngModel)]="event.endTime"
-          type="date"
-          name="bday">
-      </form>
+          id="videoLink"
+          [(ngModel)]="event.video"
+          class="form-control"
+          placeholder="Video link"
+        />
+      </div>
+      <div class="input-group-append fields">
+        <label for="imgUrl" class="col-sm-2 col-form-label"> Add Image </label>
+        <input
+          id="imgUrl"
+          [(ngModel)]="imgUrl"
+          class="form-control"
+          placeholder="Image Url">
+        <button (click)="addImageUrl()" class="btn btn-outline-dark">Add</button>
+      </div>
 
-      <label> Add Image </label>
       <ol>
-        <li *ngFor="let img of event.photos">
-          {{img}}
-          <button (click)="deleteImageUrl(img)">Delete</button>
+        <li *ngFor="let img of event.photos" id="imgUrlList">
+          {{img.slice(0, 28)}}
+          <button (click)="deleteImageUrl(img)" class="btn btn-outline-danger">Delete</button>
         </li>
       </ol>
-      <input
-        [(ngModel)]="imgUrl"
-        class="form-control"
-        placeholder="Image Url">
-      <button (click)="addImageUrl()">Add Image</button>
 
     </div>
     <hr>
     <p>Do you want to confirm?</p>
-    <button type="button" class="btn btn-default" (click)="confirmUpdateMeta()" >Yes</button>
-    <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+    <button type="button" class="btn btn-danger" id="yesBtn" (click)="confirmUpdateMeta()" >Yes</button>
+    <button type="button" class="btn btn-default" (click)="decline()" >No</button>
   </div>
 </ng-template>
 
@@ -230,7 +287,7 @@
 
 <ng-template #template2>
   <div class="modal-header">
-    <h4 class="modal-title pull-left">Description: Edit or Add new</h4>
+    <h4 class="modal-title pull-left">Description: Edit or add new descriptions for your event</h4>
     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -238,8 +295,10 @@
 
   <div class="modal-body">
     <div class="content-of-modal">
-      <h4>Edit current descriptions</h4>
-      <span class="text-muted">drag to swich order</span>
+      <div class="input-group-append">
+        <h4>Edit current descriptions</h4>
+        <span id="dragInfo" class="text-muted"><span class="divider">•</span>Drag to swich order</span>
+      </div>
       <div [sortablejs]='this.event.description' [sortablejsOptions]="{ animation: 150 }">
         <div class="card" *ngFor="let widget of this.event.description">
             <app-event-description-widget-editor
@@ -249,9 +308,10 @@
             </app-event-description-widget-editor>
         </div>
       </div>
-
+      <hr>
+      <p>Selected features :</p>
       <div class="amenity_list" *ngIf="this.event.tags.length > 0">
-        <span *ngFor="let tag of this.event.tags" class="badge badge-secondary amenity_item">{{tag}}</span>
+        <span *ngFor="let tag of this.event.tags" (click)="toggleEventTag(tag)" class="featureTag badge badge-info amenity_item">{{tag}}</span>
         <hr>
       </div>
     </div>
@@ -259,75 +319,80 @@
       <h4>Add new descriptions</h4>
       <tabset>
         <tab heading="Heading" id="tab0">
-          Content heading
-          <label>Heading</label>
-          <input
-            [(ngModel)]="heading"
-            class="form-control"
-            placeholder="New Heading">
-          <button (click)="addHeading()">Add Heading</button>
+          <div class="input-group-append widgetFields">
+            <input
+              id="heading"
+              [(ngModel)]="heading"
+              class="form-control"
+              placeholder="New Heading">
+            <button class="btn btn-outline-danger" (click)="addHeading()">Add</button>
+          </div>
         </tab>
 
 
         <tab heading="Paragraph" id="tab1">
-          Basic content
-          <label>Paragraph</label>
-          <textarea
-            [(ngModel)]="paragraph"
-            class="form-control"
-            placeholder="Paragraph text">
-          </textarea>
-          <button (click)="addParagraph()">Add Paragraph</button>
+          <div class="widgetFields">
+            <textarea
+              [(ngModel)]="paragraph"
+              class="form-control"
+              placeholder="Paragraph text">
+            </textarea>
+          </div>
+          <button id="addParaBtn" class="btn btn-outline-danger" (click)="addParagraph()">Add Paragraph</button>
         </tab>
 
         <tab heading="Link">
-          <div>
-            <label> link url</label>
+          <div class="input-group-append widgetFields">
             <input
               [(ngModel)]="linkUrl"
               class="form-control"
               placeholder="Link URL">
-            <button (click)="addLink()">Add Link</button>
+            <button class="btn btn-outline-danger" (click)="addLink()">Add</button>
           </div>
         </tab>
 
         <tab heading="List">
           <div>
-            <label> List </label>
-            <select class="form-control" (change)="setListType()" >
+            <select class="form-control widgetFields" (change)="setListType()" >
               <option value="unorderedList">Unordered list</option>
               <option value="orderedList">Ordered list</option>
             </select>
             <textarea
               [(ngModel)]="list"
-              class="form-control"
+              class="form-control widgetFields"
               placeholder="List Item">
             </textarea>
-            <button (click)="addList()">Add List</button>
+            <button id="addListBtn" class="btn btn-outline-danger" (click)="addList()">Add</button>
           </div>
         </tab>
 
         <tab heading="Features">
           <div class="btn-group" dropdown>
-            <button dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
-                    aria-controls="dropdown-basic">
-              Add feature tags <span class="caret"></span>
-            </button>
-            <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
-                role="menu" aria-labelledby="button-basic">
-              <li role="menuitem"><a class="dropdown-item" (click)="toggleTag('Hiking')">Hiking</a></li>
-              <li role="menuitem"><a class="dropdown-item" (click)="toggleTag('Fishing')">Fishing</a></li>
-              <li role="menuitem"><a class="dropdown-item" (click)="toggleTag('Biking')">Biking</a></li>
-            </ul>
+            <!--<button dropdownToggle type="button" class="btn btn-primary dropdown-toggle"-->
+                    <!--aria-controls="dropdown-basic">-->
+              <!--Add feature tags <span class="caret"></span>-->
+            <!--</button>-->
+
+
+
+            <!--<ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"-->
+                <!--role="menu" aria-labelledby="button-basic">-->
+              <!--<li role="menuitem"><a class="dropdown-item" (click)="toggleTag('Hiking')">Hiking</a></li>-->
+              <!--<li role="menuitem"><a class="dropdown-item" (click)="toggleTag('Fishing')">Fishing</a></li>-->
+              <!--<li role="menuitem"><a class="dropdown-item" (click)="toggleTag('Biking')">Biking</a></li>-->
+            <!--</ul>-->
+            <!--<span (click)="toggleTag('Biking')" class="badge badge-secondary">Biking</span>-->
+            <!--<span (click)="toggleTag('Hiking')" class="badge badge-secondary">Hiking</span>-->
+            <span *ngFor="let tag of featureTags" (click)="toggleFeatureTag(tag)" class="featureTag badge badge-info">{{tag}}</span>
           </div>
         </tab>
       </tabset>
     </div>
 
     <hr>
-    <p>Save new added widget?</p>
-    <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
-    <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+    <p>Save Changes?</p>
+    <button type="button" class="btn btn-danger" id="desYesBtn" (click)="confirm()" >Yes</button>
+    <button type="button" class="btn btn-default" (click)="decline()" >No</button>
   </div>
 </ng-template>
 

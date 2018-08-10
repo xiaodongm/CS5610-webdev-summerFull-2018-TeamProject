@@ -3,9 +3,30 @@
 }
 
 #amenity_list {
-  margin-left: 35px;
+  /*margin-left: 35px;*/
 }
 
 .amenity_item {
   margin-right: 8px;
+}
+
+.nextBtn {
+  margin-top: 10px;
+}
+
+.badge {
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+#titleDiv {
+  margin-bottom: 10px;
+}
+
+#timeDiv {
+  margin-bottom: 10px;
+}
+
+#createBtn {
+  margin-top: 10px;
 }
