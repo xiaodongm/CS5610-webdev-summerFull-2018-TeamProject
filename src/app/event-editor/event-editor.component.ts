@@ -36,6 +36,9 @@ export class EventEditorComponent implements OnInit {
               private route: ActivatedRoute) {
     this.route.params.subscribe( params => this.setParams(params));
   }
+
+  featureTags: String[] = ['Biking', 'Hiking', 'Swimming', 'Fishing', 'Horse riding', 'BBQ'];
+
   // event: EventCard = new EventCard();
   isOrganizerLoaded = false;
   eventId: string;
@@ -199,14 +202,27 @@ export class EventEditorComponent implements OnInit {
   splitList(data) {
     return data.split(/\r?\n/);
   }
-  toggleTag(tag) {
-    if (this.event.tags.includes(tag)) {
-      const index = this.event.tags.indexOf(tag);
-      this.event.tags.splice(index, 1);
-    } else {
-      this.event.tags.push(tag);
-    }
+  // toggleTag(tag) {
+  //   if (this.event.tags.includes(tag)) {
+  //     const index = this.event.tags.indexOf(tag);
+  //     this.event.tags.splice(index, 1);
+  //   } else {
+  //     this.event.tags.push(tag);
+  //   }
+  // }
+
+  toggleFeatureTag(tag) {
+    this.event.tags.push(tag);
+    const index = this.featureTags.indexOf(tag);
+    this.featureTags.splice(index, 1);
   }
+
+  toggleEventTag(tag) {
+    this.featureTags.push(tag);
+    const index = this.event.tags.indexOf(tag);
+    this.event.tags.splice(index, 1);
+  }
+
   updateWidget(event) {
     const oldWidget = event[0];
     const newWidget = event[1];
@@ -281,6 +297,12 @@ export class EventEditorComponent implements OnInit {
     this.eventService.findEventById(this.eventId)
       .then(event => {
           this.event = event;
+          for (let i = 0; i < this.event.tags.length; i++) {
+            if (this.featureTags.includes(this.event.tags[i])) {
+              const index = this.featureTags.indexOf(this.event.tags[i]);
+              this.featureTags.splice(index, 1);
+            }
+          }
           // this.event.startTime = this.refactorDate(this.event.startTime);
           // this.event.endTime = this.refactorDate(this.event.endTime);
           console.log(event);

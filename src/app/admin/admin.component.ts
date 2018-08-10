@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {UserServiceClient} from '../services/user.service.client';
 import {ProviderServiceClient} from '../services/provider.service.client';
+import {Router} from '@angular/router';
+
 
 @Component({
   selector: 'app-admin',
@@ -10,9 +12,11 @@ import {ProviderServiceClient} from '../services/provider.service.client';
 export class AdminComponent implements OnInit {
 
   constructor(private userService: UserServiceClient,
-              private providerService: ProviderServiceClient) { }
+              private providerService: ProviderServiceClient,
+              private router: Router) { }
 
   // menuItems = ['User', 'Organizer', 'Attendee', 'Provider', 'SiteManager', 'EquipmentDealer', 'Event', 'CampSite'];
+
 
   personalUsers = [];
   providers = [];
@@ -47,7 +51,15 @@ export class AdminComponent implements OnInit {
     this.findAllProviders();
   }
 
+
   ngOnInit() {
+    this.userService.profile()
+      .then((user) => {
+        if (user.err || !(user.username === 'admin' && user.password === 'admin')) {
+          alert('Non-Admin Users Do Not Have Access to This Page, Redirecting to Homepage.');
+          this.router.navigate(['home']);
+        }
+      } );
     this.findAllUsers();
     this.findAllProviders();
   }

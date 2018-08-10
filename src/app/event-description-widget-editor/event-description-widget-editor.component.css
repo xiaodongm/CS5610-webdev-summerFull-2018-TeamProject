@@ -1,0 +1,16 @@
+#editIcon {
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+#deleteIcon {
+  cursor: pointer;
+}
+
+.saveBtn {
+  margin-top: 5px;
+}
+
+#listOrder {
+  margin-bottom: 5px;
+}
