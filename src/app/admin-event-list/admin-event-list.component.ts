@@ -1,6 +1,9 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {AlertComponent, BsModalRef, BsModalService} from 'ngx-bootstrap';
 import {EventServiceClient} from '../services/event.service.client';
+import {EventCard} from '../models/EventCard.model.client';
+import {Widget} from '../models/widget.model.client';
+import {UserServiceClient} from '../services/user.service.client';
 
 @Component({
   selector: 'app-admin-event-list',
@@ -10,11 +13,14 @@ import {EventServiceClient} from '../services/event.service.client';
 export class AdminEventListComponent implements OnInit {
 
   constructor(private eventService: EventServiceClient,
-              private modalService: BsModalService) { }
+              private modalService: BsModalService,
+              private userService: UserServiceClient) { }
 
   relaxEvents = [];
   trainingEvents = [];
   adventureEvents = [];
+
+  newEvent = new EventCard();
 
   eventType;
   preLevel;
@@ -137,6 +143,22 @@ export class AdminEventListComponent implements OnInit {
             this.adventureEvents.push(events[i]);
           }
         }
+      });
+  }
+
+  createEvent(event) {
+    this.eventService.createEvent(event)
+      .then(() => {
+        this.findAllRelaxEvents();
+        this.findAllTrainingEvents();
+        this.findAllAdventureEvents();
+        this.message = this.relaxEvents.length + this.trainingEvents.length + this.adventureEvents.length;
+        this.sendMessage();
+        this.alerts.push({
+          type: 'success',
+          msg: `Event Created successfully.`,
+          timeout: 5000
+        });
       });
   }
 

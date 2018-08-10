@@ -178,7 +178,54 @@
         </div>
       </ng-template>
     </accordion-group>
+  </div>
+</accordion>
 
+<div *ngIf="eventType === 'admin'" class="adminInput">
+  <div *ngFor="let alert of alerts">
+    <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onClosed(alert)">{{ alert.msg }}</alert>
+  </div>
+  <div class="input-group-append wrapDiv">
+    <label for="titleFld-adm" class="col-sm-2 col-form-label">Event Title</label>
+    <input id="titleFld-adm" [(ngModel)]="newEvent.title" class="form-control">
+  </div>
+  <div class="input-group-append wrapDiv">
+    <label for="startFld-adm" class="col-sm-2 col-form-label">Start Time</label>
+    <input type="text"
+           [(ngModel)]="newEvent.startTime"
+           placeholder="Start Time"
+           class="form-control"
+           id="startFld-adm"
+           [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }"
+           bsDatepicker>
+  </div>
+  <div class="input-group-append wrapDiv">
+    <label for="endFld-adm" class="col-sm-2 col-form-label">End Time</label>
+    <input type="text"
+           [(ngModel)]="newEvent.endTime"
+           placeholder="End Time"
+           class="form-control"
+           id="endFld-adm"
+           [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }"
+           bsDatepicker>
   </div>
 
-</accordion>
+  <div class="input-group-append wrapDiv adminInput">
+    <label for="adminLevelFld-sit" class="col-sm-2 col-form-label">Event Level</label>
+    <li  id="adminLevelFld-sit" class="list-group-item form-control">{{newEvent.level}}</li>
+    <div class="btn-group" dropdown>
+      <button id="button-basic-adm" dropdownToggle type="button" class="btn btn-outline-dark dropdown-toggle"
+              aria-controls="dropdown-basic-adm">
+        Select Level
+      </button>
+      <ul id="dropdown-basic-adm" *dropdownMenu class="dropdown-menu"
+          role="menu" aria-labelledby="button-basic">
+        <li role="menuitem"><a (click)="newEvent.level = 'Relax'" class="dropdown-item">Relax</a></li>
+        <li role="menuitem"><a (click)="newEvent.level = 'Training'" class="dropdown-item">Training</a></li>
+        <li role="menuitem"><a (click)="newEvent.level = 'Adventure'" class="dropdown-item">Adventure</a></li>
+      </ul>
+    </div>
+  </div>
+  <button (click)="createEvent(newEvent)" class="btn btn-success">Create Event</button>
+
+</div>

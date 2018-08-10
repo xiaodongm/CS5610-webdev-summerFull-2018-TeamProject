@@ -208,6 +208,8 @@ export class UserListComponent implements OnInit {
               });
               this.findAllAttendees();
               this.findAllOrganizers();
+              this.message = this.attendees.length + this.organizers.length;
+              this.sendMessage();
             } else {
               // alert('Username already exist, please choose another one.');
               this.alerts.push({
@@ -232,6 +234,8 @@ export class UserListComponent implements OnInit {
               });
               this.findAllSiteManagers();
               this.findAllEquipmentDeals();
+              this.message = this.siteManagers.length = this.equipmentDealers.length;
+              this.sendMessage();
             } else {
               // alert('Username already exist, please choose another one.');
               this.alerts.push({
