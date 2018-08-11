@@ -49,6 +49,8 @@ import { DiscussionBoardComponent } from './discussion-board/discussion-board.co
 import { DiscussionServiceClient} from './services/discussion.service.client';
 import { DiscussionComponent } from './discussion/discussion.component';
 import { ProfileForVisitorComponent } from './profile-for-visitor/profile-for-visitor.component';
+import { EventsListForProfileComponent } from './events-list-for-profile/events-list-for-profile.component';
+import { EventCardForProfileComponent } from './event-card-for-profile/event-card-for-profile.component';
 
 
 
@@ -81,6 +83,8 @@ import { ProfileForVisitorComponent } from './profile-for-visitor/profile-for-vi
     DiscussionBoardComponent,
     DiscussionComponent,
     ProfileForVisitorComponent,
+    EventsListForProfileComponent,
+    EventCardForProfileComponent,
   ],
   imports: [
     BrowserModule,

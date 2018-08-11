@@ -1,0 +1,41 @@
+<div class="card text-center">
+  <div class="card-block">
+    <h6 class="card-subtitle mb-2 text-muted">{{data.startTime}} to {{data.endTime}}</h6>
+    <span class="button-pos">
+    </span>
+
+    <a [routerLink]="['/eventDetail/' + data._id]">
+      <h4 class="card-title">{{data.title}}</h4>
+    </a>
+    <div class="card-body">
+      <div class="row">
+        <div class="avatar-container" *ngIf="organizer.profilePhoto && type === 'pa'">
+          <div class="avatar" [ngStyle]="{'background-image': 'url(' + organizer.profilePhoto + ')'}"></div>
+        </div>
+
+        <div class="host-info">
+          <div class="text-sm-left text-muted" *ngIf="type === 'pa'">
+            Hosted by
+            <span>{{organizer && organizer.firstName}}</span>
+            <span>{{organizer && ' ' + organizer.lastName}}</span>
+          </div>
+          <div class="text-sm-left">
+            <span class="text-muted">Site: </span>
+            <span>{{data.location}}</span>
+          </div>
+          <button class="btn btn-outline-primary" (click)="unenrollment()" *ngIf="type === 'pa' && isSame">Un-enroll</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="icon-group" *ngIf="type === 'oa' && isSame">
+    <i class="far fa-trash-alt fa-2x icon delete" (click)="deleteEvent()"></i>
+    <i class="far fa-edit fa-2x icon edit" [routerLink]="['/eventEditor/' + data._id]"></i>
+  </div>
+
+
+
+
+
+</div>

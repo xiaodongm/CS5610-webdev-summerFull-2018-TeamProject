@@ -40,19 +40,11 @@
   </div>
 
   <div class="container">
+    <app-events-list-for-profile *ngIf="curPage === 'oa'" [type] = 'curPage' [events]="organizedEvents" [isSame] = "isSame"></app-events-list-for-profile>
+    <app-events-list-for-profile *ngIf="curPage === 'pa'" [type] = 'curPage' [events]="attendedEvents" [isSame] = "isSame"></app-events-list-for-profile>
     <app-friend-list *ngIf="curPage === 'ff'" [user] = user></app-friend-list>
   </div>
 
-  <div class="container">
-    <div> My Hosted Events</div>
-    <div *ngFor="let event of hostedEvents">
-      <div class="card">
-        {{event.title}}
-        <a [routerLink]="['/eventEditor/' + event._id]">Edit</a>
-        <button (click)="deleteHostedEvent(event)" class="btn btn-danger">Delete</button>
-      </div>
-    </div>
-  </div>
 </div>
 
 

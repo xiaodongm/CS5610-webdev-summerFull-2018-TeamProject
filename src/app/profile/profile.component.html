@@ -6,8 +6,7 @@
   <div class="main-background">
     <div class="row">
       <div class="avatar-container">
-        <div class="avatar" [ngStyle]="{'background-image': 'url(' + user.profilePhoto + ')'}">
-        </div>
+        <div class="avatar" *ngIf="user.profilePhoto" [ngStyle]="{'background-image': 'url(' + user.profilePhoto + ')'}"></div>
       </div>
       <h2 *ngIf="user.role !== 'SiteManager' && user.role !== 'EquipmentDealer'"
           class="main-text">{{user.firstName}} {{user.lastName}}</h2>
@@ -18,6 +17,18 @@
     <div class = 'btn-position'>
       <button *ngIf="user.role === 'organizer'" (click)="goCreateEvent()">Post A New Event</button>
       <button *ngIf="user.role === 'attendee'" >Attend A New Event</button>
+      <li  id="roleFld-att" class="list-group-item form-control">{{user.role}}</li>
+      <div class="btn-group" dropdown>
+        <button id="button-basic-att" dropdownToggle type="button" class="btn btn-outline-dark dropdown-toggle"
+                aria-controls="dropdown-basic-att">
+          Select Role
+        </button>
+        <ul id="dropdown-basic-att" *dropdownMenu class="dropdown-menu"
+            role="menu" aria-labelledby="button-basic">
+          <li role="menuitem"><a (click)="switchOrganizerToAttendee()" class="dropdown-item">Attendee</a></li>
+          <li role="menuitem"><a (click)="switchAttendeeToOrganizer()" class="dropdown-item">Organizer</a></li>
+        </ul>
+      </div>
     </div>
 
   </div>
@@ -45,18 +56,20 @@
   <div class="container">
     <app-friend-list *ngIf="curPage === 'ff'" [user] = user></app-friend-list>
     <app-basic-information *ngIf="curPage ==='pi'" (messageEvent)="receiveMessage($event)"></app-basic-information>
+    <app-events-list-for-profile *ngIf="curPage === 'oa'" [type] = 'curPage' [events]="organizedEvents" [isSame] = "isSame"></app-events-list-for-profile>
+    <app-events-list-for-profile *ngIf="curPage === 'pa'" [type] = 'curPage' [events]="attendedEvents" [isSame] = "isSame"></app-events-list-for-profile>
   </div>
 
-  <div class="container">
-    <div> My Hosted Events</div>
-    <div *ngFor="let event of hostedEvents">
-      <div class="card">
-        {{event.title}}
-        <a [routerLink]="['/eventEditor/' + event._id]">Edit</a>
-        <button (click)="deleteHostedEvent(event)" class="btn btn-danger">Delete</button>
-      </div>
-    </div>
-  </div>
+  <!--<div class="container">-->
+    <!--<div> My Hosted Events</div>-->
+    <!--<div *ngFor="let event of hostedEvents">-->
+      <!--<div class="card">-->
+        <!--{{event.title}}-->
+        <!--<a [routerLink]="['/eventEditor/' + event._id]">Edit</a>-->
+        <!--<button (click)="deleteHostedEvent(event)" class="btn btn-danger">Delete</button>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
 </div>
 
 

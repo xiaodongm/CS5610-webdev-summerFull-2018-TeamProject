@@ -1,0 +1,146 @@
+.button-pos {
+  margin-top: 2px;
+  margin-right: 5px;
+  float: right;
+
+}
+
+.button-container {
+  position: relative;
+}
+
+.button-container i {
+  color: red;
+  text-shadow: 2px 2px 2px #aaa;
+}
+
+button {
+  position: absolute;
+}
+
+.wbdv-blur {
+  -webkit-filter: blur(5px); /* Safari 6.0 - 9.0 */
+  filter: blur(5px);
+  border-radius: 25px;
+
+}
+
+.wbdv-imageContainer {
+  position: relative;
+  border-radius: 25px 25px 0 0;
+  overflow:hidden;
+  /*background-color: #0b2e13;*/
+  /*-moz-border-radius: 20px;*/
+  /*margin:0 auto;*/
+}
+
+
+.wbdv-text-block {
+  position: absolute;
+  border-radius: 25px;
+  top: 10%;
+  left: 5%;
+  right: 5%;
+
+
+  color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.card {
+  border-radius: 30px;
+  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, .1);
+  position: relative;
+}
+
+.card-title {
+  margin-bottom: 0;
+
+}
+
+.iframe-pos {
+  top: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 25px;
+}
+
+.iframe-container {
+  border-radius: 25px;
+  -webkit-border-radius: 20px;
+  /*position: absolute;*/
+  position: relative;
+  overflow: auto;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+
+.avatar-container {
+  margin-left: 10%;
+  margin-bottom: 8px;
+  display: inline-block;
+  width: 50px;
+  padding: 0;
+}
+
+.avatar {
+  padding: 0;
+  border-radius: 50%;
+  background-image: url('https://images.unsplash.com/photo-1499996860823-5214fcc65f8f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b6ded683923a678ad03fae323169beb4&auto=format&fit=crop&w=700&q=60');
+  width: 100%;
+  padding-bottom: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.host-info {
+  display: inline-block;
+  padding-left: 5%;
+}
+
+.host-info div {
+  /*padding-top: 5px;*/
+  /*margin-bottom: 20px;*/
+  font-family: "Bradley Hand";
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+h6 {
+  display: inline-block;
+  padding-top: 15px;
+}
+
+.icon-group {
+  position: absolute;
+  top:45%;
+  right: 5%
+}
+
+.icon {
+  margin: 5px;
+}
+
+.delete {
+  color: red
+}
+.edit {
+  color: #b3d7ff;
+}
+
+@media (min-width: 400px) {
+  .card-columns {
+    column-count: 1;
+  }
+}
+
+@media (min-width: 770px) {
+  .card-columns {
+    column-count: 2;
+  }
+}
