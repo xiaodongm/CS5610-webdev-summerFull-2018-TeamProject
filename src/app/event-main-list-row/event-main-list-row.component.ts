@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
 import {EventServiceClient} from '../services/event.service.client';
 import {EventCard} from '../models/EventCard.model.client';
 
@@ -12,20 +12,22 @@ export class EventMainListRowComponent implements OnInit {
 
   constructor(private eventService: EventServiceClient) { }
   state = 'hide';
+  @Input()
   cards: EventCard[] = [];
   @ViewChild('panel', { read: ElementRef }) public panel: ElementRef<any>;
   ngOnInit() {
-    this.eventService.findAllEvents()
-      .then(events => this.cards = events);
+
   }
 
   public onPreviousSearchPosition(): void {
-    const width = this.panel.nativeElement.offsetWidth;
-    this.panel.nativeElement.scrollLeft -= width / 3;
+    const width = 350;
+    this.panel.nativeElement.scrollLeft -= width;
   }
 
   public onNextSearchPosition(): void {
-    const width = this.panel.nativeElement.offsetWidth;
-    this.panel.nativeElement.scrollLeft += width / 3;
+    const width = 350;
+    // const width = this.panel.nativeElement.offsetWidth;
+    this.panel.nativeElement.scrollLeft += width;
   }
+
 }

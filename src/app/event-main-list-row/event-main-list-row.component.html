@@ -1,7 +1,23 @@
-<div #panel class="scrolling-wrapper">
-  <div *ngFor="let event of cards" class="card col-4">
-    <app-event-card [data]="event"></app-event-card>
+
+
+
+  <div class="row">
+    <div class="col-1 button-rapper">
+      <i (click)="onPreviousSearchPosition()" class="left-icon fas fa-3x fa-arrow-circle-left"></i>
+    </div>
+
+    <div class="col-10">
+      <div #panel class="scrolling-wrapper">
+        <div #cardPanel *ngFor="let event of cards" class="card">
+          <app-event-main-list-row-card [data]="event"></app-event-main-list-row-card>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-1 button-rapper">
+        <i (click)="onNextSearchPosition()" class="right-icon fas fa-3x fa-arrow-circle-right"></i>
+    </div>
+
   </div>
-</div>
-<button (click)="onPreviousSearchPosition()">Previous</button>
-<button (click)="onNextSearchPosition()">Next</button>
+
+

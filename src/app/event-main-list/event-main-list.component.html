@@ -1,7 +1,28 @@
-<p>
-  event-main-list works!
-</p>
-<div class="container">
-  <app-event-main-list-row></app-event-main-list-row>
-  <app-event-main-list-row></app-event-main-list-row>
+
+<div class="list-container">
+  <div *ngIf="relaxEvent.length > 0">
+    <div class="container">
+      <h3>Relaxing Events</h3>
+    </div>
+    <app-event-main-list-row  [cards]="relaxEvent"></app-event-main-list-row>
+  </div>
+
+  <div *ngIf="trainingEvent.length > 0">
+    <div class="container">
+      <h3>Training Events</h3>
+    </div>
+    <app-event-main-list-row [cards]="trainingEvent"></app-event-main-list-row>
+  </div>
+
+  <div *ngIf="adventureEvent.length > 0">
+    <div class="container">
+      <h3>Adventure Events</h3>
+    </div>
+    <app-event-main-list-row [cards]="adventureEvent"></app-event-main-list-row>
+  </div>
+
+  <div class="container">
+    <h3>Filter by tags:</h3>
+    <span *ngFor="let tag of featureTags" [ngClass]="{'activeTag': isActiveTag(tag)}" (click)="toggleTags(tag)" class="featureTag badge badge-info">{{tag}}</span>
+  </div>
 </div>

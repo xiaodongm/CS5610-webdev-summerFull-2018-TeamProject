@@ -62,6 +62,7 @@ import { AdminEquipmentListComponent } from './admin-equipment-list/admin-equipm
 import {ReservationServiceClient} from './services/reservation.service.client';
 import { EventMainListComponent } from './event-main-list/event-main-list.component';
 import { EventMainListRowComponent } from './event-main-list-row/event-main-list-row.component';
+import { EventMainListRowCardComponent } from './event-main-list-row-card/event-main-list-row-card.component';
 
 
 
@@ -104,6 +105,7 @@ import { EventMainListRowComponent } from './event-main-list-row/event-main-list
     AdminEquipmentListComponent,
     EventMainListComponent,
     EventMainListRowComponent,
+    EventMainListRowCardComponent,
 
   ],
   imports: [
