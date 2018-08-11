@@ -148,4 +148,8 @@
   margin-top: 10px;
 }
 
+.dropdown-item {
+  cursor: pointer;
+}
+
 

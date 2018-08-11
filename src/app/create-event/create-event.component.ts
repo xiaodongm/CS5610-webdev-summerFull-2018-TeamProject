@@ -25,6 +25,7 @@ export class CreateEventComponent implements OnInit {
   paragraph;
   eventStart: Date;
   eventEnd: Date;
+  level;
 
   featureTags: String[] = ['Biking', 'Hiking', 'Swimming', 'Fishing', 'Horse riding', 'BBQ'];
 
@@ -58,6 +59,7 @@ export class CreateEventComponent implements OnInit {
         newEvent.title = this.title;
         newEvent.organizer = curUser._id;
         newEvent.tags = this.tags;
+        newEvent.level = this.level;
         newEvent.startTime = this.eventStart;
         newEvent.endTime = this.eventEnd;
         newEvent.description.push(new Widget('paragraph', this.paragraph));

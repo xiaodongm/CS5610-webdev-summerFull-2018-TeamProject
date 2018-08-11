@@ -2,7 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { HomePageComponent } from './home-page/home-page.component';
+// import { CampingSiteSearchComponent } from './camping-site-search/camping-site-search.component';
+import {CampingSiteSearchComponent} from './camping-site-search/camping-site-search.component';
 import {routing} from './app.rounting';
 import {CampingSiteGridComponent} from './camping-site-grid/camping-site-grid.component';
 
@@ -57,6 +58,7 @@ import {SiteServiceClient} from './services/site.service.client';
 import { SiteEditorComponent } from './site-editor/site-editor.component';
 import { SiteDetailComponent } from './site-detail/site-detail.component';
 import { AdminEventListComponent } from './admin-event-list/admin-event-list.component';
+import { AdminEquipmentListComponent } from './admin-equipment-list/admin-equipment-list.component';
 import {ReservationServiceClient} from './services/reservation.service.client';
 
 
@@ -66,7 +68,7 @@ import {ReservationServiceClient} from './services/reservation.service.client';
 @NgModule({
   declarations: [
     AppComponent,
-    HomePageComponent,
+    CampingSiteSearchComponent,
     CampingSiteGridComponent,
     SearchBarCampingSiteComponent,
     CampingSiteDetailComponent,
@@ -97,6 +99,7 @@ import {ReservationServiceClient} from './services/reservation.service.client';
     SiteEditorComponent,
     SiteDetailComponent,
     AdminEventListComponent,
+    AdminEquipmentListComponent,
 
   ],
   imports: [

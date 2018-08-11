@@ -3,6 +3,7 @@ import {UserServiceClient} from '../services/user.service.client';
 import {ProviderServiceClient} from '../services/provider.service.client';
 import {Router} from '@angular/router';
 import {EventServiceClient} from '../services/event.service.client';
+import {EquipmentServiceClient} from '../services/equipment.service.client';
 
 
 @Component({
@@ -15,6 +16,7 @@ export class AdminComponent implements OnInit {
   constructor(private userService: UserServiceClient,
               private providerService: ProviderServiceClient,
               private eventService: EventServiceClient,
+              private equuipmentService: EquipmentServiceClient,
               private router: Router) { }
 
   // menuItems = ['User', 'Organizer', 'Attendee', 'Provider', 'SiteManager', 'EquipmentDealer', 'Event', 'CampSite'];
@@ -23,12 +25,14 @@ export class AdminComponent implements OnInit {
   personalUsers = [];
   providers = [];
   events = [];
+  equipments = [];
 
   listType;
 
   listTypeModel = {
     userList : 'userList',
-    eventList : 'eventList'
+    eventList : 'eventList',
+    equipmentList: 'equipmentList'
   };
 
   findAllUsers() {
@@ -52,6 +56,13 @@ export class AdminComponent implements OnInit {
       });
   }
 
+  findAllEquipments() {
+   this.equuipmentService.findAllEquipments()
+     .then(equipments => {
+       this.equipments = equipments;
+     }) ;
+  }
+
   openUserList() {
     this.listType = this.listTypeModel.userList;
   }
@@ -60,10 +71,15 @@ export class AdminComponent implements OnInit {
     this.listType = this.listTypeModel.eventList;
   }
 
+  openEquipmentList() {
+    this.listType = this.listTypeModel.equipmentList;
+  }
+
   receiveMessage($event) {
     this.findAllUsers();
     this.findAllProviders();
     this.findAllEvents();
+    this.findAllEquipments();
   }
 
 
@@ -78,6 +94,7 @@ export class AdminComponent implements OnInit {
     this.findAllUsers();
     this.findAllProviders();
     this.findAllEvents();
+    this.findAllEquipments();
   }
 
 }

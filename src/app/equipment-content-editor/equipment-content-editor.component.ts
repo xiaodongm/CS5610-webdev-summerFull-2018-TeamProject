@@ -28,8 +28,23 @@ export class EquipmentContentEditorComponent implements OnInit {
     keyboard: true,
     class: 'my-modal'
   };
+
+
+  featureTags: String[] = ['Waterproof', 'HighQuality', 'Dustproof', 'EasySetup', 'SkinProtection', 'LightWeight', 'LongLasting'];
   refreshEquipments() {
     this.refreshEmitter.emit('refresh equipments');
+  }
+
+  toggleFeatureTag(tag) {
+    this.equipment.tags.push(tag);
+    const index = this.featureTags.indexOf(tag);
+    this.featureTags.splice(index, 1);
+  }
+
+  toggleEventTag(tag) {
+    this.featureTags.push(tag);
+    const index = this.equipment.tags.indexOf(tag);
+    this.equipment.tags.splice(index, 1);
   }
 
   openModal(template: TemplateRef<any>) {
@@ -112,6 +127,12 @@ export class EquipmentContentEditorComponent implements OnInit {
   }
 
   ngOnInit() {
+    for (let i = 0; i < this.equipment.tags.length; i++) {
+      if (this.featureTags.includes(this.equipment.tags[i])) {
+        const index = this.featureTags.indexOf(this.equipment.tags[i]);
+        this.featureTags.splice(index, 1);
+      }
+    }
   }
 
 }

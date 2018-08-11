@@ -146,20 +146,51 @@ export class AdminEventListComponent implements OnInit {
       });
   }
 
-  createEvent(event) {
-    this.eventService.createEvent(event)
-      .then(() => {
-        this.findAllRelaxEvents();
-        this.findAllTrainingEvents();
-        this.findAllAdventureEvents();
-        this.message = this.relaxEvents.length + this.trainingEvents.length + this.adventureEvents.length;
-        this.sendMessage();
-        this.alerts.push({
-          type: 'success',
-          msg: `Event Created successfully.`,
-          timeout: 5000
-        });
+  // createEvent(event) {
+  //   let curUser;
+  //   this.userService.profile()
+  //     .then(() => {
+  //       this.eventService.createEvent(event)
+  //         .then(() => {
+  //           this.findAllRelaxEvents();
+  //           this.findAllTrainingEvents();
+  //           this.findAllAdventureEvents();
+  //           this.message = this.relaxEvents.length + this.trainingEvents.length + this.adventureEvents.length;
+  //           this.sendMessage();
+  //           this.alerts.push({
+  //             type: 'success',
+  //             msg: `Event Created successfully.`,
+  //             timeout: 5000
+  //           });
+  //         });
+  //     });
+  // }
+
+  createEvent() {
+    let curUser;
+    this.userService.profile()
+      .then(res => curUser = res)
+      .then(  () => {
+        const newEvent = new EventCard();
+        newEvent.title = this.newEvent.title;
+        newEvent.organizer = curUser._id;
+        newEvent.startTime = this.newEvent.startTime;
+        newEvent.endTime = this.newEvent.endTime;
+        newEvent.level = this.newEvent.level;
+        this.eventService.createEvent(newEvent);
+      }).then(() => {
+      this.findAllRelaxEvents();
+      this.findAllTrainingEvents();
+      this.findAllAdventureEvents();
+      this.message = this.relaxEvents.length + this.trainingEvents.length + this.adventureEvents.length;
+      this.sendMessage();
+      this.alerts.push({
+        type: 'success',
+        msg: `Event Created successfully.`,
+        timeout: 5000
       });
+    });
+
   }
 
 
