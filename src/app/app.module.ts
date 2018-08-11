@@ -57,6 +57,7 @@ import {SiteServiceClient} from './services/site.service.client';
 import { SiteEditorComponent } from './site-editor/site-editor.component';
 import { SiteDetailComponent } from './site-detail/site-detail.component';
 import { AdminEventListComponent } from './admin-event-list/admin-event-list.component';
+import {ReservationServiceClient} from './services/reservation.service.client';
 
 
 
@@ -127,7 +128,8 @@ import { AdminEventListComponent } from './admin-event-list/admin-event-list.com
     LoginToNavbarServiceClient,
     DiscussionServiceClient,
     EquipmentServiceClient,
-    SiteServiceClient
+    SiteServiceClient,
+    ReservationServiceClient
   ],
   bootstrap: [AppComponent]
 })
