@@ -2,6 +2,9 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {ProviderServiceClient} from '../services/provider.service.client';
 import {EquipmentServiceClient} from '../services/equipment.service.client';
 import {AlertComponent, BsModalRef, BsModalService} from 'ngx-bootstrap';
+import {Equipment} from '../models/equipment.model.client';
+import {Widget} from '../models/widget.model.client';
+import {UserServiceClient} from '../services/user.service.client';
 
 @Component({
   selector: 'app-admin-equipment-list',
@@ -12,11 +15,14 @@ export class AdminEquipmentListComponent implements OnInit {
 
   constructor(private providerService: ProviderServiceClient,
               private equipmentService: EquipmentServiceClient,
+              private userService: UserServiceClient,
               private modalService: BsModalService) { }
 
   equipmentDealers = [];
   equipments = [];
   dealerId;
+
+  newEquipment = new Equipment();
 
   userType;
   alerts = [];
@@ -68,7 +74,7 @@ export class AdminEquipmentListComponent implements OnInit {
       .then(() => {
         this.alerts.push({
           type: 'success',
-          msg: `User profile updated successfully.`,
+          msg: `Equipment Info updated successfully.`,
           timeout: 5000
         });
       });
@@ -88,11 +94,36 @@ export class AdminEquipmentListComponent implements OnInit {
         this.modalRef.hide();
       })
       .then(() => {
-        this.message = this.equipments.length;
-        this.sendMessage();
         this.equipmentService.findEquipmentsForProvider(this.dealerId)
           .then(equipments => this.equipments = equipments);
+        this.message = this.equipments.length;
+        this.sendMessage();
       });
+  }
+
+  createEquipment() {
+    let curUser;
+    this.userService.profile()
+      .then(res => curUser = res)
+      .then(  () => {
+        const newEquipment = new Equipment();
+        newEquipment.title = this.newEquipment.title;
+        newEquipment.provider = curUser._id;
+        newEquipment.quantity = this.newEquipment.quantity;
+        newEquipment.available = this.newEquipment.available;
+        this.equipmentService.createEquipment(newEquipment);
+      }).then(() => {
+      this.equipmentService.findEquipmentsForProvider(this.dealerId)
+        .then(equipments => this.equipments = equipments);
+      this.message = this.equipments.length;
+      this.sendMessage();
+      this.alerts.push({
+        type: 'success',
+        msg: `Equipment Created successfully.`,
+        timeout: 5000
+      });
+    } );
+
   }
 
   ngOnInit() {

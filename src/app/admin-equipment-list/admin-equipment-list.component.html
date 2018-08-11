@@ -62,4 +62,23 @@
     </div>
   </accordion>
 
+  <div *ngIf="userType === 'admin'" class="adminInput">
+    <div *ngFor="let alert of alerts">
+      <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onClosed(alert)">{{ alert.msg }}</alert>
+    </div>
+    <div class="input-group-append wrapDiv">
+      <label for="titleFld-adm" class="col-sm-2 col-form-label">Equipment Name</label>
+      <input id="titleFld-adm" [(ngModel)]="newEquipment.title" class="form-control">
+    </div>
+    <div class="input-group-append wrapDiv">
+      <label for="totalFld-adm" class="col-sm-2 col-form-label">Total Quantity</label>
+      <input id="totalFld-adm" [(ngModel)]="newEquipment.quantity" class="form-control">
+    </div>
+    <div class="input-group-append wrapDiv">
+      <label for="availableFld-adm" class="col-sm-2 col-form-label">Available Quantity</label>
+      <input id="availableFld-adm" [(ngModel)]="newEquipment.available" class="form-control">
+    </div>
+    <button (click)="createEquipment()" class="btn btn-success">Create Equipment</button>
+  </div>
+
 </div>

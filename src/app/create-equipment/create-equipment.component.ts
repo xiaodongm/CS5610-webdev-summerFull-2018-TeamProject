@@ -42,7 +42,6 @@ export class CreateEquipmentComponent implements OnInit {
 
 
   createEquipment() {
-
     let curUser;
     this.userService.profile()
       .then(res => curUser = res)
