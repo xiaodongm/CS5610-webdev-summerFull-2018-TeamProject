@@ -51,6 +51,8 @@ import { DiscussionComponent } from './discussion/discussion.component';
 import { ProfileForVisitorComponent } from './profile-for-visitor/profile-for-visitor.component';
 import { EventsListForProfileComponent } from './events-list-for-profile/events-list-for-profile.component';
 import { EventCardForProfileComponent } from './event-card-for-profile/event-card-for-profile.component';
+import { DiscussionListForProfileComponent } from './discussion-list-for-profile/discussion-list-for-profile.component';
+import { SiteListForProfileComponent } from './site-list-for-profile/site-list-for-profile.component';
 
 
 
@@ -85,6 +87,8 @@ import { EventCardForProfileComponent } from './event-card-for-profile/event-car
     ProfileForVisitorComponent,
     EventsListForProfileComponent,
     EventCardForProfileComponent,
+    DiscussionListForProfileComponent,
+    SiteListForProfileComponent,
   ],
   imports: [
     BrowserModule,

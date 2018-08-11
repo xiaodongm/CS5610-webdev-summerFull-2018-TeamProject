@@ -7,6 +7,7 @@ import {ActivatedRoute, Route, Router} from '@angular/router';
 import {EventCard} from '../models/EventCard.model.client';
 import {EventServiceClient} from '../services/event.service.client';
 import {EnrollmentServiceClient} from '../services/enrollment.service.client';
+import {DiscussionServiceClient} from '../services/discussion.service.client';
 
 @Component({
   selector: 'app-profile',
@@ -19,6 +20,7 @@ export class ProfileComponent implements OnInit {
               private providerService: ProviderServiceClient,
               private enrollmentService: EnrollmentServiceClient,
               private eventService: EventServiceClient,
+              private discussionService: DiscussionServiceClient,
               private router: Router) { }
 
   user = new User();
@@ -28,6 +30,8 @@ export class ProfileComponent implements OnInit {
   organizedEvents = [];
   attendedEvents = [];
   isSame = true;
+  discussions;
+  sites = [];
   receiveMessage($event) {
     if (this.user.role !== 'SiteManager' && this.user.role !== 'EquipmentDealer') {
       this.user = $event;
@@ -58,12 +62,19 @@ export class ProfileComponent implements OnInit {
           .then(events => {
             this.attendedEvents = events;
           });
+        this.discussionService.findDiscussionForUser(user._id)
+          .then(discussions => {
+            this.discussions = discussions;
+          });
 
       });
 
     this.providerService
       .profile()
-      .then(provider => this.provider = provider);
+      .then(provider => {
+        this.provider = provider;
+
+      });
   }
 
   goCreateEvent() {

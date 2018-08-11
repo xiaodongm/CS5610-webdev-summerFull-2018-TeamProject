@@ -39,10 +39,30 @@
     </div>
   </div>
 
+  <div *ngIf="user.role === 'SiteManager' || user.role === 'EquipmentDealer'">
+    <div class="botton-background">
+      <div class="input-group-append">
+        <div class="col-sm grid-item" [ngClass]="{'active': curPage === 'pi'}">
+          <a (click)="setCurPage('pi')" class="nav-links">Private Info</a>
+        </div>
+        <div class="col-sm grid-item" [ngClass]="{'active': curPage === 'sl'}"  *ngIf="user.role === 'SiteManager'">
+          <a (click)="setCurPage('sl')" class="nav-links">Sites List</a>
+        </div>
+        <div class="col-sm grid-item" [ngClass]="{'active': curPage === 'pa'}" *ngIf="user.role === 'EquipmentDealer'">
+          <a (click)="setCurPage('el')" class="nav-links">Equipments List</a>
+        </div>
+        <div class="col-sm grid-item" [ngClass]="{'active': curPage === 'rt'}">
+          <a (click)="setCurPage('rt')" class="nav-links">Renting</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="container">
     <app-events-list-for-profile *ngIf="curPage === 'oa'" [type] = 'curPage' [events]="organizedEvents" [isSame] = "isSame"></app-events-list-for-profile>
     <app-events-list-for-profile *ngIf="curPage === 'pa'" [type] = 'curPage' [events]="attendedEvents" [isSame] = "isSame"></app-events-list-for-profile>
     <app-friend-list *ngIf="curPage === 'ff'" [user] = user></app-friend-list>
+    <app-discussion-list-for-profile *ngIf="curPage === 'ds'" [discussions]="discussions" [isSame] = "isSame" [userId] = "user._id"></app-discussion-list-for-profile>
   </div>
 
 </div>

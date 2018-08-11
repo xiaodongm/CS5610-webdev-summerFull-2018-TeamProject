@@ -17,6 +17,9 @@
     <div class = 'btn-position'>
       <button *ngIf="user.role === 'organizer'" (click)="goCreateEvent()">Post A New Event</button>
       <button *ngIf="user.role === 'attendee'" >Attend A New Event</button>
+      <button *ngIf="user.role === 'SiteManager'" >Post A Site</button>
+      <button *ngIf="user.role === 'EquipmentDealer'" >Post A New Equipment</button>
+      <div *ngIf="user.role === 'organizer' || user.role === 'attendee'">
       <li  id="roleFld-att" class="list-group-item form-control">{{user.role}}</li>
       <div class="btn-group" dropdown>
         <button id="button-basic-att" dropdownToggle type="button" class="btn btn-outline-dark dropdown-toggle"
@@ -29,10 +32,11 @@
           <li role="menuitem"><a (click)="switchAttendeeToOrganizer()" class="dropdown-item">Organizer</a></li>
         </ul>
       </div>
+      </div>
     </div>
-
   </div>
 
+  <div *ngIf="user.role === 'organizer' || user.role === 'attendee'">
   <div class="botton-background">
     <div class="input-group-append">
       <div class="col-sm grid-item" [ngClass]="{'active': curPage === 'pi'}">
@@ -52,12 +56,35 @@
       </div>
     </div>
   </div>
+  </div>
+
+
+  <div *ngIf="user.role === 'SiteManager' || user.role === 'EquipmentDealer'">
+    <div class="botton-background">
+      <div class="input-group-append">
+        <div class="col-sm grid-item" [ngClass]="{'active': curPage === 'pi'}">
+          <a (click)="setCurPage('pi')" class="nav-links">Private Info</a>
+        </div>
+        <div class="col-sm grid-item" [ngClass]="{'active': curPage === 'sl'}"  *ngIf="user.role === 'SiteManager'">
+          <a (click)="setCurPage('sl')" class="nav-links">Sites List</a>
+        </div>
+        <div class="col-sm grid-item" [ngClass]="{'active': curPage === 'pa'}" *ngIf="user.role === 'EquipmentDealer'">
+          <a (click)="setCurPage('el')" class="nav-links">Equipments List</a>
+        </div>
+        <div class="col-sm grid-item" [ngClass]="{'active': curPage === 'rt'}">
+          <a (click)="setCurPage('rt')" class="nav-links">Renting</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="container">
-    <app-friend-list *ngIf="curPage === 'ff'" [user] = user></app-friend-list>
+    <app-friend-list *ngIf="user.role === 'organizer' || user.role === 'attendee' && curPage === 'ff'" [user] = user></app-friend-list>
     <app-basic-information *ngIf="curPage ==='pi'" (messageEvent)="receiveMessage($event)"></app-basic-information>
-    <app-events-list-for-profile *ngIf="curPage === 'oa'" [type] = 'curPage' [events]="organizedEvents" [isSame] = "isSame"></app-events-list-for-profile>
-    <app-events-list-for-profile *ngIf="curPage === 'pa'" [type] = 'curPage' [events]="attendedEvents" [isSame] = "isSame"></app-events-list-for-profile>
+    <app-events-list-for-profile *ngIf="user.role === 'organizer' || user.role === 'attendee' && curPage === 'oa'" [type] = 'curPage' [events]="organizedEvents" [isSame] = "isSame"></app-events-list-for-profile>
+    <app-events-list-for-profile *ngIf="user.role === 'organizer' || user.role === 'attendee' && curPage === 'pa'" [type] = 'curPage' [events]="attendedEvents" [isSame] = "isSame"></app-events-list-for-profile>
+    <app-discussion-list-for-profile *ngIf="user.role === 'organizer' || user.role === 'attendee' && curPage === 'ds'" [discussions]="discussions" [isSame] = "isSame" [userId] = "user._id"></app-discussion-list-for-profile>
+    <app-site-list-for-profile *ngIf="user.role === 'SiteManager' || user.role === 'EquipmentDealer' && curPage === 'sl'" [isSame] = "isSame" [sites]="sites"></app-site-list-for-profile>
   </div>
 
   <!--<div class="container">-->
