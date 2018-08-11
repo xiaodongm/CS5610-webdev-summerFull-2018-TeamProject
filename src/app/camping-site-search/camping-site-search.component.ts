@@ -4,10 +4,10 @@ import {CampingSiteGridComponent} from '../camping-site-grid/camping-site-grid.c
 
 @Component({
   selector: 'app-home-page',
-  templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.css']
+  templateUrl: './camping-site-search.component.html',
+  styleUrls: ['./camping-site-search.component.css']
 })
-export class HomePageComponent implements OnInit {
+export class CampingSiteSearchComponent implements OnInit {
   constructor() {
   }
   campingSites = [];

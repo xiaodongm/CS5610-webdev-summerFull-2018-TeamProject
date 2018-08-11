@@ -25,16 +25,32 @@ export class CreateEventComponent implements OnInit {
   paragraph;
   eventStart: Date;
   eventEnd: Date;
-  toggleTag(tag) {
-    if (this.tags.includes(tag)) {
-      const index = this.tags.indexOf(tag);
-        this.tags.splice(index, 1);
-    } else {
-      this.tags.push(tag);
-    }
-  }
-  createEvent() {
+  level;
 
+  featureTags: String[] = ['Biking', 'Hiking', 'Swimming', 'Fishing', 'Horse riding', 'BBQ'];
+
+  // toggleTag(tag) {
+  //   if (this.tags.includes(tag)) {
+  //     const index = this.tags.indexOf(tag);
+  //       this.tags.splice(index, 1);
+  //   } else {
+  //     this.tags.push(tag);
+  //   }
+  // }
+
+  toggleFeatureTag(tag) {
+    this.tags.push(tag);
+    const index = this.featureTags.indexOf(tag);
+    this.featureTags.splice(index, 1);
+  }
+
+  toggleEventTag(tag) {
+    this.featureTags.push(tag);
+    const index = this.tags.indexOf(tag);
+    this.tags.splice(index, 1);
+  }
+
+  createEvent() {
     let curUser;
     this.userService.profile()
       .then(res => curUser = res)
@@ -43,6 +59,7 @@ export class CreateEventComponent implements OnInit {
         newEvent.title = this.title;
         newEvent.organizer = curUser._id;
         newEvent.tags = this.tags;
+        newEvent.level = this.level;
         newEvent.startTime = this.eventStart;
         newEvent.endTime = this.eventEnd;
         newEvent.description.push(new Widget('paragraph', this.paragraph));

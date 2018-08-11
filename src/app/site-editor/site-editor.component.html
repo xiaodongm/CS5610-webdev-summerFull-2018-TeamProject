@@ -1,0 +1,235 @@
+<div *ngIf="isDataAvailable" class="container-fluid">
+
+  <div id="pageArea" class="jumbotron">
+    <span class="edit-span" (click)="openModal(template2)">
+      <i class="fas fa-pencil-alt"></i>
+    </span>
+    <h1 id="cground_name" class="display-4">
+      {{site.title}}
+      <!--<span id="tag" class="badge badge-secondary">{{campingSiteFromCommunication._attributes.contractType}}</span>-->
+    </h1>
+    <p id="cground_address" class="lead">
+      {{site.location}}
+    </p>
+    <hr class="my-4">
+    <div>
+      <div *ngFor="let widget of site.description">
+        <div *ngIf="widget.type === 'heading'">
+          heading: {{widget.data}}
+        </div>
+        <div *ngIf="widget.type === 'paragraph'">
+          paragraph: {{widget.data}}
+        </div>
+        <div *ngIf="widget.type === 'link'">
+          Link: <a href={{widget.data}}>{{widget.data}}</a>
+        </div>
+
+        <div *ngIf="widget.type === 'unorderedList'">
+          List:
+          <ul >
+            <li *ngFor="let item of splitList(widget.data)">{{item}}</li>
+          </ul>
+        </div>
+
+        <div *ngIf="widget.type === 'orderedList'">
+          List:
+          <ol>
+            <li *ngFor="let item of splitList(widget.data)">{{item}}</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <div id="carousel">
+      <carousel>
+        <slide *ngFor="let photo of site.photos">
+          <img src={{photo}} alt="first slide" style="display: block; width: 100%;">
+          <div class="carousel-caption d-none d-md-block">
+            <h3>First slide label</h3>
+            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          </div>
+        </slide>
+        <!--<slide>-->
+        <!--<img src="../../assets/images/backGround_image_2.jpg" alt="second slide" style="display: block; width: 100%;">-->
+        <!--<div class="carousel-caption d-none d-md-block">-->
+        <!--<h3>Second slide label</h3>-->
+        <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>-->
+        <!--</div>-->
+        <!--</slide>-->
+        <!--<slide>-->
+        <!--<img src="../../assets/images/backGround_image_3.jpg" alt="third slide" style="display: block; width: 100%;">-->
+        <!--<div class="carousel-caption d-none d-md-block">-->
+        <!--<h3>Third slide label</h3>-->
+        <!--<p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>-->
+        <!--</div>-->
+        <!--</slide>-->
+      </carousel>
+    </div>
+    <hr class="my-4">
+    <h5>Amenities :</h5>
+    <div id="amenity_list">
+      <span *ngFor="let amenity of site.tags" class="badge badge-secondary amenity_item">{{amenity}}</span>
+    </div>
+    <hr class="my-4">
+    <div class="container-fluid">
+      <h5>Weather Forecast</h5>
+      <p>Weather info will appear here.</p>
+    </div>
+    <hr class="my-4">
+    <p id="cground_contact" class="lead">Contact info : </p>
+    <!--<li *ngFor="let contactItem of campingSite.contact">-->
+      <!--{{contactItem._attributes.name + ' : ' + contactItem._attributes.number}}-->
+    <!--</li>-->
+    <!--<a id="learnMore" class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>-->
+
+    <div class="row" >
+      <div class="avatar-container col-3">
+        <div class="avatar" [ngStyle]="{'background-image': 'url(' + provider.profilePhoto + ')'}">
+        </div>
+      </div>
+
+      <div class="host-info col-7">
+        <div class="text-sm-left text-muted">
+          Hosted by
+          <span>{{provider.organizationName}}</span>
+        </div>
+        <div class="text-sm-left">
+          <span class="text-muted">From </span>
+          <span>{{provider.organizationAddress}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #template2>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Description: Edit or Add new</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <div class="content-of-modal">
+        <h4>Edit basic informations</h4>
+        <div>
+          <label> Title </label>
+          <input
+            [(ngModel)]="site.title"
+            class="form-control"
+            placeholder="Event Title"
+          />
+
+
+          <label> Add Image </label>
+          <ol>
+            <li *ngFor="let img of site.photos">
+              {{img}}
+              <button (click)="deleteImageUrl(img)">Delete</button>
+            </li>
+          </ol>
+          <input
+            [(ngModel)]="imgUrl"
+            class="form-control"
+            placeholder="Image Url">
+          <button (click)="addImageUrl()">Add Image</button>
+
+        </div>
+        <h4>Edit current descriptions</h4>
+        <span class="text-muted">drag to swich order</span>
+        <div [sortablejs]='site.description' [sortablejsOptions]="{ animation: 150 }">
+          <div class="card" *ngFor="let widget of site.description">
+            <app-event-description-widget-editor
+              [widget]="widget"
+              (deleteEmitter)="deleteWidget($event)"
+              (editEmitter)="updateWidget($event)">
+            </app-event-description-widget-editor>
+          </div>
+        </div>
+
+        <div class="amenity_list" *ngIf="site.tags.length > 0">
+          <span *ngFor="let tag of site.tags" class="badge badge-secondary amenity_item">{{tag}}</span>
+          <hr>
+        </div>
+      </div>
+      <div>
+        <h4>Add new descriptions</h4>
+        <tabset>
+          <tab heading="Heading" id="tab0">
+            Content heading
+            <label>Heading</label>
+            <input
+              [(ngModel)]="heading"
+              class="form-control"
+              placeholder="New Heading">
+            <button (click)="addHeading()">Add Heading</button>
+          </tab>
+
+
+          <tab heading="Paragraph" id="tab1">
+            Basic content
+            <label>Paragraph</label>
+            <textarea
+              [(ngModel)]="paragraph"
+              class="form-control"
+              placeholder="Paragraph text">
+          </textarea>
+            <button (click)="addParagraph()">Add Paragraph</button>
+          </tab>
+
+          <tab heading="Link">
+            <div>
+              <label> link url</label>
+              <input
+                [(ngModel)]="linkUrl"
+                class="form-control"
+                placeholder="Link URL">
+              <button (click)="addLink()">Add Link</button>
+            </div>
+          </tab>
+
+          <tab heading="List">
+            <div>
+              <label> List </label>
+              <select class="form-control" (change)="setListType()" >
+                <option value="unorderedList">Unordered list</option>
+                <option value="orderedList">Ordered list</option>
+              </select>
+              <textarea
+                [(ngModel)]="list"
+                class="form-control"
+                placeholder="List Item">
+            </textarea>
+              <button (click)="addList()">Add List</button>
+            </div>
+          </tab>
+
+          <tab heading="Features">
+            <div class="btn-group" dropdown>
+              <button dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+                      aria-controls="dropdown-basic">
+                Add feature tags <span class="caret"></span>
+              </button>
+              <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+                  role="menu" aria-labelledby="button-basic">
+                <li role="menuitem"><a class="dropdown-item" (click)="toggleTag('Firewood')">Firewood</a></li>
+                <li role="menuitem"><a class="dropdown-item" (click)="toggleTag('Pets Allowed')">Pets Allowed</a></li>
+                <li role="menuitem"><a class="dropdown-item" (click)="toggleTag('Picnic Area')">Picnic Area</a></li>
+              </ul>
+            </div>
+          </tab>
+        </tabset>
+      </div>
+
+      <hr>
+      <p>Save new added widget?</p>
+      <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
+      <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+    </div>
+  </ng-template>
+
+
+</div>
+
+
+
+

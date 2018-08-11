@@ -1,0 +1,97 @@
+#deleteIcon{
+  margin: 10px;
+  cursor: pointer;
+}
+
+#editIcon {
+  margin: 10px;
+  cursor: pointer;
+}
+
+#title {
+  margin: 10px;
+}
+
+.inputFld {
+  margin-bottom: 10px;
+}
+
+#basicInfo {
+  margin-bottom: 20px;
+}
+
+
+#drag {
+  margin-left: 30px;
+}
+
+
+.content-of-modal .card {
+  background-color: #9fcdff;
+  margin: 5px;
+  padding: 10px;
+}
+
+.content-of-modal .span-box {
+
+}
+
+.content-of-modal .delete-span {
+  display: inline-block;
+  margin-right: 3px;
+  float: right;
+
+}
+
+.content-of-modal .edit-span {
+  display: inline-block;
+  margin-right: 4px;
+  float: right;
+}
+
+
+.widgetFields {
+  margin-top: 20px;
+}
+
+#addParaBtn {
+  margin-top: 5px;
+}
+
+
+#addListBtn {
+  margin-top: 5px;
+}
+
+
+#desYesBtn {
+  margin-right: 15px;
+}
+
+.featureTag {
+  cursor: pointer;
+  margin-right: 5px;
+  margin-top: 10px;
+}
+
+#tagsDisplay {
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+.badge {
+  cursor: pointer;
+}
+
+#Qua-avi-Display {
+  margin: 10px;
+}
+
+#widgetDisplay {
+  margin: 20px;
+}
+
+#featureDisplay {
+  margin-right: 8px;
+}
+

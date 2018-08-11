@@ -1,0 +1,21 @@
+.container {
+  margin-top: 80px;
+}
+
+/*#amenity_list {*/
+  /*margin-left: 35px;*/
+/*}*/
+
+.amenity_item {
+  margin-right: 8px;
+}
+
+
+.badge {
+  cursor: pointer;
+  margin-right: 8px;
+}
+
+#collapseBasic2 {
+  margin-bottom: 30px;
+}

@@ -1,5 +1,6 @@
 import { Routes, RouterModule } from '@angular/router';
-import {HomePageComponent} from './home-page/home-page.component';
+// import {CampingSiteSearchComponent} from './camping-site-search/camping-site-search.component';
+import {CampingSiteSearchComponent} from './camping-site-search/camping-site-search.component';
 import {CampingSiteDetailComponent} from './camping-site-detail/camping-site-detail.component';
 import {HomeComponent} from './home/home.component';
 import {ProfileComponent} from './profile/profile.component';
@@ -14,6 +15,13 @@ import {AdminComponent} from './admin/admin.component';
 import {DiscussionBoardComponent} from './discussion-board/discussion-board.component';
 import {ProfileForVisitorComponent} from './profile-for-visitor/profile-for-visitor.component';
 
+import {CreateSiteComponent} from './create-site/create-site.component';
+import {CreateEquipmentComponent} from './create-equipment/create-equipment.component';
+import {EquipmentEditorComponent} from './equipment-editor/equipment-editor.component';
+import {SiteEditorComponent} from './site-editor/site-editor.component';
+import {SiteDetailComponent} from './site-detail/site-detail.component';
+
+
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -21,14 +29,19 @@ const appRoutes: Routes = [
   { path: 'profile', component: ProfileComponent},
   { path: 'profile/:userId', component: ProfileForVisitorComponent},
   { path: 'admin', component: AdminComponent},
-  { path: 'homepage', component: HomePageComponent},
+  { path: 'search', component: CampingSiteSearchComponent},
   { path: 'camping-site/:contractID/:facilityID/detail', component: CampingSiteDetailComponent},
   { path: 'detail', component: CampingSiteDetailComponent},
   { path: 'eventEditor/:eventId', component: EventEditorComponent},
+  { path: 'siteEditor/:siteId', component: SiteEditorComponent},
+  { path: 'siteDetail/:siteId', component: SiteDetailComponent},
   { path: 'eventDetail/:eventId', component: EventDetailComponent},
+  { path: 'equipmentEditor', component: EquipmentEditorComponent},
   { path: 'createEvent', component: CreateEventComponent},
+  { path: 'createSite', component: CreateSiteComponent},
+  { path: 'createEquipment', component: CreateEquipmentComponent},
   { path: 'organization/signUp', component: OrganizationSignUpComponent},
-  { path: 'test', component: DiscussionBoardComponent},
+  // { path: 'test', component: DiscussionBoardComponent},
   { path: '**', component: HomeComponent},
 
 ];

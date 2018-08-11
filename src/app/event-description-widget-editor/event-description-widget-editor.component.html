@@ -1,19 +1,19 @@
 <div>
   <span class="span-box">
 
-    <span class="delete-span" (click)="deleteWidget(widget)">
+    <span id="deleteIcon" class="delete-span" (click)="deleteWidget(widget)">
       <i class="far fa-trash-alt"></i>
     </span>
 
-    <span class="edit-span" (click)="editWidget()">
+    <span id="editIcon" class="edit-span" (click)="editWidget()">
       <i class="fas fa-pencil-alt"></i>
     </span>
   </span>
   <div *ngIf="widget.type === 'heading'">
-    heading: {{widget.data}}
+    Heading: {{widget.data}}
   </div>
   <div *ngIf="widget.type === 'paragraph'">
-    paragraph: {{widget.data}}
+    Paragraph:{{widget.data}}
   </div>
   <div *ngIf="widget.type === 'link'">
     Link: <a href={{widget.data}}>{{widget.data}}</a>
@@ -34,37 +34,32 @@
   </div>
 
     <div *ngIf="widget.type === 'heading' && !isEditorHidden">
-      <label> Heading </label>
       <input
         [(ngModel)]="newWidget.data"
         class="form-control"
         placeholder="Heading">
-      <button (click)="updateWidget()">Save Heading</button>
+      <button class="btn btn-outline-dark saveBtn" (click)="updateWidget()">Save Heading</button>
     </div>
 
     <div *ngIf="widget.type === 'paragraph' && !isEditorHidden">
-      Basic content
-      <label>Paragraph</label>
       <textarea
         [(ngModel)]="newWidget.data"
         class="form-control"
         placeholder="Paragraph text">
       </textarea>
-      <button (click)="updateWidget()">Save Paragraph</button>
+      <button class="btn btn-outline-dark saveBtn" (click)="updateWidget()">Save Paragraph</button>
     </div>
 
     <div *ngIf="widget.type === 'link' && !isEditorHidden">
-      <label> link url</label>
       <input
         [(ngModel)]="newWidget.data"
         class="form-control"
         placeholder="Link URL">
-      <button (click)="updateWidget()">Save Link</button>
+      <button  class="btn btn-outline-dark saveBtn" (click)="updateWidget()">Save Link</button>
     </div>
 
     <div *ngIf="(widget.type === 'orderedList' || widget.type === 'unorderedList') && !isEditorHidden">
-      <label> List </label>
-      <select class="form-control" [value]="this.newWidget.type" (change)="setListType()" >
+      <select id="listOrder" class="form-control" [value]="this.newWidget.type" (change)="setListType()" >
         <option value="unorderedList">Unordered list</option>
         <option value="orderedList">Ordered list</option>
       </select>
@@ -73,6 +68,6 @@
         class="form-control"
         placeholder="List Item">
             </textarea>
-      <button (click)="updateWidget()">Save List</button>
+      <button class="btn btn-outline-dark saveBtn" (click)="updateWidget()">Save List</button>
     </div>
 </div>

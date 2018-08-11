@@ -6,8 +6,13 @@ import {ProviderServiceClient} from '../services/provider.service.client';
 import {ActivatedRoute, Route, Router} from '@angular/router';
 import {EventCard} from '../models/EventCard.model.client';
 import {EventServiceClient} from '../services/event.service.client';
-import {EnrollmentServiceClient} from '../services/enrollment.service.client';
 import {DiscussionServiceClient} from '../services/discussion.service.client';
+import {EnrollmentServiceClient} from '../services/enrollment.service.client';
+import {Equipment} from '../models/equipment.model.client';
+import {EquipmentServiceClient} from '../services/equipment.service.client';
+import {SiteServiceClient} from '../services/site.service.client';
+import {Site} from '../models/site.model.client';
+
 
 @Component({
   selector: 'app-profile',
@@ -21,17 +26,20 @@ export class ProfileComponent implements OnInit {
               private enrollmentService: EnrollmentServiceClient,
               private eventService: EventServiceClient,
               private discussionService: DiscussionServiceClient,
+              private equipmentService: EquipmentServiceClient,
+              private siteService: SiteServiceClient,
               private router: Router) { }
 
   user = new User();
   provider = new Provider();
-  hostedEvents: EventCard[];
   curPage = 'pi';
   organizedEvents = [];
   attendedEvents = [];
   isSame = true;
   discussions;
-  sites = [];
+  enrolledEvents: EventCard[] = [];
+  myEquipments: Equipment[] = [];
+  mySites: Site[] = [];
   receiveMessage($event) {
     if (this.user.role !== 'SiteManager' && this.user.role !== 'EquipmentDealer') {
       this.user = $event;
@@ -44,6 +52,13 @@ export class ProfileComponent implements OnInit {
     this.curPage = curPage;
   }
 
+  goCreateSite() {
+    this.router.navigate(['createSite']);
+  }
+
+  goCreateEquipments() {
+    this.router.navigate(['createEquipment']);
+  }
 
   ngOnInit() {
     this.userService
@@ -69,11 +84,18 @@ export class ProfileComponent implements OnInit {
 
       });
 
+
     this.providerService
       .profile()
       .then(provider => {
         this.provider = provider;
+        this.equipmentService
+          .findEquipmentsForProvider(this.provider._id)
+          .then(equipments => this.myEquipments = equipments);
 
+        this.siteService
+          .findSitesForProvider(this.provider._id)
+      .then((sites) => this.mySites = sites);
       });
   }
 

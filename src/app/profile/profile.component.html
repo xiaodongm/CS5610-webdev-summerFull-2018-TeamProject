@@ -14,11 +14,12 @@
           class="main-text">{{provider.organizationName}}</h2>
     </div>
 
+
     <div class = 'btn-position'>
       <button *ngIf="user.role === 'organizer'" (click)="goCreateEvent()">Post A New Event</button>
       <button *ngIf="user.role === 'attendee'" >Attend A New Event</button>
-      <button *ngIf="user.role === 'SiteManager'" >Post A Site</button>
-      <button *ngIf="user.role === 'EquipmentDealer'" >Post A New Equipment</button>
+      <button *ngIf="user.role === 'SiteManager'" (click)="goCreateSite()">Post A Site</button>
+      <button *ngIf="user.role === 'EquipmentDealer'" (click)="goCreateEquipments()">Post A New Equipment</button>
       <div *ngIf="user.role === 'organizer' || user.role === 'attendee'">
       <li  id="roleFld-att" class="list-group-item form-control">{{user.role}}</li>
       <div class="btn-group" dropdown>
@@ -78,6 +79,7 @@
     </div>
   </div>
 
+
   <div class="container">
     <app-friend-list *ngIf="user.role === 'organizer' || user.role === 'attendee' && curPage === 'ff'" [user] = user></app-friend-list>
     <app-basic-information *ngIf="curPage ==='pi'" (messageEvent)="receiveMessage($event)"></app-basic-information>
@@ -87,13 +89,31 @@
     <app-site-list-for-profile *ngIf="user.role === 'SiteManager' || user.role === 'EquipmentDealer' && curPage === 'sl'" [isSame] = "isSame" [sites]="sites"></app-site-list-for-profile>
   </div>
 
+
+
+
+
   <!--<div class="container">-->
-    <!--<div> My Hosted Events</div>-->
-    <!--<div *ngFor="let event of hostedEvents">-->
+    <!--<div> My Equipments</div>-->
+    <!--<a [routerLink]="['/equipmentEditor']">Edit</a>-->
+    <!--<div *ngFor="let equipment of myEquipments">-->
       <!--<div class="card">-->
-        <!--{{event.title}}-->
-        <!--<a [routerLink]="['/eventEditor/' + event._id]">Edit</a>-->
-        <!--<button (click)="deleteHostedEvent(event)" class="btn btn-danger">Delete</button>-->
+        <!--{{equipment.title}}-->
+        <!--&lt;!&ndash;<a [routerLink]="['/eventDetail/' + event._id]">View</a>&ndash;&gt;-->
+        <!--&lt;!&ndash;<button (click)="deleteHostedEvent(event)" class="btn btn-danger">Delete</button>&ndash;&gt;-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+
+  <!--<div class="container">-->
+    <!--<div> My Sites</div>-->
+
+    <!--<div *ngFor="let site of mySites">-->
+      <!--<div class="card">-->
+        <!--<a [routerLink]="['/siteEditor/' + site._id]">Edit</a>-->
+        <!--{{site.title}}-->
+        <!--&lt;!&ndash;<a [routerLink]="['/eventDetail/' + event._id]">View</a>&ndash;&gt;-->
+        <!--&lt;!&ndash;<button (click)="deleteHostedEvent(event)" class="btn btn-danger">Delete</button>&ndash;&gt;-->
       <!--</div>-->
     <!--</div>-->
   <!--</div>-->
