@@ -1,9 +1,10 @@
 <div *ngIf="isDataAvailable" class="container-fluid">
 
   <div id="pageArea" class="jumbotron">
-
-    <h1 id="cground_name" class="display-4">
+    <button class="btn btn-primary" (click)="openModal(template2)">Add as target site to my event</button>
+     <h1 id="cground_name" class="display-4">
       {{site.title}}
+
       <!--<span id="tag" class="badge badge-secondary">{{campingSiteFromCommunication._attributes.contractType}}</span>-->
     </h1>
     <p id="cground_address" class="lead">
@@ -97,4 +98,32 @@
       </div>
     </div>
   </div>
+
+  <ng-template #template2>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Add current site to my event</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <div class="content-of-modal">
+        <ul>
+          <li *ngFor="let event of myEvents; let i = index">
+            {{event.title}}
+            <span>
+              current site: {{getCorrespondingSiteTitle(i)}}
+            </span>
+            <button (click)="selectEvent(event)">Select</button>
+          </li>
+        </ul>
+      </div>
+      <div>target event: {{targetEvent.title}}</div>
+      <hr>
+      <p>Save the change</p>
+      <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
+      <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+    </div>
+  </ng-template>
 </div>
