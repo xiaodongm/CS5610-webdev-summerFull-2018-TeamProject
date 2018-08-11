@@ -30,7 +30,7 @@ export class EquipmentContentEditorComponent implements OnInit {
   };
 
 
-  featureTags: String[] = ['Tent', 'SleepingBad', 'FlashLight', 'Firewood', 'Knife', 'Axe'];
+  featureTags: String[] = ['Waterproof', 'HighQuality', 'Dustproof', 'EasySetup', 'SkinProtection', 'LightWeight', 'LongLasting'];
   refreshEquipments() {
     this.refreshEmitter.emit('refresh equipments');
   }

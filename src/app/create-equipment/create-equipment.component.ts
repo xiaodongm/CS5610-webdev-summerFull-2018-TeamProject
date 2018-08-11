@@ -26,14 +26,21 @@ export class CreateEquipmentComponent implements OnInit {
   paragraph;
   quantity;
 
-  toggleTag(tag) {
-    if (this.tags.includes(tag)) {
-      const index = this.tags.indexOf(tag);
-      this.tags.splice(index, 1);
-    } else {
-      this.tags.push(tag);
-    }
+  featureTags: String[] = ['Waterproof', 'HighQuality', 'Dustproof', 'EasySetup', 'SkinProtection', 'LightWeight', 'LongLasting'];
+
+  toggleFeatureTag(tag) {
+    this.tags.push(tag);
+    const index = this.featureTags.indexOf(tag);
+    this.featureTags.splice(index, 1);
   }
+
+  toggleEventTag(tag) {
+    this.featureTags.push(tag);
+    const index = this.tags.indexOf(tag);
+    this.tags.splice(index, 1);
+  }
+
+
   createEquipment() {
 
     let curUser;

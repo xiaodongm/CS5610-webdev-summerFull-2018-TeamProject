@@ -25,7 +25,7 @@
 <div class="amenity_list">
   <span *ngFor="let tag of equipment.tags" class="badge badge-info amenity_item" id="tagsDisplay">{{tag}}</span>
 </div>
-<hr>
+<hr *ngIf="equipment.tags.length !== 0">
 
 <div id="widgetDisplay">
   <div *ngFor="let widget of equipment.description">
@@ -133,7 +133,7 @@
       <hr>
       <p>Selected Features</p>
       <div class="amenity_list" *ngIf="equipment.tags.length > 0">
-        <span *ngFor="let tag of equipment.tags" (click)="toggleEventTag(tag)" class="badge badge-info amenity_item">{{tag}}</span>
+        <span id="featureDisplay" *ngFor="let tag of equipment.tags" (click)="toggleEventTag(tag)" class="badge badge-info amenity_item">{{tag}}</span>
         <hr>
       </div>
     </div>

@@ -4,7 +4,9 @@
     <p>Control panel</p>
   </div>
   <div class="row" style="width: 100%">
+
     <div id="cardList" class="col-3">
+
       <div class="card text-white bg-info">
         <div class="card-header input-group-append">
           <h4>User</h4>
@@ -17,6 +19,7 @@
           </a>
         </div>
       </div>
+
       <div class="card text-white bg-warning">
         <div class="card-header">
           <h4>Event</h4>
@@ -29,10 +32,26 @@
           </a>
         </div>
       </div>
+
+      <div class="card text-white bg-secondary">
+        <div class="card-header">
+          <h4>Equipments</h4>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Total Equipments : {{equipments.length}}</h3>
+          <a class="arrow" (click)="openEquipmentList()" routerLink="/admin">
+            More Info
+            <i class="fas fa-arrow-circle-right"></i>
+          </a>
+        </div>
+      </div>
+
     </div>
+
     <div class="col-9">
       <app-user-list *ngIf="listType === 'userList'" (messageEvent)="receiveMessage($event)"></app-user-list>
       <app-admin-event-list *ngIf="listType === 'eventList'" (messageEvent)="receiveMessage($event)"></app-admin-event-list>
+      <app-admin-equipment-list *ngIf="listType === 'equipmentList'" (messageEvent)="receiveMessage($event)"></app-admin-equipment-list>
     </div>
   </div>
 </div>

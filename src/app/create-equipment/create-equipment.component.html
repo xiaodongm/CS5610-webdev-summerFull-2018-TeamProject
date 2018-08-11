@@ -2,14 +2,13 @@
   <div class="card">
     <div class="card-body">
       <h6 class="card-subtitle mb-2 text-muted">step 1</h6>
-      <h5 class="card-title">Where is your new equipment located?</h5>
-
+      <h5 class="card-title">What is the name of your Equipment?</h5>
       <input
-        [(ngModel)]="location"
+        [(ngModel)]="title"
         class="form-control"
-        placeholder="Type your equipment location">
-
-      <button type="button" class="btn btn-primary" (click)="isCollapsed1 = !isCollapsed1"
+        placeholder="Type your equiment name">
+      <hr>
+      <button type="button" class="btn btn-danger" (click)="isCollapsed1 = !isCollapsed1"
               [attr.aria-expanded]="!isCollapsed1" aria-controls="collapseBasic">Next
       </button>
 
@@ -24,23 +23,14 @@
         <h6 class="card-subtitle mb-2 text-muted">step 2</h6>
         <h5 class="card-title">What's your equipment featured for?</h5>
 
-        <div class="btn-group" dropdown>
-          <button dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
-                  aria-controls="dropdown-basic">
-            Add feature tags <span class="caret"></span>
-          </button>
-          <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
-              role="menu" aria-labelledby="button-basic">
-            <li role="menuitem"><a class="dropdown-item" (click)="toggleTag('Tent')">Tent</a></li>
-            <li role="menuitem"><a class="dropdown-item" (click)="toggleTag('Latern')">Latern</a></li>
-            <li role="menuitem"><a class="dropdown-item" (click)="toggleTag('Kit')">Kit</a></li>
-          </ul>
-        </div>
+        <span *ngFor="let tag of featureTags" (click)="toggleFeatureTag(tag)" class="featureTag badge badge-info">{{tag}}</span>
+        <hr>
         <div id="amenity_list">
-          <span *ngFor="let tag of tags" class="badge badge-secondary amenity_item">{{tag}}</span>
+          <span *ngFor="let tag of tags" (click)="toggleEventTag(tag)" class="badge badge-info amenity_item">{{tag}}</span>
         </div>
         <div>
-          <button type="button" class="btn btn-primary" (click)="isCollapsed2 = !isCollapsed2"
+          <hr *ngIf="tags.length !== 0">
+          <button type="button" class="btn btn-danger" (click)="isCollapsed2 = !isCollapsed2"
                   [attr.aria-expanded]="!isCollapsed2" aria-controls="collapseBasic2">Next
           </button>
         </div>
@@ -55,25 +45,27 @@
       <div class="card-body">
         <h6 class="card-subtitle mb-2 text-muted">step 3</h6>
 
-        <h5 class="card-title">What will your Equipment name be?</h5>
-        <input
-          [(ngModel)]="title"
-          class="form-control"
-          placeholder="Type your equiment name">
+        <!--<h5 class="card-title">What will your Equipment name be?</h5>-->
+        <!--<input-->
+          <!--[(ngModel)]="title"-->
+          <!--class="form-control"-->
+          <!--placeholder="Type your equiment name">-->
 
-        <h5 class="card-title">How many do you have?</h5>
+        <h5 class="card-title">Enter total quantity of your equipment.</h5>
         <input
           [(ngModel)]="quantity"
           class="form-control"
           placeholder="Type your equiment quantity">
 
-        <h5 class="card-title">Describe who should need this equipment, and details about this equipment.</h5>
+        <hr>
+        <h5 class="card-title">Describe who will need this equipment, and details about this equipment.</h5>
         <textarea
           [(ngModel)]="paragraph"
           class="form-control"
           placeholder="Paragraph text">
         </textarea>
         <div>
+          <hr>
           <button type="button" class="btn btn-success" (click)="createEquipment()"
                   [attr.aria-expanded]="!isCollapsed3" aria-controls="collapseBasic3">Create
           </button>

@@ -58,6 +58,7 @@ import {SiteServiceClient} from './services/site.service.client';
 import { SiteEditorComponent } from './site-editor/site-editor.component';
 import { SiteDetailComponent } from './site-detail/site-detail.component';
 import { AdminEventListComponent } from './admin-event-list/admin-event-list.component';
+import { AdminEquipmentListComponent } from './admin-equipment-list/admin-equipment-list.component';
 
 
 
@@ -97,6 +98,7 @@ import { AdminEventListComponent } from './admin-event-list/admin-event-list.com
     SiteEditorComponent,
     SiteDetailComponent,
     AdminEventListComponent,
+    AdminEquipmentListComponent,
 
   ],
   imports: [
