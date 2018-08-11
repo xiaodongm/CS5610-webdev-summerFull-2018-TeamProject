@@ -17,7 +17,12 @@
   margin-top: 20px
 }
 
-
+/*.scrolling-wrapper {*/
+  /*overflow-x: hidden;*/
+  /*overflow-y: scroll;*/
+  /*white-space: nowrap;*/
+  /*-webkit-overflow-scrolling: touch;*/
+/*}*/
 
 
 
