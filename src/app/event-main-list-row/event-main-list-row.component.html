@@ -1,0 +1,7 @@
+<div #panel class="scrolling-wrapper">
+  <div *ngFor="let event of cards" class="card col-4">
+    <app-event-card [data]="event"></app-event-card>
+  </div>
+</div>
+<button (click)="onPreviousSearchPosition()">Previous</button>
+<button (click)="onNextSearchPosition()">Next</button>
