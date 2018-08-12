@@ -13,6 +13,7 @@ import {EquipmentServiceClient} from '../services/equipment.service.client';
 import {SiteServiceClient} from '../services/site.service.client';
 import {Site} from '../models/site.model.client';
 import {ReservationServiceClient} from '../services/reservation.service.client';
+import {EquipmentRentingServiceClient} from '../services/equipmentRenting.service.client';
 
 
 @Component({
@@ -30,7 +31,7 @@ export class ProfileComponent implements OnInit {
               private equipmentService: EquipmentServiceClient,
               private siteService: SiteServiceClient,
               private reservationService: ReservationServiceClient,
-              private equipmentRentingService: EquipmentServiceClient,
+              private equipmentRentingService: EquipmentRentingServiceClient,
               private router: Router) {
   }
 
@@ -59,6 +60,11 @@ export class ProfileComponent implements OnInit {
   setCurPage(curPage) {
     this.curPage = curPage;
   }
+
+  goEventList() {
+    this.router.navigate(['eventList']);
+  }
+
 
   goCreateSite() {
     this.router.navigate(['createSite']);
@@ -135,17 +141,26 @@ export class ProfileComponent implements OnInit {
     this.providerService
       .profile()
       .then(provider => {
-        this.provider = provider;
-        this.equipmentService
-          .findEquipmentsForProvider(this.provider._id)
-          .then(equipments => this.myEquipments = equipments);
+          this.provider = provider;
+          this.equipmentService
+            .findEquipmentsForProvider(this.provider._id)
+            .then(equipments => this.myEquipments = equipments);
 
-        this.siteService
-          .findSitesForProviderWithInfo(this.provider._id)
-          .then((sites) => this.mySites = sites);
+          this.siteService
+            .findSitesForProviderWithInfo(this.provider._id)
+            .then((sites) => this.mySites = sites);
 
-        if (provider.role === 'SiteManager') {
-
+          if (provider.role === 'SiteManager') {
+            this.reservationService
+              .findReservationsForProvider(provider._id)
+              .then(reservations => {
+                this.myRentings = reservations;
+              });
+          } else {
+              this.equipmentRentingService
+              .findRentingsForProvider(provider._id)
+              .then(rentings => this.myRentings = rentings);
+          }
         }
       );
   }

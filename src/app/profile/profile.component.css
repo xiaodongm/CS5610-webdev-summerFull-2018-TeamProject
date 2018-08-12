@@ -66,6 +66,13 @@
   right:50px;
 }
 
+
+.btn-position2 {
+  position: absolute;
+  top: 120px;
+  right:45%;
+}
+
 .nav-links {
   cursor: pointer;
 }
@@ -75,5 +82,8 @@
   border-color: powderblue;
 }
 
-
-
+#button-basic-att {
+  border: 0;
+  color: white;
+  background-color: black;
+}

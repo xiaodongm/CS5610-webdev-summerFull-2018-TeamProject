@@ -4,7 +4,7 @@
 <!--</div>-->
 <div>
   <div class="main-background">
-    <div class="row">
+    <div>
       <div class="avatar-container">
         <div class="avatar" *ngIf="user.profilePhoto" [ngStyle]="{'background-image': 'url(' + user.profilePhoto + ')'}"></div>
       </div>
@@ -12,16 +12,20 @@
           class="main-text">{{user.firstName}} {{user.lastName}}</h2>
       <h2 *ngIf="user.role === 'SiteManager' || user.role === 'EquipmentDealer'"
           class="main-text">{{provider.organizationName}}</h2>
+
+    </div>
+    <div class = 'btn-position2 col-auto'>
+      <button *ngIf="user.role === 'organizer'" (click)="goCreateEvent()">Post A New Event</button>
+      <button *ngIf="user.role === 'attendee'" (click)="goEventList()">Attend A New Event</button>
+      <button *ngIf="user.role === 'SiteManager'" (click)="goCreateSite()">Post A Site</button>
+      <button *ngIf="user.role === 'EquipmentDealer'" (click)="goCreateEquipments()">Post A New Equipment</button>
     </div>
 
 
     <div class = 'btn-position'>
-      <button *ngIf="user.role === 'organizer'" (click)="goCreateEvent()">Post A New Event</button>
-      <button *ngIf="user.role === 'attendee'" >Attend A New Event</button>
-      <button *ngIf="user.role === 'SiteManager'" (click)="goCreateSite()">Post A Site</button>
-      <button *ngIf="user.role === 'EquipmentDealer'" (click)="goCreateEquipments()">Post A New Equipment</button>
+
       <div *ngIf="user.role === 'organizer' || user.role === 'attendee'">
-      <li  id="roleFld-att" class="list-group-item form-control">{{user.role}}</li>
+        <div  id="roleFld-att" class="list-group-item form-control">{{user.role}}</div>
       <div class="btn-group" dropdown>
         <button id="button-basic-att" dropdownToggle type="button" class="btn btn-outline-dark dropdown-toggle"
                 aria-controls="dropdown-basic-att">
@@ -34,6 +38,8 @@
         </ul>
       </div>
       </div>
+
+
     </div>
   </div>
 
@@ -88,7 +94,7 @@
     <app-discussion-list-for-profile (messageEvent)="receiveNewDiscussion($event)" *ngIf="(user.role === 'organizer' || user.role === 'attendee') && curPage === 'ds'" [discussions]="discussions" [isSame] = "isSame" [userId] = "user._id"></app-discussion-list-for-profile>
     <app-site-list-for-profile (messageEvent)="receiveNewSites($event)" *ngIf="user.role === 'SiteManager' && curPage === 'sl'" [isSame] = "isSame" [user] = "user" [sites]="mySites"></app-site-list-for-profile>
     <app-epuipment-list-for-profile  (messageEvent)="receiveNewEquips($event)" *ngIf="user.role === 'EquipmentDealer' && curPage === 'el'" [isSame] = "isSame" [user] = "user" [equips]="myEquipments"></app-epuipment-list-for-profile>
-    <app-renting-list-for-profile  (messageEvent)="receiveNewRentings($event)" *ngIf="(user.role === 'SiteManager' || user.role === 'EquipmentDealer') && curPage === 'rt'" [isSame] = "isSame"></app-renting-list-for-profile>
+    <app-renting-list-for-profile  (messageEvent)="receiveNewRentings($event)" [rentings]="myRentings" [user] = "user" *ngIf="(user.role === 'SiteManager' || user.role === 'EquipmentDealer') && curPage === 'rt'" [isSame] = "isSame"></app-renting-list-for-profile>
   </div>
 
 </div>

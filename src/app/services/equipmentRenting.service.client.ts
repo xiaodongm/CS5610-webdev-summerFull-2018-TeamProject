@@ -36,6 +36,7 @@ export class EquipmentRentingServiceClient {
       .then(res => res.json());
   }
 
+
 }
 
 

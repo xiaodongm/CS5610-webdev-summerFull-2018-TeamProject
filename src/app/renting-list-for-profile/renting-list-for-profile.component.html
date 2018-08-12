@@ -1,3 +1,34 @@
-<p>
-  renting-list-for-profile works!
-</p>
+<div>
+  <div class="header">
+    <h4>Number of Reservations/Renting: {{rentings.length}}</h4>
+  </div>
+  <div class="row">
+    <div *ngFor="let rent of rentings" class="col-6">
+      <div class="card">
+        <div class="body">
+          <div class="info-container">
+            <div>
+              <a class="text-muted" [routerLink]="['eventDetail/' + rent.event._id]">
+                Event: {{rent.event.title}}
+              </a>
+            </div>
+            <div *ngIf="user.role === 'SiteManager'">
+              <a class="text-muted" [routerLink]="['eventDetail/' + rent.site._id]">
+                Site: {{rent.site.title}}
+              </a>
+            </div>
+            <div *ngIf="user.role === 'EquipmentDealer'" class="text-muted">
+                Equipment: {{rent.equipment.title}}
+                Total: {{rent.equipment.quantity}}
+                Available: {{rent.equipment.available}}
+            </div>
+            <div *ngIf="isSame">
+              <button class="btn btn-primary" (click)="delete(rent)">Delete</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
