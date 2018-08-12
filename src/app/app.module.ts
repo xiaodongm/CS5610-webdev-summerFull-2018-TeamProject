@@ -71,6 +71,8 @@ import { EventMainListComponent } from './event-main-list/event-main-list.compon
 import { EventMainListRowComponent } from './event-main-list-row/event-main-list-row.component';
 import { EventMainListRowCardComponent } from './event-main-list-row-card/event-main-list-row-card.component';
 import { EpuipmentListForProfileComponent } from './epuipment-list-for-profile/epuipment-list-for-profile.component';
+import { SiteListComponent } from './site-list/site-list.component';
+import { SiteListCardComponent } from './site-list-card/site-list-card.component';
 
 @NgModule({
   declarations: [
@@ -118,6 +120,8 @@ import { EpuipmentListForProfileComponent } from './epuipment-list-for-profile/e
     EventMainListRowComponent,
     EventMainListRowCardComponent,
     EpuipmentListForProfileComponent,
+    SiteListComponent,
+    SiteListCardComponent,
   ],
   imports: [
     BrowserModule,

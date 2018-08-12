@@ -41,6 +41,7 @@ export class ProfileComponent implements OnInit {
   myEquipments: Equipment[] = [];
   mySites: Site[] = [];
   friends = [];
+  myRentings;
   receiveMessage($event) {
     if (this.user.role !== 'SiteManager' && this.user.role !== 'EquipmentDealer') {
       this.user = $event;
@@ -84,6 +85,10 @@ export class ProfileComponent implements OnInit {
 
   receiveAtEvents(events) {
     this.attendedEvents = events;
+  }
+
+  receiveNewRentings(events) {
+    this.myRentings = events;
   }
 
   fillFollowingInfo(following) {

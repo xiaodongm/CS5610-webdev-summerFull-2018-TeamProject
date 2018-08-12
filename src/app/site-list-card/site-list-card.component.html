@@ -1,0 +1,47 @@
+<div class="card text-center"
+     (mouseleave) ="mouseLeave()">
+
+  <carousel (activeSlideChange)="slideChanged($event)" data-interval="false">
+    <slide *ngFor="let photo of data.photos" >
+      <div class="img-container">
+        <!--<img [ngClass]="{'wbdv-blur': hasExtraInfo && inImage}" src={{photo}} alt="first slide" style="display: block; width: 100%;">-->
+        <div class="img"
+             [ngClass]="{'wbdv-blur': hasExtraInfo && inImage}"
+             [ngStyle]="{'background-image': 'url(' + photo + ')'}">
+        </div>
+      </div>
+    </slide>
+  </carousel>
+
+  <div class="card-block" style="{z-index: 1}">
+
+    <h4 id='title' class="card-title">
+      <span>
+        <a [routerLink]="['/siteDetail/' + data._id]">{{data.title}}</a>
+      </span>
+    </h4>
+    <div class="card-body">
+      <div class="row" >
+        <div class="avatar-container" *ngIf="provider.profilePhoto">
+          <div class="avatar" [ngStyle]="{'background-image': 'url(' + provider.profilePhoto + ')'}">
+          </div>
+        </div>
+
+        <div class="host-info">
+          <div class="text-sm-left text-muted">
+            Hosted by
+            <span>{{provider && provider.username}}</span>
+            <span>{{provider && provider.firstName}}</span>
+            <span>{{provider && ' ' + provider.lastName}}</span>
+          </div>
+          <div class="text-sm-left">
+            <span class="text-muted">From </span>
+            <span>{{provider.organizationName}}</span>
+            <span>{{provider.address}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
