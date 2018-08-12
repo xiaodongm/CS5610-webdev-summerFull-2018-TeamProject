@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, TemplateRef} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, TemplateRef, Output} from '@angular/core';
 import {SiteServiceClient} from '../services/site.service.client';
 import {Site} from '../models/site.model.client';
 import {EquipmentServiceClient} from '../services/equipment.service.client';
@@ -12,6 +12,7 @@ import {BsModalRef, BsModalService} from 'ngx-bootstrap';
 import {UserServiceClient} from '../services/user.service.client';
 import {EventServiceClient} from '../services/event.service.client';
 import {EventCard} from '../models/EventCard.model.client';
+import {EquipmentRentingServiceClient} from '../services/equipmentRenting.service.client';
 
 @Component({
   selector: 'app-equipment-list-card',
@@ -22,6 +23,7 @@ export class EquipmentListCardComponent implements OnInit {
 
   constructor(public sanitizer: DomSanitizer,
               private router: Router,
+              private rentService: EquipmentRentingServiceClient,
               private userService: UserServiceClient,
               private eventService: EventServiceClient,
               private modalService: BsModalService,
@@ -34,6 +36,7 @@ export class EquipmentListCardComponent implements OnInit {
   targetEvent: EventCard = new EventCard();
   provider = new Provider();
   @Input() data: Equipment;
+  @Output() refreshEmitter = new EventEmitter<any>();
   modalRef: BsModalRef;
   config = {
     animated: true,
@@ -88,42 +91,31 @@ export class EquipmentListCardComponent implements OnInit {
       this.modalRef.hide();
       return;
     }
-    // console.log('Confirmed!');
-    // this.reservationService
-    //   .findReservationsForEvent(this.targetEvent._id)
-    //   .then((reservation) => {
-    //
-    //     if (reservation.length > 0) {
-    //       console.log(reservation);
-    //       const r = {
-    //         event: reservation[0].event,
-    //         site: reservation[0].site._id
-    //       }
-    //       console.log(r);
-    //       this.reservationService.unreserveSiteForEvent(r)
-    //         .then((res) => {
-    //           console.log(res);
-    //           const newReservation = {
-    //             event: this.targetEvent._id,
-    //             site: this.site._id
-    //           };
-    //           this.reservationService.reserveSiteForEvent(newReservation)
-    //             .then(() => this.loadMyEvents())
-    //             .then(() =>  this.modalRef.hide());
-    //
-    //         });
-    //     } else {
-    //       const newReservation = {
-    //         event: this.targetEvent._id,
-    //         site: this.site._id
-    //       };
-    //       this.reservationService.reserveSiteForEvent(newReservation)
-    //         .then(() => this.loadMyEvents())
-    //         .then(() =>  this.modalRef.hide());
-    //     }
-    //
-    //   });
 
+    if (this.data.available < this.rentNumber) {
+      alert('don not have enough equipments');
+      this.modalRef.hide();
+      return;
+    }
+    console.log('Confirmed!');
+    const r = {
+      event: this.targetEvent._id,
+      equipment: this.data._id,
+      provider: this.provider._id,
+      quantity: this.rentNumber
+    };
+
+    this.rentService.rentEquipmentForEvent(r)
+      .then(() => this.loadMyEvents())
+      .then(() => {
+        this.loadEquipments();
+        alert('rent success');
+        this.modalRef.hide();
+      });
+  }
+
+  loadEquipments() {
+    this.refreshEmitter.emit('refresh equipments');
   }
 
   loadMyEvents() {
@@ -139,8 +131,8 @@ export class EquipmentListCardComponent implements OnInit {
   }
 
   decline(): void {
-    this.loadMyEvents()
-      .then(() => this.modalRef.hide());
+    this.loadEquipments();
+    this.modalRef.hide();
   }
 
   ngOnInit() {

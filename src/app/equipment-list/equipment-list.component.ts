@@ -13,7 +13,7 @@ export class EquipmentListComponent implements OnInit {
 
   equipments: Equipment[] = [];
 
-  loadEvents() {
+  loadEquipments() {
 
     return this.service.findAllEquipments()
       .then((equipments) => {
@@ -31,7 +31,7 @@ export class EquipmentListComponent implements OnInit {
 
   }
   ngOnInit() {
-    this.loadEvents();
+    this.loadEquipments();
   }
 
 }

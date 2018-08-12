@@ -77,6 +77,7 @@ import { SiteListComponent } from './site-list/site-list.component';
 import { SiteListCardComponent } from './site-list-card/site-list-card.component';
 import { EquipmentListComponent } from './equipment-list/equipment-list.component';
 import { EquipmentListCardComponent } from './equipment-list-card/equipment-list-card.component';
+import {EquipmentRentingServiceClient} from './services/equipmentRenting.service.client';
 
 
 @NgModule({
@@ -162,7 +163,8 @@ import { EquipmentListCardComponent } from './equipment-list-card/equipment-list
     DiscussionServiceClient,
     EquipmentServiceClient,
     SiteServiceClient,
-    ReservationServiceClient
+    ReservationServiceClient,
+    EquipmentRentingServiceClient
   ],
   bootstrap: [AppComponent]
 })
