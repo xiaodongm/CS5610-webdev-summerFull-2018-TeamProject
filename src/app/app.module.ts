@@ -64,19 +64,15 @@ import { SiteEditorComponent } from './site-editor/site-editor.component';
 import { SiteDetailComponent } from './site-detail/site-detail.component';
 import { AdminEventListComponent } from './admin-event-list/admin-event-list.component';
 import { AdminEquipmentListComponent } from './admin-equipment-list/admin-equipment-list.component';
-<<<<<<< HEAD
 import { ReservationServiceClient} from './services/reservation.service.client';
 import { RentingListForProfileComponent } from './renting-list-for-profile/renting-list-for-profile.component';
 import { AdminDiscussionListComponent } from './admin-discussion-list/admin-discussion-list.component';
 import { EventMainListComponent } from './event-main-list/event-main-list.component';
 import { EventMainListRowComponent } from './event-main-list-row/event-main-list-row.component';
 import { EventMainListRowCardComponent } from './event-main-list-row-card/event-main-list-row-card.component';
+import { EpuipmentListForProfileComponent } from './epuipment-list-for-profile/epuipment-list-for-profile.component';
 import { SiteListComponent } from './site-list/site-list.component';
 import { SiteListCardComponent } from './site-list-card/site-list-card.component';
-
-
-
-
 
 @NgModule({
   declarations: [
@@ -123,6 +119,7 @@ import { SiteListCardComponent } from './site-list-card/site-list-card.component
     EventMainListComponent,
     EventMainListRowComponent,
     EventMainListRowCardComponent,
+    EpuipmentListForProfileComponent,
     SiteListComponent,
     SiteListCardComponent,
   ],

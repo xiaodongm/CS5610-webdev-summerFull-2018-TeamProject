@@ -1,6 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import {UserServiceClient} from '../services/user.service.client';
-import {EventServiceClient} from '../services/event.service.client';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+
 
 @Component({
   selector: 'app-events-list-for-profile',
@@ -15,9 +14,10 @@ export class EventsListForProfileComponent implements OnInit {
   @Input() type;
   @Input() events;
   @Input() isSame;
+  @Output() messageEvent: EventEmitter<Object> = new EventEmitter();
 
-  receiveNewEvents($event) {
-    this.events = $event;
+  receiveEvents($event) {
+    this.messageEvent.emit($event);
   }
 
   ngOnInit() {

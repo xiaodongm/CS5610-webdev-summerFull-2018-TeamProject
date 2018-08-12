@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {DiscussionServiceClient} from '../services/discussion.service.client';
 
 @Component({
@@ -11,6 +11,7 @@ export class DiscussionListForProfileComponent implements OnInit {
   @Input() discussions;
   @Input()isSame;
   @Input() userId
+  @Output() messageEvent: EventEmitter<Object> = new EventEmitter();
 
   constructor(private discussionService: DiscussionServiceClient) {}
 
@@ -28,7 +29,7 @@ export class DiscussionListForProfileComponent implements OnInit {
               alert(discussions.error);
               return;
             } else {
-              this.discussions = discussions;
+              this.messageEvent.emit(discussions);
             }
           });
       });
