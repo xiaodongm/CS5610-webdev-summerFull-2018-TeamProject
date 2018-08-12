@@ -71,6 +71,7 @@ import { EventMainListComponent } from './event-main-list/event-main-list.compon
 import { EventMainListRowComponent } from './event-main-list-row/event-main-list-row.component';
 import { EventMainListRowCardComponent } from './event-main-list-row-card/event-main-list-row-card.component';
 import { AdminSiteListComponent } from './admin-site-list/admin-site-list.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -122,6 +123,7 @@ import { AdminSiteListComponent } from './admin-site-list/admin-site-list.compon
     EventMainListRowComponent,
     EventMainListRowCardComponent,
     AdminSiteListComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

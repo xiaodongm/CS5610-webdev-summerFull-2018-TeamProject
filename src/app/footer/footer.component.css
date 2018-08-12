@@ -1,0 +1,54 @@
+#footer {
+  background-color: #2e3e48; height: 150px;
+}
+
+#footer h4 {
+  color: white;
+  margin-left: 50px;
+}
+
+#footer img {
+  height: 50px; width: 160px;
+}
+
+#followMsg i {
+  color: white;
+  cursor: pointer;
+}
+
+.fa-facebook-square {
+  margin-left: 120px;
+}
+
+.fa-twitter {
+  margin-left: 20px;
+}
+
+.fa-youtube {
+  margin-left: 20px;
+}
+
+.fa-instagram {
+  margin-left: 20px;
+}
+
+.fa-weixin {
+  margin-left: 20px;
+}
+
+.fa-weibo {
+  margin-left: 20px;
+}
+
+
+#appStore {
+  margin-bottom: 15px;
+  margin-left: 80px;
+  cursor: pointer;
+}
+
+#googlePlay {
+  margin-bottom: 15px;
+  margin-left: 20px;
+  cursor: pointer;
+}
