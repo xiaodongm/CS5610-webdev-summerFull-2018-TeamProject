@@ -64,13 +64,13 @@ import { SiteEditorComponent } from './site-editor/site-editor.component';
 import { SiteDetailComponent } from './site-detail/site-detail.component';
 import { AdminEventListComponent } from './admin-event-list/admin-event-list.component';
 import { AdminEquipmentListComponent } from './admin-equipment-list/admin-equipment-list.component';
-<<<<<<< HEAD
 import { ReservationServiceClient} from './services/reservation.service.client';
 import { RentingListForProfileComponent } from './renting-list-for-profile/renting-list-for-profile.component';
 import { AdminDiscussionListComponent } from './admin-discussion-list/admin-discussion-list.component';
 import { EventMainListComponent } from './event-main-list/event-main-list.component';
 import { EventMainListRowComponent } from './event-main-list-row/event-main-list-row.component';
 import { EventMainListRowCardComponent } from './event-main-list-row-card/event-main-list-row-card.component';
+import { AdminSiteListComponent } from './admin-site-list/admin-site-list.component';
 
 
 
@@ -121,6 +121,7 @@ import { EventMainListRowCardComponent } from './event-main-list-row-card/event-
     EventMainListComponent,
     EventMainListRowComponent,
     EventMainListRowCardComponent,
+    AdminSiteListComponent,
   ],
   imports: [
     BrowserModule,
