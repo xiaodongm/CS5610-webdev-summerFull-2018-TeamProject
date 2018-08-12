@@ -7,7 +7,7 @@
       </slide>
     </carousel>
 
-  <div class="iframe-pos">
+  <div class="iframe-pos" [ngClass]="{'iframe-pos-active': hasExtraInfo && inImage}">
     <div class="iframe-container">
       <iframe *ngIf="hasExtraInfo && inImage"
               [src]='getIframeSource()'
@@ -31,7 +31,11 @@
       </span>
     </span>
 
-    <h4 class="card-title">{{data.title}}</h4>
+    <h4 id='title' class="card-title">
+      <span>
+        <a [routerLink]="['/eventDetail/' + data._id]">{{data.title}}</a>
+      </span>
+    </h4>
     <div class="card-body">
     <div class="row">
       <div class="avatar-container" *ngIf="organizer.profilePhoto">
