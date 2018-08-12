@@ -89,7 +89,7 @@ export class DiscussionComponent implements OnInit {
   }
 
   delete() {
-    if (this.curUser.error){
+    if (this.curUser.error) {
       alert(this.curUser.error);
     } else {
       this.discussionService

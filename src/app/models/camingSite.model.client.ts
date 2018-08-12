@@ -11,7 +11,7 @@ export class CampingSite {
   };
   amenity: object;
   photo: {
-    _attributes: {realUrl:string}
+    _attributes: {realUrl: string}
   }[];
   contact: object;
   facilityName: String;

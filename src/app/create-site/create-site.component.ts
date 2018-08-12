@@ -25,14 +25,33 @@ export class CreateSiteComponent implements OnInit {
   title;
   paragraph;
 
-  toggleTag(tag) {
-    if (this.tags.includes(tag)) {
-      const index = this.tags.indexOf(tag);
-      this.tags.splice(index, 1);
-    } else {
-      this.tags.push(tag);
-    }
+  featureTags = ['Campfire Rings', 'Drinking Water', 'Firewood Vendor', 'Fishing', 'Grills', 'River Access',
+                  'Swimming', 'Tables', 'Tent Sites', 'Trash Collection', 'Vault Toilets', 'ATM', 'Fuel Available',
+                  'Grocery Store', 'Payphone', 'Restaurant', 'Picnic Area', 'Boating', 'Group Camping', 'Parking Area',
+                  'Pet Allowed', 'Trails', 'Wildlife Viewing'];
+
+  // toggleTag(tag) {
+  //   if (this.tags.includes(tag)) {
+  //     const index = this.tags.indexOf(tag);
+  //     this.tags.splice(index, 1);
+  //   } else {
+  //     this.tags.push(tag);
+  //   }
+  // }
+
+  toggleFeatureTag(tag) {
+    this.tags.push(tag);
+    const index = this.featureTags.indexOf(tag);
+    this.featureTags.splice(index, 1);
   }
+
+  toggleEventTag(tag) {
+    this.featureTags.push(tag);
+    const index = this.tags.indexOf(tag);
+    this.tags.splice(index, 1);
+  }
+
+
   createSite() {
 
     let curUser;

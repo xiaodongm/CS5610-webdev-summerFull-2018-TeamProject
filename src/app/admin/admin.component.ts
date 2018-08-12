@@ -4,6 +4,7 @@ import {ProviderServiceClient} from '../services/provider.service.client';
 import {Router} from '@angular/router';
 import {EventServiceClient} from '../services/event.service.client';
 import {EquipmentServiceClient} from '../services/equipment.service.client';
+import {DiscussionServiceClient} from '../services/discussion.service.client';
 
 
 @Component({
@@ -16,7 +17,8 @@ export class AdminComponent implements OnInit {
   constructor(private userService: UserServiceClient,
               private providerService: ProviderServiceClient,
               private eventService: EventServiceClient,
-              private equuipmentService: EquipmentServiceClient,
+              private equipmentService: EquipmentServiceClient,
+              private discussionService: DiscussionServiceClient,
               private router: Router) { }
 
   // menuItems = ['User', 'Organizer', 'Attendee', 'Provider', 'SiteManager', 'EquipmentDealer', 'Event', 'CampSite'];
@@ -26,13 +28,15 @@ export class AdminComponent implements OnInit {
   providers = [];
   events = [];
   equipments = [];
+  discussions = [];
 
   listType;
 
   listTypeModel = {
     userList : 'userList',
     eventList : 'eventList',
-    equipmentList: 'equipmentList'
+    equipmentList: 'equipmentList',
+    discussionList: 'discussionList'
   };
 
   findAllUsers() {
@@ -57,10 +61,15 @@ export class AdminComponent implements OnInit {
   }
 
   findAllEquipments() {
-   this.equuipmentService.findAllEquipments()
+   this.equipmentService.findAllEquipments()
      .then(equipments => {
        this.equipments = equipments;
      }) ;
+  }
+
+  findAllDiscussions() {
+    this.discussionService.findAllDiscussions()
+      .then(discussions => this.discussions = discussions);
   }
 
   openUserList() {
@@ -75,11 +84,16 @@ export class AdminComponent implements OnInit {
     this.listType = this.listTypeModel.equipmentList;
   }
 
+  openDiscussionList() {
+    this.listType = this.listTypeModel.discussionList;
+  }
+
   receiveMessage($event) {
     this.findAllUsers();
     this.findAllProviders();
     this.findAllEvents();
     this.findAllEquipments();
+    this.findAllDiscussions();
   }
 
 
@@ -95,6 +109,7 @@ export class AdminComponent implements OnInit {
     this.findAllProviders();
     this.findAllEvents();
     this.findAllEquipments();
+    this.findAllDiscussions();
   }
 
 }
