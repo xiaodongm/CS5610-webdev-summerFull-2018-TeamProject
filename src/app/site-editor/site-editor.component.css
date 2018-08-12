@@ -28,10 +28,10 @@
 
 
 .avatar-container {
-
   display: inline-block;
   width: 50px;
   padding: 0;
+  margin-left: 25px;
 }
 
 .avatar {
@@ -42,4 +42,88 @@
   padding-bottom: 100%;
   background-size: cover;
   background-position: center;
+}
+
+
+#editIcon {
+  margin-top: 25px;
+  margin-left: 40px;
+  color: #e4606d;
+  cursor: pointer;
+}
+
+.fields {
+  margin-bottom: 10px;
+}
+
+#dragInfo {
+  margin-left: 20px;
+  margin-top: 5px;
+}
+
+.content-of-modal .card {
+  background-color: #9fcdff;
+  margin: 5px;
+  padding: 10px;
+}
+
+
+.content-of-modal .delete-span {
+  display: inline-block;
+  margin-right: 3px;
+  float: right;
+
+}
+
+.content-of-modal .edit-span {
+  display: inline-block;
+  margin-right: 4px;
+  float: right;
+}
+
+
+
+#imgUrlList {
+  margin-bottom: 5px;
+}
+
+#yesBtn {
+  margin-right: 20px;
+}
+
+.widgetFields {
+  margin-top: 20px;
+}
+
+#addParaBtn {
+  margin-top: 5px;
+}
+
+
+#addListBtn {
+  margin-top: 5px;
+}
+
+
+#desYesBtn {
+  margin-right: 15px;
+}
+
+.featureTag {
+  cursor: pointer;
+  margin-right: 5px;
+  margin-top: 10px;
+}
+
+#tagsDisplay {
+  margin-left: 30px;
+}
+
+.badge {
+  cursor: pointer;
+}
+
+.host-info {
+  margin-left: 30px;
+  margin-top: 20px;
 }

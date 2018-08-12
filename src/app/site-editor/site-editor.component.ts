@@ -42,6 +42,11 @@ export class SiteEditorComponent implements OnInit {
     class: 'my-modal'
   };
 
+  featureTags = ['Campfire Rings', 'Drinking Water', 'Firewood Vendor', 'Fishing', 'Grills', 'River Access',
+    'Swimming', 'Tables', 'Tent Sites', 'Trash Collection', 'Vault Toilets', 'ATM', 'Fuel Available',
+    'Grocery Store', 'Payphone', 'Restaurant', 'Picnic Area', 'Boating', 'Group Camping', 'Parking Area',
+    'Pet Allowed', 'Trails', 'Wildlife Viewing'];
+
   setParams(params) {
     const siteId = params['siteId'];
     this.service.findSiteById(siteId)
@@ -123,14 +128,27 @@ export class SiteEditorComponent implements OnInit {
   splitList(data) {
     return data.split(/\r?\n/);
   }
-  toggleTag(tag) {
-    if (this.site.tags.includes(tag)) {
-      const index = this.site.tags.indexOf(tag);
-      this.site.tags.splice(index, 1);
-    } else {
-      this.site.tags.push(tag);
-    }
+  // toggleTag(tag) {
+  //   if (this.site.tags.includes(tag)) {
+  //     const index = this.site.tags.indexOf(tag);
+  //     this.site.tags.splice(index, 1);
+  //   } else {
+  //     this.site.tags.push(tag);
+  //   }
+  // }
+
+  toggleFeatureTag(tag) {
+    this.site.tags.push(tag);
+    const index = this.featureTags.indexOf(tag);
+    this.featureTags.splice(index, 1);
   }
+
+  toggleEventTag(tag) {
+    this.featureTags.push(tag);
+    const index = this.site.tags.indexOf(tag);
+    this.site.tags.splice(index, 1);
+  }
+
   updateWidget(event) {
     const oldWidget = event[0];
     const newWidget = event[1];
