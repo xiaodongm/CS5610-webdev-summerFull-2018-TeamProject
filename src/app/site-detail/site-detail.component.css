@@ -28,7 +28,7 @@
 
 
 .avatar-container {
-
+  margin-left: 25px;
   display: inline-block;
   width: 50px;
   padding: 0;
@@ -42,4 +42,27 @@
   padding-bottom: 100%;
   background-size: cover;
   background-position: center;
+}
+
+
+#divider {
+  height: 30px;
+  margin-top: 4px;
+  border-right: 1px solid dimgray;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+
+#selectBtn {
+  margin-left: 8px;
+}
+
+
+#yesBtn {
+  margin-right: 20px;
+}
+
+#addtoEventBtn {
+  margin-top: 5px;
 }
