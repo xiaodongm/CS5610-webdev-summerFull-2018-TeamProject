@@ -4,6 +4,6 @@
 </div>
 <div class="card-columns">
   <div *ngFor="let event of events">
-    <app-event-card-for-profile [type]="type" [data]="event" (newEvents) = 'receiveNewEvents($event)' [isSame] = "isSame"></app-event-card-for-profile>
+    <app-event-card-for-profile [type]="type" [data]="event" (newEvents) = 'receiveEvents($event)' [isSame] = "isSame"></app-event-card-for-profile>
   </div>
 </div>

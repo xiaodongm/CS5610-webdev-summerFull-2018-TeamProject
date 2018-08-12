@@ -72,9 +72,9 @@ import { EventMainListRowComponent } from './event-main-list-row/event-main-list
 import { EventMainListRowCardComponent } from './event-main-list-row-card/event-main-list-row-card.component';
 import { AdminSiteListComponent } from './admin-site-list/admin-site-list.component';
 import { FooterComponent } from './footer/footer.component';
-
-
-
+import { EpuipmentListForProfileComponent } from './epuipment-list-for-profile/epuipment-list-for-profile.component';
+import { SiteListComponent } from './site-list/site-list.component';
+import { SiteListCardComponent } from './site-list-card/site-list-card.component';
 
 
 @NgModule({
@@ -124,6 +124,9 @@ import { FooterComponent } from './footer/footer.component';
     EventMainListRowCardComponent,
     AdminSiteListComponent,
     FooterComponent,
+    EpuipmentListForProfileComponent,
+    SiteListComponent,
+    SiteListCardComponent,
   ],
   imports: [
     BrowserModule,

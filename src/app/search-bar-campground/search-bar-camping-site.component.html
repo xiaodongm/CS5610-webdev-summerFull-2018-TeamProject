@@ -1,18 +1,19 @@
-<div class="input-group mb-auto container-fluid search">
-
-  <input type="search"
-         class="form-control"
-         aria-label="Search"
-         placeholder="Please type the name of camping site. The length of name must no less than 4"
-         [(ngModel)]="pNameInput">
-  <input type="search"
-         class="form-control"
-         aria-label="Search"
-         placeholder="Please enter the two character abbreviation for US state or Canadian province"
-         [(ngModel)]="pStateInput">
-  <div class="input-group-append">
-    <button class="btn btn-outline-success my-2 my-sm-0"
-            type="submit"
-            (click)="searchCampgrounds(pNameInput, pStateInput, $event)">Search</button>
+<div class="container">
+  <div class="input-group mb-auto container-fluid search">
+    <input type="search"
+           class="form-control"
+           aria-label="Search"
+           placeholder="Name"
+           [(ngModel)]="pNameInput">
+    <input type="search"
+           class="form-control"
+           aria-label="Search"
+           placeholder="State"
+           [(ngModel)]="pStateInput">
+    <div class="input-group-append">
+      <button class="btn btn-outline-success my-2 my-sm-0"
+              type="submit"
+              (click)="searchCampgrounds(pNameInput, pStateInput, $event)">Search</button>
+    </div>
   </div>
 </div>

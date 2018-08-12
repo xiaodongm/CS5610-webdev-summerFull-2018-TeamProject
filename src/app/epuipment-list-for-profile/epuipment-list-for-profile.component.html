@@ -1,0 +1,36 @@
+<div>
+  <div class="header">
+    <span>Total Sites: {{equips.length}}</span>
+  </div>
+  <div class="row">
+    <div *ngFor="let equip of equips" class="col-6">
+      <div class="card">
+        <div id="Adiv">
+          <h4>{{equip.title}}</h4>
+        </div>
+
+        <div class="body">
+          <div class="pic-container">
+            <div class="avatar" *ngIf="equip.photos.length !== 0"
+                 [ngStyle]="{'background-image': 'url(' + equip.photos[0] + ')'}"></div>
+            <div class="avatar" *ngIf="equip.photos.length === 0"></div>
+          </div>
+
+          <div class="info-container">
+            <div>
+              Total: {{equip.quantity}}
+            </div>
+            <div>
+              Available: {{equip.available}}
+            </div>
+            <div *ngIf="isSame">
+              <i class="far fa-trash-alt fa-2x icon delete" (click)="deleteEquip(equip._id, equip.provider._id)"></i>
+              <i class="far fa-edit fa-2x icon edit" [routerLink]="['/equipmentEditor/' + equip._id]"></i>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
