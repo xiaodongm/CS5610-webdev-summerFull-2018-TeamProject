@@ -7,6 +7,7 @@ import {EquipmentServiceClient} from '../services/equipment.service.client';
 import {DiscussionServiceClient} from '../services/discussion.service.client';
 import {SiteServiceClient} from '../services/site.service.client';
 import {EnrollmentServiceClient} from '../services/enrollment.service.client';
+import {ReservationServiceClient} from '../services/reservation.service.client';
 
 
 @Component({
@@ -23,6 +24,7 @@ export class AdminComponent implements OnInit {
               private discussionService: DiscussionServiceClient,
               private siteService: SiteServiceClient,
               private enrollmentService: EnrollmentServiceClient,
+              private reservationService: ReservationServiceClient,
               private router: Router) { }
 
   // menuItems = ['User', 'Organizer', 'Attendee', 'Provider', 'SiteManager', 'EquipmentDealer', 'Event', 'CampSite'];
@@ -95,6 +97,11 @@ export class AdminComponent implements OnInit {
       .then(enrollments => this.enrollments = enrollments);
   }
 
+  findAllReservations() {
+    this.reservationService.findAllReservations()
+      .then(reservations => this.reservations = reservations);
+  }
+
   openUserList() {
     this.listType = this.listTypeModel.userList;
   }
@@ -135,6 +142,7 @@ export class AdminComponent implements OnInit {
     this.findAllDiscussions();
     this.findAllSites();
     this.findAllEnrollments();
+    this.findAllReservations();
   }
 
 
@@ -153,6 +161,7 @@ export class AdminComponent implements OnInit {
     this.findAllDiscussions();
     this.findAllSites();
     this.findAllEnrollments();
+    this.findAllReservations();
   }
 
 }
