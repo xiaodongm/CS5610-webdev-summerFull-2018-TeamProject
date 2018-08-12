@@ -61,6 +61,7 @@ export class CreateSiteComponent implements OnInit {
         const newSite = new Site();
         console.log(this.bsRangeValue);
         newSite.title = this.title;
+        newSite.location = this.location;
         newSite.provider = curUser._id;
         newSite.tags = this.tags;
         newSite.description = [];
