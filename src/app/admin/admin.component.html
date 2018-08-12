@@ -60,6 +60,59 @@
           </a>
         </div>
       </div>
+
+      <div class="card text-white bg-danger">
+        <div class="card-header">
+          <h4>CampSites</h4>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Total CampSites : {{sites.length}}</h3>
+          <a class="arrow" (click)="openSiteList()" routerLink="/admin">
+            More Info
+            <i class="fas fa-arrow-circle-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="card text-white bg-dark">
+        <div class="card-header">
+          <h4>Enrollments</h4>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Total Enrollments : {{enrollments.length}}</h3>
+          <a class="arrow" (click)="openEnrollmentsList()" routerLink="/admin">
+            More Info
+            <i class="fas fa-arrow-circle-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="card text-white bg-primary">
+        <div class="card-header">
+          <h4>Reservations</h4>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Total Reservations : {{reservations.length}}</h3>
+          <a class="arrow" (click)="openSiteList()" routerLink="/admin">
+            More Info
+            <i class="fas fa-arrow-circle-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="card text-white" style="background-color: #6f42c1">
+        <div class="card-header">
+          <h4>Rentals</h4>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Total Rentals : {{rentals.length}}</h3>
+          <a class="arrow" (click)="openSiteList()" routerLink="/admin">
+            More Info
+            <i class="fas fa-arrow-circle-right"></i>
+          </a>
+        </div>
+      </div>
+
     <!--</div>-->
     </div>
 
@@ -69,6 +122,7 @@
       <app-admin-event-list *ngIf="listType === 'eventList'" (messageEvent)="receiveMessage($event)"></app-admin-event-list>
       <app-admin-equipment-list *ngIf="listType === 'equipmentList'" (messageEvent)="receiveMessage($event)"></app-admin-equipment-list>
       <app-admin-discussion-list *ngIf="listType === 'discussionList'" (messageEvent)="receiveMessage($event)"></app-admin-discussion-list>
+      <app-admin-site-list *ngIf="listType === 'siteList'" (messageEvent)="receiveMessage($event)"></app-admin-site-list>
     </div>
   </div>
 </div>

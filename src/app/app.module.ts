@@ -70,10 +70,15 @@ import { AdminDiscussionListComponent } from './admin-discussion-list/admin-disc
 import { EventMainListComponent } from './event-main-list/event-main-list.component';
 import { EventMainListRowComponent } from './event-main-list-row/event-main-list-row.component';
 import { EventMainListRowCardComponent } from './event-main-list-row-card/event-main-list-row-card.component';
+import { AdminSiteListComponent } from './admin-site-list/admin-site-list.component';
+import { FooterComponent } from './footer/footer.component';
 import { EpuipmentListForProfileComponent } from './epuipment-list-for-profile/epuipment-list-for-profile.component';
 import { SiteListComponent } from './site-list/site-list.component';
 import { SiteListCardComponent } from './site-list-card/site-list-card.component';
+import { EquipmentListComponent } from './equipment-list/equipment-list.component';
+import { EquipmentListCardComponent } from './equipment-list-card/equipment-list-card.component';
 import {EquipmentRentingServiceClient} from './services/equipmentRenting.service.client';
+
 
 @NgModule({
   declarations: [
@@ -120,9 +125,13 @@ import {EquipmentRentingServiceClient} from './services/equipmentRenting.service
     EventMainListComponent,
     EventMainListRowComponent,
     EventMainListRowCardComponent,
+    AdminSiteListComponent,
+    FooterComponent,
     EpuipmentListForProfileComponent,
     SiteListComponent,
     SiteListCardComponent,
+    EquipmentListComponent,
+    EquipmentListCardComponent,
   ],
   imports: [
     BrowserModule,
