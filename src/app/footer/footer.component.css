@@ -1,19 +1,19 @@
 #footer {
-  background-color: #2e3e48; height: 150px;
+  background-color: #2e3e48;
+  height: 90px;
+  width: 100%;
 }
 
-#footer h4 {
+#followMsg {
   color: white;
   margin-left: 50px;
+  margin-top: 30px;
 }
 
-#footer img {
-  height: 50px; width: 160px;
-}
-
-#followMsg i {
+.fab {
   color: white;
   cursor: pointer;
+  margin-top: 30px;
 }
 
 .fa-facebook-square {
@@ -45,10 +45,19 @@
   margin-bottom: 15px;
   margin-left: 80px;
   cursor: pointer;
+  height: 50px; width: 160px;
 }
 
 #googlePlay {
   margin-bottom: 15px;
   margin-left: 20px;
   cursor: pointer;
+  height: 50px; width: 160px;
+}
+
+#QRcode {
+  height: 75px;
+  width: 75px;
+  margin-top: -20px;
+  margin-left: 50px;
 }

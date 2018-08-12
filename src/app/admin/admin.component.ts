@@ -32,6 +32,9 @@ export class AdminComponent implements OnInit {
   equipments = [];
   discussions = [];
   sites = [];
+  enrollments = [];
+  reservations = [];
+  rentals = [];
 
   listType;
 

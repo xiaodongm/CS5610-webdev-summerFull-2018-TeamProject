@@ -74,6 +74,45 @@
         </div>
       </div>
 
+      <div class="card text-white bg-dark">
+        <div class="card-header">
+          <h4>Enrollments</h4>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Total Enrollments : {{enrollments.length}}</h3>
+          <a class="arrow" (click)="openEnrollmentsList()" routerLink="/admin">
+            More Info
+            <i class="fas fa-arrow-circle-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="card text-white bg-primary">
+        <div class="card-header">
+          <h4>Reservations</h4>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Total Reservations : {{reservations.length}}</h3>
+          <a class="arrow" (click)="openSiteList()" routerLink="/admin">
+            More Info
+            <i class="fas fa-arrow-circle-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="card text-white" style="background-color: #6f42c1">
+        <div class="card-header">
+          <h4>Rentals</h4>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Total Rentals : {{rentals.length}}</h3>
+          <a class="arrow" (click)="openSiteList()" routerLink="/admin">
+            More Info
+            <i class="fas fa-arrow-circle-right"></i>
+          </a>
+        </div>
+      </div>
+
     <!--</div>-->
     </div>
 
