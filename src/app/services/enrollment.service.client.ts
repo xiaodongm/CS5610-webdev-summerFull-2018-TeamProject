@@ -23,4 +23,9 @@ export class EnrollmentServiceClient {
     return fetch(URL + '/api/attendee/' + attendeeId + '/event')
       .then(res => res.json());
   }
+
+  findAllEnrollments() {
+    return fetch(URL + '/api/enrollments')
+      .then(res => res.json());
+  }
 }

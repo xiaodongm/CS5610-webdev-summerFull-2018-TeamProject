@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from '../models/user.model.client';
 import {UserServiceClient} from '../services/user.service.client';
 import {Provider} from '../models/provider.model.client';
@@ -12,6 +12,7 @@ import {Equipment} from '../models/equipment.model.client';
 import {EquipmentServiceClient} from '../services/equipment.service.client';
 import {SiteServiceClient} from '../services/site.service.client';
 import {Site} from '../models/site.model.client';
+import {ReservationServiceClient} from '../services/reservation.service.client';
 
 
 @Component({
@@ -28,7 +29,10 @@ export class ProfileComponent implements OnInit {
               private discussionService: DiscussionServiceClient,
               private equipmentService: EquipmentServiceClient,
               private siteService: SiteServiceClient,
-              private router: Router) { }
+              private reservationService: ReservationServiceClient,
+              private equipmentRentingService: EquipmentServiceClient,
+              private router: Router) {
+  }
 
   user = new User();
   provider = new Provider();
@@ -42,6 +46,7 @@ export class ProfileComponent implements OnInit {
   mySites: Site[] = [];
   friends = [];
   myRentings;
+
   receiveMessage($event) {
     if (this.user.role !== 'SiteManager' && this.user.role !== 'EquipmentDealer') {
       this.user = $event;
@@ -51,7 +56,7 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  setCurPage (curPage) {
+  setCurPage(curPage) {
     this.curPage = curPage;
   }
 
@@ -92,7 +97,7 @@ export class ProfileComponent implements OnInit {
   }
 
   fillFollowingInfo(following) {
-    following.forEach( f => {
+    following.forEach(f => {
       this.userService
         .findUserById(f)
         .then(user => this.friends.push(user));
@@ -137,8 +142,12 @@ export class ProfileComponent implements OnInit {
 
         this.siteService
           .findSitesForProviderWithInfo(this.provider._id)
-      .then((sites) => this.mySites = sites);
-      });
+          .then((sites) => this.mySites = sites);
+
+        if (provider.role === 'SiteManager') {
+
+        }
+      );
   }
 
   goCreateEvent() {
