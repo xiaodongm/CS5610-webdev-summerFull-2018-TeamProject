@@ -261,13 +261,19 @@ export class EventDetailComponent implements OnInit {
           event: this.event._id,
           attendee: user._id
         };
-        console.log(user);
-        return this.enrollmentService.enrollAttendeeInEvent(enrollment); })
-      .then((enroll) => {
-        console.log(enroll);
-        return this.refreshEvent();
-      })
-      .then(() => this.isEnrolled = true);
+        if (user.role === 'EquipmentDealer' || user.role === 'SiteManager') {
+          alert('must login as personal user to enroll');
+          return;
+        } else {
+          console.log(user);
+          return this.enrollmentService.enrollAttendeeInEvent(enrollment)
+            .then((enroll) => {
+              console.log(enroll);
+              return this.refreshEvent();
+            })
+            .then(() => this.isEnrolled = true);
+        }
+      });
   }
 
   unenrollEvent() {
