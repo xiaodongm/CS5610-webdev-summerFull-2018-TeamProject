@@ -1,0 +1,15 @@
+.list-container {
+  margin-top: 70px;
+}
+
+.featureTag {
+  margin: 5px;
+}
+
+.activeTag {
+  background-color: red;
+}
+
+.badge {
+  cursor: pointer;
+}

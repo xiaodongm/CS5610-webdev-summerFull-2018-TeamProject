@@ -61,7 +61,9 @@ import { AdminEventListComponent } from './admin-event-list/admin-event-list.com
 import { AdminEquipmentListComponent } from './admin-equipment-list/admin-equipment-list.component';
 import {ReservationServiceClient} from './services/reservation.service.client';
 import { AdminDiscussionListComponent } from './admin-discussion-list/admin-discussion-list.component';
-
+import { EventMainListComponent } from './event-main-list/event-main-list.component';
+import { EventMainListRowComponent } from './event-main-list-row/event-main-list-row.component';
+import { EventMainListRowCardComponent } from './event-main-list-row-card/event-main-list-row-card.component';
 
 
 
@@ -102,7 +104,9 @@ import { AdminDiscussionListComponent } from './admin-discussion-list/admin-disc
     AdminEventListComponent,
     AdminEquipmentListComponent,
     AdminDiscussionListComponent,
-
+    EventMainListComponent,
+    EventMainListRowComponent,
+    EventMainListRowCardComponent,
   ],
   imports: [
     BrowserModule,
