@@ -1,3 +1,43 @@
-<p>
-  site-list-for-profile works!
-</p>
+<div>
+  <div class="header">
+    <span>Total Sites: {{sites.length}}</span>
+  </div>
+  <div class="row">
+    <div *ngFor="let site of sites" class="col-6">
+      <div class="card">
+
+        <!--<div class="name">-->
+        <!--<div class="text-sm-left">-->
+        <!--<a class="text-muted" [routerLink]="['/siteDetail/' + site._id]">{{site.title}} </a>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--<button  *ngIf="isSame" class="button btn btn-outline-primary" (click)="unfollowUser(people._id)">-->
+        <!--Un-follow-->
+        <!--</button>-->
+
+        <div id="Adiv">
+          <a class="text-muted title" [routerLink]="['/siteDetail/' + site._id]"><h4>{{site.title}}</h4></a>
+        </div>
+
+        <div class="body">
+          <div class="pic-container">
+            <div class="avatar" *ngIf="site.photos.length !== 0"
+                 [ngStyle]="{'background-image': 'url(' + site.photos[0] + ')'}"></div>
+            <div class="avatar" *ngIf="site.photos.length === 0"></div>
+          </div>
+
+          <div class="info-container">
+            <div>
+              {{site.location}}
+            </div>
+            <div *ngIf="isSame">
+              <i class="far fa-trash-alt fa-2x icon delete" (click)="deleteSite(site._id, site.provider._id)"></i>
+              <i class="far fa-edit fa-2x icon edit" [routerLink]="['/siteEditor/' + site._id]"></i>
+            </div>
+          </div>
+        </div>
+
+      </div>
+  </div>
+  </div>
+</div>

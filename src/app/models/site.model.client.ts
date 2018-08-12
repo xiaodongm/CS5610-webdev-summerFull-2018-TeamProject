@@ -8,5 +8,4 @@ export class Site {
   location: string;
   tags: string[];
   photos: string[];
-  timeRange: Date[];
 }

@@ -94,7 +94,7 @@ export class ProfileComponent implements OnInit {
           .then(equipments => this.myEquipments = equipments);
 
         this.siteService
-          .findSitesForProvider(this.provider._id)
+          .findSitesForProviderWithInfo(this.provider._id)
       .then((sites) => this.mySites = sites);
       });
   }

@@ -86,37 +86,10 @@
     <app-events-list-for-profile *ngIf="user.role === 'organizer' || user.role === 'attendee' && curPage === 'oa'" [type] = 'curPage' [events]="organizedEvents" [isSame] = "isSame"></app-events-list-for-profile>
     <app-events-list-for-profile *ngIf="user.role === 'organizer' || user.role === 'attendee' && curPage === 'pa'" [type] = 'curPage' [events]="attendedEvents" [isSame] = "isSame"></app-events-list-for-profile>
     <app-discussion-list-for-profile *ngIf="user.role === 'organizer' || user.role === 'attendee' && curPage === 'ds'" [discussions]="discussions" [isSame] = "isSame" [userId] = "user._id"></app-discussion-list-for-profile>
-    <app-site-list-for-profile *ngIf="user.role === 'SiteManager' || user.role === 'EquipmentDealer' && curPage === 'sl'" [isSame] = "isSame" [sites]="sites"></app-site-list-for-profile>
+    <app-site-list-for-profile *ngIf="user.role === 'SiteManager' && curPage === 'sl'" [isSame] = "isSame" [sites]="mySites"></app-site-list-for-profile>
+    <app-renting-list-for-profile *ngIf="user.role === 'SiteManager' || user.role === 'EquipmentDealer' && curPage === 'rt'" [isSame] = "isSame"></app-renting-list-for-profile>
   </div>
 
-
-
-
-
-  <!--<div class="container">-->
-    <!--<div> My Equipments</div>-->
-    <!--<a [routerLink]="['/equipmentEditor']">Edit</a>-->
-    <!--<div *ngFor="let equipment of myEquipments">-->
-      <!--<div class="card">-->
-        <!--{{equipment.title}}-->
-        <!--&lt;!&ndash;<a [routerLink]="['/eventDetail/' + event._id]">View</a>&ndash;&gt;-->
-        <!--&lt;!&ndash;<button (click)="deleteHostedEvent(event)" class="btn btn-danger">Delete</button>&ndash;&gt;-->
-      <!--</div>-->
-    <!--</div>-->
-  <!--</div>-->
-
-  <!--<div class="container">-->
-    <!--<div> My Sites</div>-->
-
-    <!--<div *ngFor="let site of mySites">-->
-      <!--<div class="card">-->
-        <!--<a [routerLink]="['/siteEditor/' + site._id]">Edit</a>-->
-        <!--{{site.title}}-->
-        <!--&lt;!&ndash;<a [routerLink]="['/eventDetail/' + event._id]">View</a>&ndash;&gt;-->
-        <!--&lt;!&ndash;<button (click)="deleteHostedEvent(event)" class="btn btn-danger">Delete</button>&ndash;&gt;-->
-      <!--</div>-->
-    <!--</div>-->
-  <!--</div>-->
 </div>
 
 

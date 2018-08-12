@@ -46,6 +46,11 @@ export class SiteServiceClient {
     return fetch(URL + '/api/provider/' + providerId + '/site')
       .then(res => res.json());
   }
+
+  findSitesForProviderWithInfo(providerId) {
+    return fetch(URL + '/api/providerInfo/' + providerId + '/site')
+      .then(res => res.json());
+  }
 }
 
 

@@ -65,6 +65,7 @@ import { SiteDetailComponent } from './site-detail/site-detail.component';
 import { AdminEventListComponent } from './admin-event-list/admin-event-list.component';
 import { AdminEquipmentListComponent } from './admin-equipment-list/admin-equipment-list.component';
 import { ReservationServiceClient} from './services/reservation.service.client';
+import { RentingListForProfileComponent } from './renting-list-for-profile/renting-list-for-profile.component';
 
 
 
@@ -111,6 +112,7 @@ import { ReservationServiceClient} from './services/reservation.service.client';
     SiteDetailComponent,
     AdminEventListComponent,
     AdminEquipmentListComponent,
+    RentingListForProfileComponent,
   ],
   imports: [
     BrowserModule,

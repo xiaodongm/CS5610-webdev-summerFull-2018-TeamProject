@@ -9,6 +9,10 @@ import {EventCard} from '../models/EventCard.model.client';
 import {EventServiceClient} from '../services/event.service.client';
 import {EnrollmentServiceClient} from '../services/enrollment.service.client';
 import {DiscussionServiceClient} from '../services/discussion.service.client';
+import {Equipment} from '../models/equipment.model.client';
+import {Site} from '../models/site.model.client';
+import {SiteServiceClient} from '../services/site.service.client';
+import {EquipmentServiceClient} from '../services/equipment.service.client';
 
 @Component({
   selector: 'app-profile-for-visitor',
@@ -22,6 +26,8 @@ export class ProfileForVisitorComponent implements OnInit {
               private eventService: EventServiceClient,
               private discussionService: DiscussionServiceClient,
               private enrollmentService: EnrollmentServiceClient,
+              private equipmentService: EquipmentServiceClient,
+              private siteService: SiteServiceClient,
               private route: ActivatedRoute,
               private router: Router) {
     this.route.params.subscribe(
@@ -38,14 +44,8 @@ export class ProfileForVisitorComponent implements OnInit {
   attendedEvents = [];
   isSame = false;
   discussions;
-
-  receiveMessage($event) {
-    if (this.user.role !== 'SiteManager' && this.user.role !== 'EquipmentDealer') {
-      this.user = $event;
-    } else if (this.user.role === 'SiteManager' || this.user.role === 'EquipmentDealer') {
-      this.provider = $event;
-    }
-  }
+  myEquipments: Equipment[] = [];
+  mySites: Site[] = [];
 
   setParams(params) {
     this.userId = params['userId'];
@@ -60,28 +60,52 @@ export class ProfileForVisitorComponent implements OnInit {
     this.userService
       .findUserById(this.userId)
       .then(user => {
-        this.user = user;
-        if (!this.user.profilePhoto) {
-          this.user.profilePhoto = 'https://images.unsplash.com/photo-' +
-            '1495078065017-564723e7e3e7?ixlib=rb-0.3.5&ixid=eyJhcHBfa' +
-            'WQiOjEyMDd9&s=09093dcdf66dbcd2397b9dc19384a899&auto=forma' +
-            't&fit=crop&w=800&q=60';
+        if (user) {
+          console.log(user);
+          this.user = user;
+          if (!this.user.profilePhoto) {
+            this.user.profilePhoto = 'https://images.unsplash.com/photo-' +
+              '1495078065017-564723e7e3e7?ixlib=rb-0.3.5&ixid=eyJhcHBfa' +
+              'WQiOjEyMDd9&s=09093dcdf66dbcd2397b9dc19384a899&auto=forma' +
+              't&fit=crop&w=800&q=60';
+          }
+          this.eventService.findEventsForOrganizer(user._id)
+            .then(events => this.organizedEvents = events);
+          this.enrollmentService.findEnrollmentsForAttendee(user._id)
+            .then(events => this.attendedEvents = events);
+          this.discussionService.findDiscussionForUser(user._id)
+            .then(disucssions => this.discussions = disucssions);
+
+          this.checkFollowed();
         }
-        this.eventService.findEventsForOrganizer(user._id)
-          .then(events => this.organizedEvents = events);
-        this.enrollmentService.findEnrollmentsForAttendee(user._id)
-          .then(events => this.attendedEvents = events);
-        this.discussionService.findDiscussionForUser(user._id)
-          .then(disucssions => this.discussions = disucssions);
       });
 
     this.providerService
       .profile()
-      .then(provider => this.provider = provider);
+      .then(provider => {
+        if (provider) {
+          console.log(provider);
+          this.provider = provider;
+          this.user = provider;
+          if (!this.user.profilePhoto) {
+            this.user.profilePhoto = 'https://images.unsplash.com/photo-' +
+              '1495078065017-564723e7e3e7?ixlib=rb-0.3.5&ixid=eyJhcHBfa' +
+              'WQiOjEyMDd9&s=09093dcdf66dbcd2397b9dc19384a899&auto=forma' +
+              't&fit=crop&w=800&q=60';
+          }
+          this.equipmentService
+            .findEquipmentsForProvider(this.provider._id)
+            .then(equipments => this.myEquipments = equipments);
 
-    this.checkFollowed();
+          this.siteService
+            .findSitesForProviderWithInfo(this.provider._id)
+            .then((sites) => this.mySites = sites);
+
+          this.curPage = 'sl';
+        }
+      });
   }
-
+  
   followUser() {
     if (this.userId === this.curUser._id) {
       alert('Sorry, can not follow yourself');
