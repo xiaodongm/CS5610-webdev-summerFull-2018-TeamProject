@@ -71,6 +71,8 @@ import { AdminDiscussionListComponent } from './admin-discussion-list/admin-disc
 import { EventMainListComponent } from './event-main-list/event-main-list.component';
 import { EventMainListRowComponent } from './event-main-list-row/event-main-list-row.component';
 import { EventMainListRowCardComponent } from './event-main-list-row-card/event-main-list-row-card.component';
+import { SiteListComponent } from './site-list/site-list.component';
+import { SiteListCardComponent } from './site-list-card/site-list-card.component';
 
 
 
@@ -121,6 +123,8 @@ import { EventMainListRowCardComponent } from './event-main-list-row-card/event-
     EventMainListComponent,
     EventMainListRowComponent,
     EventMainListRowCardComponent,
+    SiteListComponent,
+    SiteListCardComponent,
   ],
   imports: [
     BrowserModule,

@@ -10,11 +10,13 @@ import {CampingSiteGridComponent} from '../camping-site-grid/camping-site-grid.c
 export class CampingSiteSearchComponent implements OnInit {
   constructor() {
   }
+  active = false;
   campingSites = [];
   ngOnInit() {
   }
 
   updateCampgrounds(e) {
     this.campingSites = e.campingSites;
+    this.active = true;
   }
 }
