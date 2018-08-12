@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {UserServiceClient} from '../services/user.service.client';
 import {ActivatedRoute} from '@angular/router';
 
@@ -13,45 +13,32 @@ export class FriendListComponent implements OnInit {
               private route: ActivatedRoute) {
   }
 
-  @Input()
-  user;
-  curUser;
-  isSame = false;
-  following = [];
-  followingInfo = []
+  @Input() friendList;
+  @Input() user;
+  @Input() isSame;
+  @Output() newFriends: EventEmitter<Object> = new EventEmitter();
 
   ngOnInit() {
-    this.userService
-      .findAllFollowingFriendsForUser(this.user._id)
-      .then(following => {
-        this.following = following;
-        this.fillFollowingInfo(following);
-        return this.userService.profile();
-      })
-      .then(user => {
-        this.curUser = user;
-        if (user._id === this.user._id) {
-          this.isSame = true;
-        }
-      });
+    console.log(this.friendList);
   }
 
-  unfollowUser() {
+  unfollowUser(userId) {
     this.userService
-      .un_followFriend(this.user._id)
+      .un_followFriend(userId)
       .then(res => {
         if (res.error) {
           alert(res.error);
+        } else {
+          this.refresh();
         }
       });
   }
 
-  fillFollowingInfo(following) {
-    following.forEach( f => {
+
+  refresh() {
       this.userService
-        .findUserById(f)
-        .then(user => this.followingInfo.push(user));
-    });
+        .findAllFollowingFriendsForUser(this.user._id)
+        .then(followingList => this.newFriends.emit(followingList));
   }
 
 }

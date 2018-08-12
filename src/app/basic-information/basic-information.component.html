@@ -9,17 +9,17 @@
 </h3>
 <hr class="my-3">
 <div>
-    <div class="input-group-append infoFld">
-      <label for="username" class="col-sm-2 col-form-label">Username</label>
-      <!--<div class="col-sm-10">-->
-        <!--<li class="list-group-item" id = 'username'>{{user.username}}</li>-->
-      <!--</div>-->
-      <input [(ngModel)]="user.username"
-             placeholder="username"
-             class="form-control"
-             id="username"
-             readonly/>
-    </div>
+  <div class="input-group-append infoFld">
+    <label for="username" class="col-sm-2 col-form-label">Username</label>
+    <!--<div class="col-sm-10">-->
+    <!--<li class="list-group-item" id = 'username'>{{user.username}}</li>-->
+    <!--</div>-->
+    <input [(ngModel)]="user.username"
+           placeholder="username"
+           class="form-control"
+           id="username"
+           readonly/>
+  </div>
 
   <div *ngIf="user.role === 'SiteManager' || user.role === 'EquipmentDealer'" class="input-group-append infoFld">
     <label for="organizationName" class="col-sm-2 col-form-label">Organization Name</label>
@@ -37,56 +37,80 @@
            class="form-control"/>
   </div>
 
-    <div *ngIf="user.role !== 'SiteManager' && user.role !== 'EquipmentDealer'" class="input-group-append infoFld">
-      <label for="firstName" class="col-sm-2 col-form-label">First Name</label>
-      <input [(ngModel)]="user.firstName"
-             placeholder="first name"
-             id="firstName"
-             class="form-control"/>
-    </div>
-
-    <div *ngIf="user.role !== 'SiteManager' && user.role !== 'EquipmentDealer'" class="input-group-append infoFld">
-      <label for="lastName" class="col-sm-2 col-form-label">Last Name</label>
-      <input [(ngModel)]="user.lastName"
-             placeholder="lastName"
-             id="lastName"
-             class="form-control"/>
-    </div>
+  <div *ngIf="user.role !== 'SiteManager' && user.role !== 'EquipmentDealer'" class="input-group-append infoFld">
+    <label for="firstName" class="col-sm-2 col-form-label">First Name</label>
+    <input [(ngModel)]="user.firstName"
+           placeholder="first name"
+           id="firstName"
+           class="form-control"/>
+  </div>
 
   <div *ngIf="user.role !== 'SiteManager' && user.role !== 'EquipmentDealer'" class="input-group-append infoFld">
-    <label for="lastName" class="col-sm-2 col-form-label">Photo Url</label>
+    <label for="lastName" class="col-sm-2 col-form-label">Last Name</label>
+    <input [(ngModel)]="user.lastName"
+           placeholder="lastName"
+           id="lastName"
+           class="form-control"/>
+  </div>
+
+  <div *ngIf="user.role !== 'SiteManager' && user.role !== 'EquipmentDealer'" class="input-group-append infoFld">
+    <label for="profilePhoto" class="col-sm-2 col-form-label">Photo Url</label>
     <input [(ngModel)]="user.profilePhoto"
            placeholder="profile photo url"
            id="profilePhoto"
            class="form-control"/>
   </div>
 
-    <div *ngIf="user.role !== 'SiteManager' && user.role !== 'EquipmentDealer'" class="input-group-append infoFld">
-      <label for="dob" class="col-sm-2 col-form-label">Date of Birth</label>
-      <input type="text"
-             [(ngModel)]="user.dateOfBirth"
-             placeholder="Date of Birth"
-             class="form-control"
-             id="dob"
-             [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }"
-             bsDatepicker>
-    </div>
+  <div *ngIf="user.role === 'SiteManager' || user.role === 'EquipmentDealer'" class="input-group-append infoFld">
+    <label for="profilePhoto2" class="col-sm-2 col-form-label">Photo Url</label>
+    <input [(ngModel)]="provider.profilePhoto"
+           placeholder="profile photo url"
+           id="profilePhoto2"
+           class="form-control"/>
+  </div>
 
-    <div class="input-group-append infoFld">
-      <label for="phone" class="col-sm-2 col-form-label">Phone</label>
-      <input [(ngModel)]="user.phoneNumber"
-             placeholder="phone"
-             id="phone"
-             class="form-control"/>
-    </div>
+  <div *ngIf="user.role !== 'SiteManager' && user.role !== 'EquipmentDealer'" class="input-group-append infoFld">
+    <label for="dob" class="col-sm-2 col-form-label">Date of Birth</label>
+    <input type="text"
+           [(ngModel)]="user.dateOfBirth"
+           placeholder="Date of Birth"
+           class="form-control"
+           id="dob"
+           [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }"
+           bsDatepicker>
+  </div>
 
-    <div class="input-group-append infoFld">
-      <label for="email" class="col-sm-2 col-form-label">Email</label>
-      <input [(ngModel)]="user.email"
-             placeholder="email"
-             id="email"
-             class="form-control"/>
-    </div>
+  <div  *ngIf="user.role !== 'SiteManager' && user.role !== 'EquipmentDealer'" class="input-group-append infoFld">
+    <label for="phone" class="col-sm-2 col-form-label">Phone</label>
+    <input [(ngModel)]="user.phoneNumber"
+           placeholder="phone"
+           id="phone"
+           class="form-control"/>
+  </div>
+
+  <div  *ngIf="user.role === 'SiteManager' || user.role === 'EquipmentDealer'" class="input-group-append infoFld">
+    <label for="phone2" class="col-sm-2 col-form-label">Phone</label>
+    <input [(ngModel)]="provider.phoneNumber"
+           placeholder="phone"
+           id="phone2"
+           class="form-control"/>
+  </div>
+
+  <div  *ngIf="user.role !== 'SiteManager' && user.role !== 'EquipmentDealer'" class="input-group-append infoFld">
+    <label for="email" class="col-sm-2 col-form-label">Email</label>
+    <input [(ngModel)]="user.email"
+           placeholder="email"
+           id="email"
+           class="form-control"/>
+  </div>
+
+  <div *ngIf="user.role === 'SiteManager' || user.role === 'EquipmentDealer'" class="input-group-append infoFld">
+    <label for="email" class="col-sm-2 col-form-label">Email</label>
+    <input [(ngModel)]="provider.email"
+           placeholder="email2"
+           id="email2"
+           class="form-control"/>
+  </div>
 
 
   <div *ngIf="user.role === 'SiteManager' || user.role === 'EquipmentDealer'" class="input-group-append infoFld">
@@ -98,28 +122,30 @@
            class="form-control"/>
   </div>
 
-    <div *ngIf="user.role !== 'SiteManager' && user.role !== 'EquipmentDealer'" class="input-group-append infoFld">
-      <label for="address" class="col-sm-2 col-form-label">Address</label>
-      <input [(ngModel)]="user.address"
-             placeholder="address"
-             id="address"
-             class="form-control"/>
-    </div>
+  <div *ngIf="user.role !== 'SiteManager' && user.role !== 'EquipmentDealer'" class="input-group-append infoFld">
+    <label for="address" class="col-sm-2 col-form-label">Address</label>
+    <input [(ngModel)]="user.address"
+           placeholder="address"
+           id="address"
+           class="form-control"/>
+  </div>
 
-    <hr class="my-4">
-    <div class="form-group row" id="saveBtn">
-      <div class="col-sm-10">
-        <button (click)="update()" class="btn btn-primary">Save</button>
-        <button (click)="openModal(deleteConfirm)" id="deleteBtn" class="btn btn-danger">Delete Account</button>
-        <button *ngIf="user.username === 'admin' && user.password === 'admin'" id="adminBtn" routerLink="/admin" class="btn btn-dark">Admin</button>
-      </div>
+  <hr class="my-4">
+  <div class="form-group row" id="saveBtn">
+    <div class="col-sm-10">
+      <button (click)="update()" class="btn btn-primary">Save</button>
+      <button (click)="openModal(deleteConfirm)" id="deleteBtn" class="btn btn-danger">Delete Account</button>
+      <button *ngIf="user.username === 'admin' && user.password === 'admin'" id="adminBtn" routerLink="/admin"
+              class="btn btn-dark">Admin
+      </button>
     </div>
+  </div>
 
-    <ng-template #deleteConfirm>
-      <div class="modal-body text-center">
-        <p>Are you sure you want to <strong>DELETE</strong> this account?</p>
-        <button id="confirmDelete" type="button" class="btn btn-danger" (click)="delete()" >Delete</button>
-        <button type="button" class="btn btn-default" (click)="modalRef.hide();" >Cancel</button>
-      </div>
-    </ng-template>
+  <ng-template #deleteConfirm>
+    <div class="modal-body text-center">
+      <p>Are you sure you want to <strong>DELETE</strong> this account?</p>
+      <button id="confirmDelete" type="button" class="btn btn-danger" (click)="delete()">Delete</button>
+      <button type="button" class="btn btn-default" (click)="modalRef.hide();">Cancel</button>
+    </div>
+  </ng-template>
 </div>

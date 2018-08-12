@@ -46,6 +46,7 @@ export class ProfileForVisitorComponent implements OnInit {
   discussions;
   myEquipments: Equipment[] = [];
   mySites: Site[] = [];
+  friends = [];
 
   setParams(params) {
     this.userId = params['userId'];
@@ -55,6 +56,13 @@ export class ProfileForVisitorComponent implements OnInit {
     this.curPage = curPage;
   }
 
+  fillFollowingInfo(following) {
+    following.forEach( f => {
+      this.userService
+        .findUserById(f)
+        .then(user => this.friends.push(user));
+    });
+  }
 
   ngOnInit() {
     this.userService
@@ -69,19 +77,22 @@ export class ProfileForVisitorComponent implements OnInit {
               'WQiOjEyMDd9&s=09093dcdf66dbcd2397b9dc19384a899&auto=forma' +
               't&fit=crop&w=800&q=60';
           }
+          this.userService
+            .findAllFollowingFriendsForUser(user._id)
+            .then(friends => this.fillFollowingInfo(friends));
           this.eventService.findEventsForOrganizer(user._id)
             .then(events => this.organizedEvents = events);
           this.enrollmentService.findEnrollmentsForAttendee(user._id)
             .then(events => this.attendedEvents = events);
           this.discussionService.findDiscussionForUser(user._id)
-            .then(disucssions => this.discussions = disucssions);
+            .then(discussions => this.discussions = discussions);
 
           this.checkFollowed();
         }
       });
 
     this.providerService
-      .profile()
+      .findProviderById(this.userId)
       .then(provider => {
         if (provider) {
           console.log(provider);
@@ -105,7 +116,7 @@ export class ProfileForVisitorComponent implements OnInit {
         }
       });
   }
-  
+
   followUser() {
     if (this.userId === this.curUser._id) {
       alert('Sorry, can not follow yourself');

@@ -58,7 +58,7 @@
   <div class="container">
     <app-events-list-for-profile *ngIf="(user.role === 'organizer' || user.role === 'attendee') && curPage === 'oa'" [type] = 'curPage' [events]="organizedEvents" [isSame] = "isSame"></app-events-list-for-profile>
     <app-events-list-for-profile *ngIf="(user.role === 'organizer' || user.role === 'attendee') && curPage === 'pa'" [type] = 'curPage' [events]="attendedEvents" [isSame] = "isSame"></app-events-list-for-profile>
-    <app-friend-list *ngIf="(user.role === 'organizer' || user.role === 'attendee') && curPage === 'ff'" [user] = user></app-friend-list>
+    <app-friend-list *ngIf="(user.role === 'organizer' || user.role === 'attendee') && curPage === 'ff'" [friendList] = "friends" [user] = "user" [isSame] = "isSame"></app-friend-list>
     <app-discussion-list-for-profile *ngIf="(user.role === 'organizer' || user.role === 'attendee') && curPage === 'ds'" [discussions]="discussions" [isSame] = "isSame" [userId] = "user._id"></app-discussion-list-for-profile>
     <app-site-list-for-profile *ngIf="(user.role === 'SiteManager' && curPage === 'sl')" [isSame] = "isSame" [sites]="mySites"></app-site-list-for-profile>
     <app-renting-list-for-profile *ngIf="(user.role === 'SiteManager' || user.role === 'EquipmentDealer') && curPage === 'rt'" [isSame] = "isSame"></app-renting-list-for-profile>

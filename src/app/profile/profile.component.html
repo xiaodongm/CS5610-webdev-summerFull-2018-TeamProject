@@ -69,7 +69,7 @@
         <div class="col-sm grid-item" [ngClass]="{'active': curPage === 'sl'}"  *ngIf="user.role === 'SiteManager'">
           <a (click)="setCurPage('sl')" class="nav-links">Sites List</a>
         </div>
-        <div class="col-sm grid-item" [ngClass]="{'active': curPage === 'pa'}" *ngIf="user.role === 'EquipmentDealer'">
+        <div class="col-sm grid-item" [ngClass]="{'active': curPage === 'el'}" *ngIf="user.role === 'EquipmentDealer'">
           <a (click)="setCurPage('el')" class="nav-links">Equipments List</a>
         </div>
         <div class="col-sm grid-item" [ngClass]="{'active': curPage === 'rt'}">
@@ -81,12 +81,13 @@
 
 
   <div class="container">
-    <app-friend-list *ngIf="(user.role === 'organizer' || user.role === 'attendee') && curPage === 'ff'" [user] = user></app-friend-list>
+    <app-friend-list (newFriends)="receiveFriendList($event)" *ngIf="(user.role === 'organizer' || user.role === 'attendee') && curPage === 'ff'" [friendList] = "friends" [user] = "user" [isSame] = "isSame"></app-friend-list>
     <app-basic-information *ngIf="curPage ==='pi'" (messageEvent)="receiveMessage($event)"></app-basic-information>
-    <app-events-list-for-profile *ngIf="(user.role === 'organizer' || user.role === 'attendee') && curPage === 'oa'" [type] = 'curPage' [events]="organizedEvents" [isSame] = "isSame"></app-events-list-for-profile>
-    <app-events-list-for-profile *ngIf="(user.role === 'organizer' || user.role === 'attendee') && curPage === 'pa'" [type] = 'curPage' [events]="attendedEvents" [isSame] = "isSame"></app-events-list-for-profile>
-    <app-discussion-list-for-profile *ngIf="(user.role === 'organizer' || user.role === 'attendee') && curPage === 'ds'" [discussions]="discussions" [isSame] = "isSame" [userId] = "user._id"></app-discussion-list-for-profile>
-    <app-site-list-for-profile *ngIf="user.role === 'SiteManager' && curPage === 'sl'" [isSame] = "isSame" [sites]="mySites"></app-site-list-for-profile>
+    <app-events-list-for-profile (messageEvent)="receiveOrEvents($event)" *ngIf="(user.role === 'organizer' || user.role === 'attendee') && curPage === 'oa'" [type] = 'curPage' [events]="organizedEvents" [isSame] = "isSame"></app-events-list-for-profile>
+    <app-events-list-for-profile (messageEvent)="receiveAtEvents($event)" *ngIf="(user.role === 'organizer' || user.role === 'attendee') && curPage === 'pa'" [type] = 'curPage' [events]="attendedEvents" [isSame] = "isSame"></app-events-list-for-profile>
+    <app-discussion-list-for-profile (messageEvent)="receiveNewDiscussion($event)" *ngIf="(user.role === 'organizer' || user.role === 'attendee') && curPage === 'ds'" [discussions]="discussions" [isSame] = "isSame" [userId] = "user._id"></app-discussion-list-for-profile>
+    <app-site-list-for-profile (messageEvent)="receiveNewSites($event)" *ngIf="user.role === 'SiteManager' && curPage === 'sl'" [isSame] = "isSame" [user] = "user" [sites]="mySites"></app-site-list-for-profile>
+    <app-epuipment-list-for-profile  (messageEvent)="receiveNewEquips($event)" *ngIf="user.role === 'EquipmentDealer' && curPage === 'el'" [isSame] = "isSame" [user] = "user" [equips]="myEquipments"></app-epuipment-list-for-profile>
     <app-renting-list-for-profile *ngIf="(user.role === 'SiteManager' || user.role === 'EquipmentDealer') && curPage === 'rt'" [isSame] = "isSame"></app-renting-list-for-profile>
   </div>
 

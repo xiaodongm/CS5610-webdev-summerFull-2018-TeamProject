@@ -1,9 +1,8 @@
 <div>
   <div class="header">
-    <i class="fas fa-user-friends fa-2x icon"></i>
-    <span>(Total: {{following.length}})</span>
+    <span>Total Following: {{friendList.length}}</span>
   </div>
-  <div *ngFor="let people of followingInfo">
+  <div *ngFor="let people of friendList">
     <div class="card-columns">
       <div class="card">
         <div class="avatar-container">
