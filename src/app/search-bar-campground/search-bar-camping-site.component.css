@@ -1,3 +1,13 @@
 .search {
   margin: 5px;
+  width: 100%;
+
+}
+
+.container {
+  width: 60%; /*can be in percentage also.*/
+  height: auto;
+  margin: 0 auto;
+  padding: 10px;
+  position: relative;
 }
