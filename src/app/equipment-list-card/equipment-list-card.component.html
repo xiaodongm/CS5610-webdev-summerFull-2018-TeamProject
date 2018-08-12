@@ -1,0 +1,135 @@
+<div class="card text-center"
+     (mouseleave) ="mouseLeave()">
+
+  <carousel (activeSlideChange)="slideChanged($event)" data-interval="false">
+    <slide *ngFor="let photo of data.photos" >
+      <div class="img-container">
+        <!--<img [ngClass]="{'wbdv-blur': hasExtraInfo && inImage}" src={{photo}} alt="first slide" style="display: block; width: 100%;">-->
+        <div class="img"
+             [ngClass]="{'wbdv-blur': hasExtraInfo && inImage}"
+             [ngStyle]="{'background-image': 'url(' + photo + ')'}">
+        </div>
+      </div>
+    </slide>
+  </carousel>
+
+  <div class="card-block" style="{z-index: 1}">
+    <h6 class="card-subtitle mb-2 text-muted">Available: {{data.available}}</h6>
+    <span class="button-pos">
+      <span class="button-container">
+         <!--<span (click) = "seeEquipmentDetail()">-->
+            <!--<i class="far fa-eye fa-2x"></i>-->
+          <!--</span>-->
+         <span (click)="openModal(template2)">
+          <i class="fas fa-plus-circle fa-2x"></i>
+        </span>
+      </span>
+    </span>
+    <h4 id='title' class="card-title">
+      <span>
+        {{data.title}}
+      </span>
+    </h4>
+    <div class="card-body">
+      <div class="row" >
+        <div class="avatar-container" *ngIf="provider.profilePhoto">
+          <div class="avatar" [ngStyle]="{'background-image': 'url(' + provider.profilePhoto + ')'}">
+          </div>
+        </div>
+
+        <div class="host-info">
+          <div class="text-sm-left text-muted">
+            Hosted by
+            <span>{{provider && provider.username}}</span>
+            <span>{{provider && provider.firstName}}</span>
+            <span>{{provider && ' ' + provider.lastName}}</span>
+          </div>
+          <div class="text-sm-left">
+            <span class="text-muted">From </span>
+            <span>{{provider.organizationName}}</span>
+            <span>{{provider.address}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <ng-template #template2>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Edit Equipment Details</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <div class="content-of-modal">
+        <div>
+          <h4>
+            {{data.title}}
+          </h4>
+
+          <div>
+            Quantity: {{data.quantity}}
+            Available: {{data.available}}
+          </div>
+        </div>
+
+          <div class="" *ngFor="let widget of data.description">
+            <div *ngFor="let widget of data.description">
+              <div *ngIf="widget.type === 'heading'">
+                <h5>{{widget.data}}</h5>
+              </div>
+              <div *ngIf="widget.type === 'paragraph'">
+                <p>{{widget.data}}</p>
+              </div>
+              <div *ngIf="widget.type === 'link'">
+                <a href={{widget.data}}>{{widget.data}}</a>
+              </div>
+
+              <div *ngIf="widget.type === 'unorderedList'">
+                <ul >
+                  <li *ngFor="let item of splitList(widget.data)">{{item}}</li>
+                </ul>
+              </div>
+
+              <div *ngIf="widget.type === 'orderedList'">
+                <ol>
+                  <li *ngFor="let item of splitList(widget.data)">{{item}}</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+
+
+        <div class="amenity_list" *ngIf="data.tags.length > 0">
+          <span id="featureDisplay" *ngFor="let tag of data.tags" class="badge badge-info amenity_item">{{tag}}</span>
+        </div>
+      </div>
+
+      <hr>
+      <div>
+        How many do you want to rent?
+        <input [(ngModel)]="rentNumber" type="number" name="quantity" min="1" [max]="data.available">
+      </div>
+      <div>
+        <div class="content-of-modal">
+          <ul>
+            <li *ngFor="let event of myEvents; let i = index">
+              {{event.title}}
+              <button id="selectBtn" class="btn btn-outline-dark" (click)="selectEvent(event)">Select</button>
+            </li>
+          </ul>
+        </div>
+        <hr>
+        <div>Selected target event: {{targetEvent.title}}</div>
+      </div>
+
+
+      <button type="button" class="btn btn-danger" id="desYesBtn" (click)="confirm()" >Yes</button>
+      <button type="button" class="btn btn-default" (click)="decline()" >No</button>
+    </div>
+  </ng-template>
+
+</div>

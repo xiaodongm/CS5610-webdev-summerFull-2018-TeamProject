@@ -21,6 +21,7 @@ import {EquipmentEditorComponent} from './equipment-editor/equipment-editor.comp
 import {SiteEditorComponent} from './site-editor/site-editor.component';
 import {SiteDetailComponent} from './site-detail/site-detail.component';
 import {EventMainListComponent} from './event-main-list/event-main-list.component';
+import {EquipmentListComponent} from './equipment-list/equipment-list.component';
 
 
 
@@ -39,6 +40,7 @@ const appRoutes: Routes = [
   { path: 'siteDetail/:siteId', component: SiteDetailComponent},
   { path: 'eventDetail/:eventId', component: EventDetailComponent},
   { path: 'equipmentEditor', component: EquipmentEditorComponent},
+  { path: 'equipmentList', component: EquipmentListComponent},
   { path: 'createEvent', component: CreateEventComponent},
   { path: 'createSite', component: CreateSiteComponent},
   { path: 'createEquipment', component: CreateEquipmentComponent},
