@@ -11,6 +11,9 @@ import {EventServiceClient} from '../services/event.service.client';
 import {Widget} from '../models/widget.model.client';
 import {ActivatedRoute} from '@angular/router';
 import {EnrollmentServiceClient} from '../services/enrollment.service.client';
+import {SiteServiceClient} from '../services/site.service.client';
+import {ReservationServiceClient} from '../services/reservation.service.client';
+import {EquipmentRentingServiceClient} from '../services/equipmentRenting.service.client';
 
 @Component({
   selector: 'app-event-detail',
@@ -22,6 +25,9 @@ export class EventDetailComponent implements OnInit {
   constructor(private modalService: BsModalService,
               public sanitizer: DomSanitizer,
               private userService: UserServiceClient,
+              private siteService: SiteServiceClient,
+              private reservationService: ReservationServiceClient,
+              private rentService: EquipmentRentingServiceClient,
               private eventService: EventServiceClient,
               private enrollmentService: EnrollmentServiceClient,
               private route: ActivatedRoute) {
@@ -38,6 +44,7 @@ export class EventDetailComponent implements OnInit {
   list = '';
   listType = 'unorderedList';
   message: string;
+  equipments;
   organizer = new User();
   organizer1: User = {
     _id: '',
@@ -127,6 +134,7 @@ export class EventDetailComponent implements OnInit {
   months = months;
   dates = dates;
   slideIndex = 0;
+  targetSite;
 
   modalRef: BsModalRef;
   config = {
@@ -257,11 +265,12 @@ export class EventDetailComponent implements OnInit {
     let enrollment;
     this.userService.profile()
       .then(user => {
+        console.log(user);
         enrollment = {
           event: this.event._id,
           attendee: user._id
         };
-        if (user.role === 'EquipmentDealer' || user.role === 'SiteManager') {
+        if (!user.role || user.role === 'EquipmentDealer' || user.role === 'SiteManager' || user._id === this.organizer._id) {
           alert('must login as personal user to enroll');
           return;
         } else {
@@ -308,15 +317,33 @@ export class EventDetailComponent implements OnInit {
       });
   }
 
+  loadTargetSite() {
+    return this.reservationService.findReservationsForEvent(this.eventId)
+      .then((reservation) => {
+        console.log(reservation);
+        if (reservation.length > 0) {
+          this.targetSite = reservation[0].site;
+        }
+      });
+  }
+
+  loadEquipment() {
+    return this.rentService.findRentingsForEvent(this.eventId)
+      .then((equipments) => {
+        console.log(equipments);
+        if (equipments.length > 0) {
+          this.equipments = equipments;
+        }
+      });
+  }
+
   ngOnInit() {
 
     this.eventService.findEventById(this.eventId)
       .then(event => {
         this.event = event;
-        // this.event.startTime = this.refactorDate(this.event.startTime);
-        // this.event.endTime = this.refactorDate(this.event.endTime);
         console.log(event);
-        return this.userService.findUserById(event.organizer);
+        return this.userService.findUserById(this.event.organizer);
       }).then(user => {
       // console.log(this.event.organizer);
       this.organizer = user;
@@ -328,7 +355,9 @@ export class EventDetailComponent implements OnInit {
         this.hasExtraInfo = true;
       }
       this.isOrganizerLoaded = true;
-    }).then(() => this.checkEnrollment());
+    }).then(() => this.checkEnrollment())
+      .then(() => this.loadTargetSite())
+      .then(() => this.loadEquipment());
 
   }
 

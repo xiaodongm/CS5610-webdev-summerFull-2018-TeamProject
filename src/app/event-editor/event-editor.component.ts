@@ -12,6 +12,9 @@ import {dates, months} from '../constants/dateConstant';
 import {ActivatedRoute} from '@angular/router';
 import {EventServiceClient} from '../services/event.service.client';
 import {UserServiceClient} from '../services/user.service.client';
+import {EquipmentRentingServiceClient} from '../services/equipmentRenting.service.client';
+import {SiteServiceClient} from '../services/site.service.client';
+import {ReservationServiceClient} from '../services/reservation.service.client';
 
 @Pipe({ name: 'safe' })
 export class SafePipe implements PipeTransform {
@@ -32,6 +35,9 @@ export class EventEditorComponent implements OnInit {
   constructor(private modalService: BsModalService,
               public sanitizer: DomSanitizer,
               private userService: UserServiceClient,
+              private siteService: SiteServiceClient,
+              private reservationService: ReservationServiceClient,
+              private rentService: EquipmentRentingServiceClient,
               private eventService: EventServiceClient,
               private route: ActivatedRoute) {
     this.route.params.subscribe( params => this.setParams(params));
@@ -49,6 +55,8 @@ export class EventEditorComponent implements OnInit {
   list = '';
   listType = 'unorderedList';
   message: string;
+  equipments;
+  targetSite;
   organizer = new User();
   organizer1: User = {
     _id: '',
@@ -292,6 +300,26 @@ export class EventEditorComponent implements OnInit {
   //   return new Date(year + '-' + month + '-' + dt);
   // }
 
+  loadTargetSite() {
+    return this.reservationService.findReservationsForEvent(this.eventId)
+      .then((reservation) => {
+        console.log(reservation);
+        if (reservation.length > 0) {
+          this.targetSite = reservation[0].site;
+        }
+      });
+  }
+
+  loadEquipment() {
+    return this.rentService.findRentingsForEvent(this.eventId)
+      .then((equipments) => {
+        console.log(equipments);
+        if (equipments.length > 0) {
+          this.equipments = equipments;
+        }
+      });
+  }
+
   ngOnInit() {
 
     this.eventService.findEventById(this.eventId)
@@ -319,7 +347,8 @@ export class EventEditorComponent implements OnInit {
           this.hasExtraInfo = true;
         }
         this.isOrganizerLoaded = true;
-    });
+    }). then(() => this.loadTargetSite())
+      .then(() => this.loadEquipment());
 
   }
 }
