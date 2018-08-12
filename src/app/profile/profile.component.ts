@@ -60,6 +60,11 @@ export class ProfileComponent implements OnInit {
     this.curPage = curPage;
   }
 
+  goEventList() {
+    this.router.navigate(['eventList']);
+  }
+
+
   goCreateSite() {
     this.router.navigate(['createSite']);
   }
