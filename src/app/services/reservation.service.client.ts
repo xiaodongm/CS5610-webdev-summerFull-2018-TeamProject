@@ -28,4 +28,14 @@ export class ReservationServiceClient {
     return fetch(URL + '/api/event/' + eventId + '/site')
       .then(res => res.json());
   }
+
+  findReservationsForProvider(providerId) {
+    return fetch(URL + '/api/event/' + providerId + '/site')
+      .then(res => res.json());
+  }
+
+  findAllReservations() {
+    return fetch(URL + '/api/reservations')
+      .then(res => res.json());
+  }
 }
