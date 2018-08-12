@@ -1,5 +1,6 @@
 .list-container {
   margin-top: 70px;
+  margin-bottom: 50px;
 }
 
 .featureTag {
@@ -12,4 +13,13 @@
 
 .badge {
   cursor: pointer;
+}
+
+.container {
+  margin-top: 20px;
+}
+
+.list-container h3 {
+  margin-bottom: 20px;
+  font-family: "Agency FB";
 }
