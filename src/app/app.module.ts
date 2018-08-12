@@ -34,7 +34,7 @@ import { EnrollmentServiceClient} from './services/enrollment.service.client';
 import { NgxMasonryModule} from 'ngx-masonry';
 import { BsDatepickerModule } from 'ngx-bootstrap';
 import { EventDetailComponent } from './event-detail/event-detail.component';
-import {EventEditorComponent, SafePipe} from './event-editor/event-editor.component';
+import { EventEditorComponent, SafePipe} from './event-editor/event-editor.component';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { EventDescriptionWidgetEditorComponent } from './event-description-widget-editor/event-description-widget-editor.component';
 import { SortablejsModule} from 'angular-sortablejs';
