@@ -80,7 +80,7 @@
         </div>
         <div class="card-body">
           <h3 class="card-title">Total Enrollments : {{enrollments.length}}</h3>
-          <a class="arrow" (click)="openEnrollmentsList()" routerLink="/admin">
+          <a class="arrow" (click)="openEnrollmentList()" routerLink="/admin">
             More Info
             <i class="fas fa-arrow-circle-right"></i>
           </a>
@@ -93,7 +93,7 @@
         </div>
         <div class="card-body">
           <h3 class="card-title">Total Reservations : {{reservations.length}}</h3>
-          <a class="arrow" (click)="openSiteList()" routerLink="/admin">
+          <a class="arrow" (click)="openReservationList()" routerLink="/admin">
             More Info
             <i class="fas fa-arrow-circle-right"></i>
           </a>
@@ -106,7 +106,7 @@
         </div>
         <div class="card-body">
           <h3 class="card-title">Total Rentals : {{rentals.length}}</h3>
-          <a class="arrow" (click)="openSiteList()" routerLink="/admin">
+          <a class="arrow" (click)="openRentalList()" routerLink="/admin">
             More Info
             <i class="fas fa-arrow-circle-right"></i>
           </a>
@@ -123,6 +123,7 @@
       <app-admin-equipment-list *ngIf="listType === 'equipmentList'" (messageEvent)="receiveMessage($event)"></app-admin-equipment-list>
       <app-admin-discussion-list *ngIf="listType === 'discussionList'" (messageEvent)="receiveMessage($event)"></app-admin-discussion-list>
       <app-admin-site-list *ngIf="listType === 'siteList'" (messageEvent)="receiveMessage($event)"></app-admin-site-list>
+      <app-admin-enrollment-list *ngIf="listType === 'enrollmentList'" (messageEvent)="receiveMessage($event)"></app-admin-enrollment-list>
     </div>
   </div>
 </div>

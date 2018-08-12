@@ -78,6 +78,7 @@ import { SiteListCardComponent } from './site-list-card/site-list-card.component
 import { EquipmentListComponent } from './equipment-list/equipment-list.component';
 import { EquipmentListCardComponent } from './equipment-list-card/equipment-list-card.component';
 import {EquipmentRentingServiceClient} from './services/equipmentRenting.service.client';
+import { AdminEnrollmentListComponent } from './admin-enrollment-list/admin-enrollment-list.component';
 
 
 @NgModule({
@@ -132,6 +133,7 @@ import {EquipmentRentingServiceClient} from './services/equipmentRenting.service
     SiteListCardComponent,
     EquipmentListComponent,
     EquipmentListCardComponent,
+    AdminEnrollmentListComponent,
   ],
   imports: [
     BrowserModule,
