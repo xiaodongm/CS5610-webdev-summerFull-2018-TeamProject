@@ -1,6 +1,7 @@
 <div class="card text-center">
   <div class="card-block">
-    <h6 class="card-subtitle mb-2 text-muted">{{data.startTime}} to {{data.endTime}}</h6>
+    <h6 class="card-subtitle mb-2 text-muted" *ngIf="data.endTime">{{data.startTime}} to {{data.endTime}}</h6>
+    <h6 class="card-subtitle mb-2 text-muted" *ngIf="!data.endTime && data.startTime">{{data.startTime}}</h6>
     <span class="button-pos">
     </span>
 

@@ -40,11 +40,14 @@ export class ProfileComponent implements OnInit {
   enrolledEvents: EventCard[] = [];
   myEquipments: Equipment[] = [];
   mySites: Site[] = [];
+  friends = [];
+  myRentings;
   receiveMessage($event) {
     if (this.user.role !== 'SiteManager' && this.user.role !== 'EquipmentDealer') {
       this.user = $event;
     } else if (this.user.role === 'SiteManager' || this.user.role === 'EquipmentDealer') {
       this.provider = $event;
+      this.user = $event;
     }
   }
 
@@ -60,6 +63,42 @@ export class ProfileComponent implements OnInit {
     this.router.navigate(['createEquipment']);
   }
 
+  receiveFriendList(friends) {
+    this.friends = friends;
+  }
+
+  receiveNewDiscussion(discussions) {
+    this.discussions = discussions;
+  }
+
+  receiveNewSites(sites) {
+    this.mySites = sites;
+  }
+
+  receiveNewEquips(equips) {
+    this.myEquipments = equips;
+  }
+
+  receiveOrEvents(events) {
+    this.organizedEvents = events;
+  }
+
+  receiveAtEvents(events) {
+    this.attendedEvents = events;
+  }
+
+  receiveNewRentings(events) {
+    this.myRentings = events;
+  }
+
+  fillFollowingInfo(following) {
+    following.forEach( f => {
+      this.userService
+        .findUserById(f)
+        .then(user => this.friends.push(user));
+    });
+  }
+
   ngOnInit() {
     this.userService
       .profile()
@@ -71,6 +110,9 @@ export class ProfileComponent implements OnInit {
             'WQiOjEyMDd9&s=09093dcdf66dbcd2397b9dc19384a899&auto=forma' +
             't&fit=crop&w=800&q=60';
         }
+        this.userService
+          .findAllFollowingFriendsForUser(user._id)
+          .then(friends => this.fillFollowingInfo(friends));
         this.eventService.findEventsForOrganizer(user._id)
           .then(events => this.organizedEvents = events);
         this.enrollmentService.findEnrollmentsForAttendee(user._id)
