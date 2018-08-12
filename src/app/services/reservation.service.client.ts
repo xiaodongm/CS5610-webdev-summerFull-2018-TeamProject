@@ -30,7 +30,7 @@ export class ReservationServiceClient {
   }
 
   findReservationsForProvider(providerId) {
-    return fetch(URL + '/api/event/' + providerId + '/site')
+    return fetch(URL + '/api/provider/' + providerId)
       .then(res => res.json());
   }
 

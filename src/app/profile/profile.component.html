@@ -88,7 +88,7 @@
     <app-discussion-list-for-profile (messageEvent)="receiveNewDiscussion($event)" *ngIf="(user.role === 'organizer' || user.role === 'attendee') && curPage === 'ds'" [discussions]="discussions" [isSame] = "isSame" [userId] = "user._id"></app-discussion-list-for-profile>
     <app-site-list-for-profile (messageEvent)="receiveNewSites($event)" *ngIf="user.role === 'SiteManager' && curPage === 'sl'" [isSame] = "isSame" [user] = "user" [sites]="mySites"></app-site-list-for-profile>
     <app-epuipment-list-for-profile  (messageEvent)="receiveNewEquips($event)" *ngIf="user.role === 'EquipmentDealer' && curPage === 'el'" [isSame] = "isSame" [user] = "user" [equips]="myEquipments"></app-epuipment-list-for-profile>
-    <app-renting-list-for-profile  (messageEvent)="receiveNewRentings($event)" *ngIf="(user.role === 'SiteManager' || user.role === 'EquipmentDealer') && curPage === 'rt'" [isSame] = "isSame"></app-renting-list-for-profile>
+    <app-renting-list-for-profile  (messageEvent)="receiveNewRentings($event)" [rentings]="myRentings" [user] = "user" *ngIf="(user.role === 'SiteManager' || user.role === 'EquipmentDealer') && curPage === 'rt'" [isSame] = "isSame"></app-renting-list-for-profile>
   </div>
 
 </div>

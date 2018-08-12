@@ -73,6 +73,7 @@ import { EventMainListRowCardComponent } from './event-main-list-row-card/event-
 import { EpuipmentListForProfileComponent } from './epuipment-list-for-profile/epuipment-list-for-profile.component';
 import { SiteListComponent } from './site-list/site-list.component';
 import { SiteListCardComponent } from './site-list-card/site-list-card.component';
+import {EquipmentRentingServiceClient} from './services/equipmentRenting.service.client';
 
 @NgModule({
   declarations: [
@@ -153,7 +154,8 @@ import { SiteListCardComponent } from './site-list-card/site-list-card.component
     DiscussionServiceClient,
     EquipmentServiceClient,
     SiteServiceClient,
-    ReservationServiceClient
+    ReservationServiceClient,
+    EquipmentRentingServiceClient
   ],
   bootstrap: [AppComponent]
 })
