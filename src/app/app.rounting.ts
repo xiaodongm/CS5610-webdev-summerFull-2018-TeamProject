@@ -18,6 +18,7 @@ import {CreateEquipmentComponent} from './create-equipment/create-equipment.comp
 import {EquipmentEditorComponent} from './equipment-editor/equipment-editor.component';
 import {SiteEditorComponent} from './site-editor/site-editor.component';
 import {SiteDetailComponent} from './site-detail/site-detail.component';
+import {EventMainListComponent} from './event-main-list/event-main-list.component';
 
 
 const appRoutes: Routes = [
@@ -28,6 +29,7 @@ const appRoutes: Routes = [
   { path: 'search', component: CampingSiteSearchComponent},
   { path: 'camping-site/:contractID/:facilityID/detail', component: CampingSiteDetailComponent},
   { path: 'detail', component: CampingSiteDetailComponent},
+  { path: 'eventList', component: EventMainListComponent},
   { path: 'eventEditor/:eventId', component: EventEditorComponent},
   { path: 'siteEditor/:siteId', component: SiteEditorComponent},
   { path: 'siteDetail/:siteId', component: SiteDetailComponent},
