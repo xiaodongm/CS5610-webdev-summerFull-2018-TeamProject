@@ -121,3 +121,7 @@ iframe {
   color: red;
   text-shadow: 2px 2px 2px #aaa;
 }
+
+.equipment-card-wrapper {
+  padding-bottom: 10px;
+}

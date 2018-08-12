@@ -24,10 +24,6 @@ carousel {
   cursor: pointer;
 }
 
-button {
-  position: absolute;
-}
-
 .wbdv-blur {
   -webkit-filter: blur(5px); /* Safari 6.0 - 9.0 */
   filter: blur(5px);
@@ -170,3 +166,5 @@ h6 {
   display: inline-block;
   padding-top: 15px;
 }
+
+
