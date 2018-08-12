@@ -75,6 +75,9 @@ import { FooterComponent } from './footer/footer.component';
 import { EpuipmentListForProfileComponent } from './epuipment-list-for-profile/epuipment-list-for-profile.component';
 import { SiteListComponent } from './site-list/site-list.component';
 import { SiteListCardComponent } from './site-list-card/site-list-card.component';
+import { EquipmentListComponent } from './equipment-list/equipment-list.component';
+import { EquipmentListCardComponent } from './equipment-list-card/equipment-list-card.component';
+import {EquipmentRentingServiceClient} from './services/equipmentRenting.service.client';
 
 
 @NgModule({
@@ -127,6 +130,8 @@ import { SiteListCardComponent } from './site-list-card/site-list-card.component
     EpuipmentListForProfileComponent,
     SiteListComponent,
     SiteListCardComponent,
+    EquipmentListComponent,
+    EquipmentListCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -158,7 +163,8 @@ import { SiteListCardComponent } from './site-list-card/site-list-card.component
     DiscussionServiceClient,
     EquipmentServiceClient,
     SiteServiceClient,
-    ReservationServiceClient
+    ReservationServiceClient,
+    EquipmentRentingServiceClient
   ],
   bootstrap: [AppComponent]
 })

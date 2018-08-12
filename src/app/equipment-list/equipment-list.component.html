@@ -1,0 +1,9 @@
+
+<div class="container">
+  <div class="row">
+
+    <div *ngFor="let equipment of equipments" class="card-container col-md-6 col-lg-4">
+      <app-equipment-list-card [data]="equipment" (refreshEmitter)="loadEquipments()"></app-equipment-list-card>
+    </div>
+  </div>
+</div>

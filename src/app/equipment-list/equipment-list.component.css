@@ -1,0 +1,15 @@
+.card {
+  /*display: inline-block;*/
+  border: none;
+  /*width: 100%*/
+  /*width: 350px;*/
+}
+
+.container {
+  margin-top: 80px;
+}
+
+.card-container{
+  padding: 0;
+  margin-bottom: 15px;
+}
