@@ -91,6 +91,32 @@ export class UserServiceClient {
     });
   }
 
+  followFriend(userId) {
+    return fetch('http://localhost:3000/api/user/follow/' + userId, {
+      credentials: 'include', // include, same-origin, *omit
+      method: 'put',
+      headers: {
+        'content-type': 'application/json'
+      }
+    }).then(response => response.json());
+  }
+
+  un_followFriend(userId) {
+    return fetch('http://localhost:3000/api/user/un_follow/' + userId, {
+      credentials: 'include', // include, same-origin, *omit
+      method: 'put',
+      headers: {
+        'content-type': 'application/json'
+      }
+    }).then(response => response.json());
+  }
+
+  findAllFollowingFriendsForUser(userId) {
+    return fetch('http://localhost:3000/api/user/allFollows/' + userId)
+      .then(response => response.json());
+  }
+
+
   adminCreateUser(username, password, role) {
     const user = {
       username: username,

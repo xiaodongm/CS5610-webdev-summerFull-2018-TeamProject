@@ -1,0 +1,19 @@
+<h1>Discussions: total ({{discussions.length}})</h1>
+<div>
+  <div class="card bg-light" *ngFor="let discussion of discussions">
+
+      <div>
+        <div id="owner" class="input-group-append">
+          <p id="eventTitle" *ngIf="discussion.event" [routerLink]="['/eventDetail/' + discussion.event._id]">Event Title: {{discussion.event.title}}</p>
+          <p class="badge badge-secondary" id="ownerName">{{discussion.postPeople.username}}</p>
+          <p id="ownerTime"><span class="divider">•</span>{{discussion.postTime}}</p>
+        </div>
+        <p id="ownerContent">{{discussion.content}}</p>
+        <div id="replyDiv" class="input-group-append">
+          <button class="btn btn-default btn-outline-primary" (click)="delete(discussion._id)" *ngIf="isSame">Delete</button>
+        </div>
+      </div>
+    </div>
+
+</div>
+

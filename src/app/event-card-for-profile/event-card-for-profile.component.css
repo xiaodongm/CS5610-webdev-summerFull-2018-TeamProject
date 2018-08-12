@@ -50,13 +50,13 @@ button {
 
 .card {
   border-radius: 30px;
-  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, .1)
-  /*0 6px 10px 5px rgba(0, 0, 0, .1),*/
-  /*0 8px 10px -5px rgba(0, 0, 0, .1);*/
+  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, .1);
+  position: relative;
 }
 
 .card-title {
   margin-bottom: 0;
+
 }
 
 .iframe-pos {
@@ -78,15 +78,7 @@ button {
   height: 100%;
 }
 
-iframe {
-  width:100%;
-  height:100%;
 
-}
-
-img {
-  border-radius: 25px 25px 0 0;
-}
 
 .avatar-container {
   margin-left: 10%;
@@ -122,4 +114,33 @@ img {
 h6 {
   display: inline-block;
   padding-top: 15px;
+}
+
+.icon-group {
+  position: absolute;
+  top:45%;
+  right: 5%
+}
+
+.icon {
+  margin: 5px;
+}
+
+.delete {
+  color: red
+}
+.edit {
+  color: #b3d7ff;
+}
+
+@media (min-width: 400px) {
+  .card-columns {
+    column-count: 1;
+  }
+}
+
+@media (min-width: 770px) {
+  .card-columns {
+    column-count: 2;
+  }
 }

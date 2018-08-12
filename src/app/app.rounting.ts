@@ -13,6 +13,8 @@ import {EventEditorComponent} from './event-editor/event-editor.component';
 import {OrganizationSignUpComponent} from './organization-sign-up/organization-sign-up.component';
 import {AdminComponent} from './admin/admin.component';
 import {DiscussionBoardComponent} from './discussion-board/discussion-board.component';
+import {ProfileForVisitorComponent} from './profile-for-visitor/profile-for-visitor.component';
+
 import {CreateSiteComponent} from './create-site/create-site.component';
 import {CreateEquipmentComponent} from './create-equipment/create-equipment.component';
 import {EquipmentEditorComponent} from './equipment-editor/equipment-editor.component';
@@ -21,10 +23,12 @@ import {SiteDetailComponent} from './site-detail/site-detail.component';
 import {EventMainListComponent} from './event-main-list/event-main-list.component';
 
 
+
 const appRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
   { path: 'home', component: HomeComponent},
   { path: 'profile', component: ProfileComponent},
+  { path: 'profile/:userId', component: ProfileForVisitorComponent},
   { path: 'admin', component: AdminComponent},
   { path: 'search', component: CampingSiteSearchComponent},
   { path: 'camping-site/:contractID/:facilityID/detail', component: CampingSiteDetailComponent},
@@ -39,7 +43,7 @@ const appRoutes: Routes = [
   { path: 'createSite', component: CreateSiteComponent},
   { path: 'createEquipment', component: CreateEquipmentComponent},
   { path: 'organization/signUp', component: OrganizationSignUpComponent},
-  { path: 'test', component: DiscussionBoardComponent},
+  // { path: 'test', component: DiscussionBoardComponent},
   { path: '**', component: HomeComponent},
 
 ];

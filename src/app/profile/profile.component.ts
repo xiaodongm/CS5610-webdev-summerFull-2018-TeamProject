@@ -6,11 +6,13 @@ import {ProviderServiceClient} from '../services/provider.service.client';
 import {ActivatedRoute, Route, Router} from '@angular/router';
 import {EventCard} from '../models/EventCard.model.client';
 import {EventServiceClient} from '../services/event.service.client';
+import {DiscussionServiceClient} from '../services/discussion.service.client';
 import {EnrollmentServiceClient} from '../services/enrollment.service.client';
 import {Equipment} from '../models/equipment.model.client';
 import {EquipmentServiceClient} from '../services/equipment.service.client';
 import {SiteServiceClient} from '../services/site.service.client';
 import {Site} from '../models/site.model.client';
+
 
 @Component({
   selector: 'app-profile',
@@ -21,15 +23,20 @@ export class ProfileComponent implements OnInit {
 
   constructor(private userService: UserServiceClient,
               private providerService: ProviderServiceClient,
-              private equipmentService: EquipmentServiceClient,
-              private eventService: EventServiceClient,
-              private siteService: SiteServiceClient,
               private enrollmentService: EnrollmentServiceClient,
+              private eventService: EventServiceClient,
+              private discussionService: DiscussionServiceClient,
+              private equipmentService: EquipmentServiceClient,
+              private siteService: SiteServiceClient,
               private router: Router) { }
 
-  user = new  User();
+  user = new User();
   provider = new Provider();
-  hostedEvents: EventCard[];
+  curPage = 'pi';
+  organizedEvents = [];
+  attendedEvents = [];
+  isSame = true;
+  discussions;
   enrolledEvents: EventCard[] = [];
   myEquipments: Equipment[] = [];
   mySites: Site[] = [];
@@ -41,8 +48,8 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  goCreateEvent() {
-    this.router.navigate(['createEvent']);
+  setCurPage (curPage) {
+    this.curPage = curPage;
   }
 
   goCreateSite() {
@@ -53,41 +60,74 @@ export class ProfileComponent implements OnInit {
     this.router.navigate(['createEquipment']);
   }
 
-  deleteHostedEvent(event) {
-    this.eventService.deleteEvent(event._id)
-      .then(() =>
-        this.eventService.findEventsForOrganizer(this.user._id))
-      .then(events => this.hostedEvents = events);
-  }
   ngOnInit() {
     this.userService
       .profile()
       .then(user => {
         this.user = user;
-        return this.eventService.findEventsForOrganizer(user._id);
-      }).then(events => {
-        this.hostedEvents = events;
-        return this.enrollmentService.findEnrollmentsForAttendee(this.user._id);
-    })
-      .then((enrollments) => {
-        for (const enrollment of enrollments) {
-          this.enrolledEvents.push(enrollment.event);
+        if (!this.user.profilePhoto) {
+          this.user.profilePhoto = 'https://images.unsplash.com/photo-' +
+            '1495078065017-564723e7e3e7?ixlib=rb-0.3.5&ixid=eyJhcHBfa' +
+            'WQiOjEyMDd9&s=09093dcdf66dbcd2397b9dc19384a899&auto=forma' +
+            't&fit=crop&w=800&q=60';
         }
-        });
+        this.eventService.findEventsForOrganizer(user._id)
+          .then(events => this.organizedEvents = events);
+        this.enrollmentService.findEnrollmentsForAttendee(user._id)
+          .then(events => {
+            this.attendedEvents = events;
+          });
+        this.discussionService.findDiscussionForUser(user._id)
+          .then(discussions => {
+            this.discussions = discussions;
+          });
+
+      });
 
 
     this.providerService
       .profile()
       .then(provider => {
         this.provider = provider;
-        return this.equipmentService.findEquipmentsForProvider(this.provider._id);
-      })
-      .then((equipments) => {
-        this.myEquipments = equipments;
-        return this.siteService.findSitesForProvider(this.provider._id);
-      })
-      .then((sites) => this.mySites = sites);
+        this.equipmentService
+          .findEquipmentsForProvider(this.provider._id)
+          .then(equipments => this.myEquipments = equipments);
 
+        this.siteService
+          .findSitesForProviderWithInfo(this.provider._id)
+      .then((sites) => this.mySites = sites);
+      });
   }
 
+  goCreateEvent() {
+    this.router.navigate(['createEvent']);
+  }
+
+  switchAttendeeToOrganizer(user) {
+    let temp = this.user;
+    temp.role = 'organizer';
+    this.userService
+      .update(temp)
+      .then(res => {
+        if (res.error) {
+          alert(res.error);
+        } else {
+          this.user = res;
+        }
+      });
+  }
+
+  switchOrganizerToAttendee() {
+    let temp = this.user;
+    temp.role = 'attendee';
+    this.userService
+      .update(temp)
+      .then(res => {
+        if (res.error) {
+          alert(res.error);
+        } else {
+          this.user = res;
+        }
+      });
+  }
 }

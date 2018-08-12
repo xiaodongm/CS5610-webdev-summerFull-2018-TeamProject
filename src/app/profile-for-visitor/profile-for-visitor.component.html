@@ -6,7 +6,8 @@
   <div class="main-background">
     <div class="row">
       <div class="avatar-container">
-        <div class="avatar" *ngIf="user.profilePhoto" [ngStyle]="{'background-image': 'url(' + user.profilePhoto + ')'}"></div>
+        <div class="avatar" [ngStyle]="{'background-image': 'url(' + user.profilePhoto + ')'}">
+        </div>
       </div>
       <h2 *ngIf="user.role !== 'SiteManager' && user.role !== 'EquipmentDealer'"
           class="main-text">{{user.firstName}} {{user.lastName}}</h2>
@@ -14,35 +15,15 @@
           class="main-text">{{provider.organizationName}}</h2>
     </div>
 
-
-    <div class = 'btn-position'>
-      <button *ngIf="user.role === 'organizer'" (click)="goCreateEvent()">Post A New Event</button>
-      <button *ngIf="user.role === 'attendee'" >Attend A New Event</button>
-      <button *ngIf="user.role === 'SiteManager'" (click)="goCreateSite()">Post A Site</button>
-      <button *ngIf="user.role === 'EquipmentDealer'" (click)="goCreateEquipments()">Post A New Equipment</button>
-      <div *ngIf="user.role === 'organizer' || user.role === 'attendee'">
-      <li  id="roleFld-att" class="list-group-item form-control">{{user.role}}</li>
-      <div class="btn-group" dropdown>
-        <button id="button-basic-att" dropdownToggle type="button" class="btn btn-outline-dark dropdown-toggle"
-                aria-controls="dropdown-basic-att">
-          Select Role
-        </button>
-        <ul id="dropdown-basic-att" *dropdownMenu class="dropdown-menu"
-            role="menu" aria-labelledby="button-basic">
-          <li role="menuitem"><a (click)="switchOrganizerToAttendee()" class="dropdown-item">Attendee</a></li>
-          <li role="menuitem"><a (click)="switchAttendeeToOrganizer()" class="dropdown-item">Organizer</a></li>
-        </ul>
-      </div>
-      </div>
+    <div class = 'btn-position' *ngIf="user.role === 'organizer' || user.role === 'attendee'">
+      <button *ngIf="!isFollowed" (click)="followUser()" class="btn btn-primary">Follow</button>
+      <button *ngIf="isFollowed" (click)="unfollowUser()" class="btn btn-primary">Un-Follow</button>
     </div>
+
   </div>
 
-  <div *ngIf="user.role === 'organizer' || user.role === 'attendee'">
-  <div class="botton-background">
+  <div class="botton-background" *ngIf="user.role === 'organizer' || user.role === 'attendee'">
     <div class="input-group-append">
-      <div class="col-sm grid-item" [ngClass]="{'active': curPage === 'pi'}">
-        <a (click)="setCurPage('pi')" class="nav-links">Private Info</a>
-      </div>
       <div class="col-sm grid-item" [ngClass]="{'active': curPage === 'oa'}">
         <a (click)="setCurPage('oa')" class="nav-links">Organized Activities</a>
       </div>
@@ -57,15 +38,10 @@
       </div>
     </div>
   </div>
-  </div>
-
 
   <div *ngIf="user.role === 'SiteManager' || user.role === 'EquipmentDealer'">
     <div class="botton-background">
       <div class="input-group-append">
-        <div class="col-sm grid-item" [ngClass]="{'active': curPage === 'pi'}">
-          <a (click)="setCurPage('pi')" class="nav-links">Private Info</a>
-        </div>
         <div class="col-sm grid-item" [ngClass]="{'active': curPage === 'sl'}"  *ngIf="user.role === 'SiteManager'">
           <a (click)="setCurPage('sl')" class="nav-links">Sites List</a>
         </div>
@@ -79,12 +55,10 @@
     </div>
   </div>
 
-
   <div class="container">
-    <app-friend-list *ngIf="user.role === 'organizer' || user.role === 'attendee' && curPage === 'ff'" [user] = user></app-friend-list>
-    <app-basic-information *ngIf="curPage ==='pi'" (messageEvent)="receiveMessage($event)"></app-basic-information>
     <app-events-list-for-profile *ngIf="user.role === 'organizer' || user.role === 'attendee' && curPage === 'oa'" [type] = 'curPage' [events]="organizedEvents" [isSame] = "isSame"></app-events-list-for-profile>
     <app-events-list-for-profile *ngIf="user.role === 'organizer' || user.role === 'attendee' && curPage === 'pa'" [type] = 'curPage' [events]="attendedEvents" [isSame] = "isSame"></app-events-list-for-profile>
+    <app-friend-list *ngIf="user.role === 'organizer' || user.role === 'attendee' && curPage === 'ff'" [user] = user></app-friend-list>
     <app-discussion-list-for-profile *ngIf="user.role === 'organizer' || user.role === 'attendee' && curPage === 'ds'" [discussions]="discussions" [isSame] = "isSame" [userId] = "user._id"></app-discussion-list-for-profile>
     <app-site-list-for-profile *ngIf="user.role === 'SiteManager' && curPage === 'sl'" [isSame] = "isSame" [sites]="mySites"></app-site-list-for-profile>
     <app-renting-list-for-profile *ngIf="user.role === 'SiteManager' || user.role === 'EquipmentDealer' && curPage === 'rt'" [isSame] = "isSame"></app-renting-list-for-profile>

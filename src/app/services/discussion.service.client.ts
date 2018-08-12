@@ -42,4 +42,9 @@ export class DiscussionServiceClient {
       }
     }).then(res => res.json());
   }
+
+  findDiscussionForUser(userId) {
+    return fetch(URL + '/api/discussion/user/' + userId)
+      .then(res => res.json());
+  }
 }
