@@ -13,6 +13,8 @@ import {Equipment} from '../models/equipment.model.client';
 import {Site} from '../models/site.model.client';
 import {SiteServiceClient} from '../services/site.service.client';
 import {EquipmentServiceClient} from '../services/equipment.service.client';
+import {ReservationServiceClient} from '../services/reservation.service.client';
+import {EquipmentRentingServiceClient} from '../services/equipmentRenting.service.client';
 
 @Component({
   selector: 'app-profile-for-visitor',
@@ -27,6 +29,8 @@ export class ProfileForVisitorComponent implements OnInit {
               private discussionService: DiscussionServiceClient,
               private enrollmentService: EnrollmentServiceClient,
               private equipmentService: EquipmentServiceClient,
+              private reservationService: ReservationServiceClient,
+              private equipmentRentingService: EquipmentRentingServiceClient,
               private siteService: SiteServiceClient,
               private route: ActivatedRoute,
               private router: Router) {
@@ -47,6 +51,7 @@ export class ProfileForVisitorComponent implements OnInit {
   myEquipments: Equipment[] = [];
   mySites: Site[] = [];
   friends = [];
+  myRentings = [];
 
   setParams(params) {
     this.userId = params['userId'];
@@ -112,9 +117,26 @@ export class ProfileForVisitorComponent implements OnInit {
             .findSitesForProviderWithInfo(this.provider._id)
             .then((sites) => this.mySites = sites);
 
+
+          if (provider.role === 'SiteManager') {
+            this.reservationService
+              .findReservationsForProvider(provider._id)
+              .then(reservations => {
+                this.myRentings = reservations;
+              });
+          } else {
+            this.equipmentRentingService
+              .findRentingsForProvider(provider._id)
+              .then(rentings => this.myRentings = rentings);
+          }
+
           this.curPage = 'sl';
         }
       });
+
+    this.userService
+      .profile()
+      .then(user => this.curUser = user);
   }
 
   followUser() {
