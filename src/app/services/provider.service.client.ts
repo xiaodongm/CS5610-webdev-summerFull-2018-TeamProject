@@ -8,7 +8,7 @@ export class ProviderServiceClient {
       organizationAddress: organizationAddress,
       role: service
     };
-    return fetch('http://localhost:3000/api/provider/register', {
+    return fetch('https://husky-camp-node-server.herokuapp.com/api/provider/register', {
       body: JSON.stringify(provider),
       credentials: 'include', // include, same-origin, *omit
       method: 'post',
@@ -24,7 +24,7 @@ export class ProviderServiceClient {
       password: password,
       role: role
     };
-    return fetch('http://localhost:3000/api/provider/register', {
+    return fetch('https://husky-camp-node-server.herokuapp.com/api/provider/register', {
       body: JSON.stringify(provider),
       credentials: 'include', // include, same-origin, *omit
       method: 'post',
@@ -35,12 +35,12 @@ export class ProviderServiceClient {
   }
 
   findProviderById(providerId) {
-    return fetch('http://localhost:3000/api/provider/providerId/' + providerId)
+    return fetch('https://husky-camp-node-server.herokuapp.com/api/provider/providerId/' + providerId)
       .then(response => response.json());
   }
 
   findAllProviders() {
-    return fetch('http://localhost:3000/api/provider')
+    return fetch('https://husky-camp-node-server.herokuapp.com/api/provider')
       .then(response => response.json());
   }
 
@@ -49,7 +49,7 @@ export class ProviderServiceClient {
       username: username,
       password: password
     };
-    return fetch('http://localhost:3000/api/provider/login', {
+    return fetch('https://husky-camp-node-server.herokuapp.com/api/provider/login', {
       method: 'post',
       body: JSON.stringify(credentials),
       credentials: 'include',
@@ -60,14 +60,14 @@ export class ProviderServiceClient {
   }
 
   logout() {
-    return fetch('http://localhost:3000/api/provider/logout', {
+    return fetch('https://husky-camp-node-server.herokuapp.com/api/provider/logout', {
       method: 'post',
       credentials: 'include'
     });
   }
 
   update(user) {
-    return fetch('http://localhost:3000/api/provider/profile', {
+    return fetch('https://husky-camp-node-server.herokuapp.com/api/provider/profile', {
       method: 'put',
       body: JSON.stringify(user),
       credentials: 'include',
@@ -78,7 +78,7 @@ export class ProviderServiceClient {
   }
 
   adminUpdate(user) {
-    return fetch('http://localhost:3000/api/admin/updateProvider', {
+    return fetch('https://husky-camp-node-server.herokuapp.com/api/admin/updateProvider', {
       method: 'put',
       body: JSON.stringify(user),
       headers: {
@@ -88,20 +88,20 @@ export class ProviderServiceClient {
   }
 
   delete() {
-    return fetch('http://localhost:3000/api/provider/profile', {
+    return fetch('https://husky-camp-node-server.herokuapp.com/api/provider/profile', {
       method: 'delete',
       credentials: 'include'
     });
   }
 
   deleteProviderById(providerId) {
-    return fetch('http://localhost:3000/api/provider/providerId/' + providerId, {
+    return fetch('https://husky-camp-node-server.herokuapp.com/api/provider/providerId/' + providerId, {
       method: 'delete'
     });
   }
 
   profile() {
-    return fetch('http://localhost:3000/api/provider/profile',
+    return fetch('https://husky-camp-node-server.herokuapp.com/api/provider/profile',
       {
         credentials: 'include', // include, same-origin, *omit
       })
