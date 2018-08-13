@@ -195,6 +195,7 @@ export class ProfileComponent implements OnInit {
   switchAttendeeToOrganizer(user) {
     this.userService.profile()
       .then((us) => {
+        console.log(us);
         us.role = 'organizer';
         console.log(us);
         return this.userService.update(us);
