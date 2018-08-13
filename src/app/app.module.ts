@@ -78,6 +78,9 @@ import { SiteListCardComponent } from './site-list-card/site-list-card.component
 import { EquipmentListComponent } from './equipment-list/equipment-list.component';
 import { EquipmentListCardComponent } from './equipment-list-card/equipment-list-card.component';
 import {EquipmentRentingServiceClient} from './services/equipmentRenting.service.client';
+import { AdminEnrollmentListComponent } from './admin-enrollment-list/admin-enrollment-list.component';
+import { AdminReservationListComponent } from './admin-reservation-list/admin-reservation-list.component';
+import { AdminRentalListComponent } from './admin-rental-list/admin-rental-list.component';
 import { RentEquipmentCardComponent } from './rent-equipment-card/rent-equipment-card.component';
 
 
@@ -133,6 +136,9 @@ import { RentEquipmentCardComponent } from './rent-equipment-card/rent-equipment
     SiteListCardComponent,
     EquipmentListComponent,
     EquipmentListCardComponent,
+    AdminEnrollmentListComponent,
+    AdminReservationListComponent,
+    AdminRentalListComponent,
     RentEquipmentCardComponent,
   ],
   imports: [

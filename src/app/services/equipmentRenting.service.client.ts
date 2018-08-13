@@ -17,6 +17,9 @@ export class EquipmentRentingServiceClient {
       method: 'delete',
       credentials: 'include',
       body: JSON.stringify(rent),
+      headers: {
+        'content-type': 'application/json'
+      }
     }).then(res => res.json());
   }
 
@@ -33,6 +36,11 @@ export class EquipmentRentingServiceClient {
 
   findRentingsForProvider(providerId) {
     return fetch (URL + '/api/provider/' + providerId + '/renting' )
+      .then(res => res.json());
+  }
+
+  findAllRenting() {
+    return fetch (URL + '/api/rentings' )
       .then(res => res.json());
   }
 

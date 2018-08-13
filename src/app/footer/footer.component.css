@@ -1,23 +1,23 @@
 #footer {
   background-color: #2e3e48;
-  height: 90px;
+  height: 20%;
   width: 100%;
 }
 
 #followMsg {
   color: white;
   margin-left: 50px;
-  margin-top: 30px;
+  margin-top: 25px;
 }
 
 .fab {
   color: white;
   cursor: pointer;
-  margin-top: 30px;
+  margin-top: 25px;
 }
 
 .fa-facebook-square {
-  margin-left: 120px;
+  /*margin-left: 120px;*/
 }
 
 .fa-twitter {
@@ -42,22 +42,28 @@
 
 
 #appStore {
-  margin-bottom: 15px;
-  margin-left: 80px;
+  margin-top: 15px;
+  margin-bottom: 10px;
   cursor: pointer;
   height: 50px; width: 160px;
 }
 
 #googlePlay {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
+  margin-top: 15px;
   margin-left: 20px;
   cursor: pointer;
   height: 50px; width: 160px;
 }
 
 #QRcode {
-  height: 75px;
-  width: 75px;
-  margin-top: -20px;
-  margin-left: 50px;
+  margin-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 60px;
+  width: 60px;
+}
+
+.row {
+  width: 100%;
 }
