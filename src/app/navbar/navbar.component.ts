@@ -37,6 +37,12 @@ export class NavbarComponent implements OnInit {
       .subscribe(message => {
         this.message = message;
       });
+    this.userService.profile()
+      .then((user) => {
+        if (user._id) {
+          this.message = 'login';
+        }
+      });
   }
 
 }

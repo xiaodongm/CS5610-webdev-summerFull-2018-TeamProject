@@ -96,10 +96,12 @@ button {
   padding-bottom: 100%;
   background-size: cover;
   background-position: center;
+  cursor: pointer;
 }
 
 .host-info {
   display: inline-block;
+  margin-top: 0;
   padding-left: 5%;
 }
 

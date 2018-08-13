@@ -39,6 +39,11 @@ export class EquipmentRentingServiceClient {
       .then(res => res.json());
   }
 
+  findAllRenting() {
+    return fetch (URL + '/api/rentings' )
+      .then(res => res.json());
+  }
+
 
 }
 

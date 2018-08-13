@@ -184,7 +184,7 @@ export class ProfileComponent implements OnInit {
   }
 
   switchOrganizerToAttendee() {
-    let temp = this.user;
+    const temp = this.user;
     temp.role = 'attendee';
     this.userService
       .update(temp)

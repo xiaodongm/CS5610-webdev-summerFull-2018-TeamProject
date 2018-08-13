@@ -1,0 +1,47 @@
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link" routerLink="/admin" (click)="openReservationTab()">
+      Reservations({{reservations.length}})
+    </a>
+  <li class="nav-item">
+    <a class="nav-link" routerLink="/admin" (click)="openCreateReservationTab()">
+      Create New Reservation
+    </a>
+  </li>
+</ul>
+
+<accordion [closeOthers]="true">
+  <div *ngIf="reservationType === 'reservation'">
+    <accordion-group *ngFor="let reservation of reservations" (isOpenChange)="log(reservation)">
+      <button class="btn btn-link btn-block clearfix" accordion-heading>
+        <div class="pull-left float-left">
+          Event:[{{' ' + reservation.event.title + ' '}}]___Site: [{{' ' + reservation.site.title + ' '}}]
+        </div>
+      </button>
+      <div *ngFor="let alert of alerts">
+        <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onClosed(alert)">{{ alert.msg }}</alert>
+      </div>
+      <div class="input-group-append wrapDiv">
+        <label for="eventFld" class="col-sm-2 col-form-label">Event</label>
+        <input id="eventFld" [(ngModel)]="reservation.event.title" class="form-control" readonly>
+      </div>
+      <div class="input-group-append wrapDiv">
+        <label for="siteFld" class="col-sm-2 col-form-label">Site</label>
+        <input id="siteFld" [(ngModel)]="reservation.site.title" class="form-control" readonly>
+      </div>
+
+      <div class="UpdateDeleteBtns">
+        <button (click)="openModal(deleteConfirm)" class="btn btn-danger">Delete</button>
+      </div>
+
+      <ng-template #deleteConfirm>
+        <div class="modal-body text-center">
+          <p>Are you sure you want to <strong>DELETE</strong> this Reservation?</p>
+          <button type="button" class="btn btn-danger confirmDelete" (click)="delete(reservation)" >Delete</button>
+          <button type="button" class="btn btn-default" (click)="modalRef.hide();" >Cancel</button>
+        </div>
+      </ng-template>
+
+    </accordion-group>
+  </div>
+</accordion>
