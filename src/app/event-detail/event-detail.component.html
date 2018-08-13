@@ -5,7 +5,7 @@
 <div class="card meta-div" *ngIf="isOrganizerLoaded">
   <div class="container" (mouseleave) ="mouseLeave()">
     <div class="row meta-row">
-      <div class="col-md-7 meta-div" >
+      <div class="col-md-6 meta-div" >
         <div class="card media-container">
           <div class="carousel-container">
             <carousel data-interval="false"
@@ -38,17 +38,32 @@
 
 
 
-      <div class="col-md-5">
+      <div id="organizerInfoDiv" class="col-md-6">
         <div class="card event-meda">
-          <h2 class="">{{event.title}}</h2>
+
+          <div class="input-group-append">
+            <h2 id="eventTitleDisplay" class="">{{event.title}}</h2>
+
+          </div>
+
 
           <div class="row" *ngIf="isOrganizerLoaded">
             <div class="avatar-container col-3">
-              <div class="avatar" [ngStyle]="{'background-image': 'url(' + organizer.profilePhoto + ')'}">
+              <div class="avatar" [routerLink]="['/profile/' + organizer._id]"
+                   [ngStyle]="{'background-image': 'url(' + organizer.profilePhoto + ')'}">
               </div>
             </div>
 
             <div class="host-info col-7">
+              <div>
+              <span class="button-pos">
+                <span class="button-container">
+                  <button class="btn btn-primary" *ngIf="!isEnrolled" (click)="enrollEvent()">Enroll</button>
+                  <button class="btn btn-danger" *ngIf="isEnrolled" (click)="unenrollEvent()">Unenroll</button>
+                </span>
+              </span>
+              </div>
+
               <div class="text-sm-left text-muted">
                 Hosted by
                 <span>{{organizer && organizer.firstName}}</span>
@@ -59,24 +74,20 @@
                 <span>{{organizer.location}}</span>
               </div>
             </div>
+
           </div>
         </div>
-        <span class="button-pos">
-        <span class="button-container">
-          <span (click) = "mouseEnter()">
-            <i *ngIf='hasVideo()'
-               class="fab fa-youtube fa-2x"
-            ></i>
-          </span>
-        </span>
-          <button class="btn btn-primary" *ngIf="!isEnrolled" (click)="enrollEvent()">Enroll</button>
-          <button class="btn btn-danger" *ngIf="isEnrolled" (click)="unenrollEvent()">Unenroll</button>
 
-        </span>
-
-        <div class="amenity_list">
-          <span *ngFor="let tag of this.event.tags" class="badge badge-secondary amenity_item">{{tag}}</span>
+        <div id="tagsDisplay">
+          <hr>
+          <p>This event features :</p>
+          <div class="amenity_list">
+            <span *ngFor="let tag of this.event.tags" class="featureTag badge badge-info amenity_item">{{tag}}</span>
+          </div>
         </div>
+
+
+
       </div>
 
     </div>
@@ -86,7 +97,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-8">
+    <div class="col-sm-12 col-md-8">
       <h2>Descriptions: </h2>
       <!--<div>-->
       <!--<div>{{event.video}}</div>-->
@@ -129,7 +140,7 @@
 
     </div>
 
-    <div class="col-4">
+    <div class="col-sm-12 col-md-4">
       <div>
         Event Start:
         {{event.startTime}}
@@ -144,11 +155,18 @@
       </div>
 
       <div>
-        <h3>Drop down pick or go other page to get</h3>
-        <ul>
-          <li>camping site</li>
-          <li>camping equipments</li>
-        </ul>
+        <h3>Target Site: </h3>
+        <app-site-list-card *ngIf="targetSite" [data]="targetSite"></app-site-list-card>
+        <div *ngIf="equipments">
+        <h3>Equipments: </h3>
+          <div *ngFor="let equipment of equipments" class="equipment-card-wrapper">
+            <app-rent-equipment-card
+              [data]="equipment.equipment"
+              [quantity]="equipment.quantity">
+            </app-rent-equipment-card>
+          </div>
+        </div>
+
       </div>
 
     </div>

@@ -11,7 +11,7 @@
     <div class="card-body">
       <div class="row">
         <div class="avatar-container" *ngIf="organizer.profilePhoto && type === 'pa'">
-          <div class="avatar" [ngStyle]="{'background-image': 'url(' + organizer.profilePhoto + ')'}"></div>
+          <div class="avatar" [routerLink]="['/profile/' + organizer._id]" [ngStyle]="{'background-image': 'url(' + organizer.profilePhoto + ')'}"></div>
         </div>
 
         <div class="host-info">

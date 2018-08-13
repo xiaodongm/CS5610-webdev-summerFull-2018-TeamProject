@@ -50,6 +50,7 @@
   padding-bottom: 100%;
   background-size: cover;
   background-position: center;
+  cursor: pointer;
 }
 
 .carousel-container {
@@ -199,4 +200,12 @@ iframe {
 
 #levelDiv {
   margin-bottom: 10px;
+}
+
+.equipment-card-wrapper {
+  padding-bottom: 10px;
+}
+
+#equipment-warning {
+  color: grey;
 }

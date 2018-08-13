@@ -1,8 +1,17 @@
+.carousel-container {
+  height: 100px;
+
+}
+
+carousel {
+
+}
+
 .button-pos {
   margin-top: 2px;
   margin-right: 5px;
   float: right;
-
+  z-index: 1;
 }
 
 .button-container {
@@ -12,10 +21,7 @@
 .button-container i {
   color: red;
   text-shadow: 2px 2px 2px #aaa;
-}
-
-button {
-  position: absolute;
+  cursor: pointer;
 }
 
 .wbdv-blur {
@@ -49,14 +55,25 @@ button {
 }
 
 .card {
-  border-radius: 30px;
-  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, .1);
-  position: relative;
+  border-radius: 25px;
+  margin-left: 10px;
+  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, .1)
+  /*0 6px 10px 5px rgba(0, 0, 0, .1),*/
+  /*0 8px 10px -5px rgba(0, 0, 0, .1);*/
 }
 
 .card-title {
   margin-bottom: 0;
 
+}
+
+#title {
+  z-index: 3;
+}
+
+#title a {
+  color: black;
+  text-decoration: none;
 }
 
 .iframe-pos {
@@ -65,6 +82,11 @@ button {
   width: 100%;
   height: 100%;
   border-radius: 25px;
+  z-index: -1;
+}
+
+.iframe-pos-active {
+  z-index: 5;
 }
 
 .iframe-container {
@@ -78,7 +100,35 @@ button {
   height: 100%;
 }
 
+iframe {
+  width:100%;
+  height:100%;
 
+}
+
+.img-container{
+  height: 300px;
+  position:relative;
+  border-radius: 25px 25px 0 0;
+  overflow: hidden;
+}
+
+.img {
+  padding: 0;
+  background-image: url('https://images.unsplash.com/photo-1499996860823-5214fcc65f8f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b6ded683923a678ad03fae323169beb4&auto=format&fit=crop&w=700&q=60');
+  width: 100%;
+  padding-bottom: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+/*img {*/
+/*border-radius: 25px 25px 0 0;*/
+/*height: auto;*/
+/*width: auto;*/
+/*position:absolute;*/
+/*vertical-align: middle;*/
+/*}*/
 
 .avatar-container {
   margin-left: 10%;
@@ -101,8 +151,8 @@ button {
 
 .host-info {
   display: inline-block;
-  margin-top: 0;
   padding-left: 5%;
+  margin-top: 0;
 }
 
 .host-info div {
@@ -118,31 +168,4 @@ h6 {
   padding-top: 15px;
 }
 
-.icon-group {
-  position: absolute;
-  top:45%;
-  right: 5%
-}
 
-.icon {
-  margin: 5px;
-}
-
-.delete {
-  color: red
-}
-.edit {
-  color: #b3d7ff;
-}
-
-@media (min-width: 400px) {
-  .card-columns {
-    column-count: 1;
-  }
-}
-
-@media (min-width: 770px) {
-  .card-columns {
-    column-count: 2;
-  }
-}

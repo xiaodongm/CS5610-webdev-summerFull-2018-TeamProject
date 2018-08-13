@@ -118,11 +118,13 @@ img {
   padding-bottom: 100%;
   background-size: cover;
   background-position: center;
+  cursor: pointer;
 }
 
 .host-info {
   display: inline-block;
   padding-left: 5%;
+  margin-top: 0;
 }
 
 .host-info div {
@@ -137,3 +139,4 @@ h6 {
   display: inline-block;
   padding-top: 15px;
 }
+

@@ -14,16 +14,18 @@
   </carousel>
 
   <div class="card-block" style="{z-index: 1}">
-
     <h4 id='title' class="card-title">
       <span>
-        <a [routerLink]="['/siteDetail/' + data._id]">{{data.title}}</a>
+        {{data.title}}
       </span>
     </h4>
+    <h6 class="card-subtitle mb-2 text-muted">Quantity: {{quantity}}</h6>
+
     <div class="card-body">
       <div class="row" >
         <div class="avatar-container" *ngIf="provider.profilePhoto">
-          <div class="avatar" [routerLink]="['/profile/' + provider._id]" [ngStyle]="{'background-image': 'url(' + provider.profilePhoto + ')'}">
+          <div class="avatar" [routerLink]="['/profile/' + provider._id]"
+               [ngStyle]="{'background-image': 'url(' + provider.profilePhoto + ')'}">
           </div>
         </div>
 
@@ -43,5 +45,6 @@
       </div>
     </div>
   </div>
+
 
 </div>

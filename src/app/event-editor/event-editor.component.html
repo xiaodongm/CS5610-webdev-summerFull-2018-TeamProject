@@ -51,7 +51,8 @@
 
         <div class="row" *ngIf="isOrganizerLoaded">
           <div class="avatar-container col-3">
-            <div class="avatar" [ngStyle]="{'background-image': 'url(' + organizer.profilePhoto + ')'}">
+            <div class="avatar" [routerLink]="['/profile/' + organizer._id]"
+                 [ngStyle]="{'background-image': 'url(' + organizer.profilePhoto + ')'}">
             </div>
           </div>
 
@@ -99,7 +100,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-8">
+    <div class="col-md-8 col-sm-12">
       <div class="input-group-append">
         <h2>Descriptions: </h2>
         <span class="editIcon edit-span" (click)="openModal(template2)">
@@ -144,7 +145,7 @@
       </div>
     </div>
 
-    <div class="col-4">
+    <div class="col-md-4 col-sm-12">
       <div>
         Event Start:
         {{event.startTime}}
@@ -159,11 +160,28 @@
       </div>
 
       <div>
-        <h3>Drop down pick or go other page to get</h3>
-        <ul>
-          <li>camping site</li>
-          <li>camping equipments</li>
-        </ul>
+        <div class="input-group-append">
+          <h3>Target Site: </h3>
+          <span class="editIcon edit-span" [routerLink]="['/search']">
+            <i class="fas fa-pencil-alt"></i>
+          </span>
+        </div>
+        <app-site-list-card *ngIf="targetSite" [data]="targetSite"></app-site-list-card>
+        <div *ngIf="equipments">
+          <div class="input-group-append">
+            <h3>Equipments: </h3>
+            <span class="editIcon edit-span" [routerLink]="['/equipmentList']">
+              <i class="fas fa-plus"></i>
+            </span>
+          </div>
+          <div *ngFor="let equipment of equipments" class="equipment-card-wrapper">
+            <app-rent-equipment-card
+              [data]="equipment.equipment"
+              [quantity]="equipment.quantity">
+            </app-rent-equipment-card>
+          </div>
+          <div id="equipment-warning">To cancel equipment rental, please contact equipment dealer</div>
+        </div>
       </div>
 
     </div>
