@@ -23,7 +23,7 @@
     <div class="card-body">
       <div class="row" >
         <div class="avatar-container" *ngIf="provider.profilePhoto">
-          <div class="avatar" [ngStyle]="{'background-image': 'url(' + provider.profilePhoto + ')'}">
+          <div class="avatar" [routerLink]="['/profile/' + provider._id]" [ngStyle]="{'background-image': 'url(' + provider.profilePhoto + ')'}">
           </div>
         </div>
 
