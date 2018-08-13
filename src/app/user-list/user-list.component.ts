@@ -172,7 +172,13 @@ export class UserListComponent implements OnInit {
   delete(user) {
     if (user.role !== 'SiteManager' && user.role !== 'EquipmentDealer') {
       this.userService.deleteUserById(user._id)
-        .then(() => this.modalRef.hide())
+        .then((res) => {
+          if (res.error) {
+            alert(res.error);
+          } else {
+            this.modalRef.hide();
+          }
+        })
         .then(() => {
           this.findAllAttendees();
           this.findAllOrganizers();
@@ -181,7 +187,13 @@ export class UserListComponent implements OnInit {
         });
     } else if (user.role === 'SiteManager' || user.role === 'EquipmentDealer') {
       this.providerService.deleteProviderById(user._id)
-        .then(() => this.modalRef.hide())
+        .then((res) => {
+          if (res.error) {
+            alert(res.error);
+          } else {
+            this.modalRef.hide();
+          }
+        })
         .then(() => {
           this.findAllSiteManagers();
           this.findAllEquipmentDeals();

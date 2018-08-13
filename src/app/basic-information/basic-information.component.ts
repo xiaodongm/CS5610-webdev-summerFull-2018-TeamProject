@@ -68,15 +68,27 @@ export class BasicInformationComponent implements OnInit {
     this.alerts = this.alerts.filter(alert => alert !== dismissedAlert);
   }
 
-  delete() {
+  delete(userId) {
     // if (confirm('Do you really want to delete this user profile?')) {
       if (this.user.role !== 'SiteManager' && this.user.role !== 'EquipmentDealer') {
-        this.userService.delete()
-        .then(() => this.logout())
+        this.userService.delete(userId)
+        .then((res) => {
+          if (res.error) {
+            alert(res.error);
+          } else {
+            this.logout();
+          }
+        })
         .then(() => this.modalRef.hide());
       } else if (this.user.role === 'SiteManager' || this.user.role === 'EquipmentDealer') {
-        this.providerService.delete()
-          .then(() => this.logout())
+        this.providerService.deleteProviderById(userId)
+          .then ((res) => {
+            if (res.error) {
+              alert(res.error);
+            } else {
+              this.logout();
+            }
+          })
           .then(() => this.modalRef.hide());
       }
     // }

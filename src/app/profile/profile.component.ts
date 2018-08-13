@@ -84,10 +84,18 @@ export class ProfileComponent implements OnInit {
 
   receiveNewSites(sites) {
     this.mySites = sites;
+    this.reservationService
+      .findReservationsForProvider(this.provider._id)
+      .then(reservations => {
+        this.myRentings = reservations;
+      });
   }
 
   receiveNewEquips(equips) {
     this.myEquipments = equips;
+    this.equipmentRentingService
+      .findRentingsForProvider(this.provider._id)
+      .then(rentings => this.myRentings = rentings);
   }
 
   receiveOrEvents(events) {

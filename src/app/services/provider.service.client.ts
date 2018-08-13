@@ -97,7 +97,7 @@ export class ProviderServiceClient {
   deleteProviderById(providerId) {
     return fetch('http://localhost:3000/api/provider/providerId/' + providerId, {
       method: 'delete'
-    });
+    }).then(response => response.json());
   }
 
   profile() {
