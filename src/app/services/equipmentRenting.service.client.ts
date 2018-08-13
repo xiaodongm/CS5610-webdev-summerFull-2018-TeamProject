@@ -17,6 +17,9 @@ export class EquipmentRentingServiceClient {
       method: 'delete',
       credentials: 'include',
       body: JSON.stringify(rent),
+      headers: {
+        'content-type': 'application/json'
+      }
     }).then(res => res.json());
   }
 

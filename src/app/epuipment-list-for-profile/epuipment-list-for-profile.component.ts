@@ -18,16 +18,13 @@ export class EpuipmentListForProfileComponent implements OnInit {
   }
 
   deleteEquip(equipId, providerId) {
-    if (confirm('Are you sure to delete this equipment?')) {
-      console.log('here');
+    if (confirm('Are you sure to delete this equipment? All the renting record of this equipment will be deleted automatically!')) {
       this.equipmentService
         .deleteEquipment(equipId)
         .then((res) => {
-          console.log(res);
           this.equipmentService
             .findEquipmentsForProvider(this.user._id)
             .then(equips => {
-              console.log(equips);
               this.messageEvent.emit(equips);
             });
         });

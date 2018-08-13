@@ -36,12 +36,15 @@ export class RentingListForProfileComponent implements OnInit {
           });
       } else {
         const real = {
+          _id: reservation._id,
           event: reservation.event._id,
-          equipment: reservation.equipment._id
+          equipment: reservation.equipment._id,
+          quantity: reservation.quantity
         }
           this.equipmentRentingService
             .returnEquipForEvent(real)
-            .then(() => {
+            .then((res) => {
+              console.log(res);
               this.equipmentRentingService
                 .findRentingsForEquipment(this.user._id).then(rentings => this.messageEvent.emit(rentings));
             });
