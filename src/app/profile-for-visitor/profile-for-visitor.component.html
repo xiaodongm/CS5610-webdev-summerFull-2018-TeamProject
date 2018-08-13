@@ -15,7 +15,7 @@
           class="main-text">{{provider.organizationName}}</h2>
     </div>
 
-    <div class = 'btn-position' *ngIf="curUser && (curUser.role === 'organizer' || curUser.role === 'attendee')">
+    <div class = 'btn-position' *ngIf="(user.role === 'organizer' || user.role === 'attendee') &&  curUser && (curUser.role === 'organizer' || curUser.role === 'attendee')">
       <button *ngIf="!isFollowed" (click)="followUser()" class="btn btn-outline-primary">Follow</button>
       <button *ngIf="isFollowed" (click)="unfollowUser()" class="btn btn-outline-primary">Un-Follow</button>
     </div>

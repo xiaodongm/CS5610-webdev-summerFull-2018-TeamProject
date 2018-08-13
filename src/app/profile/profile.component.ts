@@ -35,6 +35,10 @@ export class ProfileComponent implements OnInit {
               private router: Router) {
   }
 
+  defaultPhotoUrl = 'https://images.unsplash.com/photo-' +
+    '1495078065017-564723e7e3e7?ixlib=rb-0.3.5&ixid=eyJhcHBfa' +
+    'WQiOjEyMDd9&s=09093dcdf66dbcd2397b9dc19384a899&auto=forma' +
+    't&fit=crop&w=800&q=60';
   user = new User();
   provider = new Provider();
   curPage = 'pi';
@@ -193,7 +197,12 @@ export class ProfileComponent implements OnInit {
   }
 
   switchAttendeeToOrganizer(user) {
+    console.log(this.user);
     this.userService.profile()
+      .then((u) => {
+        console.log(u);
+        return this.userService.findUserById(u._id);
+      })
       .then((us) => {
         console.log(us);
         us.role = 'organizer';
@@ -211,7 +220,12 @@ export class ProfileComponent implements OnInit {
   }
 
   switchOrganizerToAttendee() {
+    console.log(this.user);
     this.userService.profile()
+      .then((u) => {
+        console.log(u);
+        return this.userService.findUserById(u._id);
+      })
       .then((us) => {
         us.role = 'attendee';
         console.log(us);
