@@ -94,7 +94,13 @@ export class EventCardForProfileComponent implements OnInit {
     if (confirm('Are you sure to delete the event?')) {
       this.eventService
         .deleteEvent(this.data._id)
-        .then(() => this.refresh());
+        .then(res => {
+          if (res.error) {
+            alert(res.error);
+          } else {
+            this.refresh();
+          }
+        });
     }
   }
 }
