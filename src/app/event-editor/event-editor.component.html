@@ -134,11 +134,15 @@
             <li *ngFor="let item of splitList(widget.data)">{{item}}</li>
           </ol>
         </div>
+        <hr>
 
       </div>
       <div *ngIf="event.attendee.length > 0">
         <app-attendee-list [attendeeIds]="event.attendee"></app-attendee-list>
+        <hr>
       </div>
+
+
 
       <div *ngIf="event._id && event._id !== ''">
         <app-discussion-board [eventId]="event._id" ></app-discussion-board>
@@ -146,18 +150,19 @@
     </div>
 
     <div class="col-md-4 col-sm-12">
-      <div>
+      <div id="eventStart">
         Event Start:
         {{event.startTime}}
         <!--{{dates[event.start.getDay()]}}, {{months[event.start.getMonth()]}} {{event.start.getDate()}}-->
       </div>
 
-      <div>
+      <div id="eventEnd">
         Event End:
         {{event.endTime}}
         <!--{{dates[event.end.getDay()]}}, {{months[event.end.getMonth()]}} {{event.end.getDate()}}-->
 
       </div>
+      <hr>
 
       <div>
         <div class="input-group-append">
@@ -167,6 +172,8 @@
           </span>
         </div>
         <app-site-list-card *ngIf="targetSite" [data]="targetSite"></app-site-list-card>
+        <hr>
+        <br>
         <div>
           <div class="input-group-append">
             <h3>Equipments: </h3>
@@ -180,7 +187,7 @@
               [quantity]="equipment.quantity">
             </app-rent-equipment-card>
           </div>
-          <div id="equipment-warning">To cancel equipment rental, please contact equipment dealer</div>
+          <div id="equipment-warning">To cancel equipment rental, please contact equipment dealer.</div>
         </div>
       </div>
 

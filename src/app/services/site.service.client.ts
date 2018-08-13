@@ -1,6 +1,6 @@
 
-// const URL = 'http://localhost:3000';
-const URL = 'https://husky-camp-node-server.herokuapp.com';
+const URL = 'http://localhost:3000';
+// const URL = 'https://husky-camp-node-server.herokuapp.com';
 export class SiteServiceClient {
   createSite(site) {
     return fetch(URL + '/api/site/create', {

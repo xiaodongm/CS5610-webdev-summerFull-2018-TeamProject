@@ -1,5 +1,5 @@
-// const URL = 'http://localhost:3000';
-const URL = 'https://husky-camp-node-server.herokuapp.com';
+const URL = 'http://localhost:3000';
+// const URL = 'https://husky-camp-node-server.herokuapp.com';
 export class EnrollmentServiceClient {
   enrollAttendeeInEvent (enrollment) {
     return fetch(URL + '/api/attendee/' + enrollment.attendee + '/event/' + enrollment.event, {

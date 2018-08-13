@@ -71,6 +71,7 @@ export class EventCardForProfileComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.data);
     console.log('here');
     this.getOrganizer()
       .then(() => {
