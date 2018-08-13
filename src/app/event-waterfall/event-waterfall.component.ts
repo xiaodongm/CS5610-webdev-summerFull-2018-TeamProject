@@ -240,7 +240,9 @@ export class EventWaterfallComponent implements OnInit {
   // cards: EventCard[] = [this.event, this.event2, this.event3,
   //                       this.event4, this.event5, this.event6,
   //                       this.event7, this.event8, this.event9];
-  cards: EventCard[];
+  cards: EventCard[] = [];
+  showedCards: EventCard[] = [];
+  index = 0;
   updateMasonryLayout = true;
   initialDataLoaded = false;
   receiveUpdateEvent($event) {
@@ -251,6 +253,10 @@ export class EventWaterfallComponent implements OnInit {
     // console.log('On Scroll');
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
       console.log('On Scroll Down');
+      if (this.index < this.cards.length) {
+        this.showedCards.push(this.cards[this.index]);
+        this.index++;
+      }
       // this.cards.push(this.event9);
       // this.cards.push(this.event9);
       // this.cards.push(this.event9);
@@ -265,12 +271,20 @@ export class EventWaterfallComponent implements OnInit {
   ngOnInit() {
     this.service.findAllEvents()
       .then((events) => {
+        console.log(events);
         this.cards = events;
+
         this.updateMasonryLayout = !this.updateMasonryLayout;
         this.cards.forEach((event) => {
           event.startTime = this.refactorTime(event.startTime);
           event.endTime = this.refactorTime(event.endTime);
         });
+        while ( this.index < 5 && this.index < this.cards.length) {
+          this.showedCards.push(this.cards[this.index]);
+          this.index = this.index + 1;
+        }
+        console.log(this.index);
+        console.log(this.showedCards);
       });
   }
 
