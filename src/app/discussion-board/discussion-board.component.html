@@ -1,9 +1,6 @@
 
-<div class="container-fluid">
-  <br>
-  <br>
-  <br>
-  <h1>Discussions({{discussions.length}})</h1>
+<div>
+  <h2>Discussions({{discussions.length}})</h2>
   <div>
     <div class="card bg-light" *ngFor="let discussion of discussions">
       <app-discussion (messageEvent)="receiveMessage($event)" [discussionToChild]="discussion"></app-discussion>
