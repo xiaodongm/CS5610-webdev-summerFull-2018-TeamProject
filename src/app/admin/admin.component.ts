@@ -8,6 +8,7 @@ import {DiscussionServiceClient} from '../services/discussion.service.client';
 import {SiteServiceClient} from '../services/site.service.client';
 import {EnrollmentServiceClient} from '../services/enrollment.service.client';
 import {ReservationServiceClient} from '../services/reservation.service.client';
+import {EquipmentRentingServiceClient} from '../services/equipmentRenting.service.client';
 
 
 @Component({
@@ -25,6 +26,7 @@ export class AdminComponent implements OnInit {
               private siteService: SiteServiceClient,
               private enrollmentService: EnrollmentServiceClient,
               private reservationService: ReservationServiceClient,
+              private rentalService: EquipmentRentingServiceClient,
               private router: Router) { }
 
   // menuItems = ['User', 'Organizer', 'Attendee', 'Provider', 'SiteManager', 'EquipmentDealer', 'Event', 'CampSite'];
@@ -101,6 +103,10 @@ export class AdminComponent implements OnInit {
     this.reservationService.findAllReservations()
       .then(reservations => this.reservations = reservations);
   }
+  findAllRentals() {
+    this.rentalService.findAllRenting()
+      .then(rentals => this.rentals = rentals);
+  }
 
   openUserList() {
     this.listType = this.listTypeModel.userList;
@@ -143,6 +149,7 @@ export class AdminComponent implements OnInit {
     this.findAllSites();
     this.findAllEnrollments();
     this.findAllReservations();
+    this.findAllRentals();
   }
 
 
@@ -162,6 +169,7 @@ export class AdminComponent implements OnInit {
     this.findAllSites();
     this.findAllEnrollments();
     this.findAllReservations();
+    this.findAllRentals();
   }
 
 }

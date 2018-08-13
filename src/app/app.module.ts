@@ -80,6 +80,7 @@ import { EquipmentListCardComponent } from './equipment-list-card/equipment-list
 import {EquipmentRentingServiceClient} from './services/equipmentRenting.service.client';
 import { AdminEnrollmentListComponent } from './admin-enrollment-list/admin-enrollment-list.component';
 import { AdminReservationListComponent } from './admin-reservation-list/admin-reservation-list.component';
+import { AdminRentalListComponent } from './admin-rental-list/admin-rental-list.component';
 
 
 @NgModule({
@@ -136,6 +137,7 @@ import { AdminReservationListComponent } from './admin-reservation-list/admin-re
     EquipmentListCardComponent,
     AdminEnrollmentListComponent,
     AdminReservationListComponent,
+    AdminRentalListComponent,
   ],
   imports: [
     BrowserModule,

@@ -125,6 +125,7 @@
       <app-admin-site-list *ngIf="listType === 'siteList'" (messageEvent)="receiveMessage($event)"></app-admin-site-list>
       <app-admin-enrollment-list *ngIf="listType === 'enrollmentList'" (messageEvent)="receiveMessage($event)"></app-admin-enrollment-list>
       <app-admin-reservation-list *ngIf="listType === 'reservationList'" (messageEvent)="receiveMessage($event)"></app-admin-reservation-list>
+      <app-admin-rental-list *ngIf="listType === 'rentalList'" (messageEvent)="receiveMessage($event)"></app-admin-rental-list>
     </div>
   </div>
 </div>
