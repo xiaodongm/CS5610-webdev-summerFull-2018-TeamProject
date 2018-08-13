@@ -90,11 +90,24 @@ export class ProfileComponent implements OnInit {
     this.myEquipments = equips;
   }
 
+  refactorTime(time) {
+    const index = time.indexOf('T');
+    return time.substring(0, index);
+  }
+
   receiveOrEvents(events) {
+    events.forEach((event) => {
+      event.startTime = this.refactorTime(event.startTime);
+      event.endTime = this.refactorTime(event.endTime);
+    });
     this.organizedEvents = events;
   }
 
   receiveAtEvents(events) {
+    events.forEach((event) => {
+      event.startTime = this.refactorTime(event.startTime);
+      event.endTime = this.refactorTime(event.endTime);
+    });
     this.attendedEvents = events;
   }
 
@@ -125,10 +138,20 @@ export class ProfileComponent implements OnInit {
           .findAllFollowingFriendsForUser(user._id)
           .then(friends => this.fillFollowingInfo(friends));
         this.eventService.findEventsForOrganizer(user._id)
-          .then(events => this.organizedEvents = events);
+          .then(events => {
+            events.forEach((event) => {
+              event.startTime = this.refactorTime(event.startTime);
+              event.endTime = this.refactorTime(event.endTime);
+            });
+            return this.organizedEvents = events;
+          });
         this.enrollmentService.findEnrollmentsForAttendee(user._id)
           .then(events => {
-            this.attendedEvents = events;
+            events.forEach((event) => {
+              event.startTime = this.refactorTime(event.startTime);
+              event.endTime = this.refactorTime(event.endTime);
+            });
+            return this.attendedEvents = events;
           });
         this.discussionService.findDiscussionForUser(user._id)
           .then(discussions => {

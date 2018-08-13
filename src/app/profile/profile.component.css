@@ -68,6 +68,8 @@
 
 
 .btn-position2 {
+  border-radius: 20px;
+  overflow: hidden;
   position: absolute;
   top: 10%;
   right:15%;

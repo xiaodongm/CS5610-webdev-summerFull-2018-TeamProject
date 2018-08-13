@@ -256,11 +256,21 @@ export class EventWaterfallComponent implements OnInit {
       // this.cards.push(this.event9);
     }
   }
+
+  refactorTime(time) {
+    const index = time.indexOf('T');
+    return time.substring(0, index);
+  }
+
   ngOnInit() {
     this.service.findAllEvents()
       .then((events) => {
         this.cards = events;
         this.updateMasonryLayout = !this.updateMasonryLayout;
+        this.cards.forEach((event) => {
+          event.startTime = this.refactorTime(event.startTime);
+          event.endTime = this.refactorTime(event.endTime);
+        });
       });
   }
 
