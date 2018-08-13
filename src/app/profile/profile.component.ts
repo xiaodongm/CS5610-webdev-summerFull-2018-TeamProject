@@ -193,11 +193,14 @@ export class ProfileComponent implements OnInit {
   }
 
   switchAttendeeToOrganizer(user) {
-    let temp = this.user;
-    temp.role = 'organizer';
-    this.userService
-      .update(temp)
+    this.userService.profile()
+      .then((us) => {
+        us.role = 'organizer';
+        console.log(us);
+        return this.userService.update(us);
+      })
       .then(res => {
+        console.log(res);
         if (res.error) {
           alert(res.error);
         } else {
@@ -207,11 +210,14 @@ export class ProfileComponent implements OnInit {
   }
 
   switchOrganizerToAttendee() {
-    const temp = this.user;
-    temp.role = 'attendee';
-    this.userService
-      .update(temp)
+    this.userService.profile()
+      .then((us) => {
+        us.role = 'attendee';
+        console.log(us);
+        return this.userService.update(us);
+      })
       .then(res => {
+        console.log(res);
         if (res.error) {
           alert(res.error);
         } else {
