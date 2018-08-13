@@ -8066,7 +8066,8 @@ var CampingSiteServiceClient = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DiscussionServiceClient", function() { return DiscussionServiceClient; });
-var URL = 'http://localhost:3000';
+// const URL = 'http://localhost:3000';
+var URL = 'https://husky-camp-node-server.herokuapp.com';
 var DiscussionServiceClient = /** @class */ (function () {
     function DiscussionServiceClient() {
     }
@@ -8128,7 +8129,8 @@ var DiscussionServiceClient = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EnrollmentServiceClient", function() { return EnrollmentServiceClient; });
-var URL = 'http://localhost:3000';
+// const URL = 'http://localhost:3000';
+var URL = 'https://husky-camp-node-server.herokuapp.com';
 var EnrollmentServiceClient = /** @class */ (function () {
     function EnrollmentServiceClient() {
     }
@@ -8173,7 +8175,8 @@ var EnrollmentServiceClient = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EquipmentServiceClient", function() { return EquipmentServiceClient; });
-var URL = 'http://localhost:3000';
+// const URL = 'http://localhost:3000';
+var URL = 'https://husky-camp-node-server.herokuapp.com';
 var EquipmentServiceClient = /** @class */ (function () {
     function EquipmentServiceClient() {
     }
@@ -8233,7 +8236,8 @@ var EquipmentServiceClient = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EquipmentRentingServiceClient", function() { return EquipmentRentingServiceClient; });
-var URL = 'http://localhost:3000';
+// const URL = 'http://localhost:3000';
+var URL = 'https://husky-camp-node-server.herokuapp.com';
 var EquipmentRentingServiceClient = /** @class */ (function () {
     function EquipmentRentingServiceClient() {
     }
@@ -8290,7 +8294,8 @@ var EquipmentRentingServiceClient = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EventServiceClient", function() { return EventServiceClient; });
-var URL = 'http://localhost:3000';
+// const URL = 'http://localhost:3000';
+var URL = 'https://husky-camp-node-server.herokuapp.com';
 var EventServiceClient = /** @class */ (function () {
     function EventServiceClient() {
     }
@@ -8377,6 +8382,8 @@ var MapServiceClient = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProviderServiceClient", function() { return ProviderServiceClient; });
+// const URL = 'http://localhost:3000';
+var URL = 'https://husky-camp-node-server.herokuapp.com';
 var ProviderServiceClient = /** @class */ (function () {
     function ProviderServiceClient() {
     }
@@ -8388,7 +8395,7 @@ var ProviderServiceClient = /** @class */ (function () {
             organizationAddress: organizationAddress,
             role: service
         };
-        return fetch('http://localhost:3000/api/provider/register', {
+        return fetch(URL + '/api/provider/register', {
             body: JSON.stringify(provider),
             credentials: 'include',
             method: 'post',
@@ -8403,7 +8410,7 @@ var ProviderServiceClient = /** @class */ (function () {
             password: password,
             role: role
         };
-        return fetch('http://localhost:3000/api/provider/register', {
+        return fetch(URL + '/api/provider/register', {
             body: JSON.stringify(provider),
             credentials: 'include',
             method: 'post',
@@ -8413,11 +8420,11 @@ var ProviderServiceClient = /** @class */ (function () {
         });
     };
     ProviderServiceClient.prototype.findProviderById = function (providerId) {
-        return fetch('http://localhost:3000/api/provider/providerId/' + providerId)
+        return fetch(URL + '/api/provider/providerId/' + providerId)
             .then(function (response) { return response.json(); });
     };
     ProviderServiceClient.prototype.findAllProviders = function () {
-        return fetch('http://localhost:3000/api/provider')
+        return fetch(URL + '/api/provider')
             .then(function (response) { return response.json(); });
     };
     ProviderServiceClient.prototype.login = function (username, password) {
@@ -8425,7 +8432,7 @@ var ProviderServiceClient = /** @class */ (function () {
             username: username,
             password: password
         };
-        return fetch('http://localhost:3000/api/provider/login', {
+        return fetch(URL + '/api/provider/login', {
             method: 'post',
             body: JSON.stringify(credentials),
             credentials: 'include',
@@ -8435,13 +8442,13 @@ var ProviderServiceClient = /** @class */ (function () {
         });
     };
     ProviderServiceClient.prototype.logout = function () {
-        return fetch('http://localhost:3000/api/provider/logout', {
+        return fetch(URL + '/api/provider/logout', {
             method: 'post',
             credentials: 'include'
         });
     };
     ProviderServiceClient.prototype.update = function (user) {
-        return fetch('http://localhost:3000/api/provider/profile', {
+        return fetch(URL + '/api/provider/profile', {
             method: 'put',
             body: JSON.stringify(user),
             credentials: 'include',
@@ -8451,7 +8458,7 @@ var ProviderServiceClient = /** @class */ (function () {
         }).then(function (response) { return response.json(); });
     };
     ProviderServiceClient.prototype.adminUpdate = function (user) {
-        return fetch('http://localhost:3000/api/admin/updateProvider', {
+        return fetch(URL + '/api/admin/updateProvider', {
             method: 'put',
             body: JSON.stringify(user),
             headers: {
@@ -8460,18 +8467,18 @@ var ProviderServiceClient = /** @class */ (function () {
         }).then(function (response) { return response.json(); });
     };
     ProviderServiceClient.prototype.delete = function () {
-        return fetch('http://localhost:3000/api/provider/profile', {
+        return fetch(URL + '/api/provider/profile', {
             method: 'delete',
             credentials: 'include'
         });
     };
     ProviderServiceClient.prototype.deleteProviderById = function (providerId) {
-        return fetch('http://localhost:3000/api/provider/providerId/' + providerId, {
+        return fetch(URL + '/api/provider/providerId/' + providerId, {
             method: 'delete'
         });
     };
     ProviderServiceClient.prototype.profile = function () {
-        return fetch('http://localhost:3000/api/provider/profile', {
+        return fetch(URL + '/api/provider/profile', {
             credentials: 'include',
         })
             .then(function (response) { return response.json(); });
@@ -8493,7 +8500,8 @@ var ProviderServiceClient = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ReservationServiceClient", function() { return ReservationServiceClient; });
-var URL = 'http://localhost:3000';
+// const URL = 'http://localhost:3000';
+var URL = 'https://husky-camp-node-server.herokuapp.com';
 var ReservationServiceClient = /** @class */ (function () {
     function ReservationServiceClient() {
     }
@@ -8546,7 +8554,8 @@ var ReservationServiceClient = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SiteServiceClient", function() { return SiteServiceClient; });
-var URL = 'http://localhost:3000';
+// const URL = 'http://localhost:3000';
+var URL = 'https://husky-camp-node-server.herokuapp.com';
 var SiteServiceClient = /** @class */ (function () {
     function SiteServiceClient() {
     }
@@ -8610,15 +8619,17 @@ var SiteServiceClient = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserServiceClient", function() { return UserServiceClient; });
+// const URL = 'http://localhost:3000';
+var URL = 'https://husky-camp-node-server.herokuapp.com';
 var UserServiceClient = /** @class */ (function () {
     function UserServiceClient() {
     }
     UserServiceClient.prototype.findUserById = function (userId) {
-        return fetch('http://localhost:3000/api/user/userId/' + userId)
+        return fetch(URL + '/api/user/userId/' + userId)
             .then(function (response) { return response.json(); });
     };
     UserServiceClient.prototype.findAllUsers = function () {
-        return fetch('http://localhost:3000/api/user')
+        return fetch(URL + '/api/user')
             .then(function (response) { return response.json(); });
     };
     UserServiceClient.prototype.login = function (username, password) {
@@ -8626,7 +8637,7 @@ var UserServiceClient = /** @class */ (function () {
             username: username,
             password: password
         };
-        return fetch('http://localhost:3000/api/login', {
+        return fetch(URL + '/api/login', {
             method: 'post',
             body: JSON.stringify(credentials),
             credentials: 'include',
@@ -8636,13 +8647,13 @@ var UserServiceClient = /** @class */ (function () {
         });
     };
     UserServiceClient.prototype.logout = function () {
-        return fetch('http://localhost:3000/api/logout', {
+        return fetch(URL + '/api/logout', {
             method: 'post',
             credentials: 'include'
         });
     };
     UserServiceClient.prototype.update = function (user) {
-        return fetch('http://localhost:3000/api/profile', {
+        return fetch(URL + '/api/profile', {
             method: 'put',
             body: JSON.stringify(user),
             credentials: 'include',
@@ -8652,7 +8663,7 @@ var UserServiceClient = /** @class */ (function () {
         }).then(function (response) { return response.json(); });
     };
     UserServiceClient.prototype.adminUpdate = function (user) {
-        return fetch('http://localhost:3000/api/admin/updateUser', {
+        return fetch(URL + '/api/admin/updateUser', {
             method: 'put',
             body: JSON.stringify(user),
             headers: {
@@ -8661,18 +8672,18 @@ var UserServiceClient = /** @class */ (function () {
         }).then(function (response) { return response.json(); });
     };
     UserServiceClient.prototype.delete = function () {
-        return fetch('http://localhost:3000/api/profile', {
+        return fetch(URL + '/api/profile', {
             method: 'delete',
             credentials: 'include'
         });
     };
     UserServiceClient.prototype.deleteUserById = function (userId) {
-        return fetch('http://localhost:3000/api/user/userId/' + userId, {
+        return fetch(URL + '/api/user/userId/' + userId, {
             method: 'delete'
         });
     };
     UserServiceClient.prototype.profile = function () {
-        return fetch('http://localhost:3000/api/profile', {
+        return fetch(URL + '/api/profile', {
             credentials: 'include',
         })
             .then(function (response) { return response.json(); });
@@ -8684,7 +8695,7 @@ var UserServiceClient = /** @class */ (function () {
             location: location,
             role: 'attendee'
         };
-        return fetch('http://localhost:3000/api/register', {
+        return fetch(URL + '/api/register', {
             body: JSON.stringify(user),
             credentials: 'include',
             method: 'post',
@@ -8694,7 +8705,7 @@ var UserServiceClient = /** @class */ (function () {
         });
     };
     UserServiceClient.prototype.followFriend = function (userId) {
-        return fetch('http://localhost:3000/api/user/follow/' + userId, {
+        return fetch(URL + '/api/user/follow/' + userId, {
             credentials: 'include',
             method: 'put',
             headers: {
@@ -8703,7 +8714,7 @@ var UserServiceClient = /** @class */ (function () {
         }).then(function (response) { return response.json(); });
     };
     UserServiceClient.prototype.un_followFriend = function (userId) {
-        return fetch('http://localhost:3000/api/user/un_follow/' + userId, {
+        return fetch(URL + '/api/user/un_follow/' + userId, {
             credentials: 'include',
             method: 'put',
             headers: {
@@ -8712,7 +8723,7 @@ var UserServiceClient = /** @class */ (function () {
         }).then(function (response) { return response.json(); });
     };
     UserServiceClient.prototype.findAllFollowingFriendsForUser = function (userId) {
-        return fetch('http://localhost:3000/api/user/allFollows/' + userId)
+        return fetch(URL + '/api/user/allFollows/' + userId)
             .then(function (response) { return response.json(); });
     };
     UserServiceClient.prototype.adminCreateUser = function (username, password, role) {
@@ -8721,7 +8732,7 @@ var UserServiceClient = /** @class */ (function () {
             password: password,
             role: role
         };
-        return fetch('http://localhost:3000/api/register', {
+        return fetch(URL + '/api/register', {
             body: JSON.stringify(user),
             credentials: 'include',
             method: 'post',
