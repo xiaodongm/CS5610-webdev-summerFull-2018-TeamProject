@@ -25,7 +25,7 @@ export class CreateEventComponent implements OnInit {
   paragraph;
   eventStart: Date;
   eventEnd: Date;
-  level;
+  level = 'Relax';
 
   featureTags: String[] = ['Biking', 'Hiking', 'Swimming', 'Fishing', 'Horse riding', 'BBQ'];
 
@@ -50,7 +50,25 @@ export class CreateEventComponent implements OnInit {
     this.tags.splice(index, 1);
   }
 
+  toggleCollapse1() {
+    if (!this.campSite || this.campSite === '') {
+      alert('input field can not be empty');
+    } else {
+      this.isCollapsed1 = !this.isCollapsed1;
+    }
+  }
+
   createEvent() {
+    if (!this.title || this.title === '') {
+      alert('must have a title');
+      return;
+    }
+
+    if (!this.eventStart || !this.eventEnd) {
+      alert('must have valid time input');
+      return;
+    }
+
     let curUser;
     this.userService.profile()
       .then(res => curUser = res)

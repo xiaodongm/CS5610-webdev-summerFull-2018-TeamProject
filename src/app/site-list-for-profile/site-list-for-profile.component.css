@@ -46,6 +46,7 @@
 .card {
   height: 240px;
   position: relative;
+  margin-top: 15px;
 }
 
 @media (min-width: 400px) {
@@ -97,4 +98,12 @@
   margin-left: 5%;
   margin-right: 5%;
   display: inline-block;
+}
+
+.far {
+  cursor: pointer;
+}
+
+.row {
+  margin-bottom: 20px;
 }

@@ -64,6 +64,10 @@ export class EventMainListComponent implements OnInit {
     });
   }
 
+  refactorTime(time) {
+    const index = time.indexOf('T');
+    return time.substring(0, index);
+  }
 
   loadEvents() {
     this.adventureEvent = [];
@@ -72,6 +76,8 @@ export class EventMainListComponent implements OnInit {
     return this.eventService.findAllEvents()
       .then((events) => {
         events.forEach(event => {
+          event.startTime = this.refactorTime(event.startTime);
+          event.endTime = this.refactorTime(event.endTime);
           // console.log(event);
           if (event.level === 'Adventure') {
             if (event.photos.length === 0) {

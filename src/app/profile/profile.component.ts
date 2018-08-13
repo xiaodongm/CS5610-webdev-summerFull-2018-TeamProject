@@ -35,6 +35,10 @@ export class ProfileComponent implements OnInit {
               private router: Router) {
   }
 
+  defaultPhotoUrl = 'https://images.unsplash.com/photo-' +
+    '1495078065017-564723e7e3e7?ixlib=rb-0.3.5&ixid=eyJhcHBfa' +
+    'WQiOjEyMDd9&s=09093dcdf66dbcd2397b9dc19384a899&auto=forma' +
+    't&fit=crop&w=800&q=60';
   user = new User();
   provider = new Provider();
   curPage = 'pi';
@@ -98,11 +102,24 @@ export class ProfileComponent implements OnInit {
       .then(rentings => this.myRentings = rentings);
   }
 
+  refactorTime(time) {
+    const index = time.indexOf('T');
+    return time.substring(0, index);
+  }
+
   receiveOrEvents(events) {
+    events.forEach((event) => {
+      event.startTime = this.refactorTime(event.startTime);
+      event.endTime = this.refactorTime(event.endTime);
+    });
     this.organizedEvents = events;
   }
 
   receiveAtEvents(events) {
+    events.forEach((event) => {
+      event.startTime = this.refactorTime(event.startTime);
+      event.endTime = this.refactorTime(event.endTime);
+    });
     this.attendedEvents = events;
   }
 
@@ -133,10 +150,20 @@ export class ProfileComponent implements OnInit {
           .findAllFollowingFriendsForUser(user._id)
           .then(friends => this.fillFollowingInfo(friends));
         this.eventService.findEventsForOrganizer(user._id)
-          .then(events => this.organizedEvents = events);
+          .then(events => {
+            events.forEach((event) => {
+              event.startTime = this.refactorTime(event.startTime);
+              event.endTime = this.refactorTime(event.endTime);
+            });
+            return this.organizedEvents = events;
+          });
         this.enrollmentService.findEnrollmentsForAttendee(user._id)
           .then(events => {
-            this.attendedEvents = events;
+            events.forEach((event) => {
+              event.startTime = this.refactorTime(event.startTime);
+              event.endTime = this.refactorTime(event.endTime);
+            });
+            return this.attendedEvents = events;
           });
         this.discussionService.findDiscussionForUser(user._id)
           .then(discussions => {
@@ -178,11 +205,19 @@ export class ProfileComponent implements OnInit {
   }
 
   switchAttendeeToOrganizer(user) {
-    let temp = this.user;
-    temp.role = 'organizer';
-    this.userService
-      .update(temp)
+    console.log(this.user);
+    this.userService.profile()
+      .then((u) => {
+        console.log(u);
+        return this.userService.findUserById(u._id);
+      })
+      .then((us) => {
+        us.role = 'organizer';
+        console.log(us);
+        return this.userService.update(us);
+      })
       .then(res => {
+        console.log(res);
         if (res.error) {
           alert(res.error);
         } else {
@@ -192,11 +227,19 @@ export class ProfileComponent implements OnInit {
   }
 
   switchOrganizerToAttendee() {
-    const temp = this.user;
-    temp.role = 'attendee';
-    this.userService
-      .update(temp)
+    console.log(this.user);
+    this.userService.profile()
+      .then((u) => {
+        console.log(u);
+        return this.userService.findUserById(u._id);
+      })
+      .then((us) => {
+        us.role = 'attendee';
+        console.log(us);
+        return this.userService.update(us);
+      })
       .then(res => {
+        console.log(res);
         if (res.error) {
           alert(res.error);
         } else {

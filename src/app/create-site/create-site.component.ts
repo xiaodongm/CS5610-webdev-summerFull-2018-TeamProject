@@ -39,6 +39,14 @@ export class CreateSiteComponent implements OnInit {
   //   }
   // }
 
+  toggleCollapse1() {
+    if (!this.location || this.location === '') {
+      alert('input field can not be empty');
+    } else {
+      this.isCollapsed1 = !this.isCollapsed1;
+    }
+  }
+
   toggleFeatureTag(tag) {
     this.tags.push(tag);
     const index = this.featureTags.indexOf(tag);
@@ -53,6 +61,15 @@ export class CreateSiteComponent implements OnInit {
 
 
   createSite() {
+    if (!this.title || this.title === '') {
+      alert('must have a title');
+      return;
+    }
+
+    if (!this.bsRangeValue) {
+      alert('must have valid time input');
+      return;
+    }
 
     let curUser;
     this.userService.profile()
