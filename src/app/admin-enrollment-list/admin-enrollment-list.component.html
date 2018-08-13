@@ -3,15 +3,16 @@
     <a class="nav-link" routerLink="/admin" (click)="openEnrollmentTab()">
       Enrollments({{enrollments.length}})
     </a>
-  <li class="nav-item">
-    <a class="nav-link" routerLink="/admin" (click)="openCreateEnrollmentTab()">
-      Create New Enrollment
-    </a>
-  </li>
+  <!--<li class="nav-item">-->
+    <!--<a class="nav-link" routerLink="/admin" (click)="openCreateEnrollmentTab()">-->
+      <!--Create New Enrollment-->
+    <!--</a>-->
+  <!--</li>-->
 </ul>
 
 <accordion [closeOthers]="true">
-  <div *ngIf="enrollmentType === 'enrollment'">
+  <!--<div *ngIf="enrollmentType === 'enrollment'">-->
+  <div>
     <accordion-group *ngFor="let enrollment of enrollments" (isOpenChange)="log(enrollment)">
       <button class="btn btn-link btn-block clearfix" accordion-heading>
         <div class="pull-left float-left">

@@ -3,15 +3,16 @@
     <a class="nav-link" routerLink="/admin" (click)="openRentalTab()">
       Rentals({{rentals.length}})
     </a>
-  <li class="nav-item">
-    <a class="nav-link" routerLink="/admin" (click)="openCreateRentalTab()">
-      Create New Rentals
-    </a>
-  </li>
+  <!--<li class="nav-item">-->
+    <!--<a class="nav-link" routerLink="/admin" (click)="openCreateRentalTab()">-->
+      <!--Create New Rentals-->
+    <!--</a>-->
+  <!--</li>-->
 </ul>
 
 <accordion [closeOthers]="true">
-  <div *ngIf="rentalType === 'rental'">
+  <!--<div *ngIf="rentalType === 'rental'">-->
+  <div>
     <accordion-group *ngFor="let rental of rentals" (isOpenChange)="log(rental)">
       <button class="btn btn-link btn-block clearfix" accordion-heading>
         <div class="pull-left float-left">
