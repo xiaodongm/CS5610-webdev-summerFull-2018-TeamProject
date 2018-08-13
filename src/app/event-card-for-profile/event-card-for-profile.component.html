@@ -15,18 +15,22 @@
         </div>
 
         <div class="host-info">
+          <div class="input-group-append">
           <div class="text-sm-left text-muted" *ngIf="type === 'pa'">
             Hosted by
             <span>{{organizer && organizer.firstName}}</span>
             <span>{{organizer && ' ' + organizer.lastName}}</span>
           </div>
+          <!--<button id="unenrollBtn" class="btn btn-outline-danger" (click)="unenrollment()" *ngIf="type === 'pa' && isSame">Un-enroll</button>-->
+          </div>
           <div class="text-sm-left">
             <span class="text-muted">Site: </span>
             <span>{{data.location}}</span>
           </div>
-          <button class="btn btn-outline-danger" (click)="unenrollment()" *ngIf="type === 'pa' && isSame">Un-enroll</button>
+          <!--<button class="btn btn-outline-danger" (click)="unenrollment()" *ngIf="type === 'pa' && isSame">Un-enroll</button>-->
         </div>
       </div>
+      <button id="unenrollBtn" class="btn btn-outline-danger float-right" (click)="unenrollment()" *ngIf="type === 'pa' && isSame">Un-enroll</button>
     </div>
   </div>
 

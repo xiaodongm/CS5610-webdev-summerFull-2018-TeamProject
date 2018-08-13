@@ -18,6 +18,10 @@
   /*position: absolute;*/
 /*}*/
 
+#unenrollBtn {
+  margin-bottom: 20px;
+}
+
 .wbdv-blur {
   -webkit-filter: blur(5px); /* Safari 6.0 - 9.0 */
   filter: blur(5px);
