@@ -16,8 +16,8 @@
     </div>
 
     <div class = 'btn-position' *ngIf="curUser && (curUser.role === 'organizer' || curUser.role === 'attendee')">
-      <button *ngIf="!isFollowed" (click)="followUser()" class="btn btn-primary">Follow</button>
-      <button *ngIf="isFollowed" (click)="unfollowUser()" class="btn btn-primary">Un-Follow</button>
+      <button *ngIf="!isFollowed" (click)="followUser()" class="btn btn-outline-primary">Follow</button>
+      <button *ngIf="isFollowed" (click)="unfollowUser()" class="btn btn-outline-primary">Un-Follow</button>
     </div>
   </div>
 
@@ -48,7 +48,7 @@
           <a (click)="setCurPage('el')" class="nav-links">Equipments List</a>
         </div>
         <div class="col-sm grid-item" [ngClass]="{'active': curPage === 'rt'}">
-          <a (click)="setCurPage('rt')" class="nav-links">Renting</a>
+          <a (click)="setCurPage('rt')" class="nav-links">Reservation/Renting</a>
         </div>
       </div>
     </div>

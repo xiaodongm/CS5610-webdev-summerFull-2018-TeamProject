@@ -98,3 +98,25 @@
   margin-right: 5%;
   display: inline-block;
 }
+
+#title {
+  margin-top: 15px;
+  margin-left: 15px;
+}
+
+.fld {
+  margin-top: 15px;
+  margin-left: 15px;
+}
+
+#deleteBtn {
+  margin-right: 20px;
+}
+
+.col-6 {
+  margin-top: 15px;
+}
+
+row {
+  margin-bottom: 15px;
+}
