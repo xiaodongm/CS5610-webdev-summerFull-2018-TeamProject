@@ -40,8 +40,21 @@ export class CreateEquipmentComponent implements OnInit {
     this.tags.splice(index, 1);
   }
 
+  toggleCollapse1() {
+    if (!this.title || this.title === '') {
+      alert('input field can not be empty');
+    } else {
+      this.isCollapsed1 = !this.isCollapsed1;
+    }
+  }
 
   createEquipment() {
+
+    if (!this.quantity || isNaN(this.quantity) ||this.quantity <= 0) {
+      alert('invalid number of equipment');
+      return;
+    }
+
     let curUser;
     this.userService.profile()
       .then(res => curUser = res)

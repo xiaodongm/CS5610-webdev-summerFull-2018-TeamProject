@@ -114,6 +114,7 @@ export class SiteDetailComponent implements OnInit {
   confirm(): void {
 
     if (!this.targetEvent._id) {
+      alert('must have a target event');
       this.modalRef.hide();
       return;
     }
@@ -138,7 +139,10 @@ export class SiteDetailComponent implements OnInit {
               };
               this.reservationService.reserveSiteForEvent(newReservation)
                 .then(() => this.loadMyEvents())
-                .then(() =>  this.modalRef.hide());
+                .then(() =>  {
+                  alert('Add target site to event success!');
+                  this.modalRef.hide();
+                });
 
             });
         } else {
@@ -148,7 +152,10 @@ export class SiteDetailComponent implements OnInit {
           };
           this.reservationService.reserveSiteForEvent(newReservation)
             .then(() => this.loadMyEvents())
-            .then(() =>  this.modalRef.hide());
+            .then(() =>  {
+              alert('Add target site to event success!');
+              this.modalRef.hide();
+            });
         }
 
       });
