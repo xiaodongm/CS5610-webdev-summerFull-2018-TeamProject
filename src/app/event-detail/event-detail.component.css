@@ -22,6 +22,15 @@
   float: right;
 }
 
+#eventStart {
+  margin-bottom: 10px;
+}
+
+#eventEnd{
+  margin-bottom: 10px;
+}
+
+
 
 
 .meta-div {
