@@ -111,7 +111,17 @@
 
       <hr>
       <div>
-        How many do you want to rent?
+        <h4>Contact Infor</h4>
+        <div>
+          phone number: {{provider.phoneNumber}} <span *ngIf="!provider.phoneNumber">not avalaible</span>
+        </div>
+        <div>
+          address: {{provider.address}}  <span *ngIf="!provider.address">not avalaible</span>
+        </div>
+      </div>
+      <hr>
+      <div>
+        <h4>How many do you want to rent?</h4>
         <input [(ngModel)]="rentNumber" type="number" name="quantity" min="1" [max]="data.available">
       </div>
       <div>
