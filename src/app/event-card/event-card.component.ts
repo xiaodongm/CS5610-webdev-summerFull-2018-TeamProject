@@ -54,6 +54,7 @@ export class EventCardComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.data);
     this.getOrganizer()
       .then(() => {
         if (this.data.video && this.data.video !== '') {

@@ -28,14 +28,37 @@ export class DiscussionBoardComponent implements OnInit {
   }
 
   receiveMessage($event) {
+      $event.forEach((discussion) => {
+        discussion.postTime = this.refactorPostTime(discussion.postTime);
+        if (discussion.preDiscussion) {
+          discussion.preDiscussion.postTime = this.refactorPostTime(discussion.preDiscussion.postTime);
+        }
+      });
       this.discussions = $event;
   }
 
+  refactorPostTime(time) {
+    // const index = time.indexOf('.');
+    // time = time.substring(0, index);
+    // const i = time.indexOf('T');
+    // const res = time.substring(0, i) + ' ' + time.substring(i + 1, time.length);
+    // return res;
+    const d = new Date(time);
+
+    return d.toLocaleDateString() + ' ' + d.toLocaleTimeString();
+  }
 
   findAllDiscussions () {
     this.service
       .findDiscussionsForEvent(this.eventId)
       .then(res => {
+        console.log(res);
+        res.forEach((discussion) => {
+          discussion.postTime = this.refactorPostTime(discussion.postTime);
+          if (discussion.preDiscussion) {
+            discussion.preDiscussion.postTime = this.refactorPostTime(discussion.preDiscussion.postTime);
+          }
+        });
         res.sort((a, b) => a.postTime - b.postTime);
         this.discussions = res;
        // console.log(this.discussions);
