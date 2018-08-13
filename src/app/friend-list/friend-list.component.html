@@ -1,23 +1,38 @@
 <div>
   <div class="header">
-    <span>Total Following: {{friendList.length}}</span>
+    <h3>Total Following: {{friendList.length}}</h3>
   </div>
-  <div *ngFor="let people of friendList">
-    <div class="card-columns">
-      <div class="card">
-        <div class="avatar-container">
-          <div class="avatar" *ngIf="people.profilePhoto" [ngStyle]="{'background-image': 'url(' + people.profilePhoto + ')'}"></div>
-          <div class="avatar" *ngIf="!people.profilePhoto"></div>
-        </div>
-        <div class="name">
-          <div class="text-sm-left">
-            <a class="text-muted" [routerLink]="['/profile/' + people._id]">{{people.username}} </a>
+  <div class="row">
+    <div *ngFor="let people of friendList" class="col-4">
+      <!--<div class="card-columns">-->
+
+        <div class="card">
+          <div class="card-header">
+            <button  *ngIf="isSame" class="button btn btn-outline-danger float-right" (click)="unfollowUser(people._id)">
+              Un-follow
+            </button>
           </div>
+          <div class="card-body">
+
+            <div class="input-group-append">
+              <div class="avatar-container">
+                <div class="avatar" *ngIf="people.profilePhoto" [ngStyle]="{'background-image': 'url(' + people.profilePhoto + ')'}"></div>
+                <div class="avatar" *ngIf="!people.profilePhoto"></div>
+              </div>
+
+              <div class="name">
+                <div class="text-sm-left">
+                  <a class="text-muted" [routerLink]="['/profile/' + people._id]">{{people.username}} </a>
+                </div>
+              </div>
+            </div>
+
+
+
+          </div>
+
         </div>
-        <button  *ngIf="isSame" class="button btn btn-outline-primary" (click)="unfollowUser(people._id)">
-          Un-follow
-        </button>
-      </div>
+      <!--</div>-->
     </div>
   </div>
 </div>

@@ -29,42 +29,43 @@
 }
 
 .name {
-  display: inline-block;
-  padding-left: 5%;
-  position: absolute;
-  top: 50%;
+  /*display: inline-block;*/
+  /*padding-left: 5%;*/
+  /*position: absolute;*/
+  /*top: 50%;*/
+  margin-top: 35px;
+  margin-left: 25px;
   font-size: xx-large;
 }
 
-.button {
-  position: absolute;
-  top: 55%;
-  right: 5%;
-}
+/*.button {*/
+  /*position: absolute;*/
+  /*top: 55%;*/
+  /*right: 5%;*/
+/*}*/
 
 .card {
-  height: 150px;
-  position: relative;
+  margin-top: 10px;
 }
 
-@media (min-width: 400px) {
-  .card-columns {
-    column-count: 1;
-  }
-}
+/*@media (min-width: 400px) {*/
+  /*.card-columns {*/
+    /*column-count: 1;*/
+  /*}*/
+/*}*/
 
-@media (min-width: 770px) {
-  .card-columns {
-    column-count: 2;
-  }
-}
+/*@media (min-width: 770px) {*/
+  /*.card-columns {*/
+    /*column-count: 2;*/
+  /*}*/
+/*}*/
 
 
-.name div {
+/*.name div {*/
   /*padding-top: 5px;*/
   /*margin-bottom: 20px;*/
-  font-family: "Bradley Hand";
-  overflow: hidden;
-  white-space: nowrap;
-}
+  /*font-family: "Bradley Hand";*/
+  /*overflow: hidden;*/
+  /*white-space: nowrap;*/
+/*}*/
 

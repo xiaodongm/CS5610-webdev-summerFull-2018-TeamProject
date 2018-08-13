@@ -14,9 +14,9 @@
   text-shadow: 2px 2px 2px #aaa;
 }
 
-button {
-  position: absolute;
-}
+/*button {*/
+  /*position: absolute;*/
+/*}*/
 
 .wbdv-blur {
   -webkit-filter: blur(5px); /* Safari 6.0 - 9.0 */
@@ -145,4 +145,8 @@ h6 {
   .card-columns {
     column-count: 2;
   }
+}
+
+.icon-group i {
+  cursor: pointer;
 }
