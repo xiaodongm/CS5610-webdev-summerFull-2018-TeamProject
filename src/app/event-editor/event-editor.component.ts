@@ -320,10 +320,18 @@ export class EventEditorComponent implements OnInit {
       });
   }
 
+  refactorTime(time) {
+    const index = time.indexOf('T');
+    return time.substring(0, index);
+  }
+
   ngOnInit() {
 
     this.eventService.findEventById(this.eventId)
       .then(event => {
+
+          event.startTime = this.refactorTime(event.startTime);
+          event.endTime = this.refactorTime(event.endTime);
           this.event = event;
           for (let i = 0; i < this.event.tags.length; i++) {
             if (this.featureTags.includes(this.event.tags[i])) {
