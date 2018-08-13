@@ -251,15 +251,18 @@ export class EventWaterfallComponent implements OnInit {
   @HostListener('window:scroll', ['$event'])
   onScroll($event: Event): void {
     // console.log('On Scroll');
+    console.log(window.innerHeight);
+    console.log(window.scrollY);
+    console.log(document.body.offsetHeight);
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-      console.log('On Scroll Down');
+      // console.log('On Scroll Down');
       if (this.index < this.cards.length) {
         this.showedCards.push(this.cards[this.index]);
         this.index++;
       }
-      // this.cards.push(this.event9);
-      // this.cards.push(this.event9);
-      // this.cards.push(this.event9);
+      // this.showedCards.push(this.event9);
+      // this.showedCards.push(this.event9);
+      // this.showedCards.push(this.event9);
     }
   }
 
@@ -279,7 +282,7 @@ export class EventWaterfallComponent implements OnInit {
           event.startTime = this.refactorTime(event.startTime);
           event.endTime = this.refactorTime(event.endTime);
         });
-        while ( this.index < 5 && this.index < this.cards.length) {
+        while ( this.index < 3 && this.index < this.cards.length) {
           this.showedCards.push(this.cards[this.index]);
           this.index = this.index + 1;
         }
