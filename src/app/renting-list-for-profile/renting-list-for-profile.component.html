@@ -6,24 +6,24 @@
     <div *ngFor="let rent of rentings" class="col-6">
       <div class="card">
         <div class="body">
-          <div class="info-container">
-            <div>
-              <a class="text-muted" [routerLink]="['eventDetail/' + rent.event._id]">
-                Event: {{rent.event.title}}
+          <div class="">
+            <div id="title">
+              <a class="text-muted" [routerLink]="['/eventDetail/' + rent.event._id]">
+                <h4>Event: {{rent.event.title}}</h4>
               </a>
             </div>
             <div *ngIf="user.role === 'SiteManager'">
-              <a class="text-muted" [routerLink]="['eventDetail/' + rent.site._id]">
+              <a class="text-muted" [routerLink]="['/eventDetail/' + rent.site._id]">
                 Site: {{rent.site.title}}
               </a>
             </div>
             <div *ngIf="user.role === 'EquipmentDealer'" class="text-muted">
-                Equipment: {{rent.equipment.title}}
-                Total: {{rent.equipment.quantity}}
-                Available: {{rent.equipment.available}}
+              <p class="fld">Equipment: {{rent.equipment.title}}</p>
+              <p class="fld">Total: {{rent.equipment.quantity}}</p>
+              <span class="fld">Available: {{rent.equipment.available}}</span>
             </div>
             <div *ngIf="isSame">
-              <button class="btn btn-primary" (click)="delete(rent)">Delete</button>
+              <button id="deleteBtn" class="btn btn-danger float-right" (click)="delete(rent)">Delete</button>
             </div>
           </div>
         </div>

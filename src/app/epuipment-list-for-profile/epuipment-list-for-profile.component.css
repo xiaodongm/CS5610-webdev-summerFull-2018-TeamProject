@@ -84,6 +84,7 @@
 
 #Adiv {
   margin-top: 20px;
+  margin-left: 60px;
 }
 
 .body {
@@ -97,4 +98,16 @@
   margin-left: 5%;
   margin-right: 5%;
   display: inline-block;
+}
+
+
+#EquipCard {
+  margin-top: 15px;
+}
+.row {
+  margin-bottom: 15px;
+}
+
+.far {
+  cursor: pointer;
 }

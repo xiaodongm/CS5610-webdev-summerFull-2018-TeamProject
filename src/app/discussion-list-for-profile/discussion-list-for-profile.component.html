@@ -10,7 +10,7 @@
         </div>
         <p id="ownerContent">{{discussion.content}}</p>
         <div id="replyDiv" class="input-group-append">
-          <button class="btn btn-default btn-outline-primary" (click)="delete(discussion._id)" *ngIf="isSame">Delete</button>
+          <button class="btn btn-default btn-outline-danger" (click)="delete(discussion._id)" *ngIf="isSame">Delete</button>
         </div>
       </div>
     </div>

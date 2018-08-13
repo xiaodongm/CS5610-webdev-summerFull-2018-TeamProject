@@ -1,8 +1,8 @@
 
 .avatar-container {
   display: inline-block;
-  width: 160px;
-  hight: 160px;
+  width: 11%;
+  hight: 11%;
   z-index: 1;
   position: absolute;
   left: 50px;
@@ -40,7 +40,7 @@
   font-weight: 500;
   line-height: 30px;
   max-width: 275px;
-  position: absolute;
+  position: relative;
   left: 230px;
 }
 
@@ -62,8 +62,8 @@
 
 .btn-position {
   position: absolute;
-  top: 100px;
-  right:50px;
+  top: 17%;
+  right:11%;
 }
 
 
@@ -71,8 +71,8 @@
   border-radius: 20px;
   overflow: hidden;
   position: absolute;
-  top: 120px;
-  right:45%;
+  top: 10%;
+  right:15%;
 }
 
 .nav-links {
@@ -88,4 +88,8 @@
   border: 0;
   color: white;
   background-color: black;
+}
+
+.switchItem {
+  cursor: pointer;
 }
