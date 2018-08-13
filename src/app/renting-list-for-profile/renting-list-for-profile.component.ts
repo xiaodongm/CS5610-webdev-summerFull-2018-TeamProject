@@ -43,10 +43,13 @@ export class RentingListForProfileComponent implements OnInit {
         }
           this.equipmentRentingService
             .returnEquipForEvent(real)
-            .then((res) => {
-              console.log(res);
+            .then(() => {
               this.equipmentRentingService
-                .findRentingsForEquipment(this.user._id).then(rentings => this.messageEvent.emit(rentings));
+                .findRentingsForProvider(this.user._id).then(rentings => {
+                  console.log(this.user);
+                  console.log(rentings);
+                  this.messageEvent.emit(rentings);
+              });
             });
       }
     }
