@@ -1,7 +1,7 @@
 
 <div class="container">
   <ngx-masonry [updateLayout]="updateMasonryLayout" class="masonry">
-    <ngxMasonryItem class="masonry-item" *ngFor="let card of cards">
+    <ngxMasonryItem class="masonry-item" *ngFor="let card of showedCards">
       <app-event-card [data]="card"
                       (updateEvent)="receiveUpdateEvent($event)">
       </app-event-card>
@@ -11,5 +11,5 @@
 
 
 <div (window:scroll)="onScroll($event)">
-  <h1> Loading ...</h1>
+  <!--<h1 *ngIf="index === cards.length"> All Events Are Showed</h1>-->
 </div>
