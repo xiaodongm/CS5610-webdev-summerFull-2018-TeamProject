@@ -1,5 +1,5 @@
-const URL = 'http://localhost:3000';
-// const URL = 'https://husky-camp-node-server.herokuapp.com';
+// const URL = 'http://localhost:3000';
+const URL = 'https://husky-camp-node-server.herokuapp.com';
 export class EquipmentRentingServiceClient {
   rentEquipmentForEvent(rent) {
     return fetch(URL + '/api/event/' + rent.event + '/equip/' + rent.equipment, {
