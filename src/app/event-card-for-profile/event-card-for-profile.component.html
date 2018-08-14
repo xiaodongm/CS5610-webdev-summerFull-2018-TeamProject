@@ -21,11 +21,10 @@
             <span>{{organizer && organizer.firstName}}</span>
             <span>{{organizer && ' ' + organizer.lastName}}</span>
           </div>
-          <!--<button id="unenrollBtn" class="btn btn-outline-danger" (click)="unenrollment()" *ngIf="type === 'pa' && isSame">Un-enroll</button>-->
           </div>
           <div class="text-sm-left">
-            <span class="text-muted">Site: </span>
-            <span>{{data.location}}</span>
+            <span class="text-muted">Event level: </span>
+            <span>{{data.level}}</span>
           </div>
           <!--<button class="btn btn-outline-danger" (click)="unenrollment()" *ngIf="type === 'pa' && isSame">Un-enroll</button>-->
         </div>

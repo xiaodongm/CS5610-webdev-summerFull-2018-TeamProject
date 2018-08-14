@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ProviderServiceClient} from '../services/provider.service.client';
 import {Router} from '@angular/router';
 import {AlertComponent} from 'ngx-bootstrap';
+import {LoginToNavbarServiceClient} from '../communication-services/login-to-navbar.service.client';
 
 @Component({
   selector: 'app-organization-sign-up',
@@ -11,6 +12,7 @@ import {AlertComponent} from 'ngx-bootstrap';
 export class OrganizationSignUpComponent implements OnInit {
 
   constructor(private providerService: ProviderServiceClient,
+              private data: LoginToNavbarServiceClient,
               private router: Router) { }
 
   username;
@@ -24,6 +26,7 @@ export class OrganizationSignUpComponent implements OnInit {
   organizationService;
 
   alerts = [];
+  message;
 
   serviceRole = {
     SiteManager: 'SiteManager',
@@ -35,6 +38,10 @@ export class OrganizationSignUpComponent implements OnInit {
 
   _toggleSidebar() {
     this._opened = !this._opened;
+  }
+
+  newMessage() {
+    this.data.changeMessage('login');
   }
 
   registerProvider(username, password, password2, organizationName, organizationAddress, service) {
@@ -72,6 +79,7 @@ export class OrganizationSignUpComponent implements OnInit {
           })
           .then((user) => {
             if (!user.err) {
+              this.newMessage();
               this.router.navigate(['profile']);
             } else {
               // alert('Username already exist, please choose another one.');

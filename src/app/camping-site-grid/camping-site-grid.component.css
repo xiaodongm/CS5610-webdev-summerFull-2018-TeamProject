@@ -1,3 +1,12 @@
 .card {
   margin-bottom: 15px;
 }
+
+#title {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.card {
+  background-color: gainsboro;
+}

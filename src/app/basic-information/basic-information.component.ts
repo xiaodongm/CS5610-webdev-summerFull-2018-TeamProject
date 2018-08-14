@@ -6,6 +6,9 @@ import {Provider} from '../models/provider.model.client';
 import {ProviderServiceClient} from '../services/provider.service.client';
 import {Router} from '@angular/router';
 import {LoginToNavbarServiceClient} from '../communication-services/login-to-navbar.service.client';
+import {SiteServiceClient} from '../services/site.service.client';
+import {EquipmentRentingServiceClient} from '../services/equipmentRenting.service.client';
+import {EquipmentServiceClient} from '../services/equipment.service.client';
 
 @Component({
   selector: 'app-basic-information',
@@ -17,8 +20,12 @@ export class BasicInformationComponent implements OnInit {
   constructor(private userService: UserServiceClient,
               private providerService: ProviderServiceClient,
               private router: Router,
+              private siteService: SiteServiceClient,
+              private equipmentRentingService: EquipmentRentingServiceClient,
+              private equipmentService: EquipmentServiceClient,
               private data: LoginToNavbarServiceClient,
-              private modalService: BsModalService) { }
+              private modalService: BsModalService) {
+  }
 
   modalRef: BsModalRef;
 
@@ -70,27 +77,48 @@ export class BasicInformationComponent implements OnInit {
 
   delete(userId) {
     // if (confirm('Do you really want to delete this user profile?')) {
-      if (this.user.role !== 'SiteManager' && this.user.role !== 'EquipmentDealer') {
-        this.userService.delete(userId)
+    if (this.user.role !== 'SiteManager' && this.user.role !== 'EquipmentDealer') {
+      this.userService.delete(userId)
         .then((res) => {
           if (res.error) {
             alert(res.error);
           } else {
             this.logout();
           }
-        })
-        .then(() => this.modalRef.hide());
-      } else if (this.user.role === 'SiteManager' || this.user.role === 'EquipmentDealer') {
-        this.providerService.deleteProviderById(userId)
-          .then ((res) => {
-            if (res.error) {
-              alert(res.error);
-            } else {
-              this.logout();
+        }).then(() => this.modalRef.hide());
+    } else if (this.user.role === 'SiteManager' || this.user.role === 'EquipmentDealer') {
+      if (this.user.role === 'SiteManager') {
+        this.siteService
+          .findSitesForProviderWithInfo(userId)
+          .then(sites => {
+            const sitesPromiseArray = [];
+            for (const site of sites) {
+              sitesPromiseArray.push(this.siteService.deleteSite(site._id));
             }
-          })
-          .then(() => this.modalRef.hide());
+            return Promise.all(sitesPromiseArray);
+          }).then(() => this.providerService
+          .deleteProviderById(userId))
+          .then((res) => console.log(res));
+      } else {
+        this.equipmentService
+          .findEquipmentsForProvider(userId)
+          .then(equipments => {
+            const equipPromiseArray = [];
+            for (const equip of equipments) {
+              equipPromiseArray.push(this.equipmentService.deleteEquipment(equip._id));
+            }
+            return Promise.all(equipPromiseArray);
+          }).then(() => {
+          this.providerService
+            .deleteProviderById(userId)
+            .then(() => {
+                this.logout();
+                this.modalRef.hide();
+            });
+        });
       }
+
+    }
     // }
   }
 

@@ -1,12 +1,16 @@
+const URL = 'http://localhost:3000';
+// const URL = 'https://husky-camp-node-server.herokuapp.com';
+
+
 export class UserServiceClient {
 
   findUserById(userId) {
-    return fetch('http://localhost:3000/api/user/userId/' + userId)
+    return fetch(URL + '/api/user/userId/' + userId)
       .then(response => response.json());
   }
 
   findAllUsers() {
-    return fetch('http://localhost:3000/api/user')
+    return fetch(URL + '/api/user')
       .then(response => response.json());
   }
 
@@ -15,7 +19,7 @@ export class UserServiceClient {
       username: username,
       password: password
     };
-    return fetch('http://localhost:3000/api/login', {
+    return fetch(URL + '/api/login', {
       method: 'post',
       body: JSON.stringify(credentials),
       credentials: 'include',
@@ -26,14 +30,14 @@ export class UserServiceClient {
   }
 
   logout() {
-    return fetch('http://localhost:3000/api/logout', {
+    return fetch(URL + '/api/logout', {
       method: 'post',
       credentials: 'include'
     });
   }
 
   update(user) {
-    return fetch('http://localhost:3000/api/profile', {
+    return fetch(URL + '/api/profile', {
       method: 'put',
       body: JSON.stringify(user),
       credentials: 'include',
@@ -44,7 +48,7 @@ export class UserServiceClient {
   }
 
   adminUpdate(user) {
-    return fetch('http://localhost:3000/api/admin/updateUser', {
+    return fetch(URL + '/api/admin/updateUser', {
       method: 'put',
       body: JSON.stringify(user),
       headers: {
@@ -61,13 +65,13 @@ export class UserServiceClient {
   }
 
   deleteUserById(userId) {
-    return fetch('http://localhost:3000/api/user/userId/' + userId, {
+    return fetch(URL + '/api/user/userId/' + userId, {
       method: 'delete'
     });
   }
 
   profile() {
-    return fetch('http://localhost:3000/api/profile',
+    return fetch(URL + '/api/profile',
       {
         credentials: 'include', // include, same-origin, *omit
       })
@@ -81,7 +85,7 @@ export class UserServiceClient {
       location: location,
       role: 'attendee'
     };
-    return fetch('http://localhost:3000/api/register', {
+    return fetch(URL + '/api/register', {
       body: JSON.stringify(user),
       credentials: 'include', // include, same-origin, *omit
       method: 'post',
@@ -92,7 +96,7 @@ export class UserServiceClient {
   }
 
   followFriend(userId) {
-    return fetch('http://localhost:3000/api/user/follow/' + userId, {
+    return fetch(URL + '/api/user/follow/' + userId, {
       credentials: 'include', // include, same-origin, *omit
       method: 'put',
       headers: {
@@ -102,7 +106,7 @@ export class UserServiceClient {
   }
 
   un_followFriend(userId) {
-    return fetch('http://localhost:3000/api/user/un_follow/' + userId, {
+    return fetch(URL + '/api/user/un_follow/' + userId, {
       credentials: 'include', // include, same-origin, *omit
       method: 'put',
       headers: {
@@ -112,7 +116,7 @@ export class UserServiceClient {
   }
 
   findAllFollowingFriendsForUser(userId) {
-    return fetch('http://localhost:3000/api/user/allFollows/' + userId)
+    return fetch(URL + '/api/user/allFollows/' + userId)
       .then(response => response.json());
   }
 
@@ -123,7 +127,7 @@ export class UserServiceClient {
       password: password,
       role: role
     };
-    return fetch('http://localhost:3000/api/register', {
+    return fetch(URL + '/api/register', {
       body: JSON.stringify(user),
       credentials: 'include', // include, same-origin, *omit
       method: 'post',

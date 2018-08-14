@@ -151,19 +151,21 @@ export class ProfileComponent implements OnInit {
           .then(friends => this.fillFollowingInfo(friends));
         this.eventService.findEventsForOrganizer(user._id)
           .then(events => {
+            // this.organizedEvents = events;
             events.forEach((event) => {
               event.startTime = this.refactorTime(event.startTime);
               event.endTime = this.refactorTime(event.endTime);
             });
-            return this.organizedEvents = events;
+            this.organizedEvents = events;
           });
         this.enrollmentService.findEnrollmentsForAttendee(user._id)
           .then(events => {
             events.forEach((event) => {
-              event.startTime = this.refactorTime(event.startTime);
-              event.endTime = this.refactorTime(event.endTime);
+              event.event.startTime = this.refactorTime(event.event.startTime);
+              event.event.endTime = this.refactorTime(event.event.endTime);
             });
-            return this.attendedEvents = events;
+            this.attendedEvents = events;
+            console.log(events);
           });
         this.discussionService.findDiscussionForUser(user._id)
           .then(discussions => {
@@ -212,6 +214,7 @@ export class ProfileComponent implements OnInit {
         return this.userService.findUserById(u._id);
       })
       .then((us) => {
+        console.log(us);
         us.role = 'organizer';
         console.log(us);
         return this.userService.update(us);
