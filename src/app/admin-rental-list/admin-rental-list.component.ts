@@ -56,13 +56,30 @@ export class AdminRentalListComponent implements OnInit {
   }
 
   delete(rental) {
+
+    // const real = {
+    //   _id: reservation._id,
+    //   event: reservation.event._id,
+    //   equipment: reservation.equipment._id,
+    //   quantity: reservation.quantity
+    // }
+    // this.equipmentRentingService
+    //   .returnEquipForEvent(real)
+    //   .then(() => {
+    //     this.equipmentRentingService
+    //       .findRentingsForProvider(this.user._id).then(rentings => {
+    //       this.messageEvent.emit(rentings);
+    //     });
+    //   });
+
+
     const unenroll = {
       _id: rental._id,
       event: rental.event._id,
       equipment: rental.equipment._id,
-      quantity: rental.equipment.quantity,
-      available: rental.equipment.available
+      quantity: rental.quantity,
     };
+    console.log(unenroll);
     this.rentalService.returnEquipForEvent(unenroll)
       .then(() => {
         this.modalRef.hide();
@@ -73,6 +90,7 @@ export class AdminRentalListComponent implements OnInit {
         this.sendMessage();
       });
     console.log(unenroll);
+
   }
 
   log(rental) {

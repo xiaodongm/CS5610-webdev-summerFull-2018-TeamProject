@@ -46,8 +46,6 @@ export class RentingListForProfileComponent implements OnInit {
             .then(() => {
               this.equipmentRentingService
                 .findRentingsForProvider(this.user._id).then(rentings => {
-                  console.log(this.user);
-                  console.log(rentings);
                   this.messageEvent.emit(rentings);
               });
             });

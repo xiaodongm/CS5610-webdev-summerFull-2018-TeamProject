@@ -21,6 +21,7 @@
               <p class="fld">Equipment: {{rent.equipment.title}}</p>
               <p class="fld">Total: {{rent.equipment.quantity}}</p>
               <span class="fld">Available: {{rent.equipment.available}}</span>
+              <span class="fld">Rent Quantity: {{rent.quantity}}</span>
             </div>
             <div *ngIf="isSame">
               <button id="deleteBtn" class="btn btn-danger float-right" (click)="delete(rent)">Delete</button>
