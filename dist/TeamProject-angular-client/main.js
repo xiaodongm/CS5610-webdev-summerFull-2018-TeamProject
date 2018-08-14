@@ -5583,9 +5583,12 @@ var EventMainListComponent = /** @class */ (function () {
         }
     };
     EventMainListComponent.prototype.arrayContainsArray = function (superset, subset) {
-        return subset.every(function (value) {
-            return (superset.indexOf(value) >= 0);
-        });
+        for (var j = 0; j < subset.length; j++) {
+            if (!superset.includes(subset[j])) {
+                return false;
+            }
+        }
+        return true;
     };
     EventMainListComponent.prototype.toggleTags = function (tag) {
         var _this = this;
@@ -5597,26 +5600,45 @@ var EventMainListComponent = /** @class */ (function () {
             this.activeTags.push(tag);
         }
         console.log(this.activeTags);
-        this.loadEvents().then(function () {
-            _this.adventureEvent.forEach(function (event) {
-                var removedArray = [];
-                if (!_this.arrayContainsArray(event.tags, _this.activeTags)) {
-                    var i = _this.adventureEvent.indexOf(event);
-                    _this.adventureEvent.splice(i);
+        this.loadEvents().then(function (events) {
+            console.log(_this.trainingEvent);
+            console.log(_this.adventureEvent);
+            // for (let k = 0; k < this.relaxEvent.length; k++) {
+            //   console.log(k);
+            // }
+            var newAdventureEvent = [];
+            for (var k = 0; k < _this.adventureEvent.length; k++) {
+                var event_1 = _this.adventureEvent[k];
+                console.log(k);
+                console.log(event_1);
+                if (_this.arrayContainsArray(event_1.tags, _this.activeTags)) {
+                    newAdventureEvent.push(_this.adventureEvent[k]);
                 }
-            });
-            _this.relaxEvent.forEach(function (event) {
-                if (!_this.arrayContainsArray(event.tags, _this.activeTags)) {
-                    var i = _this.relaxEvent.indexOf(event);
-                    _this.relaxEvent.splice(i);
+                console.log('contain relax');
+            }
+            _this.adventureEvent = newAdventureEvent;
+            var newRelaxEvent = [];
+            for (var k = 0; k < _this.relaxEvent.length; k++) {
+                var event_2 = _this.relaxEvent[k];
+                console.log(k);
+                console.log(event_2);
+                if (_this.arrayContainsArray(event_2.tags, _this.activeTags)) {
+                    newRelaxEvent.push(_this.relaxEvent[k]);
                 }
-            });
-            _this.trainingEvent.forEach(function (event) {
-                if (!_this.arrayContainsArray(event.tags, _this.activeTags)) {
-                    var i = _this.trainingEvent.indexOf(event);
-                    _this.trainingEvent.splice(i);
+                console.log('contain relax');
+            }
+            _this.relaxEvent = newRelaxEvent;
+            var newTrainingEvent = [];
+            for (var k = 0; k < _this.trainingEvent.length; k++) {
+                var event_3 = _this.trainingEvent[k];
+                console.log(k);
+                console.log(event_3);
+                if (_this.arrayContainsArray(event_3.tags, _this.activeTags)) {
+                    newTrainingEvent.push(_this.trainingEvent[k]);
                 }
-            });
+                console.log('contain relax');
+            }
+            _this.trainingEvent = newTrainingEvent;
         });
     };
     EventMainListComponent.prototype.refactorTime = function (time) {
@@ -5630,38 +5652,40 @@ var EventMainListComponent = /** @class */ (function () {
         this.trainingEvent = [];
         return this.eventService.findAllEvents()
             .then(function (events) {
-            events.forEach(function (event) {
-                event.startTime = _this.refactorTime(event.startTime);
-                event.endTime = _this.refactorTime(event.endTime);
+            _this.events = events;
+            for (var _i = 0, events_1 = events; _i < events_1.length; _i++) {
+                var event_4 = events_1[_i];
+                event_4.startTime = _this.refactorTime(event_4.startTime);
+                event_4.endTime = _this.refactorTime(event_4.endTime);
                 // console.log(event);
-                if (event.level === 'Adventure') {
-                    if (event.photos.length === 0) {
-                        event.photos.push('https://images.unsplash.com/pho' +
+                if (event_4.level === 'Adventure') {
+                    if (event_4.photos.length === 0) {
+                        event_4.photos.push('https://images.unsplash.com/pho' +
                             'to-1523341139367-9de570b874ed?ixlib=rb-0.3.5&ix' +
                             'id=eyJhcHBfaWQiOjEyMDd9&s=e23461455220c5147c59f5' +
                             'a2d831f545&auto=format&fit=crop&w=800&q=60');
                     }
-                    _this.adventureEvent.push(event);
+                    _this.adventureEvent.push(event_4);
                 }
-                else if (event.level === 'Training') {
-                    if (event.photos.length === 0) {
-                        event.photos.push('https://images.unsplash.com/photo-' +
+                else if (event_4.level === 'Training') {
+                    if (event_4.photos.length === 0) {
+                        event_4.photos.push('https://images.unsplash.com/photo-' +
                             '1510159806165-0c899599899d?ixlib=rb-0.3.5&s=d1f682d' +
                             '5d1a0ea065e1ccfb4659edb58&auto=format&fit=crop&w=800' +
                             '&q=60');
                     }
-                    _this.trainingEvent.push(event);
+                    _this.trainingEvent.push(event_4);
                 }
                 else {
-                    if (event.photos.length === 0) {
-                        event.photos.push('https://images.unsplash.com/photo-' +
+                    if (event_4.photos.length === 0) {
+                        event_4.photos.push('https://images.unsplash.com/photo-' +
                             '1470010762743-1fa2363f65ca?ixlib=rb-0.3.5&ixid=eyJh' +
                             'cHBfaWQiOjEyMDd9&s=e318710a372c9abb3a43b969b768cc3e' +
                             '&auto=format&fit=crop&w=800&q=60');
                     }
-                    _this.relaxEvent.push(event);
+                    _this.relaxEvent.push(event_4);
                 }
-            });
+            }
         });
     };
     EventMainListComponent.prototype.ngOnInit = function () {
