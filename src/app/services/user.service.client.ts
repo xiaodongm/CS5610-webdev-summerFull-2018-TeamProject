@@ -58,7 +58,7 @@ export class UserServiceClient {
   }
 
   delete(userId) {
-    return fetch('http://localhost:3000/api/user/userId/' + userId, {
+    return fetch(URL + '/api/user/userId/' + userId, {
       method: 'delete',
       credentials: 'include'
     });
@@ -138,7 +138,7 @@ export class UserServiceClient {
   }
 
   checkDelete(userId) {
-    return fetch('http://localhost:3000/api/user/userId/' + userId + '/checkDelete')
+    return fetch(URL + '/api/user/userId/' + userId + '/checkDelete')
       .then(response => response.json());
   }
 
