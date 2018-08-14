@@ -4,18 +4,18 @@
       Events({{events.length}})
     </a>
   </li>
-  <!--<li class="nav-item">-->
-    <!--<a class="nav-link" routerLink="/admin" (click)="openCreateDiscussionTab()">-->
-      <!--Create New Discussion-->
-    <!--</a>-->
-  <!--</li>-->
+  <li class="nav-item">
+    <a class="nav-link" routerLink="/admin" (click)="openDiscussionTab()">
+      Discussions({{totalDiscussions.length}})
+    </a>
+  </li>
 </ul>
 
 <div>
 
   <accordion [closeOthers]="true">
-    <!--<div *ngIf="userType === 'event'">-->
-    <div>
+    <div *ngIf="userType === 'event'">
+    <!--<div>-->
       <accordion-group *ngFor="let event of events" (isOpenChange)="log(event)">
         <button class="btn btn-link btn-block clearfix" accordion-heading>
           <div class="pull-left float-left">{{event.title}}</div>
@@ -59,6 +59,39 @@
       </accordion-group>
 
     </div>
+
+    <div *ngIf="userType === 'discussion'">
+      <accordion-group *ngFor="let discussion of totalDiscussions">
+        <button class="btn btn-link btn-block clearfix" accordion-heading>
+          <div class="pull-left float-left">Event : [{{' ' + discussion.event.title}}]___ Time : [{{' ' + discussion.postTime}}]</div>
+        </button>
+        <div *ngFor="let alert of alerts">
+          <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onClosed(alert)">{{ alert.msg }}</alert>
+        </div>
+        <div class="input-group-append wrapDiv">
+          <label for="typeFld2" class="col-sm-2 col-form-label">Post Type</label>
+          <input id="typeFld2" [(ngModel)]="discussion.type" class="form-control" readonly>
+        </div>
+        <div class="input-group-append wrapDiv">
+          <label for="contentFld2" class="col-sm-2 col-form-label">Post Content</label>
+          <input id="contentFld2" [(ngModel)]="discussion.content" class="form-control">
+        </div>
+        <div class="UpdateDeleteBtns">
+          <button class="btn btn-success updateBtn" (click)="update(discussion)">Update</button>
+          <button (click)="openModal(deleteConfirm)" class="btn btn-danger">Delete</button>
+        </div>
+        <ng-template #deleteConfirm>
+          <div class="modal-body text-center">
+            <p>Are you sure you want to <strong>DELETE</strong> this Post?</p>
+            <button type="button" class="btn btn-danger confirmDelete" (click)="deleteTotalDiscussion(discussion)" >Delete</button>
+            <button type="button" class="btn btn-default" (click)="modalRef.hide();" >Cancel</button>
+          </div>
+        </ng-template>
+
+
+      </accordion-group>
+    </div>
+
   </accordion>
 
 

@@ -16,6 +16,7 @@ export class AdminDiscussionListComponent implements OnInit {
 
   events = [];
   discussions = [];
+  totalDiscussions = [];
   userType;
   eventId;
 
@@ -26,7 +27,7 @@ export class AdminDiscussionListComponent implements OnInit {
 
   userTypeModel = {
     event: 'event',
-    admin: 'admin'
+    discussion: 'discussion'
   };
 
   @Output() messageEvent = new EventEmitter<string>();
@@ -57,8 +58,8 @@ export class AdminDiscussionListComponent implements OnInit {
     this.userType = this.userTypeModel.event;
   }
 
-  openCreateDiscussionTab() {
-    this.userType = this.userTypeModel.admin;
+  openDiscussionTab() {
+    this.userType = this.userTypeModel.discussion;
   }
 
   findAllEvents() {
@@ -90,12 +91,37 @@ export class AdminDiscussionListComponent implements OnInit {
           .then(discussions => this.discussions = discussions);
         this.message = this.discussions.length;
         this.sendMessage();
+        this.discussionService.findAllDiscussions()
+          .then(discussions => this.totalDiscussions = discussions);
+        this.message = this.totalDiscussions.length;
+        this.sendMessage();
       });
 
   }
 
+  deleteTotalDiscussion(discussion) {
+    this.discussionService.deleteDiscussion(discussion._id)
+      .then(() => {
+        this.modalRef.hide();
+      })
+      .then(() => {
+        this.discussionService.findAllDiscussions()
+          .then(discussions => this.totalDiscussions = discussions);
+        this.message = this.totalDiscussions.length;
+        this.sendMessage();
+      });
+  }
+
+  findAllDiscussions() {
+    this.discussionService.findAllDiscussions()
+      .then(discussions => {this.totalDiscussions = discussions;
+        console.log(this.totalDiscussions);
+      });
+  }
+
   ngOnInit() {
     this.findAllEvents();
+    this.findAllDiscussions();
   }
 
 }
