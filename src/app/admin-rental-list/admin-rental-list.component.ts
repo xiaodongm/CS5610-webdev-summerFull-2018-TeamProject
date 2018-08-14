@@ -56,6 +56,23 @@ export class AdminRentalListComponent implements OnInit {
   }
 
   delete(rental) {
+
+    // const real = {
+    //   _id: reservation._id,
+    //   event: reservation.event._id,
+    //   equipment: reservation.equipment._id,
+    //   quantity: reservation.quantity
+    // }
+    // this.equipmentRentingService
+    //   .returnEquipForEvent(real)
+    //   .then(() => {
+    //     this.equipmentRentingService
+    //       .findRentingsForProvider(this.user._id).then(rentings => {
+    //       this.messageEvent.emit(rentings);
+    //     });
+    //   });
+
+
     const unenroll = {
       _id: rental._id,
       event: rental.event._id,
