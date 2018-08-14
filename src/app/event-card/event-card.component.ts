@@ -41,6 +41,7 @@ export class EventCardComponent implements OnInit {
   }
 
   getOrganizer() {
+
      return this.service.findUserById(this.data.organizer)
       .then((organizer) => {
         if (!organizer.profilePhoto || organizer.profilePhoto === '') {

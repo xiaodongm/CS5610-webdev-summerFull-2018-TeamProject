@@ -79,6 +79,7 @@ export class AdminRentalListComponent implements OnInit {
       equipment: rental.equipment._id,
       quantity: rental.quantity,
     };
+    console.log(unenroll);
     this.rentalService.returnEquipForEvent(unenroll)
       .then(() => {
         this.modalRef.hide();
@@ -89,6 +90,7 @@ export class AdminRentalListComponent implements OnInit {
         this.sendMessage();
       });
     console.log(unenroll);
+
   }
 
   log(rental) {
