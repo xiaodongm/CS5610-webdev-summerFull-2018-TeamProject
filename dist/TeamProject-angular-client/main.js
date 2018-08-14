@@ -5599,21 +5599,22 @@ var EventMainListComponent = /** @class */ (function () {
         console.log(this.activeTags);
         this.loadEvents().then(function () {
             _this.adventureEvent.forEach(function (event) {
+                var removedArray = [];
                 if (!_this.arrayContainsArray(event.tags, _this.activeTags)) {
                     var i = _this.adventureEvent.indexOf(event);
-                    _this.adventureEvent.splice(i, 1);
+                    _this.adventureEvent.splice(i);
                 }
             });
             _this.relaxEvent.forEach(function (event) {
                 if (!_this.arrayContainsArray(event.tags, _this.activeTags)) {
                     var i = _this.relaxEvent.indexOf(event);
-                    _this.relaxEvent.splice(i, 1);
+                    _this.relaxEvent.splice(i);
                 }
             });
             _this.trainingEvent.forEach(function (event) {
                 if (!_this.arrayContainsArray(event.tags, _this.activeTags)) {
                     var i = _this.trainingEvent.indexOf(event);
-                    _this.trainingEvent.splice(i, 1);
+                    _this.trainingEvent.splice(i);
                 }
             });
         });
