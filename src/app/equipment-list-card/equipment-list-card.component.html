@@ -58,7 +58,7 @@
 
   <ng-template #template2>
     <div class="modal-header">
-      <h4 class="modal-title pull-left">Edit Equipment Details</h4>
+      <h4 class="modal-title pull-left">Equipment Details</h4>
       <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -78,7 +78,7 @@
         </div>
 
           <div class="" *ngFor="let widget of data.description">
-            <div *ngFor="let widget of data.description">
+            <!--<div *ngFor="let widget of data.description">-->
               <div *ngIf="widget.type === 'heading'">
                 <h5>{{widget.data}}</h5>
               </div>
@@ -100,7 +100,7 @@
                   <li *ngFor="let item of splitList(widget.data)">{{item}}</li>
                 </ol>
               </div>
-            </div>
+            <!--</div>-->
           </div>
 
 
@@ -111,7 +111,7 @@
 
       <hr>
       <div>
-        <h4>Contact Infor</h4>
+        <h4>Contact Info</h4>
         <div>
           phone number: {{provider.phoneNumber}} <span *ngIf="!provider.phoneNumber">not avalaible</span>
         </div>
