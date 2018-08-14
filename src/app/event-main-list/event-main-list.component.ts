@@ -32,6 +32,7 @@ export class EventMainListComponent implements OnInit {
     });
   }
 
+
   toggleTags(tag) {
     if (this.isActiveTag(tag)) {
       const index = this.activeTags.indexOf(tag);
@@ -42,23 +43,24 @@ export class EventMainListComponent implements OnInit {
     console.log(this.activeTags);
     this.loadEvents().then(() => {
       this.adventureEvent.forEach((event) => {
+        const removedArray = [];
         if (!this.arrayContainsArray(event.tags, this.activeTags)) {
           const i = this.adventureEvent.indexOf(event);
-          this.adventureEvent.splice(i, 1);
+          this.adventureEvent.splice(i);
         }
       });
 
       this.relaxEvent.forEach((event) => {
         if (!this.arrayContainsArray(event.tags, this.activeTags)) {
           const i = this.relaxEvent.indexOf(event);
-          this.relaxEvent.splice(i, 1);
+          this.relaxEvent.splice(i);
         }
       });
 
       this.trainingEvent.forEach((event) => {
         if (!this.arrayContainsArray(event.tags, this.activeTags)) {
           const i = this.trainingEvent.indexOf(event);
-          this.trainingEvent.splice(i, 1);
+          this.trainingEvent.splice(i);
         }
       });
     });
