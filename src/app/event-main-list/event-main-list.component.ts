@@ -17,7 +17,7 @@ export class EventMainListComponent implements OnInit {
   relaxEvent: EventCard[] = [];
   trainingEvent: EventCard[] = [];
   active = true;
-
+  events;
   isActiveTag(tag) {
     if (this.activeTags.includes(tag)) {
       return true;
@@ -27,9 +27,12 @@ export class EventMainListComponent implements OnInit {
   }
 
   arrayContainsArray (superset, subset) {
-    return subset.every(function (value) {
-      return (superset.indexOf(value) >= 0);
-    });
+    for (let j = 0; j < subset.length; j++) {
+      if (!superset.includes(subset[j])) {
+        return false;
+      }
+    }
+    return true;
   }
 
 
@@ -41,28 +44,51 @@ export class EventMainListComponent implements OnInit {
       this.activeTags.push(tag);
     }
     console.log(this.activeTags);
-    this.loadEvents().then(() => {
-      this.adventureEvent.forEach((event) => {
-        const removedArray = [];
-        if (!this.arrayContainsArray(event.tags, this.activeTags)) {
-          const i = this.adventureEvent.indexOf(event);
-          this.adventureEvent.splice(i);
-        }
-      });
+    this.loadEvents().then((events) => {
 
-      this.relaxEvent.forEach((event) => {
-        if (!this.arrayContainsArray(event.tags, this.activeTags)) {
-          const i = this.relaxEvent.indexOf(event);
-          this.relaxEvent.splice(i);
-        }
-      });
+      console.log(this.trainingEvent);
+      console.log(this.adventureEvent);
+      // for (let k = 0; k < this.relaxEvent.length; k++) {
+      //   console.log(k);
+      // }
+      const newAdventureEvent = [];
 
-      this.trainingEvent.forEach((event) => {
-        if (!this.arrayContainsArray(event.tags, this.activeTags)) {
-          const i = this.trainingEvent.indexOf(event);
-          this.trainingEvent.splice(i);
+      for (let k = 0; k < this.adventureEvent.length; k++) {
+        const event = this.adventureEvent[k];
+        console.log(k);
+        console.log(event);
+        if (this.arrayContainsArray(event.tags, this.activeTags)) {
+          newAdventureEvent.push(this.adventureEvent[k]);
         }
-      });
+        console.log('contain relax');
+      }
+      this.adventureEvent = newAdventureEvent;
+
+      const newRelaxEvent = [];
+
+      for (let k = 0; k < this.relaxEvent.length; k++) {
+        const event = this.relaxEvent[k];
+        console.log(k);
+        console.log(event);
+        if (this.arrayContainsArray(event.tags, this.activeTags)) {
+          newRelaxEvent.push(this.relaxEvent[k]);
+        }
+        console.log('contain relax');
+      }
+      this.relaxEvent = newRelaxEvent;
+
+      const newTrainingEvent = [];
+
+      for (let k = 0; k < this.trainingEvent.length; k++) {
+        const event = this.trainingEvent[k];
+        console.log(k);
+        console.log(event);
+        if (this.arrayContainsArray(event.tags, this.activeTags)) {
+          newTrainingEvent.push(this.trainingEvent[k]);
+        }
+        console.log('contain relax');
+      }
+      this.trainingEvent = newTrainingEvent;
     });
   }
 
@@ -77,7 +103,9 @@ export class EventMainListComponent implements OnInit {
     this.trainingEvent = [];
     return this.eventService.findAllEvents()
       .then((events) => {
-        events.forEach(event => {
+        this.events = events;
+
+       for (const event of events) {
           event.startTime = this.refactorTime(event.startTime);
           event.endTime = this.refactorTime(event.endTime);
           // console.log(event);
@@ -107,8 +135,8 @@ export class EventMainListComponent implements OnInit {
             }
             this.relaxEvent.push(event);
           }
-        });
-      });
+        }});
+
   }
 
   ngOnInit() {
