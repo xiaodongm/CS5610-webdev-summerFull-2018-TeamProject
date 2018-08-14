@@ -295,7 +295,6 @@ export class UserListComponent implements OnInit {
           }
         } else {
           alert('please login');
-
         }
 
       });

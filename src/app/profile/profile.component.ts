@@ -136,71 +136,143 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
+    // this.userService
+    //   .profile()
+    //   .then(user => {
+    //     this.user = user;
+    //     if (!this.user.profilePhoto) {
+    //       this.user.profilePhoto = 'https://images.unsplash.com/photo-' +
+    //         '1495078065017-564723e7e3e7?ixlib=rb-0.3.5&ixid=eyJhcHBfa' +
+    //         'WQiOjEyMDd9&s=09093dcdf66dbcd2397b9dc19384a899&auto=forma' +
+    //         't&fit=crop&w=800&q=60';
+    //     }
+    //     this.userService
+    //       .findAllFollowingFriendsForUser(user._id)
+    //       .then(friends => this.fillFollowingInfo(friends));
+    //     this.eventService.findEventsForOrganizer(user._id)
+    //       .then(events => {
+    //         // this.organizedEvents = events;
+    //         events.forEach((event) => {
+    //           event.startTime = this.refactorTime(event.startTime);
+    //           event.endTime = this.refactorTime(event.endTime);
+    //         });
+    //         this.organizedEvents = events;
+    //       });
+    //     this.enrollmentService.findEnrollmentsForAttendee(user._id)
+    //       .then(events => {
+    //         console.log(events);
+    //         events.forEach((event) => {
+    //           event.event.startTime = this.refactorTime(event.event.startTime);
+    //           event.event.endTime = this.refactorTime(event.event.endTime);
+    //         });
+    //         this.attendedEvents = events;
+    //         console.log(events);
+    //       });
+    //     this.discussionService.findDiscussionForUser(user._id)
+    //       .then(discussions => {
+    //         this.discussions = discussions;
+    //       });
+    //
+    //   });
+    //
+    //
+    // this.providerService
+    //   .profile()
+    //   .then(provider => {
+    //       this.provider = provider;
+    //       this.equipmentService
+    //         .findEquipmentsForProvider(this.provider._id)
+    //         .then(equipments => this.myEquipments = equipments);
+    //
+    //       this.siteService
+    //         .findSitesForProviderWithInfo(this.provider._id)
+    //         .then((sites) => this.mySites = sites);
+    //
+    //       if (provider.role === 'SiteManager') {
+    //         this.reservationService
+    //           .findReservationsForProvider(provider._id)
+    //           .then(reservations => {
+    //             this.myRentings = reservations;
+    //           });
+    //       } else {
+    //           this.equipmentRentingService
+    //           .findRentingsForProvider(provider._id)
+    //           .then(rentings => this.myRentings = rentings);
+    //       }
+    //     }
+    //   );
     this.userService
       .profile()
       .then(user => {
-        this.user = user;
-        if (!this.user.profilePhoto) {
-          this.user.profilePhoto = 'https://images.unsplash.com/photo-' +
-            '1495078065017-564723e7e3e7?ixlib=rb-0.3.5&ixid=eyJhcHBfa' +
-            'WQiOjEyMDd9&s=09093dcdf66dbcd2397b9dc19384a899&auto=forma' +
-            't&fit=crop&w=800&q=60';
-        }
-        this.userService
-          .findAllFollowingFriendsForUser(user._id)
-          .then(friends => this.fillFollowingInfo(friends));
-        this.eventService.findEventsForOrganizer(user._id)
-          .then(events => {
-            // this.organizedEvents = events;
-            events.forEach((event) => {
-              event.startTime = this.refactorTime(event.startTime);
-              event.endTime = this.refactorTime(event.endTime);
-            });
-            this.organizedEvents = events;
-          });
-        this.enrollmentService.findEnrollmentsForAttendee(user._id)
-          .then(events => {
-            console.log(events);
-            events.forEach((event) => {
-              event.event.startTime = this.refactorTime(event.event.startTime);
-              event.event.endTime = this.refactorTime(event.event.endTime);
-            });
-            this.attendedEvents = events;
-            console.log(events);
-          });
-        this.discussionService.findDiscussionForUser(user._id)
-          .then(discussions => {
-            this.discussions = discussions;
-          });
+        console.log(user);
+        if (!user.error) {
+          this.user = user;
+          if (!this.user.profilePhoto) {
+            this.user.profilePhoto = 'https://images.unsplash.com/photo-' +
+              '1495078065017-564723e7e3e7?ixlib=rb-0.3.5&ixid=eyJhcHBfa' +
+              'WQiOjEyMDd9&s=09093dcdf66dbcd2397b9dc19384a899&auto=forma' +
+              't&fit=crop&w=800&q=60';
+          }
+          if (user.role === 'organizer' || user.role === 'attendee') {
 
-      });
-
-
-    this.providerService
-      .profile()
-      .then(provider => {
-          this.provider = provider;
-          this.equipmentService
-            .findEquipmentsForProvider(this.provider._id)
-            .then(equipments => this.myEquipments = equipments);
-
-          this.siteService
-            .findSitesForProviderWithInfo(this.provider._id)
-            .then((sites) => this.mySites = sites);
-
-          if (provider.role === 'SiteManager') {
-            this.reservationService
-              .findReservationsForProvider(provider._id)
-              .then(reservations => {
-                this.myRentings = reservations;
+            this.userService
+              .findAllFollowingFriendsForUser(user._id)
+              .then(friends => this.fillFollowingInfo(friends));
+            this.eventService.findEventsForOrganizer(user._id)
+              .then(events => {
+                // this.organizedEvents = events;
+                events.forEach((event) => {
+                  event.startTime = this.refactorTime(event.startTime);
+                  event.endTime = this.refactorTime(event.endTime);
+                });
+                this.organizedEvents = events;
+              });
+            this.enrollmentService.findEnrollmentsForAttendee(user._id)
+              .then(events => {
+                console.log(events);
+                events.forEach((event) => {
+                  event.event.startTime = this.refactorTime(event.event.startTime);
+                  event.event.endTime = this.refactorTime(event.event.endTime);
+                });
+                this.attendedEvents = events;
+                console.log(events);
+              });
+            this.discussionService.findDiscussionForUser(user._id)
+              .then(discussions => {
+                this.discussions = discussions;
               });
           } else {
-              this.equipmentRentingService
-              .findRentingsForProvider(provider._id)
-              .then(rentings => this.myRentings = rentings);
+            this.providerService
+              .profile()
+              .then(provider => {
+                  this.provider = provider;
+                  this.equipmentService
+                    .findEquipmentsForProvider(this.provider._id)
+                    .then(equipments => this.myEquipments = equipments);
+
+                  this.siteService
+                    .findSitesForProviderWithInfo(this.provider._id)
+                    .then((sites) => this.mySites = sites);
+
+                  if (provider.role === 'SiteManager') {
+                    this.reservationService
+                      .findReservationsForProvider(provider._id)
+                      .then(reservations => {
+                        this.myRentings = reservations;
+                      });
+                  } else {
+                    this.equipmentRentingService
+                      .findRentingsForProvider(provider._id)
+                      .then(rentings => this.myRentings = rentings);
+                  }
+                }
+              );
           }
+        } else {
+          alert('Please login!');
         }
-      );
+
+      });
   }
 
   goCreateEvent() {

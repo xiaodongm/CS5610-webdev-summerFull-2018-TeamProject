@@ -85,7 +85,8 @@ export class BasicInformationComponent implements OnInit {
     console.log('delete user');
     this.userService.profile()
       .then((user) => {
-        if (user) {
+        if (!user.error) {
+          console.log(user);
           // if (confirm('Do you really want to delete this user profile?')) {
           if (this.user.role !== 'SiteManager' && this.user.role !== 'EquipmentDealer') {
             this.userService.checkDelete(this.user._id)
@@ -163,7 +164,6 @@ export class BasicInformationComponent implements OnInit {
           }
         } else {
           alert('please login');
-
         }
         this.modalRef.hide();
       });
