@@ -60,8 +60,7 @@ export class AdminRentalListComponent implements OnInit {
       _id: rental._id,
       event: rental.event._id,
       equipment: rental.equipment._id,
-      quantity: rental.equipment.quantity,
-      available: rental.equipment.available
+      quantity: rental.quantity,
     };
     console.log(unenroll);
     this.rentalService.returnEquipForEvent(unenroll)
@@ -74,6 +73,7 @@ export class AdminRentalListComponent implements OnInit {
         this.sendMessage();
       });
     console.log(unenroll);
+
   }
 
   log(rental) {
