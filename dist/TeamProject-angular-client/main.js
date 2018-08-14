@@ -5989,6 +5989,7 @@ var EventWaterfallComponent = /** @class */ (function () {
                 event.startTime = _this.refactorTime(event.startTime);
                 event.endTime = _this.refactorTime(event.endTime);
             });
+            _this.cards = _this.cards.reverse();
             while (_this.index < 3 && _this.index < _this.cards.length) {
                 _this.showedCards.push(_this.cards[_this.index]);
                 _this.index = _this.index + 1;
