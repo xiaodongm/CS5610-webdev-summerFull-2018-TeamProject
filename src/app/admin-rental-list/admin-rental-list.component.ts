@@ -63,6 +63,7 @@ export class AdminRentalListComponent implements OnInit {
       quantity: rental.equipment.quantity,
       available: rental.equipment.available
     };
+    console.log(unenroll);
     this.rentalService.returnEquipForEvent(unenroll)
       .then(() => {
         this.modalRef.hide();
