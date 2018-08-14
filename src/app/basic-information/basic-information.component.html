@@ -144,7 +144,7 @@
   <ng-template #deleteConfirm>
     <div class="modal-body text-center">
       <p>Are you sure you want to <strong>DELETE</strong> this account?</p>
-      <button id="confirmDelete" type="button" class="btn btn-danger" (click)="delete()">Delete</button>
+      <button id="confirmDelete" type="button" class="btn btn-danger" (click)="delete(user._id)">Delete</button>
       <button type="button" class="btn btn-default" (click)="modalRef.hide();">Cancel</button>
     </div>
   </ng-template>

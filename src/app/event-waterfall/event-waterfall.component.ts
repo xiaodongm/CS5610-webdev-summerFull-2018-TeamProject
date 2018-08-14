@@ -251,9 +251,9 @@ export class EventWaterfallComponent implements OnInit {
   @HostListener('window:scroll', ['$event'])
   onScroll($event: Event): void {
     // console.log('On Scroll');
-    console.log(window.innerHeight);
-    console.log(window.scrollY);
-    console.log(document.body.offsetHeight);
+    // console.log(window.innerHeight);
+    // console.log(window.scrollY);
+    // console.log(document.body.offsetHeight);
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
       // console.log('On Scroll Down');
       if (this.index < this.cards.length) {

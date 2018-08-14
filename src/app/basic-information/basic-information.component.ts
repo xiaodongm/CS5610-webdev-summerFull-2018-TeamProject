@@ -6,6 +6,8 @@ import {Provider} from '../models/provider.model.client';
 import {ProviderServiceClient} from '../services/provider.service.client';
 import {Router} from '@angular/router';
 import {LoginToNavbarServiceClient} from '../communication-services/login-to-navbar.service.client';
+import {EventServiceClient} from '../services/event.service.client';
+import {EnrollmentServiceClient} from '../services/enrollment.service.client';
 
 @Component({
   selector: 'app-basic-information',
@@ -16,6 +18,8 @@ export class BasicInformationComponent implements OnInit {
 
   constructor(private userService: UserServiceClient,
               private providerService: ProviderServiceClient,
+              private enrollmentService: EnrollmentServiceClient,
+              private eventService: EventServiceClient,
               private router: Router,
               private data: LoginToNavbarServiceClient,
               private modalService: BsModalService) { }
@@ -68,18 +72,67 @@ export class BasicInformationComponent implements OnInit {
     this.alerts = this.alerts.filter(alert => alert !== dismissedAlert);
   }
 
-  delete() {
-    // if (confirm('Do you really want to delete this user profile?')) {
-      if (this.user.role !== 'SiteManager' && this.user.role !== 'EquipmentDealer') {
-        this.userService.delete()
-        .then(() => this.logout())
-        .then(() => this.modalRef.hide());
-      } else if (this.user.role === 'SiteManager' || this.user.role === 'EquipmentDealer') {
-        this.providerService.delete()
-          .then(() => this.logout())
-          .then(() => this.modalRef.hide());
-      }
-    // }
+  delete(userId) {
+
+      // if (this.user.role !== 'SiteManager' && this.user.role !== 'EquipmentDealer') {
+      //   this.userService.delete()
+      //   .then(() => this.logout())
+      //   .then(() => this.modalRef.hide());
+      // } else if (this.user.role === 'SiteManager' || this.user.role === 'EquipmentDealer') {
+      //   this.providerService.delete()
+      //     .then(() => this.logout())
+      //     .then(() => this.modalRef.hide());
+      // }
+    console.log('delete user');
+    this.userService.profile()
+      .then((user) => {
+        if (user) {
+          this.userService.checkDelete(this.user._id)
+            .then(res => {
+              console.log(res);
+              if (res.ok = true) {
+                return this.eventService.findEventsForOrganizer(this.user._id)
+                  .then((events) => {
+                    console.log(events);
+                    const organizedEventPromises = [];
+                    for (event of events) {
+                      organizedEventPromises.push(this.eventService.deleteEvent(event._id));
+                    }
+                    return Promise.all(organizedEventPromises);
+                  })
+                  .then(() => {
+                    return this.enrollmentService.findEnrollmentsForAttendee(this.user._id);
+                  })
+                  .then((enrollments) => {
+                    console.log(enrollments);
+                    const enrollmentsPromises = [];
+                    for (const enrollment of enrollments) {
+                      console.log(enrollment);
+                      const e = {attendee: enrollment.attendee,
+                                event: enrollment.event._id};
+                      enrollmentsPromises.push(this.enrollmentService.unenrollAttendeeInEvent(e));
+                    }
+                    return Promise.all(enrollmentsPromises);
+                  })
+                  .then(() => {
+                    return this.userService.deleteUserById(this.user._id);
+                  })
+                  .then(() => {
+                    this.modalRef.hide();
+                    this.logout();
+                  })
+                  ;
+              } else {
+                alert('you can not delete account before return all equipments and cancel site reservation, please contact provider.');
+              }
+            });
+        } else {
+          alert('please login');
+
+        }
+        this.modalRef.hide();
+      });
+
   }
 
   logout() {

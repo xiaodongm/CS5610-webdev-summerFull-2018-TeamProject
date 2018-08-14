@@ -151,9 +151,11 @@ export class ProfileComponent implements OnInit {
           });
         this.enrollmentService.findEnrollmentsForAttendee(user._id)
           .then(events => {
+            console.log(events);
             events.forEach((event) => {
-              event.startTime = this.refactorTime(event.startTime);
-              event.endTime = this.refactorTime(event.endTime);
+
+              event.event.startTime = this.refactorTime(event.event.startTime);
+              event.event.endTime = this.refactorTime(event.event.endTime);
             });
             return this.attendedEvents = events;
           });
