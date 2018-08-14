@@ -209,3 +209,11 @@ iframe {
 #equipment-warning {
   color: grey;
 }
+
+#eventStart {
+  margin-bottom: 10px;
+}
+
+#eventEnd{
+  margin-bottom: 10px;
+}

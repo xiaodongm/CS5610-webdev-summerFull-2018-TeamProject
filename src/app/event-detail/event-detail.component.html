@@ -128,10 +128,12 @@
             <li *ngFor="let item of splitList(widget.data)">{{item}}</li>
           </ol>
         </div>
+        <hr>
 
       </div>
       <div *ngIf="event.attendee.length > 0">
         <app-attendee-list [attendeeIds]="event.attendee"></app-attendee-list>
+        <hr>
       </div>
 
       <div *ngIf="event._id && event._id !== ''">
@@ -141,13 +143,13 @@
     </div>
 
     <div class="col-sm-12 col-md-4">
-      <div>
+      <div id="eventStart">
         Event Start:
         {{event.startTime}}
         <!--{{dates[event.start.getDay()]}}, {{months[event.start.getMonth()]}} {{event.start.getDate()}}-->
       </div>
 
-      <div>
+      <div id="eventEnd">
         Event End:
         {{event.endTime}}
         <!--{{dates[event.end.getDay()]}}, {{months[event.end.getMonth()]}} {{event.end.getDate()}}-->

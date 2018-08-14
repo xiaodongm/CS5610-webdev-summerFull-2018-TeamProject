@@ -5,6 +5,7 @@
       <div>
         <div id="owner" class="input-group-append">
           <p id="eventTitle" *ngIf="discussion.event" [routerLink]="['/eventDetail/' + discussion.event._id]">Event Title: {{discussion.event.title}}</p>
+          <p id="eventTitle2" *ngIf="!discussion.event">Deleted Event</p>
           <p class="badge badge-secondary" id="ownerName">{{discussion.postPeople.username}}</p>
           <p id="ownerTime"><span class="divider">•</span>{{discussion.postTime}}</p>
         </div>

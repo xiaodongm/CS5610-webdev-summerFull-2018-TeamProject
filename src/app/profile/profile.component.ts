@@ -88,10 +88,18 @@ export class ProfileComponent implements OnInit {
 
   receiveNewSites(sites) {
     this.mySites = sites;
+    this.reservationService
+      .findReservationsForProvider(this.provider._id)
+      .then(reservations => {
+        this.myRentings = reservations;
+      });
   }
 
   receiveNewEquips(equips) {
     this.myEquipments = equips;
+    this.equipmentRentingService
+      .findRentingsForProvider(this.provider._id)
+      .then(rentings => this.myRentings = rentings);
   }
 
   refactorTime(time) {
@@ -143,21 +151,22 @@ export class ProfileComponent implements OnInit {
           .then(friends => this.fillFollowingInfo(friends));
         this.eventService.findEventsForOrganizer(user._id)
           .then(events => {
+            // this.organizedEvents = events;
             events.forEach((event) => {
               event.startTime = this.refactorTime(event.startTime);
               event.endTime = this.refactorTime(event.endTime);
             });
-            return this.organizedEvents = events;
+            this.organizedEvents = events;
           });
         this.enrollmentService.findEnrollmentsForAttendee(user._id)
           .then(events => {
             console.log(events);
             events.forEach((event) => {
-
               event.event.startTime = this.refactorTime(event.event.startTime);
               event.event.endTime = this.refactorTime(event.event.endTime);
             });
-            return this.attendedEvents = events;
+            this.attendedEvents = events;
+            console.log(events);
           });
         this.discussionService.findDiscussionForUser(user._id)
           .then(discussions => {
@@ -206,6 +215,7 @@ export class ProfileComponent implements OnInit {
         return this.userService.findUserById(u._id);
       })
       .then((us) => {
+        console.log(us);
         us.role = 'organizer';
         console.log(us);
         return this.userService.update(us);
