@@ -282,6 +282,7 @@ export class EventWaterfallComponent implements OnInit {
           event.startTime = this.refactorTime(event.startTime);
           event.endTime = this.refactorTime(event.endTime);
         });
+        this.cards = this.cards.reverse();
         while ( this.index < 3 && this.index < this.cards.length) {
           this.showedCards.push(this.cards[this.index]);
           this.index = this.index + 1;
