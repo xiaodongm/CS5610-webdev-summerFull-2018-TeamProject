@@ -183,11 +183,14 @@ export class ProfileComponent implements OnInit {
               .findReservationsForProvider(provider._id)
               .then(reservations => {
                 this.myRentings = reservations;
+                console.log(provider._id);
               });
           } else {
               this.equipmentRentingService
               .findRentingsForProvider(provider._id)
-              .then(rentings => this.myRentings = rentings);
+              .then(rentings => {
+                this.myRentings = rentings;
+              });
           }
         }
       );

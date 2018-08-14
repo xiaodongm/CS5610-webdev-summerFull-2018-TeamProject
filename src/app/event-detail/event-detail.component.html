@@ -106,24 +106,22 @@
 
       <div *ngFor="let widget of this.event.description">
         <div *ngIf="widget.type === 'heading'">
-          heading: {{widget.data}}
+          <h1>{{widget.data}}</h1>
         </div>
         <div *ngIf="widget.type === 'paragraph'">
-          paragraph: {{widget.data}}
+          <p>{{widget.data}}</p>
         </div>
         <div *ngIf="widget.type === 'link'">
-          Link: <a href={{widget.data}}>{{widget.data}}</a>
+          <a href={{widget.data}}>{{widget.data}}</a>
         </div>
 
         <div *ngIf="widget.type === 'unorderedList'">
-          List:
           <ul >
             <li *ngFor="let item of splitList(widget.data)">{{item}}</li>
           </ul>
         </div>
 
         <div *ngIf="widget.type === 'orderedList'">
-          List:
           <ol>
             <li *ngFor="let item of splitList(widget.data)">{{item}}</li>
           </ol>
@@ -155,11 +153,13 @@
         <!--{{dates[event.end.getDay()]}}, {{months[event.end.getMonth()]}} {{event.end.getDate()}}-->
 
       </div>
+      <hr>
 
       <div>
         <h3>Target Site: </h3>
         <app-site-list-card *ngIf="targetSite" [data]="targetSite"></app-site-list-card>
         <div *ngIf="equipments">
+          <hr>
         <h3>Equipments: </h3>
           <div *ngFor="let equipment of equipments" class="equipment-card-wrapper">
             <app-rent-equipment-card

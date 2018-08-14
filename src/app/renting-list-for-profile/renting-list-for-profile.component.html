@@ -14,7 +14,7 @@
             </div>
             <div *ngIf="user.role === 'SiteManager'">
               <a class="text-muted" [routerLink]="['/eventDetail/' + rent.site._id]">
-                Site: {{rent.site.title}}
+                <p class="fld">Site: {{rent.site.title}}</p>
               </a>
             </div>
             <div *ngIf="user.role === 'EquipmentDealer'" class="text-muted">

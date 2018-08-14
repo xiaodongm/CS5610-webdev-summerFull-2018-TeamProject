@@ -15,8 +15,8 @@
     <p><img src="../../assets/images/userAccountIcon.png">Step 1 of 4</p>
     <span>Create Username and Password for your account</span>
     <input [(ngModel)]="username" id="usernameFld" class="form-control" placeholder="Username">
-    <input [(ngModel)]="password" id="passwordFld" class="form-control" placeholder="Password">
-    <input [(ngModel)]="password2" id="confirmPasswordFld" class="form-control" placeholder="Confirm Password">
+    <input [(ngModel)]="password" id="passwordFld" class="form-control" placeholder="Password" type="password">
+    <input [(ngModel)]="password2" id="confirmPasswordFld" class="form-control" placeholder="Confirm Password" type="password">
     <button type="button" class="btn btn-danger" (click)="step1isCollapsed = !step1isCollapsed"
             [attr.aria-expanded]="!step1isCollapsed" aria-controls="collapseBasic"
             [disabled]="!(username&&password&&password2)">Next

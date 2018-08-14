@@ -26,7 +26,7 @@ export class RentingListForProfileComponent implements OnInit {
         const real = {
           event: reservation.event._id,
           site: reservation.site._id
-        }
+        };
         console.log(real);
         this.reservationService
           .unreserveSiteForEvent(real)
@@ -40,7 +40,7 @@ export class RentingListForProfileComponent implements OnInit {
           event: reservation.event._id,
           equipment: reservation.equipment._id,
           quantity: reservation.quantity
-        }
+        };
           this.equipmentRentingService
             .returnEquipForEvent(real)
             .then(() => {

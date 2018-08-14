@@ -10,24 +10,22 @@
     </span>
   </span>
   <div *ngIf="widget.type === 'heading'">
-    Heading: {{widget.data}}
+    <h1>{{widget.data}}</h1>
   </div>
   <div *ngIf="widget.type === 'paragraph'">
-    Paragraph:{{widget.data}}
+    <p>{{widget.data}}</p>
   </div>
   <div *ngIf="widget.type === 'link'">
-    Link: <a href={{widget.data}}>{{widget.data}}</a>
+    <a href={{widget.data}}>{{widget.data}}</a>
   </div>
 
   <div *ngIf="widget.type === 'unorderedList'">
-    List:
     <ul>
       <li *ngFor="let item of splitList(widget.data)">{{item}}</li>
     </ul>
   </div>
 
   <div *ngIf="widget.type === 'orderedList'">
-    List:
     <ol>
       <li *ngFor="let item of splitList(widget.data)">{{item}}</li>
     </ol>
