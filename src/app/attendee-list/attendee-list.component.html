@@ -4,7 +4,7 @@
     <div class="card text-center col-sm-2" *ngFor="let attendee of attendees">
       <div>
         <div class="avatar-container" *ngIf="attendee.profilePhoto">
-          <div class="avatar" [ngStyle]="{'background-image': 'url(' + attendee.profilePhoto + ')'}">
+          <div class="avatar" [routerLink]="['/profile/' + attendee._id]" [ngStyle]="{'background-image': 'url(' + attendee.profilePhoto + ')'}">
           </div>
         </div>
         <div class="text-sm-left text-muted">
