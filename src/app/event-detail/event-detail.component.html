@@ -58,8 +58,15 @@
               <div>
               <span class="button-pos">
                 <span class="button-container">
+                  <span id="youtube-icon" (click) = "mouseEnter()">
+                    <i *ngIf='hasVideo()'
+                       id="youtubeIcon"
+                       class="fab fa-youtube fa-2x">
+                    </i>
+                  </span>
                   <button class="btn btn-primary" *ngIf="!isEnrolled" (click)="enrollEvent()">Enroll</button>
                   <button class="btn btn-danger" *ngIf="isEnrolled" (click)="unenrollEvent()">Unenroll</button>
+
                 </span>
               </span>
               </div>
